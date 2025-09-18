@@ -7,6 +7,7 @@ import p01.view.Fibonacci;
 import p01.view.Moneda;
 import p01.view.NumerosPrimos;
 import p01.view.PiedraPapelTijera;
+import p01.view.Usuarios;
 
 public class Main {
 	public static void main(String arg[]) {
@@ -19,10 +20,10 @@ public class Main {
 		TerminalUtils.output("3. Números primos");
 		TerminalUtils.output("4. Comparar texto");
 		TerminalUtils.output("5. Lanzar moneda");
-		TerminalUtils.output("6. Números primos");
-		TerminalUtils.output("7. Números primos");
-		TerminalUtils.output("8. Números primos");
-		TerminalUtils.output("9. Números primos");
+		TerminalUtils.output("6. Fibonacci");
+		TerminalUtils.output("7. Usuarios");
+		TerminalUtils.output("8. Banco");
+		TerminalUtils.output("9. Empresa");
 		
 		int selection = TerminalUtils.inputInt();
 		switch(selection) {
@@ -49,7 +50,7 @@ public class Main {
 			Fibonacci.fibonacci();
 			break;
 		case 7:
-			
+			Usuarios.usuarios();
 			break;
 		case 8:
 			

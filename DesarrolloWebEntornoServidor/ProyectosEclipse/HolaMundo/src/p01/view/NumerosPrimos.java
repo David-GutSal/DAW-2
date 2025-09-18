@@ -4,10 +4,10 @@ import p01.utils.TerminalUtils;
 
 public class NumerosPrimos {
 	public static void buscarPrimo() {
-		for(int i = 0; i<=100 ; i++) {
-		if(i%2==0) {
-			TerminalUtils.output(i + ". es primo");
+		for (int i = 0; i <= 100; i++) {
+			if (i % 2 == 0) {
+				TerminalUtils.output(i + ". es primo");
+			}
 		}
-	}
 	}
 }

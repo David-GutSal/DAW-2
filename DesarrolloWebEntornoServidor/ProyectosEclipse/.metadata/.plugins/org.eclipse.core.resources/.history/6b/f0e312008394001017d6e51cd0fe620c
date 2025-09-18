@@ -1,0 +1,48 @@
+package p01.view;
+
+import p01.entities.Cuenta;
+import p01.utils.TerminalUtils;
+
+public class Banco {
+	public static void banco() {
+		boolean exit = true;
+		do {
+			TerminalUtils.output("Cuentas:");
+			TerminalUtils.output("1. Cuenta Ahorro");
+			TerminalUtils.output("2. Cuenta Corriente");
+			TerminalUtils.output("3. Salir");
+
+			int select = TerminalUtils.inputInt();
+			switch (select) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default:
+				TerminalUtils.output("Opcion no valida");
+				break;
+			}
+
+		} while (exit);
+	}
+}
+
+class CuentaCorriente extends Cuenta {
+
+	public CuentaCorriente(int a, double saldo) {
+		super(a, saldo);
+		// TODO Auto-generated constructor stub
+	}
+
+}
+
+class CuentaAhorro extends Cuenta {
+
+	public CuentaAhorro(int a, double saldo) {
+		super(a, saldo);
+		// TODO Auto-generated constructor stub
+	}
+
+}

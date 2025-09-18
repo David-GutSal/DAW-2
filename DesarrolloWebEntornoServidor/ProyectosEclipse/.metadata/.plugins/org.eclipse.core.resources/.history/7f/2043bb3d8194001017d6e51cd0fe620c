@@ -1,0 +1,5 @@
+package p01.entities;
+
+public class Cuenta {
+
+}

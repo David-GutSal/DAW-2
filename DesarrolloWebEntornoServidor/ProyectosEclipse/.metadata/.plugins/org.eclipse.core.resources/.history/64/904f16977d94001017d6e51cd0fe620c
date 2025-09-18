@@ -1,0 +1,40 @@
+package p01.view;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import p01.entities.Persona;
+import p01.utils.TerminalUtils;
+
+public class Usuarios {
+	static List<Persona> pl = new ArrayList<Persona>();
+
+	public static void usuarios() {
+		for (int i = 0; i < 3; i++) {
+			TerminalUtils.output("Nombre:");
+			String name = TerminalUtils.inputText();
+			TerminalUtils.output("Edad:");
+			String age = TerminalUtils.inputText();
+			
+			if (age.isBlank() && name.isBlank()) {
+				TerminalUtils.output("Usuario no agregado");
+				i--;
+			} else {
+				Persona p = new Persona(name,Integer.valueOf(age));
+				if (p.getAge() < 0 || String.valueOf(p.getAge()).isBlank()) {
+					p.setAge(99);
+				}
+				if (p.getName().isBlank()) {
+					p.setName("Anónimo");
+
+				}
+				pl.add(p);
+			}
+
+		}
+
+		for (Persona lp : pl) {
+			TerminalUtils.output(lp.toString());
+		}
+	}
+}

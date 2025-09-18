@@ -1,0 +1,72 @@
+package p01;
+
+import p01.utils.TerminalUtils;
+import p01.view.CompararNumeros;
+import p01.view.CompararTexto;
+import p01.view.Fibonacci;
+import p01.view.Moneda;
+import p01.view.NumerosPrimos;
+import p01.view.PiedraPapelTijera;
+import p01.view.Usuarios;
+
+public class Main {
+	public static void main(String arg[]) {
+		boolean exit = true;
+		do {
+		TerminalUtils.output("============== Seleccione una opcion ==============");
+		TerminalUtils.output("0. Salir:");
+		TerminalUtils.output("1. Comparar Numeros");
+		TerminalUtils.output("2. Piedra papel tijera");
+		TerminalUtils.output("3. Números primos");
+		TerminalUtils.output("4. Comparar texto");
+		TerminalUtils.output("5. Lanzar moneda");
+		TerminalUtils.output("6. Fibonacci");
+		TerminalUtils.output("7. Usuarios");
+		TerminalUtils.output("8. Números primos");
+		TerminalUtils.output("9. Números primos");
+		
+		int selection = TerminalUtils.inputInt();
+		switch(selection) {
+		case 0:
+			exit = false;
+			TerminalUtils.output("Adios");
+			break;
+		case 1:
+			CompararNumeros.compNum();
+			break;
+		case 2:
+			PiedraPapelTijera.ppt();
+			break;
+		case 3:
+			NumerosPrimos.buscarPrimo();
+			break;
+		case 4:
+			CompararTexto.compararTexto();
+			break;
+		case 5:
+			Moneda.lanzarMoneda();
+			break;
+		case 6:
+			Fibonacci.fibonacci();
+			break;
+		case 7:
+			Usuarios.usuarios();
+			break;
+		case 8:
+			
+			break;
+		case 9:
+			
+			break;
+		case 10:
+			
+			break;
+		default:
+			TerminalUtils.output("Opcion no valida");
+			break;
+		}
+		}while(exit);
+		
+	}
+
+}

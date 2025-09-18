@@ -6,6 +6,9 @@
     <fullyQualifiedTypeName name="p01.view.PiedraPapelTijera"/>
     <fullyQualifiedTypeName name="p01.view.CompararTexto"/>
     <fullyQualifiedTypeName name="p01.view.Moneda"/>
-    <fullyQualifiedTypeName name="p01.utils.TerminalUtils"/>
     <fullyQualifiedTypeName name="p01.view.Fibonacci"/>
+    <fullyQualifiedTypeName name="p01.view.Usuarios"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="p01.utils.TerminalUtils"/>
 </qualifiedTypeNameHistroy>
