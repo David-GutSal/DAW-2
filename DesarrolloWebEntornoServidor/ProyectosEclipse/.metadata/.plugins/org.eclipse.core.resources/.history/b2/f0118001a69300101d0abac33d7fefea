@@ -1,0 +1,25 @@
+package p01;
+
+import java.util.Scanner;
+
+public class TerminalUtils {
+	static Scanner sc = new Scanner(System.in);
+	public static void outText(String text) {
+		System.out.println(text);
+	}
+	
+	public static int inputInt() {
+		int num = sc.nextInt();
+		return num;
+	}
+	
+	public static Double inputDoube() {
+		double num = sc.nextDouble();
+		return num;
+	}
+	
+	public static String inputText() {
+		String text = sc.nextLine();
+		return text;
+	}
+}

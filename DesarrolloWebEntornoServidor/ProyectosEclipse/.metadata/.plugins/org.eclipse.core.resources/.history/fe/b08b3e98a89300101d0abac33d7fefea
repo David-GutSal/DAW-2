@@ -1,0 +1,31 @@
+package p01.utils;
+
+import java.util.Scanner;
+
+public class TerminalUtils {
+	private static Scanner sc = new Scanner(System.in);
+	
+	public static void output(String text) {
+		System.out.println(text);
+	}
+	
+	public static int inputInt() {
+		int num = Integer.parseInt(sc.nextLine());
+		return num;
+	}
+	
+	public static Double inputDoube() {
+		double num = Double.parseDouble(sc.nextLine());
+		return num;
+	}
+	
+	public static String inputText() {
+		String text = sc.nextLine();
+		return text;
+	}
+	
+	public static float inputFloat() {
+	    float result = Float.parseFloat(sc.nextLine());
+	    return result;
+	}
+}

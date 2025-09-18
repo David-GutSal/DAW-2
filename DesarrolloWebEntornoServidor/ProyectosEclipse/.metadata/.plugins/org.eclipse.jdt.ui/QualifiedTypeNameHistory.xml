@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="p01.TerminalUtils"/>
+    <fullyQualifiedTypeName name="p01.view.NumerosPrimos"/>
+    <fullyQualifiedTypeName name="p01.view.PiedraPapelTijera"/>
+    <fullyQualifiedTypeName name="p01.view.CompararTexto"/>
+    <fullyQualifiedTypeName name="p01.view.Moneda"/>
+    <fullyQualifiedTypeName name="p01.utils.TerminalUtils"/>
+    <fullyQualifiedTypeName name="p01.view.Fibonacci"/>
+</qualifiedTypeNameHistroy>

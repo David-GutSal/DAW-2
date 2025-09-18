@@ -1,0 +1,19 @@
+package p01.view;
+
+import p01.utils.TerminalUtils;
+
+public class Fibonacci {
+	public static void fibonacci() {
+		TerminalUtils.output("Escribe un número:");
+		int num = TerminalUtils.inputInt();
+		int num2 = 0;
+		int suma = 0;
+		int serie = 11;
+        for (int i = 1; i < serie; i++) {
+            System.out.println(suma);
+            suma = num + num2;
+            num = num2;
+            num2 = suma;
+        }
+	}
+}
