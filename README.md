@@ -8,14 +8,14 @@ _Repositorio con las materias del 2º Año de DAW._
         - [Repaso](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/Repaso)
 2. [DesarrolloWebEntornoServidor](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoServidor)
     - __Contenido:__
-        - [ProyectosEclipse](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/ProyectosEclipse)
-            - [HolaMundo](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/ProyectosEclipse/HolaMundo)
-3. [DespliegueAplicacionesWeb](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/Repaso)
+        - [ProyectosEclipse](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoServidor/ProyectosEclipse)
+            - [HolaMundo](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoServidor/ProyectosEclipse/HolaMundo)
+3. [DespliegueAplicacionesWeb](https://github.com/David-GutSal/DAW-2/tree/main/DespliegueAplicacionesWeb)
     - __Contenido:__
         - [Repaso](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/Repaso)
-4. [DiseñoInterfacesWEB](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/Repaso)
+4. [DiseñoInterfacesWEB](https://github.com/David-GutSal/DAW-2/tree/main/DiseñoInterfacesWEB)
     - __Contenido:__
         - [Repaso](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/Repaso)
-5. [FundamentosCiberseguridad](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/Repaso)
+5. [FundamentosCiberseguridad](https://github.com/David-GutSal/DAW-2/tree/main/FundamentosCiberseguridad)
     - __Contenido:__
         - [Repaso](https://github.com/David-GutSal/DAW-2/tree/main/DesarrolloWebEntornoCliente/Repaso)
