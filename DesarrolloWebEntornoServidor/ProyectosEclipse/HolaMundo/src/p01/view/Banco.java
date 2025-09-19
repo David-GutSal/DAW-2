@@ -10,14 +10,10 @@ public class Banco {
 	public static void banco() {
 		boolean exit = true;
 		Cuenta cc = new CuentaCorriente(1, 0.0);
-		Cuenta cc2 = new CuentaCorriente(2, 0.0);
-		Cuenta ca = new CuentaAhorro(3, 0.0);
-		Cuenta ca2 = new CuentaAhorro(4, 0.0);
+		Cuenta ca = new CuentaAhorro(2, 0.0);
 		List<Cuenta> c = new ArrayList<Cuenta>();
 		c.add(ca);
-		c.add(ca2);
 		c.add(cc);
-		c.add(cc2);
 		
 		do {
 			TerminalUtils.output("Cuentas:");
@@ -34,10 +30,13 @@ public class Banco {
 				int option = TerminalUtils.inputInt();
 				if(option == 1) {
 					int cantidad = TerminalUtils.inputInt();
-					cc.sacarDinero(cantidad);
+					ca.sacarDinero(cantidad);
 				}else if (option == 2) {
 					int cantidad = TerminalUtils.inputInt();
-					cc.ingresarDinero(cantidad);
+					ca.ingresarDinero(cantidad);
+				}
+				for(Cuenta cu: c) {
+					TerminalUtils.output(cu.toString());
 				}
 				break;
 			case 2:
@@ -51,6 +50,9 @@ public class Banco {
 				}else if (option2 == 2) {
 					int cantidad = TerminalUtils.inputInt();
 					cc.ingresarDinero(cantidad);
+				}
+				for(Cuenta cu: c) {
+					TerminalUtils.output(cu.toString());
 				}
 				break;
 			case 3:
@@ -69,14 +71,7 @@ class CuentaCorriente extends Cuenta {
 
 	public CuentaCorriente(int a, double saldo) {
 		super(a, saldo);
-	}
-	
-	@Override
-	public void sacarDinero(double sum) {
-		if (sum > 0)
-			saldo -= sum;
-		else
-			System.err.println("Cuenta.sacarDinero(...): " + "no se puede sacar una suma negativa");
+		
 	}
 
 }
@@ -85,13 +80,7 @@ class CuentaAhorro extends Cuenta {
 
 	public CuentaAhorro(int a, double saldo) {
 		super(a, saldo);
-	}
-	@Override
-	public void ingresarDinero(double sum) {
-		if (sum > 0)
-			saldo += sum;
-		else
-			System.err.println("No se puede ingresar una cantidad negativa");
+		
 	}
 
 }

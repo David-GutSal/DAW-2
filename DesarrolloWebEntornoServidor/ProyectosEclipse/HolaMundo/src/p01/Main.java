@@ -1,6 +1,7 @@
 package p01;
 
 import p01.utils.TerminalUtils;
+import p01.view.Banco;
 import p01.view.CompararNumeros;
 import p01.view.CompararTexto;
 import p01.view.Fibonacci;
@@ -53,12 +54,9 @@ public class Main {
 			Usuarios.usuarios();
 			break;
 		case 8:
-			
+			Banco.banco();
 			break;
 		case 9:
-			
-			break;
-		case 10:
 			
 			break;
 		default:

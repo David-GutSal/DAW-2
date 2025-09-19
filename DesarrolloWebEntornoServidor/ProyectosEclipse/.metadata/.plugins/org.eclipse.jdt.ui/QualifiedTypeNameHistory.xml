@@ -11,4 +11,5 @@
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="p01.utils.TerminalUtils"/>
+    <fullyQualifiedTypeName name="p01.view.Banco"/>
 </qualifiedTypeNameHistroy>
