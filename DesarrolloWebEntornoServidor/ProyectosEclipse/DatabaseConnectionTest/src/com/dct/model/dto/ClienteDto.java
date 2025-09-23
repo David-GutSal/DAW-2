@@ -1,4 +1,4 @@
-package com.p02.model.dto;
+package com.dct.model.dto;
 
 public class ClienteDto {
 	private String nombre;
@@ -28,7 +28,7 @@ public class ClienteDto {
 
 	@Override
 	public String toString() {
-		return "ClienteDto [nombre=" + nombre + ", telefono=" + telefono + "]";
+		return "nombre= " + nombre + ", telefono= " + telefono;
 	}
 
 }

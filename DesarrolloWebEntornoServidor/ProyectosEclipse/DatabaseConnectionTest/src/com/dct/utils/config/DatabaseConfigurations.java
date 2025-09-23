@@ -1,4 +1,4 @@
-package com.p02.utils.config;
+package com.dct.utils.config;
 
 public class DatabaseConfigurations {
 

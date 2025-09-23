@@ -1,12 +1,12 @@
-package com.p02.model;
+package com.dct.model;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.p02.utils.config.Configurations;
-import com.p02.utils.config.DatabaseConfigurations;
+import com.dct.utils.config.Configurations;
+import com.dct.utils.config.DatabaseConfigurations;
 
 
 public class DatabaseConnection {

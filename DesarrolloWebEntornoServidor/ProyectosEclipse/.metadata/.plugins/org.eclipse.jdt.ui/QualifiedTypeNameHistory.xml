@@ -14,4 +14,7 @@
     <fullyQualifiedTypeName name="p01.view.Banco"/>
     <fullyQualifiedTypeName name="com.p02.model.repository.ClientesModel"/>
     <fullyQualifiedTypeName name="com.p02.model.dto.ClienteDto"/>
+    <fullyQualifiedTypeName name="com.dct.view.MainTerminalView"/>
+    <fullyQualifiedTypeName name="com.dct.utils.TerminalUtils"/>
+    <fullyQualifiedTypeName name="com.dct.model.dto.ClienteDto"/>
 </qualifiedTypeNameHistroy>
