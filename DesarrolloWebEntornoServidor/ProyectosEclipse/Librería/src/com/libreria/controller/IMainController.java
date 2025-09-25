@@ -2,17 +2,58 @@ package com.libreria.controller;
 
 import java.util.ArrayList;
 
-import com.libreria.model.dto.Client;
-import com.libreria.model.dto.ClienteDto;
+import com.libreria.model.dto.Employe;
+import com.libreria.model.dto.Promotion;
+import com.libreria.model.dto.Publication;
+import com.libreria.model.dto.Sell;
+import com.libreria.model.dto.Type;
+import com.libreria.model.dto.User;
 
 public interface IMainController {
 
-	ArrayList<ClienteDto> requestList();
+	ArrayList<Type> requestTypeList();
 
-	boolean addClient(Client c);
+	boolean addType(Type t);
 
-	boolean editClient(ClienteDto cd);
+	boolean editType(Type t);
+	
 
-	boolean deleteClient(int clientNumber);
+	ArrayList<Publication> requestPublicationList();
+
+	boolean addPublication(Publication p);
+
+	boolean editPublication(Publication p);
+	
+
+	ArrayList<Sell> requestSellList();
+
+	boolean addSell(Sell p);
+
+	boolean editSell(Sell p);
+
+	boolean deleteSell(Sell p);
+	
+
+	ArrayList<Employe> requestEmpleyeList();
+
+	boolean addEmpleye(Employe e);
+
+	boolean editEmpleye(Employe e);
+	
+
+	ArrayList<User> requestUserList();
+
+	boolean addUser(User u);
+
+	boolean editUser(User u);
+	
+
+	ArrayList<Promotion> requestPromotionList();
+
+	boolean addPromotion(Promotion p);
+
+	boolean editPromotion(Promotion p);
+
+	boolean deletePromotion(Promotion p);
 
 }

@@ -1,20 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="p01.TerminalUtils"/>
-    <fullyQualifiedTypeName name="p01.view.NumerosPrimos"/>
-    <fullyQualifiedTypeName name="p01.view.PiedraPapelTijera"/>
-    <fullyQualifiedTypeName name="p01.view.CompararTexto"/>
-    <fullyQualifiedTypeName name="p01.view.Moneda"/>
-    <fullyQualifiedTypeName name="p01.view.Fibonacci"/>
-    <fullyQualifiedTypeName name="p01.view.Usuarios"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="p01.utils.TerminalUtils"/>
-    <fullyQualifiedTypeName name="p01.view.Banco"/>
-    <fullyQualifiedTypeName name="com.p02.model.repository.ClientesModel"/>
-    <fullyQualifiedTypeName name="com.p02.model.dto.ClienteDto"/>
-    <fullyQualifiedTypeName name="com.dct.view.MainTerminalView"/>
-    <fullyQualifiedTypeName name="com.dct.utils.TerminalUtils"/>
-    <fullyQualifiedTypeName name="com.dct.model.dto.ClienteDto"/>
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>

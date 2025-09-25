@@ -4,44 +4,203 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.libreria.model.dto.Client;
-import com.libreria.model.dto.ClienteDto;
-import com.libreria.model.repository.ClientesModel;
-import com.libreria.model.repository.IClientModel;
+import com.libreria.model.dto.Employe;
+import com.libreria.model.dto.Promotion;
+import com.libreria.model.dto.Publication;
+import com.libreria.model.dto.Sell;
+import com.libreria.model.dto.Type;
+import com.libreria.model.dto.User;
+import com.libreria.model.repository.EmployeModel;
+import com.libreria.model.repository.IEmploye;
+import com.libreria.model.repository.IPromotion;
+import com.libreria.model.repository.IPublication;
+import com.libreria.model.repository.ISell;
+import com.libreria.model.repository.IType;
+import com.libreria.model.repository.IUser;
+import com.libreria.model.repository.PromotionModel;
+import com.libreria.model.repository.PublicationModel;
+import com.libreria.model.repository.SellModel;
+import com.libreria.model.repository.TypeModel;
+import com.libreria.model.repository.UserModel;
 
 public class MainController implements IMainController {
-	private IClientModel cm;
+	private IType it;
+	private IPublication ip;
+	private ISell is;
+	private IEmploye ie;
+	private IUser iu;
+	private IPromotion upr;
 
 	public MainController() throws ClassNotFoundException, SQLException, IOException {
-		this.cm = new ClientesModel();
+		this.it = new TypeModel();
+		this.ip = new PublicationModel();
+		this.is = new SellModel();
+		this.ie = new EmployeModel();
+		this.iu = new UserModel();
+		this.upr = new PromotionModel();
 	}
 
-	public ArrayList<ClienteDto> requestList() {
-		ArrayList<ClienteDto> lista = cm.clientList();
-		return lista;
+	@Override
+	public ArrayList<Type> requestTypeList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public boolean addClient(Client c) {
-		if (cm.insertClient(c)) {
-			return true;
-		} else {
+	@Override
+	public boolean addType(Type t) {
+		if() {
+			
+		}else {
 			return false;
 		}
+		
 	}
-	
-	public boolean editClient(ClienteDto c) {
-		if(cm.editClient(c)) {
-			return true;
+
+	@Override
+	public boolean editType(Type t) {
+		if() {
+			
 		}else {
 			return false;
 		}
 	}
 
-	public boolean deleteClient(int clientNumber) {
-		if(cm.deleteClient(clientNumber)) {
-			return true;
+	@Override
+	public ArrayList<Publication> requestPublicationList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addPublication(Publication p) {
+		if() {
+			
 		}else {
 			return false;
 		}
 	}
+
+	@Override
+	public boolean editPublication(Publication p) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public ArrayList<Sell> requestSellList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addSell(Sell p) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean editSell(Sell p) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteSell(Sell p) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public ArrayList<Employe> requestEmpleyeList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addEmpleye(Employe e) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean editEmpleye(Employe e) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public ArrayList<User> requestUserList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addUser(User u) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean editUser(User u) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public ArrayList<Promotion> requestPromotionList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addPromotion(Promotion p) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean editPromotion(Promotion p) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deletePromotion(Promotion p) {
+		if() {
+			
+		}else {
+			return false;
+		}
+	}
+
 }

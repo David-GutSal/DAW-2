@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import com.libreria.controller.IMainController;
 import com.libreria.controller.MainController;
-import com.libreria.model.dto.Client;
 import com.libreria.model.dto.ClienteDto;
+import com.libreria.model.dto.Type;
 import com.libreria.utils.TerminalUtils;
 
 public class MainTerminalView {
@@ -36,72 +36,16 @@ public class MainTerminalView {
 				TerminalUtils.output("Adios!!!");
 				break;
 			case 1:
-				TerminalUtils.output("========== Lista de clientes ==========");
-				ArrayList<ClienteDto> lista = mc.requestList();
-				for (ClienteDto c : lista) {
-					TerminalUtils.output(c.toString());
-				}
+				typeView();
 				break;
 			case 2:
-				TerminalUtils.output("========== Añadiendo Cliente ==========");
-				TerminalUtils.output("Numero de cliente:");
-				int customerNumber = TerminalUtils.inputInt();
-				TerminalUtils.output("Nombre de cliente:");
-				String customerName = TerminalUtils.inputText();
-				TerminalUtils.output("Ultimo apellido de cliente:");
-				String contactLastName = TerminalUtils.inputText();
-				TerminalUtils.output("Primer apellido de cliente:");
-				String contactFirstName = TerminalUtils.inputText();
-				TerminalUtils.output("Telefono de cliente:");
-				String phone = TerminalUtils.inputText();
-				TerminalUtils.output("Direccion 1 de cliente:");
-				String addressLine1 = TerminalUtils.inputText();
-				TerminalUtils.output("Direccion 2 de cliente:");
-				String addressLine2 = TerminalUtils.inputText();
-				TerminalUtils.output("Ciudad de cliente:");
-				String city = TerminalUtils.inputText();
-				TerminalUtils.output("Estado de cliente:");
-				String state = TerminalUtils.inputText();
-				TerminalUtils.output("Codigo postal de cliente:");
-				String postalCode = TerminalUtils.inputText();
-				TerminalUtils.output("Pais de cliente:");
-				String country = TerminalUtils.inputText();
-				TerminalUtils.output("Numero de representante de ventas de cliente: 1165");
-				int salesRepEmployeeNumber = TerminalUtils.inputInt();
-				TerminalUtils.output("Limite de credito de cliente (0.0):");
-				double creditLimit = TerminalUtils.inputDoube();
-
-				Client c = new Client(customerNumber, customerName, contactLastName, contactFirstName, phone,
-						addressLine1, addressLine2, city, state, postalCode, country, salesRepEmployeeNumber,
-						creditLimit);
-				if (mc.addClient(c)) {
-					TerminalUtils.output("Usuario agregado correctamente");
-				} else {
-					TerminalUtils.output("Algo salio mal");
-				}
+				publicationView();
 				break;
 			case 3:
-				TerminalUtils.output("========== Editando Cliente ==========");
-				TerminalUtils.output("Nombre de cliente:");
-				String name = TerminalUtils.inputText();
-				TerminalUtils.output("Numero de cliente nuevo:");
-				String newPhone = TerminalUtils.inputText();
-				ClienteDto cd = new ClienteDto(name, newPhone);
-				if(mc.editClient(cd)) {
-					TerminalUtils.output("Usuario editado correctamente");
-				}else {
-					TerminalUtils.output("Algo salio mal");
-				}
+				sellView();
 				break;
 			case 4:
-				TerminalUtils.output("========== Eliminando Cliente ==========");
-				TerminalUtils.output("Numero de cliente:");
-				int clientNumber = TerminalUtils.inputInt();
-				if(mc.deleteClient(clientNumber)) {
-					TerminalUtils.output("Cliente eliminado");
-				}else {
-					TerminalUtils.output("Algo salio mal");
-				}
+				employeView();
 				break;
 			default:
 				TerminalUtils.output("Opcion no valida");
@@ -109,8 +53,82 @@ public class MainTerminalView {
 			}
 		} while (exit);
 	}
-	
+
 	public void typeView() {
+		boolean exit = true;
+		do {
+			TerminalUtils.output("========== Tabla Tipo ==========");
+			crudView();
+			int option = TerminalUtils.inputInt();
+			switch (option) {
+			case 0:
+				exit = false;
+				TerminalUtils.output("Adios!!!");
+				break;
+			case 1:
+				TerminalUtils.output("========== Lista ==========");
+				ArrayList<Type> lista = mc.requestList();
+				for (Type c : lista) {
+					TerminalUtils.output(c.toString());
+				}
+				break;
+			case 2:
+				TerminalUtils.output("========== Añadiendo ==========");
+
+				break;
+			case 3:
+				TerminalUtils.output("========== Editando ==========");
+
+				break;
+			case 4:
+				TerminalUtils.output("========== Eliminando ==========");
+
+				break;
+			default:
+				TerminalUtils.output("Opcion no valida");
+				break;
+			}
+		} while (exit);
+	}
+
+	public void publicationView() {
+		boolean exit = true;
+		do {
+			TerminalUtils.output("========== Tabla Publicacion ==========");
+			crudView();
+			int option = TerminalUtils.inputInt();
+			switch (option) {
+			case 0:
+				exit = false;
+				TerminalUtils.output("Adios!!!");
+				break;
+			case 1:
+				TerminalUtils.output("========== Lista ==========");
+				ArrayList<ClienteDto> lista = mc.requestList();
+				for (ClienteDto c : lista) {
+					TerminalUtils.output(c.toString());
+				}
+				break;
+			case 2:
+				TerminalUtils.output("========== Añadiendo ==========");
+
+				break;
+			case 3:
+				TerminalUtils.output("========== Editando ==========");
+
+				break;
+			case 4:
+				TerminalUtils.output("========== Eliminando ==========");
+
+				break;
+			default:
+				TerminalUtils.output("Opcion no valida");
+				break;
+			}
+		} while (exit);
+	}
+
+	public void sellView() {
 		boolean exit = true;
 		do {
 			TerminalUtils.output("========== Tabla Tipo ==========");
@@ -130,30 +148,140 @@ public class MainTerminalView {
 				break;
 			case 2:
 				TerminalUtils.output("========== Añadiendo ==========");
-				
 
 				break;
 			case 3:
 				TerminalUtils.output("========== Editando ==========");
-				
+
 				break;
 			case 4:
 				TerminalUtils.output("========== Eliminando ==========");
-				
+
 				break;
 			default:
 				TerminalUtils.output("Opcion no valida");
 				break;
 			}
-		}while(exit);
+		} while (exit);
 	}
-	
+
+	public void employeView() {
+		boolean exit = true;
+		do {
+			TerminalUtils.output("========== Tabla Tipo ==========");
+			crudView();
+			int option = TerminalUtils.inputInt();
+			switch (option) {
+			case 0:
+				exit = false;
+				TerminalUtils.output("Adios!!!");
+				break;
+			case 1:
+				TerminalUtils.output("========== Lista ==========");
+				ArrayList<ClienteDto> lista = mc.requestList();
+				for (ClienteDto c : lista) {
+					TerminalUtils.output(c.toString());
+				}
+				break;
+			case 2:
+				TerminalUtils.output("========== Añadiendo ==========");
+
+				break;
+			case 3:
+				TerminalUtils.output("========== Editando ==========");
+
+				break;
+			case 4:
+				TerminalUtils.output("========== Eliminando ==========");
+
+				break;
+			default:
+				TerminalUtils.output("Opcion no valida");
+				break;
+			}
+		} while (exit);
+	}
+
+	public void userView() {
+		boolean exit = true;
+		do {
+			TerminalUtils.output("========== Tabla Tipo ==========");
+			crudView();
+			int option = TerminalUtils.inputInt();
+			switch (option) {
+			case 0:
+				exit = false;
+				TerminalUtils.output("Adios!!!");
+				break;
+			case 1:
+				TerminalUtils.output("========== Lista ==========");
+				ArrayList<ClienteDto> lista = mc.requestList();
+				for (ClienteDto c : lista) {
+					TerminalUtils.output(c.toString());
+				}
+				break;
+			case 2:
+				TerminalUtils.output("========== Añadiendo ==========");
+
+				break;
+			case 3:
+				TerminalUtils.output("========== Editando ==========");
+
+				break;
+			case 4:
+				TerminalUtils.output("========== Eliminando ==========");
+
+				break;
+			default:
+				TerminalUtils.output("Opcion no valida");
+				break;
+			}
+		} while (exit);
+	}
+
+	public void promotionView() {
+		boolean exit = true;
+		do {
+			TerminalUtils.output("========== Tabla Tipo ==========");
+			crudView();
+			int option = TerminalUtils.inputInt();
+			switch (option) {
+			case 0:
+				exit = false;
+				TerminalUtils.output("Adios!!!");
+				break;
+			case 1:
+				TerminalUtils.output("========== Lista ==========");
+				ArrayList<ClienteDto> lista = mc.requestList();
+				for (ClienteDto c : lista) {
+					TerminalUtils.output(c.toString());
+				}
+				break;
+			case 2:
+				TerminalUtils.output("========== Añadiendo ==========");
+
+				break;
+			case 3:
+				TerminalUtils.output("========== Editando ==========");
+
+				break;
+			case 4:
+				TerminalUtils.output("========== Eliminando ==========");
+
+				break;
+			default:
+				TerminalUtils.output("Opcion no valida");
+				break;
+			}
+		} while (exit);
+	}
+
 	public void crudView() {
-			TerminalUtils.output("0. Salir");
-			TerminalUtils.output("1. Listar");
-			TerminalUtils.output("2. Añadir");
-			TerminalUtils.output("3. Editar");
-			TerminalUtils.output("4. Eliminar");
+		TerminalUtils.output("0. Salir");
+		TerminalUtils.output("1. Listar");
+		TerminalUtils.output("2. Añadir");
+		TerminalUtils.output("3. Editar");
+		TerminalUtils.output("4. Eliminar");
 	}
 
 }
