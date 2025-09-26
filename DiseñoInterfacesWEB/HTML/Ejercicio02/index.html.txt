@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio02</title>
+  </head>
+  <body>
+
+    <h1>Equipos de futbol que nunca han bajado a segunda division</h1>
+    <table border="1">
+      <tr>
+        <th>Escudo</th>
+        <th>Nombre</th>
+        <th>Estadio</th>
+        <th>Mas informacion</th>
+      </tr>
+      <tr>
+        <td><img src="img/93.png" alt="nose" width="70"></td>
+        <td>Athletic Club</td>
+        <td>San Mamés</td>
+        <td><a href="#">Más información</a></td>
+      </tr>
+      <tr>
+        <td><img src="img/Real_Madrid_CF.svg" alt="nose" width="70"></td>
+        <td>Real Madrid CF</td>
+        <td>Santiago Bernabéu</td>
+        <td><a href="#">Más información</a></td>
+      </tr>
+      <tr>
+        <td><img src="img/83.png" alt="nose" width="70"></td>
+        <td>FC Barcelona</td>
+        <td>Camp Nou</td>
+        <td><a href="#">Más información</a></td>
+      </tr>
+    </table>
+  </body>
+</html>

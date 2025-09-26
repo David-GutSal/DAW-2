@@ -2,20 +2,20 @@ package com.libreria.model.dto;
 
 
 public class Type{
-	private int idType;
+	private String idType;
 	private String description;
 	
-	public Type(int idType, String description) {
-		this.idType = idType;
+	public Type(String searchIdType, String description) {
+		this.idType = searchIdType;
 		this.description = description;
 	}
 
 
-	public int getIdType() {
+	public String getIdType() {
 		return idType;
 	}
 
-	public void setIdType(int idType) {
+	public void setIdType(String idType) {
 		this.idType = idType;
 	}
 

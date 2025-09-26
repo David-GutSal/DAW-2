@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registro</h1>
+    <form action="#">
+        <label for="name">
+            Nombre:
+            <input type="text" id="name" placeholder="Nombre" required>
+        </label>
+        <label for="lastName">
+            Apellido:
+            <input type="text" id="lastName" placeholder="Apellido" required>
+        </label>
+        <br>
+        <label for="sex">
+            <input type="radio" id="sex" name="sex">
+            Hombre
+        </label>
+        <label for="sex">
+            <input type="radio" id="sex" name="sex">
+            Mujer
+        </label>
+        <label for="sex">
+            <input type="radio" id="sex" name="sex">
+            Otro
+        </label>
+        <br>
+        <label for="email">
+            Email:
+            <input type="email" id="email" placeholder="tu email">
+        </label>
+        <label for="passsword">
+            Passsword:
+            <input type="password" id="passsword" placeholder="tu passsword" maxlength="10" minlength="5">
+        </label>
+        <br>
+        <label for="year">
+            Fecha de Nacimiento:
+            <select id="year">
+                <option>Dia</option>
+                <option>1</option>
+                <option>2</option>
+            </select>
+            <select id="year">
+                <option>Mes</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+            <select id="year">
+                <option>Año</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
+        </label>
+        <br>
+        <label for="check">
+            Acepto las condiciones de uso 
+            <input type="checkbox" id="check" required>
+        </label>
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>
