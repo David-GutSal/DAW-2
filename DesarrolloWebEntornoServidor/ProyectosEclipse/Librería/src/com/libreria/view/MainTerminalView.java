@@ -3,15 +3,18 @@ package com.libreria.view;
 import java.io.IOException;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
+
 import com.libreria.controller.IMainController;
 import com.libreria.controller.MainController;
-import com.libreria.model.dto.Employe;
-import com.libreria.model.dto.Promotion;
-import com.libreria.model.dto.Publication;
-import com.libreria.model.dto.Sell;
-import com.libreria.model.dto.Type;
-import com.libreria.model.dto.User;
+import com.libreria.model.entities.Employe;
+import com.libreria.model.entities.Promotion;
+import com.libreria.model.entities.Publication;
+import com.libreria.model.entities.Sell;
+import com.libreria.model.entities.Type;
+import com.libreria.model.entities.User;
 import com.libreria.utils.TerminalUtils;
 
 public class MainTerminalView {
@@ -43,13 +46,17 @@ public class MainTerminalView {
 				typeView();
 				break;
 			case 2:
-				publicationView();
+				//publicationView();
 				break;
 			case 3:
-				sellView();
+				/*try {
+					sellView();
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}*/
 				break;
 			case 4:
-				employeView();
+				//employeView();
 				break;
 			default:
 				TerminalUtils.output("Opcion no valida");
@@ -91,7 +98,9 @@ public class MainTerminalView {
 				break;
 			case 3:
 				TerminalUtils.output("========== Editando ==========");
+				TerminalUtils.output("Id:");
 				String searchIdType = TerminalUtils.inputText();
+				TerminalUtils.output("Nueva Descripcion:");
 				String newDescription = TerminalUtils.inputText();
 				Type editedType = new Type(searchIdType, newDescription);
 				if(mc.editType(editedType)) {
@@ -109,7 +118,7 @@ public class MainTerminalView {
 			}
 		} while (exit);
 	}
-
+/*
 	public void publicationView() {
 		boolean exit = true;
 		do {
@@ -139,7 +148,7 @@ public class MainTerminalView {
 				TerminalUtils.output("Numero de Edicion:");
 				int edition = TerminalUtils.inputInt();
 				TerminalUtils.output("Precio:");
-				double price = TerminalUtils.inputDoube();
+				double price = TerminalUtils.inputDouble();
 				TerminalUtils.output("Stock:");
 				int stock = TerminalUtils.inputInt();
 				TerminalUtils.output("Id tipo:");
@@ -162,7 +171,7 @@ public class MainTerminalView {
 				TerminalUtils.output("Numero de Edicion:");
 				int newedition = TerminalUtils.inputInt();
 				TerminalUtils.output("Precio:");
-				double newprice = TerminalUtils.inputDoube();
+				double newprice = TerminalUtils.inputDouble();
 				TerminalUtils.output("Stock:");
 				int newstock = TerminalUtils.inputInt();
 				TerminalUtils.output("Id tipo:");
@@ -175,7 +184,7 @@ public class MainTerminalView {
 				}
 				break;
 			case 4:
-				TerminalUtils.output("No se pueden eliminar tipos");
+				TerminalUtils.output("No se pueden eliminar ventas");
 				break;
 			default:
 				TerminalUtils.output("Opcion no valida");
@@ -184,7 +193,7 @@ public class MainTerminalView {
 		} while (exit);
 	}
 
-	public void sellView() {
+	public void sellView() throws ParseException {
 		boolean exit = true;
 		do {
 			TerminalUtils.output("========== Tabla Ventas ==========");
@@ -204,7 +213,27 @@ public class MainTerminalView {
 				break;
 			case 2:
 				TerminalUtils.output("========== Añadiendo ==========");
-				if(mc.addSell(null)) {
+				TerminalUtils.output("Id:");
+				int id = TerminalUtils.inputInt();
+				TerminalUtils.output("Cliente:");
+				String client = TerminalUtils.inputText();
+				TerminalUtils.output("Fecha:");
+				String inputDate = TerminalUtils.inputText();
+				Date date = TerminalUtils.inputDate(inputDate);
+				TerminalUtils.output("Id Empleado:");
+				int idEmployee = TerminalUtils.inputInt();
+				TerminalUtils.output("Id Publicacion:");
+				String idPublication = TerminalUtils.inputText();
+				TerminalUtils.output("Cantidad:");
+				int amount = TerminalUtils.inputInt();
+				TerminalUtils.output("Precio:");
+				double price = TerminalUtils.inputDouble();
+				TerminalUtils.output("Descuento:");
+				double dcto = TerminalUtils.inputDouble();
+				TerminalUtils.output("Impuesto:");
+				double tax = TerminalUtils.inputDouble();
+				Sell s = new Sell(id, client, date, idEmployee, idPublication, amount, price, dcto, tax);
+				if(mc.addSell(s)) {
 					TerminalUtils.output("Tipo agregado");
 				}else {
 					TerminalUtils.output("Algo salio mal");
@@ -220,7 +249,9 @@ public class MainTerminalView {
 				break;
 			case 4:
 				TerminalUtils.output("========== Eliminando ==========");
-				if(mc.deleteSell(null)) {
+				TerminalUtils.output("Id:");
+				int idForDelete = TerminalUtils.inputInt();
+				if(mc.deleteSell(idForDelete)) {
 					TerminalUtils.output("Tipo eliminado");
 				}else {
 					TerminalUtils.output("Algo salio mal");
@@ -369,7 +400,7 @@ public class MainTerminalView {
 			}
 		} while (exit);
 	}
-
+*/
 	public void crudView() {
 		TerminalUtils.output("0. Salir");
 		TerminalUtils.output("1. Listar");

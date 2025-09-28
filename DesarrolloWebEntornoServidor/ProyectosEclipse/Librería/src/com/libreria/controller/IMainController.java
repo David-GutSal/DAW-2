@@ -2,12 +2,12 @@ package com.libreria.controller;
 
 import java.util.ArrayList;
 
-import com.libreria.model.dto.Employe;
-import com.libreria.model.dto.Promotion;
-import com.libreria.model.dto.Publication;
-import com.libreria.model.dto.Sell;
-import com.libreria.model.dto.Type;
-import com.libreria.model.dto.User;
+import com.libreria.model.entities.Employe;
+import com.libreria.model.entities.Promotion;
+import com.libreria.model.entities.Publication;
+import com.libreria.model.entities.Sell;
+import com.libreria.model.entities.Type;
+import com.libreria.model.entities.User;
 
 public interface IMainController {
 
@@ -17,7 +17,7 @@ public interface IMainController {
 
 	boolean editType(Type t);
 	
-
+/*
 	ArrayList<Publication> requestPublicationList();
 
 	boolean addPublication(Publication p);
@@ -31,7 +31,7 @@ public interface IMainController {
 
 	boolean editSell(Sell p);
 
-	boolean deleteSell(Sell p);
+	boolean deleteSell(int id);
 	
 
 	ArrayList<Employe> requestEmpleyeList();
@@ -55,5 +55,5 @@ public interface IMainController {
 	boolean editPromotion(Promotion p);
 
 	boolean deletePromotion(Promotion p);
-
+*/
 }

@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.libreria.model.dto.Employe;
-import com.libreria.model.dto.Promotion;
-import com.libreria.model.dto.Publication;
-import com.libreria.model.dto.Sell;
-import com.libreria.model.dto.Type;
-import com.libreria.model.dto.User;
+import com.libreria.model.entities.Employe;
+import com.libreria.model.entities.Promotion;
+import com.libreria.model.entities.Publication;
+import com.libreria.model.entities.Sell;
+import com.libreria.model.entities.Type;
+import com.libreria.model.entities.User;
 import com.libreria.model.repository.EmployeModel;
 import com.libreria.model.repository.IEmploye;
 import com.libreria.model.repository.IPromotion;
@@ -42,14 +42,14 @@ public class MainController implements IMainController {
 
 	@Override
 	public ArrayList<Type> requestTypeList() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Type> list = it.typeList();
+		return list;
 	}
 
 	@Override
 	public boolean addType(Type t) {
-		if() {
-			
+		if(it.add(t)) {
+			return true;
 		}else {
 			return false;
 		}
@@ -58,13 +58,13 @@ public class MainController implements IMainController {
 
 	@Override
 	public boolean editType(Type t) {
-		if() {
-			
+		if(it.edit(t)) {
+			return true;
 		}else {
 			return false;
 		}
 	}
-
+/*
 	@Override
 	public ArrayList<Publication> requestPublicationList() {
 		// TODO Auto-generated method stub
@@ -114,7 +114,7 @@ public class MainController implements IMainController {
 	}
 
 	@Override
-	public boolean deleteSell(Sell p) {
+	public boolean deleteSell(int p) {
 		if() {
 			
 		}else {
@@ -202,5 +202,5 @@ public class MainController implements IMainController {
 			return false;
 		}
 	}
-
+*/
 }
