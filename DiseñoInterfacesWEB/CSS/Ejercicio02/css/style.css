@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    height: 100vh;
+}
+header{
+    display: flex;
+    flex-direction: row-reverse;
+    width: auto;
+    gap: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 1em;
+    font-size: 15px;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 15em;
+}
+#container h1{
+    font-size: 4em;
+}
+#search{
+    border-radius: 15px;
+    border: rgb(211, 211, 211) 1px solid;
+    width: 28em;
+    height: 2em;
+}
+#text{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+#text p{
+    background-color: rgb(238, 238, 238);
+    padding: 10px;
+}
+#language{
+    font-size: 12px;
+}
+footer{
+    display: flex;
+    flex-direction: row;
+    width: 100hv;
+    background-color: rgb(238, 238, 238);
+    gap: 82em;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 18em;
+}
+footer div{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    font-size: 15px;
+    margin-left: 1.5em;
+}

@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  background-color: rgb(223, 223, 223);
+}
+#main-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background-color: rgb(204, 204, 204);
+}
+header h3{
+    float: left;
+    margin-left: 2em;
+}
+header search{
+    float: right;
+    margin-right: 2em;
+}
+#menu{
+    background-color: black;
+}
+#menu h4{
+    float: left;
+    margin-left: 2em;
+    color: white;
+}
+img{
+    width: 450px;
+    height: 240px;
+}
+#img-container{
+    background-color: white;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2em;
+}
