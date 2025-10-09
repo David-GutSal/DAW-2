@@ -43,8 +43,7 @@
     {
       "scope": ["keyword", "storage.type"],
       "settings": {
-        "foreground": "#C586C0",
-        "fontStyle": "bold"
+        "foreground": "#C586C0"
       }
     },
     {
