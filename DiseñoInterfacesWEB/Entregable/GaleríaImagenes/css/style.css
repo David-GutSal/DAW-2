@@ -3,7 +3,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
   align-items: center;
   background-color: rgb(223, 223, 223);
 }
@@ -20,20 +20,53 @@ header h3{
 header search{
     float: right;
     margin-right: 2em;
+    margin-top: 0.8em;
+}
+header input{
+    border-radius: 4px;
+    height: 2.5em;
+    padding-left: 0.8em;
+    border: 1px solid rgb(194, 194, 194);
+}
+input[type="submit"]{
+    width: 6em;
+    padding-right: 0.8em;
+    margin-left: 1em;
+    background-color: rgb(0, 173, 0);
+    color: white;
+}
+input[type="submit"]:hover{
+    background-color: rgba(0, 136, 0, 0.651);
+    cursor: pointer;
 }
 #menu{
     background-color: black;
 }
-#menu h4{
-    float: left;
-    margin-left: 2em;
+#menu a{
+    text-decoration: none;
     color: white;
+    padding: 1em;
 }
+#menu  li {
+    float:left;
+    list-style: none;
+    margin-left: -2.5em;
+    margin-right: 3em;
+    height: 2.2em;
+}
+#menu a:hover {
+    background-color: #555;
+}
+
 img{
     width: 440px;
     height: 230px;
     float: left;
     margin: 1em;
+}
+img:hover{
+    filter: brightness(115%);
+    cursor: pointer;
 }
 #img-container{
     background-color: white;
@@ -44,12 +77,24 @@ footer{
     width: 100%;
     background-color: black;
     color: white;
+    box-sizing: border-box;
 }
 .footer-content{
     float: left;
-    padding-left: 2em;
-    padding-top: 1em;
-    width: 31.18%;
+    width: 33%;
     height: 100%;
 }
-
+.footer-content ul{
+    margin-top: 2em;
+}
+.footer-content li{
+    list-style: none;
+    margin-top: 0.5em;
+    color: gray;
+}
+.footer-content i{
+    font-size: 1.3em;
+}
+.fa-twitter{
+    margin-left: 1em;
+}
