@@ -3,10 +3,10 @@ package com.dgs.tienda.model;
 import java.util.Random;
 
 public class ObtenerProducto {
-	private String producto;
+	String producto;
 	public int generar() {
 		Random random = new Random();
-		return random.nextInt(3) + 1;
+		return random.nextInt(6) + 1;
 		}
 	
 	public String producto() {
@@ -20,6 +20,18 @@ public class ObtenerProducto {
 			break;
 		case 3:
 			producto = "rueda";
+			break;
+		case 4:
+			producto = "raton";
+			break;
+		case 5:
+			producto = "teclado";
+			break;
+		case 6:
+			producto = "coche";
+			break;
+		default:
+			producto = "No hay producto?";
 			break;
 		}
 		return producto;
