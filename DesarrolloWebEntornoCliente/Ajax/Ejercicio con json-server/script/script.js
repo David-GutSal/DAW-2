@@ -1,4 +1,21 @@
-function recuperar(url, init) {
+
+function recuperarTipo(url, init) {
+  fetch(url, init)
+    .then((response) => {
+      console.log(response);
+      if (response.ok) {
+        return response.json();
+      } else {
+        return (
+          "Error HTTP:" + response.status + "(" + response.statusText + ")"
+        );
+      }
+    })
+    .then((animales) => mostrarOpciones(animales))
+    .catch((error) => console.error(error));
+}
+
+function recuperarAnimales(url, init) {
   fetch(url, init)
     .then((response) => {
       console.log(response);
@@ -11,66 +28,67 @@ function recuperar(url, init) {
       }
     })
     .then((animales) => mostrarAnimales(animales))
-    .then((result) => console.log(result))
     .catch((error) => console.error(error));
 }
 
+function recuperarTipoAnimales() {
+    init = { method: "GET" };
+    recuperarTipo("http://localhost:3000/animales", init);
+}
 function recuperarAnimales() {
     init = { method: "GET" };
-    recuperar("http://localhost:3000/animales", init);
-
+    recuperarAnimales("http://localhost:3000/animales", init);
 }
-
-function mostrarAnimales(animales) {
-    let select = document.getElementById("lista-animales");
-    animales.forEach(animal => {
-        let opcion = document.createElement("option");
-        opcion.value = animal.id;
-        opcion.textContent = animal.Tipo;
-        select.appendChild(opcion);
-    });
-    }
-
 /*
-function nuevaTarea() {
-  let url = "https://jsonplaceholder.typicode.com/todos";
-  let tarea = {
-    userID: 5,
-    title: "Prueba de POST",
-    completed: false,
+function nuevoAnimal() {
+  let url = "http://localhost:3000/animales";
+  let animal = {
+    Tipo: "Gato",
+    Nombre: "Holmes",
+    Observacion: "No se",
+    Ubicacion: "Se encuentra en robledo cerca a la quintana",
+    Rasgos: "Tiene el pelo cafe",
+    Imagen: "https://www.elpaisdelosjovenes.com/wp-content/uploads/2015/05/03_02.jpg"
   };
   let init = {
     method: "POST",
-    body: JSON.stringify(tarea),
+    body: JSON.stringify(animal),
     headers: {
       "Content-type": "application/json",
     },
   };
   recuperar(url, init);
 }
-
-function editarTarea(){
-  let url = "https://jsonplaceholder.typicode.com/todos/76";
-  let tarea = {
-    userID: 4,
-    title: "Tarea modificada",
-    completed: true,
-  };
-  let init = {
-    method: "PUT",
-    body: JSON.stringify(tarea),
-    headers: { 
-      "Content-type": "application/json",
-    },
-  };
-  recuperar(url, init);
-}
-
-function eliminarTarea(){
-  let url = "https://jsonplaceholder.typicode.com/todos/32";
-  let init = {
-    method: "DELETE",
-  };
-  recuperar(url, init);
-}
 */
+function mostrarOpciones(animales) {
+    let select = document.getElementById("lista-animales");
+    let tipoAnimales = [];
+    animales.forEach(animal => {
+      if(tipoAnimales.find(tipo => animal.Tipo == tipo)){
+        console.log("tipo no agregado");
+      }else{
+        tipoAnimales.push(animal.Tipo);
+      }
+    });
+    console.log(tipoAnimales);
+    tipoAnimales.forEach(tipo => {
+        let opcion = document.createElement("option");
+        opcion.value = tipo;
+        opcion.textContent = tipo;
+        select.appendChild(opcion);
+    });
+    }
+
+    function mostrarAnimales(animales){
+      var tabla = createElement("table");
+      animales.forEach(animal => {
+        let cabecera = createElement("tr");
+        cabecera.innerHTML = `
+                <td>${animal.Nombre}</td>
+                <td>${animal.Rasgos}</td>`;
+        tabla.appendChild(cabecera);        
+      });
+      let body = document.getElementsByTagName("body");
+      body.appendChild(tabla);
+      
+    }

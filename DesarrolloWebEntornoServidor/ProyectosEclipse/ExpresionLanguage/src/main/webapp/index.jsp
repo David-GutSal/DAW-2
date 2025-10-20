@@ -1,0 +1,6 @@
+<html>
+<body>
+	<h2>Hola</h2>
+	<p>Pulsa <a href="http://localhost:8080/ExpresionLanguage/obtenerpersona">aquí</a> para obtener el nombre de una persona.</p>
+</body>
+</html>
