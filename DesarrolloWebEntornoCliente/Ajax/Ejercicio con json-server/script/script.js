@@ -1,4 +1,3 @@
-
 function recuperarTipo(url, init) {
   fetch(url, init)
     .then((response) => {
@@ -32,12 +31,13 @@ function recuperarAnimales(url, init) {
 }
 
 function recuperarTipoAnimales() {
-    init = { method: "GET" };
-    recuperarTipo("http://localhost:3000/animales", init);
+  init = { method: "GET" };
+  recuperarTipo("http://localhost:3000/animales", init);
 }
+
 function recuperarAnimales() {
-    init = { method: "GET" };
-    recuperarAnimales("http://localhost:3000/animales", init);
+  init = { method: "GET" };
+  recuperarAnimales("http://localhost:3000/animales", init);
 }
 /*
 function nuevoAnimal() {
@@ -61,34 +61,35 @@ function nuevoAnimal() {
 }
 */
 function mostrarOpciones(animales) {
-    let select = document.getElementById("lista-animales");
-    let tipoAnimales = [];
-    animales.forEach(animal => {
-      if(tipoAnimales.find(tipo => animal.Tipo == tipo)){
-        console.log("tipo no agregado");
-      }else{
-        tipoAnimales.push(animal.Tipo);
-      }
-    });
-    console.log(tipoAnimales);
-    tipoAnimales.forEach(tipo => {
-        let opcion = document.createElement("option");
-        opcion.value = tipo;
-        opcion.textContent = tipo;
-        select.appendChild(opcion);
-    });
+  let select = document.getElementById("lista-animales");
+  let tipoAnimales = [];
+  animales.forEach((animal) => {
+    if (tipoAnimales.find((tipo) => animal.Tipo == tipo)) {
+      console.log("tipo repetido");
+    } else {
+      tipoAnimales.push(animal.Tipo);
     }
+  });
+  console.log(tipoAnimales);
+  tipoAnimales.forEach((tipo) => {
+    let opcion = document.createElement("option");
+    opcion.value = tipo;
+    opcion.textContent = tipo;
+    select.appendChild(opcion);
+  });
+}
 
-    function mostrarAnimales(animales){
-      var tabla = createElement("table");
-      animales.forEach(animal => {
-        let cabecera = createElement("tr");
-        cabecera.innerHTML = `
+function mostrarAnimales(animales) {
+  let tabla = document.createElement("table");
+  animales.forEach((animal) => {
+    console.log(animal);
+    let columna = document.createElement("tr");
+    columna.innerHTML = `
                 <td>${animal.Nombre}</td>
                 <td>${animal.Rasgos}</td>`;
-        tabla.appendChild(cabecera);        
-      });
-      let body = document.getElementsByTagName("body");
-      body.appendChild(tabla);
-      
-    }
+    tabla.appendChild(columna);
+  });
+  let body = document.getElementsByTagName("body")[0];
+  body.appendChild(tabla);
+}
+
