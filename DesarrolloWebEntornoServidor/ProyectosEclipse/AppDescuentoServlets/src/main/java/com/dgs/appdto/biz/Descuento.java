@@ -6,9 +6,9 @@ import com.dgs.appdto.model.ConsultaDatos;
 
 public class Descuento {
 	public int calculaDescuento(String nombre) throws IOException {
-		// Consultar datos
+		
 		ConsultaDatos consultaDatos = new ConsultaDatos();
-		// Logica negocio con los datos obtenidos
+		
 		
 		if (consultaDatos.consultaEdad(nombre) == null) {
 			return 5;
