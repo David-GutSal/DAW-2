@@ -1,13 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Calculo descuento total</title>
 </head>
 <body>
-La carta ${nombre} tienen un Ã­ndice de fuerza de ${fuerza}.
+La carta ${nombre} tiene un índice de fuerza de ${fuerza}.
 </body>
 </html>

@@ -8,6 +8,6 @@ pageEncoding="UTF-8"%>
 <title>Insert title here</title>
 </head>
 <body>
-La carta ${nombre} tienen un índice de fuerza de ${fuerza}.
+La carta ${nombre} tiene un índice de fuerza de ${fuerza}.
 </body>
 </html>

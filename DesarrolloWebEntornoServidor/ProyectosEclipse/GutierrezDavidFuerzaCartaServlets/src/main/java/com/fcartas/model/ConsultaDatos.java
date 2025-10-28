@@ -5,10 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.fcartas.model.entities.Carta;
+import com.fcartas.model.entities.CartaDto;
+
 
 public class ConsultaDatos {
-	public Carta consultaCartas(String nombre) throws IOException {
+	public CartaDto consultaCartas(String nombre) throws IOException {
 
 		String path = Thread.currentThread().getContextClassLoader().getResource("cartas.txt").getPath();
 		File f = new File(path);
@@ -19,7 +20,7 @@ public class ConsultaDatos {
 		while ((linea = br.readLine()) != null) {
 			if(linea.contains(nombre)) {
 				String[] parts = linea.split("-");
-				Carta carta = new Carta(nombre, Integer.parseInt( parts[1]), Integer.parseInt( parts[2]), Integer.parseInt( parts[3]));
+				CartaDto carta = new CartaDto(Integer.parseInt( parts[1]), Integer.parseInt( parts[2]), Integer.parseInt( parts[3]));
 				br.close();
 				return carta;
 			}

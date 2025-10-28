@@ -4,5 +4,12 @@
 <form action="Controller" method="POST">
 	<input type="text" name="nombre"> <input type="submit">
 </form>
+<p>Cartas:</p>
+<ul>
+	<li>montapuercos</li>
+	<li>esbirros</li>
+	<li>pekka</li>
+	<li>esqueletos</li>
+</ul>
 </body>
 </html>

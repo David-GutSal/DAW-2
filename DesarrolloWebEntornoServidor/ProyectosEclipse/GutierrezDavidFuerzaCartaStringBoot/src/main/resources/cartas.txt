@@ -1,0 +1,5 @@
+montapuercos-4-150-800
+esbirros-3-50-190
+pekka-7-300-850
+mago-5-150-600
+esqueletos-4-90-550

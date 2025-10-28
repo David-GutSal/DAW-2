@@ -1,22 +1,14 @@
 package com.fcartas.model.entities;
 
-public class Carta {
-	private String name;
+public class CartaDto {
 	private int cost;
 	private int damage;
 	private int life;
-	public Carta(String name, int cost, int damage, int life) {
+	public CartaDto(int cost, int damage, int life) {
 		super();
-		this.name = name;
 		this.cost = cost;
 		this.damage = damage;
 		this.life = life;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public int getCost() {
 		return cost;
