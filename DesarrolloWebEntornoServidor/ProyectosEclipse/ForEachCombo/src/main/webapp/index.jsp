@@ -1,6 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@ page isELIgnored = "false" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +9,9 @@
 <title>Lista personas</title>
 </head>
 <body>
-    <h1>Lista personas:</h1>
-    <ul>
-        <c:forEach items="${listaPersonas}" var="p">
-            <li>${p.nombre} - ${p.saldoCuenta}</li>
-        </c:forEach>
-    </ul>
+<h1> Lista personas:</h1>
+<c:forEach items="${listaPersonas}" var="p">
+<li>${p.nombre} - ${p.saldoCuenta}</li>
+</c:forEach>
 </body>
 </html>

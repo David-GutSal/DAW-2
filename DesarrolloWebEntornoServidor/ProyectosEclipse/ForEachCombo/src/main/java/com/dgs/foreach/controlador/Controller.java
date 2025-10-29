@@ -1,4 +1,4 @@
-package com.dgs.foreach.controller;
+package com.dgs.foreach.controlador;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.dgs.foreach.beans.DesplegableDTO;
 import com.dgs.foreach.beans.Persona;
 
 /**
@@ -43,16 +42,6 @@ public class Controller extends HttpServlet {
 		listaPersonas.add(p3);
 		listaPersonas.add(p4);
 		request.setAttribute("listaPersonas", listaPersonas);
-
-		ArrayList<DesplegableDTO> desplegable = new ArrayList<>();
-		DesplegableDTO d1 = new DesplegableDTO(1, "Salamanca");
-		DesplegableDTO d2 = new DesplegableDTO(2, "Zamora");
-		DesplegableDTO d3 = new DesplegableDTO(3, "Leon");
-		desplegable.add(d1);
-		desplegable.add(d2);
-		desplegable.add(d3);
-		request.setAttribute("opcionesDesplegable", desplegable);
-
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/lista.jsp");
 		dispatcher.forward(request, response);
 	}
