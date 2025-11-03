@@ -9,12 +9,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.dgs.foreach.beans.DesplegableDTO;
 import com.dgs.foreach.beans.Persona;
 
 /**
  * Servlet implementation class Controller
  */
-@WebServlet("/Controller")
+@WebServlet("/personas")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,11 +38,24 @@ public class Controller extends HttpServlet {
 		Persona p2 = new Persona("Luis", 100000);
 		Persona p3 = new Persona("Pedro", 100);
 		Persona p4 = new Persona("Alberto", -2989);
+		
 		listaPersonas.add(p1);
 		listaPersonas.add(p2);
 		listaPersonas.add(p3);
 		listaPersonas.add(p4);
+		
+		ArrayList<DesplegableDTO> desplegable = new ArrayList<>();
+		DesplegableDTO d1 = new DesplegableDTO(1, "Salamanca");
+		DesplegableDTO d2 = new DesplegableDTO(2, "Zamora");
+		DesplegableDTO d3 = new DesplegableDTO(3, "Leon");
+		
+		desplegable.add(d1);
+		desplegable.add(d2);
+		desplegable.add(d3);
+		
 		request.setAttribute("listaPersonas", listaPersonas);
+		request.setAttribute("opcionesDesplegable", desplegable);
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/lista.jsp");
 		dispatcher.forward(request, response);
 	}
