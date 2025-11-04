@@ -12,7 +12,6 @@ body {
 
 h1 {
   margin: 30px 0 15px;
-  color: #333;
   padding-bottom: 5px;
 }
 
@@ -21,7 +20,7 @@ h1 {
   padding: 20px;
 }
 
-/* ===== PRIMER MENÚ (SENCILLO) ===== */
+/* ===== PRIMER MENÚ ===== */
 .menu-sencillo {
   background-color: rgb(66, 66, 173);
 }
@@ -53,7 +52,7 @@ h1 {
   }
 }
 
-/* ===== SEGUNDO MENÚ (CON ICONOS) ===== */
+/* ===== SEGUNDO MENÚ ===== */
 .menu-iconos {
   display: flex;
   flex-wrap: wrap;
@@ -103,11 +102,19 @@ h1 {
   }
 }
 
-.menu-item:hover {
+.menu-back:hover {
   background-color: rgb(47, 47, 119);
 }
 
-/* ===== TERCER MENÚ (DROPDOWN) ===== */
+/* ===== TERCER MENÚ ===== */
+.menu-item li {
+  list-style: none;
+}
+
+.menu-item .submenu {
+  background-color: rgb(66, 66, 173);
+}
+
 .menu-dropdown {
   background-color: rgb(66, 66, 173);
 }
@@ -159,6 +166,10 @@ h1 {
     display: flex;
   }
 
+  .menu-firstback:hover{
+    background-color: rgb(47, 47, 119);
+  }
+
   .menu-dropdown .menu-item {
     position: relative;
     color: white;
@@ -172,7 +183,7 @@ h1 {
   }
 }
 
-/* ===== CUARTO MENÚ (REDES SOCIALES) ===== */
+/* ===== CUARTO MENÚ ===== */
 .menu-redes {
   display: flex;
   justify-content: flex-end;
@@ -186,7 +197,7 @@ h1 {
   font-size: 25px;
 }
 
-/* ===== QUINTO MENÚ (DROPDOWN + REDES SOCIALES) ===== */
+/* ===== QUINTO MENÚ ===== */
 .menu-combinado {
   background-color: rgb(66, 66, 173);
   border-radius: 4px;
@@ -205,16 +216,11 @@ h1 {
   padding: 15px 20px;
 }
 
-.menu-combinado .menu-item:hover {
-  background-color: rgb(99, 99, 168);
-}
-
 .menu-combinado .submenu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: rgb(85, 85, 200);
   width: 200px;
   z-index: 100;
 }
@@ -239,25 +245,32 @@ h1 {
 }
 
 @media (max-width: 768px) {
+  .menu-combinado .redes-sociales {
+    justify-content: flex-end;
+    order: -1;
+  }
+
   .menu-combinado .contenedor-principal {
     display: flex;
     flex-direction: column;
   }
 
+  .menu-combinado .menu-item {
+    color: white;
+    padding: 15px 20px;
+    position: relative;
+  }
+
   .menu-combinado .submenu {
     position: static;
     width: 100%;
-    display: none;
+    display: flex;
+    flex-direction: column;
   }
 
-  .menu-combinado .menu-item:active .submenu,
-  .menu-combinado .menu-item:focus .submenu {
-    display: block;
-  }
-
-  .menu-combinado .redes-sociales {
-    justify-content: flex-end;
-    order: -1;
+  .menu-combinado .submenu-item {
+    display: flex;
+    padding: 10px 20px 10px 30px;
   }
 }
 
