@@ -1,56 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Menús con Flexbox</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div><h1>Menú Sencillo</h1></div>
-    <div class="menu">
-        <div class="menu-content">
-            <p>Inicio</p>
-        </div>
-        <div class="menu-content">
-            <p>Nosotros</p>
-        </div>
-        <div class="menu-content">
-            <p>Servicios</p>
-        </div>
-        <div class="menu-content">
-            <p>Contacto</p>
-        </div>
-        <div class="menu-content">
-            <p>Tienda Virtual</p>
-        </div>
-        <div class="menu-content">
-            <p>Asistencia</p>
+    <h1>Primer Menú (Sencillo)</h1>
+    <div class="menu-container">
+        <div class="menu-sencillo">
+            <div class="menu-item">Inicio</div>
+            <div class="menu-item">Nosotros</div>
+            <div class="menu-item">Servicios</div>
+            <div class="menu-item">Contacto</div>
+            <div class="menu-item">Tienda Virtual</div>
+            <div class="menu-item">Asistencia</div>
         </div>
     </div>
-    <br>
-    <div><h1>Menú Sencillo</h1></div>
-    <div class="menu2">
-        <div class="menu-content2">
-            <i class="fa-solid fa-house"></i>
-            <p class="decoracion">Inicio</p>
-            <p>Página Principal</p>
+
+    <h1>Segundo Menú (Iconos)</h1>
+    <div class="menu-container">
+        <div class="menu-iconos">
+            <div class="menu-item">
+                <i class="fa-solid fa-house"></i>
+                <div class="titulo">Inicio</div>
+                <div class="descripcion">Página Principal</div>
+            </div>
+            <div class="menu-item">
+                <i class="fa-solid fa-envelope"></i>
+                <div class="titulo">Contacto</div>
+                <div class="descripcion">Escríbenos aquí</div>
+            </div>
+            <div class="menu-item">
+                <i class="fa-solid fa-dollar-sign"></i>
+                <div class="titulo">Tienda Virtual</div>
+                <div class="descripcion">Adquiere nuestros artículos</div>
+            </div>
+            <div class="menu-item">
+                <i class="fa-solid fa-question"></i>
+                <div class="titulo">Asistencia</div>
+                <div class="descripcion">¿Necesitas ayuda?</div>
+            </div>
         </div>
-        <div class="menu-content2">
-            <i class="fa-solid fa-envelope"></i>
-            <p class="decoracion">Contacto</p>
-            <p>Escríbenos aquí</p>
+    </div>
+
+    <h1>Tercer Menú (Dropdown)</h1>
+    <div class="menu-container">
+        <div class="menu-dropdown">
+            <div class="menu-item">
+                Inicio
+            </div>
+            <div class="menu-item">
+                Nosotros
+                <div class="submenu">
+                    <div class="submenu-item">Misión</div>
+                    <div class="submenu-item">Visión</div>
+                    <div class="submenu-item">Valores</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                Tienda Virtual
+                <ul class="submenu">
+                    <li class="submenu-item">Producto 1</li>
+                    <li class="submenu-item">Producto 2</li>
+                    <li class="submenu-item">Producto 3</li>
+                </ul>
+            </div>
+            <div class="menu-item">
+                Contacto
+            </div>
         </div>
-        <div class="menu-content2">
-            <i class="fa-solid fa-dollar-sign"></i>
-            <p class="decoracion">Tienda Virtual</p>
-            <p>Adquiere nuestros artículos</p>
+    </div>
+
+    <h1>Cuarto Menú (Redes Sociales)</h1>
+    <div class="menu-container">
+        <div class="menu-redes">
+            <a href="#" class="red-social"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="red-social"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="red-social"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="red-social"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" class="red-social"><i class="fa-brands fa-youtube"></i></a>
         </div>
-        <div class="menu-content2">
-            <i class="fa-solid fa-question"></i>
-            <p class="decoracion">Asistencia</p>
-            <p>¿Necesitas ayuda?</p>
+    </div>
+
+    <h1>Quinto Menú (Dropdown + Redes Sociales)</h1>
+    <div class="menu-container">
+        <div class="menu-combinado">
+            <div class="contenedor-principal">
+                <div class="menu-item">
+                    Inicio
+                </div>
+                <div class="menu-item">
+                    Nosotros
+                    <ul class="submenu">
+                        <li class="submenu-item">Misión</li>
+                        <li class="submenu-item">Visión</li>
+                        <li class="submenu-item">Valores</li>
+                    </ul>
+                </div>
+                <div class="menu-item">
+                    Tienda Virtual
+                    <div class="submenu">
+                        <div class="submenu-item">Producto 1</div>
+                        <div class="submenu-item">Producto 2</div>
+                        <div class="submenu-item">Producto 3</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    Asistencia
+                </div>
+            </div>
+            <div class="redes-sociales">
+                <a href="#" class="red-social"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="red-social"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="red-social"><i class="fa-brands fa-instagram"></i></a>
+            </div>
         </div>
     </div>
 </body>

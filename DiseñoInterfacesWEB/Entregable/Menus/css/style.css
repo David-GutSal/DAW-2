@@ -1,97 +1,286 @@
-
-.menu{
-    height: 4em;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.menu-content{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    background-color: rgb(66, 66, 173);
-    align-content: center;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  background-color: #f5f5f5;
 }
 
-.menu-content p{
-    text-align: center;
-}
-.menu-content:hover{
-    background-color: rgb(99, 99, 168);
+h1 {
+  margin: 30px 0 15px;
+  color: #333;
+  padding-bottom: 5px;
 }
 
-@media (min-width: 768px) {
-  .menu {
-    display: flex;
-    flex-direction: row;
-  }
-  .menu-content {
-    width: 10em;
-  }
+.menu-container {
+  margin-bottom: 40px;
+  padding: 20px;
 }
+
+/* ===== PRIMER MENÚ (SENCILLO) ===== */
+.menu-sencillo {
+  background-color: rgb(66, 66, 173);
+}
+
+.menu-sencillo .menu-item {
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.menu-sencillo .menu-item:hover {
+  background-color: rgb(99, 99, 168);
+}
+
 @media (max-width: 768px) {
-  .menu {
+  .menu-sencillo {
     display: flex;
     flex-direction: column;
-    height: auto;
-  }
-  .menu-content {
-    width: 80%;
   }
 }
 
+@media (min-width: 769px) {
+  .menu-sencillo {
+    display: flex;
+  }
 
-.menu2{
-    height: 8em;
+  .menu-sencillo .menu-item {
+    flex: 1;
+  }
 }
 
-.decoracion{
+/* ===== SEGUNDO MENÚ (CON ICONOS) ===== */
+.menu-iconos {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(66, 66, 173);
+}
+
+.menu-iconos .menu-item {
+  color: white;
+  padding: 20px;
+  flex: 1 1 100%;
+}
+
+.menu-iconos i {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.menu-iconos .titulo {
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.menu-content2{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    background-color: rgb(66, 66, 173);
-    padding-bottom: 1em;
-    padding-top: 1em;
+.menu-iconos .descripcion {
+  font-size: 0.9em;
 }
 
-.menu-content2 p, i{
-    text-align: left;
-    margin-left: 1em;
-}
-.menu-content2:hover{
-    background-color: rgb(99, 99, 168);
+@media (min-width: 481px) and (max-width: 767px) {
+  .menu-iconos .menu-item {
+    flex: 1 1 calc(50% - 10px);
+    text-align: center;
+  }
 }
 
 @media (min-width: 768px) {
-  .menu2 {
-    display: flex;
-    flex-direction: row;
+  .menu-iconos {
+    flex-wrap: nowrap;
   }
-  .menu-content2 {
-    width: 100%;
-  }
-  .menu-content2 p, i{
+
+  .menu-iconos .menu-item {
     text-align: left;
-    margin-left: 1em;
+  }
 }
+
+@media (max-width: 480px) {
+  .menu-iconos .menu-item {
+    text-align: center;
+  }
+}
+
+.menu-item:hover {
+  background-color: rgb(47, 47, 119);
+}
+
+/* ===== TERCER MENÚ (DROPDOWN) ===== */
+.menu-dropdown {
+  background-color: rgb(66, 66, 173);
+}
+
+.menu-dropdown .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  z-index: 100;
+}
+
+.menu-dropdown .submenu-item {
+  padding: 12px 20px;
+}
+
+.menu-dropdown .submenu-item:hover {
+  background-color: rgb(110, 110, 220);
 }
 
 @media (max-width: 768px) {
-  .menu2 {
+  .menu-dropdown {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
+    flex-direction: column;
   }
-  .menu-content2 {
-    width: 40%;
+
+  .menu-dropdown .menu-item {
+    color: white;
+    padding: 15px 20px;
+    position: relative;
   }
-  .menu-content2 p, i{
-    text-align: center;
-}
+
+  .menu-dropdown .submenu {
+    position: static;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submenu-item {
+    display: flex;
+    padding: 10px 20px;
+  }
 }
 
-i{
+@media (min-width: 769px) {
+  .menu-dropdown {
+    display: flex;
+  }
+
+  .menu-dropdown .menu-item {
+    position: relative;
+    color: white;
+    padding: 15px 20px;
+    flex: 1;
+  }
+
+  .menu-dropdown .menu-item:hover .submenu {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* ===== CUARTO MENÚ (REDES SOCIALES) ===== */
+.menu-redes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  padding: 15px;
+  background-color: rgb(66, 66, 173);
+}
+
+.menu-redes .red-social {
+  color: white;
   font-size: 25px;
+}
+
+/* ===== QUINTO MENÚ (DROPDOWN + REDES SOCIALES) ===== */
+.menu-combinado {
+  background-color: rgb(66, 66, 173);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-combinado .contenedor-principal {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-combinado .menu-item {
+  position: relative;
+  color: white;
+  padding: 15px 20px;
+}
+
+.menu-combinado .menu-item:hover {
+  background-color: rgb(99, 99, 168);
+}
+
+.menu-combinado .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(85, 85, 200);
+  width: 200px;
+  z-index: 100;
+}
+
+.menu-combinado .submenu-item {
+  padding: 12px 20px;
+}
+
+.menu-combinado .submenu-item:hover {
+  background-color: rgb(110, 110, 220);
+}
+
+.menu-combinado .redes-sociales {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+}
+
+.menu-combinado .red-social {
+  color: white;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .menu-combinado .contenedor-principal {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-combinado .submenu {
+    position: static;
+    width: 100%;
+    display: none;
+  }
+
+  .menu-combinado .menu-item:active .submenu,
+  .menu-combinado .menu-item:focus .submenu {
+    display: block;
+  }
+
+  .menu-combinado .redes-sociales {
+    justify-content: flex-end;
+    order: -1;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-combinado {
+    flex-direction: row;
+  }
+
+  .menu-combinado .contenedor-principal {
+    flex-direction: row;
+    flex: 1;
+  }
+
+  .menu-combinado .menu-item {
+    flex: 1;
+  }
+
+  .menu-combinado .menu-item:hover .submenu {
+    display: block;
+  }
+
+  .menu-combinado .redes-sociales {
+    align-self: center;
+    padding: 0 20px;
+  }
 }
