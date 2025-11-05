@@ -6,6 +6,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidFuerzaCartaServlets"/>
 			<item value="C:\Users\alumnofp\Downloads\EJporCAPAS\EJporCAPAS\BravoAlvaroFuerzaCartaServlets"/>
 			<item value="C:\Users\alumnofp\Downloads\EJporCAPAS\EJporCAPAS\BravoAlvaroFuerzaCartasSpringBoot\BravoAlvaroFuerzaCartasSpringBoot"/>
 			<item value="C:\Users\alumnofp\Downloads\EJporCAPAS\EJporCAPAS\BravoMarcosCartasSpringBoot\BravoMarcosCartasSpringBoot"/>

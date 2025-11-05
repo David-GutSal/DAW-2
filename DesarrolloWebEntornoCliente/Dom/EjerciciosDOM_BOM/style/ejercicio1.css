@@ -13,7 +13,9 @@
     padding: 16px;
     width: 300px;
 }
-
+hr{
+    margin-top: 2em;
+}
 h1 {
     padding: 5px 0;
     font-size: 1.2em;
@@ -35,4 +37,30 @@ h1 {
     font-size: 12px;
     border: solid 2px #f0f0f0;
     border-radius: 5px;
+}
+table{
+    margin-left: 50%;
+}
+.cerocruz{
+    margin-left: 50%;
+    margin-top: 1em;
+}
+td{
+    width: 5em;
+    height: 5em;
+    text-align: center;
+    border: 1px black solid;
+}
+
+.startGame{
+    background-color: green;
+}
+.endGame{
+    background-color: cadetblue;
+}
+.playerO{
+    background-color: blue;
+}
+.playerT{
+    background-color: red;
 }
