@@ -3,6 +3,6 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <html>
-<body onload="Controller">
+<body onload="/Controller">
 </body>
 </html>

@@ -9,6 +9,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.dgs.business.AsignarRol;
+import com.dgs.model.ConsultaDatos;
+import com.dgs.model.dto.UsuarioDTO;
 
 /**
  * Servlet implementation class Controller
@@ -31,8 +34,11 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ConsultaDatos consultaDatos = new ConsultaDatos();
+		ArrayList<UsuarioDTO> desplegable = consultaDatos.consultaJugadores();
+		request.setAttribute("opcionesDesplegable", desplegable);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/rol.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -42,29 +48,11 @@ public class Controller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ArrayList<Persona> listaPersonas = new ArrayList<>();
-		Persona p1 = new Persona("Paco", 2000);
-		Persona p2 = new Persona("Luis", 100000);
-		Persona p3 = new Persona("Pedro", 100);
-		Persona p4 = new Persona("Alberto", -2989);
-		
-		listaPersonas.add(p1);
-		listaPersonas.add(p2);
-		listaPersonas.add(p3);
-		listaPersonas.add(p4);
-		
-		ArrayList<DesplegableDTO> desplegable = new ArrayList<>();
-		DesplegableDTO d1 = new DesplegableDTO(1, "Salamanca");
-		DesplegableDTO d2 = new DesplegableDTO(2, "Zamora");
-		DesplegableDTO d3 = new DesplegableDTO(3, "Leon");
-		
-		desplegable.add(d1);
-		desplegable.add(d2);
-		desplegable.add(d3);
-		
-		request.setAttribute("listaPersonas", listaPersonas);
-		request.setAttribute("opcionesDesplegable", desplegable);
-	
+		AsignarRol otorgarRol = new AsignarRol();
+		String rol = otorgarRol.getRol();
+
+		request.setAttribute("rol", rol);
+
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/rol.jsp");
 		dispatcher.forward(request, response);
 	}

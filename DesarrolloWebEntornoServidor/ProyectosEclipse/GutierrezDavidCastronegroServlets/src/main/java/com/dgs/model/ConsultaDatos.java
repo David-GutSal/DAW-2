@@ -7,26 +7,27 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.dgs.model.dto.UsuarioDTO;
+
 public class ConsultaDatos {
-	public String consultaJugadores(String id) throws IOException {
+	public ArrayList<UsuarioDTO> consultaJugadores() throws IOException {
 
 		String path = Thread.currentThread().getContextClassLoader().getResource("jugadores.txt").getPath();
 		File f = new File(path);
 		FileReader fr = new FileReader(f);
-		BufferedReader br = new BufferedReader(fr);
-		String linea;
-
-		while ((linea = br.readLine()) != null) {
-			if (linea.contains(id)) {
+		try (BufferedReader br = new BufferedReader(fr)) {
+			String linea;
+			
+			ArrayList<UsuarioDTO> nombres = new ArrayList<UsuarioDTO>();
+			while ((linea = br.readLine()) != null) {
 				String[] parts = linea.split("-");
-				String nombre = parts[1];
-				br.close();
-				return nombre;
+				UsuarioDTO usuario = new UsuarioDTO(Integer.parseInt(parts[0]), parts[1]);
+				nombres.add(usuario);
 			}
+			return nombres;
 		}
-		br.close();
-		return null;
 	}
+
 
 	public ArrayList<String> consultaRoles() throws IOException {
 		String path = Thread.currentThread().getContextClassLoader().getResource("roles.txt").getPath();
