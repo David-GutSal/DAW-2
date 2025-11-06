@@ -10,32 +10,34 @@
 </head>
 <body>
 	<h1>Asignar rol a jugador</h1>
-	<p>Elige jugador para asignar rol</p>
-	<form action="POST">
-		<select>
+	<p>Elige jugador para asignar rol:</p>
+
+	<form action="Controller" method="POST">
+		<select name="jugadorId">
 			<c:forEach items="${opcionesDesplegable}" var="p">
 				<option value="${p.id}">${p.name}</option>
 			</c:forEach>
-		</select>
-		<input type="button" value="Asignar rol"></input>
+		</select> <input type="submit" value="Asignar rol">
 	</form>
-
-	<h3>Jugador: </h3>
-	<h4>Rol asignado: </h4>
 	<c:if test="${not empty rol}">
+		<h3>Jugador seleccionado: ${nombreJugador}</h3>
+		<h4>Rol asignado: ${rol}</h4>
 		<c:choose>
-			<c:when test="${rol == lobo}">
+			<c:when test="${rol == 'lobo'}">
 				<p>¡Cuidado! Este personaje es un lobo</p>
 			</c:when>
-			<c:when test="${rol == vidente}">
-				<p>El vidente</p>
+			<c:when test="${rol == 'vidente'}">
+				<p>Puede revelar el rol de otra persona</p>
 			</c:when>
-			<c:when test="${rol == campesino}">
-				<p>El campesino</p>
+			<c:when test="${rol == 'campesino'}">
+				<p>Este personaje no hace nada especial</p>
 			</c:when>
-			<c:when test="${rol == cazador}">
+			<c:when test="${rol == 'cazador'}">
 				<p>Este personaje puede vengarse si muere</p>
 			</c:when>
+			<c:otherwise>
+				<p>Rol desconocido</p>
+			</c:otherwise>
 		</c:choose>
 	</c:if>
 </body>

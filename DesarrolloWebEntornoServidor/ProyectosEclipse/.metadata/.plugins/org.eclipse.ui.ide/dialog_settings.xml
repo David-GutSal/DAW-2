@@ -6,6 +6,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\Escuela\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidCastronegroServlets"/>
+			<item value="D:\Descargas\AppDescuentoServlets"/>
+			<item value="D:\Escuela\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\AppDescuentoServlets"/>
 			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidFuerzaCartaServlets"/>
 			<item value="C:\Users\alumnofp\Downloads\EJporCAPAS\EJporCAPAS\BravoAlvaroFuerzaCartaServlets"/>
 			<item value="C:\Users\alumnofp\Downloads\EJporCAPAS\EJporCAPAS\BravoAlvaroFuerzaCartasSpringBoot\BravoAlvaroFuerzaCartasSpringBoot"/>
@@ -41,5 +44,13 @@
 		<item key="DIALOG_WIDTH" value="500"/>
 		<item key="DIALOG_HEIGHT" value="389"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="676"/>
+		<item key="DIALOG_Y_ORIGIN" value="337"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
 	</section>
 </section>

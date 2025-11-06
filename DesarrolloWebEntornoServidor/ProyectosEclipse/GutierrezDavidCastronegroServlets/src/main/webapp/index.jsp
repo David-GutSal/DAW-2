@@ -3,6 +3,9 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <html>
-<body onload="/Controller">
+<body>
+<%
+response.sendRedirect("Controller");
+%>
 </body>
 </html>
