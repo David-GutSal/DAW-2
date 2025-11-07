@@ -1,0 +1,37 @@
+div {
+    box-sizing: border-box;
+    text-align: center;
+    border: 3px solid cadetblue;
+    border-radius: 10px;
+    margin: 30px auto;
+}
+
+#principal {
+    width: 60%;
+    float: left;
+}
+
+#divTexto {
+    width: 80%;
+}
+
+#cajasTexto {
+    width: 80%;
+}
+
+button {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 15px;
+}
+
+#resultados {
+    float: right;
+    width: 35%;
+}
+
+#resultadoAnalisis {
+    width: 80%;
+    height: 500px;
+}

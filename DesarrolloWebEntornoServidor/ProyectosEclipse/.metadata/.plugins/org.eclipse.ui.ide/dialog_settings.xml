@@ -6,6 +6,13 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\PrimerProyectoSpring"/>
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\ExpresionLanguageSpring"/>
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidCartasStringBoot"/>
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidFuerzaCartaStringBoot"/>
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\AppDescuentoSptring"/>
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\ForEachComboSpring"/>
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidCastronegroServlets"/>
 			<item value="D:\Escuela\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidCastronegroServlets"/>
 			<item value="D:\Descargas\AppDescuentoServlets"/>
 			<item value="D:\Escuela\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\AppDescuentoServlets"/>

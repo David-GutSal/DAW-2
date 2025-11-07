@@ -7,49 +7,45 @@
   </head>
 
   <body>
-    <div class="contenedorPrincipal">
-      <h1>Cambiar contraseña</h1>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Introduce la nueva contraseña"
-      />
-      <button type="button" id="botonVer" onclick="verPassword();">Ver</button>
-    </div>
-    <hr />
-    <form action="">
-      <input type="text" placeholder="jugador 1" class="cerocruz" required/>
-      <input type="text" placeholder="jugador 2" class="cerocruz" required/>
-      <br />
-      <input
-        type="button"
-        value="iniciar partida"
-        class="cerocruz"
-        onclick="startCruz()"/>
-      <table class="endGame">
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>5</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>8</td>
-          <td>9</td>
-        </tr>
-      </table>
-      <input
-        type="button"
-        value="Reiniciar"
-        class="cerocruz"
-        onclick="resetCruz()"/>
-    </form>
-    <hr />
+    <!-- Ejercicio 1: Ver contraseña -->
+    <section id="exercise1">
+        <h2>Ejercicio 1: Ver contraseña</h2>
+        <div class="password-container">
+            <input type="password" id="password-input" placeholder="Introduce tu contraseña">
+            <button id="toggle-password">Ver</button>
+        </div>
+    </section>
+
+    <!-- Ejercicio 2: Tres en raya -->
+    <section id="exercise2">
+        <h2>Ejercicio 2: Tres en raya</h2>
+        <div class="game-container">
+            <div class="player-inputs">
+                <input type="text" id="player1" placeholder="Jugador 1">
+                <input type="text" id="player2" placeholder="Jugador 2">
+            </div>
+            <div class="game-buttons">
+                <button id="start-game">Iniciar partida</button>
+                <button id="reset-game">Reiniciar partida</button>
+            </div>
+            <div class="board" id="game-board">
+                <!-- Las celdas se generarán con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejercicio 3: Selector de color y cuadrícula -->
+    <section id="exercise3">
+        <h2>Ejercicio 3: Selector de color y cuadrícula</h2>
+        <div class="color-picker-container">
+            <input type="color" id="color-picker" value="#2196F3">
+            <div class="color-box" id="selected-color"></div>
+            <button id="apply-color">Aplicar Color</button>
+            <div class="color-box" id="applied-color"></div>
+        </div>
+        <div class="grid-container" id="color-grid">
+            <!-- Las celdas de la cuadrícula se generarán con JavaScript -->
+        </div>
+    </section>
   </body>
 </html>
