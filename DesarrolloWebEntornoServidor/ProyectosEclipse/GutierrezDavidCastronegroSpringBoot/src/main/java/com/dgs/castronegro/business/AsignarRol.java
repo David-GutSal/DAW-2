@@ -1,22 +1,25 @@
 package com.dgs.castronegro.business;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.dgs.castronegro.model.ConsultaDatos;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dgs.castronegro.model.IConsultaDatos;
 import com.dgs.castronegro.model.dto.RolDTO;
 
-
+@Service
 public class AsignarRol {
 
-	public RolDTO asignarRolAleatorio(String nombreJugador) throws IOException {
-        ConsultaDatos consultaDatos = new ConsultaDatos();
+    @Autowired
+    private IConsultaDatos consultaDatos;
+
+    public RolDTO asignarRolAleatorio(String nombreJugador) throws IOException {
         ArrayList<String> roles = consultaDatos.consultaRoles();
         Random random = new Random();
         String randomRol = roles.get(random.nextInt(roles.size()));
         return new RolDTO(randomRol, null);
     }
-	
 }
