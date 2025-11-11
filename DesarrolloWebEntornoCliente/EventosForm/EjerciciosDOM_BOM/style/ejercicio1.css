@@ -1,0 +1,164 @@
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        /* Estilos para el ejercicio 1 */
+        .password-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .password-container input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+            width: 200px;
+        }
+        
+        .password-container button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* Estilos para el ejercicio 2 */
+        .game-container {
+            max-width: 500px;
+        }
+        
+        .player-inputs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .player-inputs input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex: 1;
+        }
+        
+        .game-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .game-buttons button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #start-game {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        #reset-game {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 5px;
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+        
+        .cell {
+            aspect-ratio: 1;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+        
+        .cell.disabled {
+            cursor: not-allowed;
+            background-color: #e0e0e0;
+        }
+        
+        .cell.player1 {
+            color: #2196F3;
+        }
+        
+        .cell.player2 {
+            color: #4CAF50;
+        }
+        
+        /* Estilos para el ejercicio 3 */
+        .color-picker-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ddd;
+        }
+        
+        #selected-color {
+            background-color: #2196F3;
+        }
+        
+        #applied-color {
+            background-color: #4CAF50;
+        }
+        
+        #apply-color {
+            padding: 8px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-gap: 1px;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ddd;
+        }
+        
+        .grid-cell {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
