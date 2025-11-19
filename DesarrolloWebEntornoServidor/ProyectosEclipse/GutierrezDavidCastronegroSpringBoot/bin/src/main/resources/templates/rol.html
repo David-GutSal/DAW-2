@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Asignar rol a jugador</h1>
+	<p>Elige jugador para asignar rol:</p>
+	<form method="post" action="/asignarRol>
+		<select>
+			<option th:each="p : ${nombresDesplegable}" th:value="p.id" th:text="${p.name}"></option>
+		</select>
+		<input type="submit" value="Asignar rol">
+	</form>
+	
+	<div th:if="${not #strings.isEmpty(rol)}">
+		<h3>Jugador seleccionado: <span th:text="${nombre}"></span> </h3>
+		<h4>Rol asignado: <span th:text="${rol}"></span> </h4>
+		<p th:text="${rol == `lobo` ? `¡Cuidado! Este personaje es un lobo` :
+					rol == `vidente` ? `Puede revelar el rol de otra persona` :
+					rol == `campesino` ? `Este personaje no hace nada especial` :
+					rol == `cazador` ? `Este personaje puede vengarse si muere`}"></p>
+	</div>
+</body>
+</html>
