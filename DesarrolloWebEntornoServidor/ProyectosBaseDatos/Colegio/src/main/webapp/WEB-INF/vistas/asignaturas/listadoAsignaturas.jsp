@@ -20,18 +20,18 @@
 
 	<div class="container">
 		<div class="form">
-			<form action="listadoAlumnos"
+			<form action="listadoAsignaturas"
 				method="post">
-				<label for="id">Id Alumno</label> 
+				<label for="id">Id Asignatura</label> 
 				<input type="text" id="id" name="id"> 
-				<label for="nombre">Nombre Alumno</label> 
+				<label for="nombre">Nombre Asignatura</label> 
 				<input type="text" id="nombre" name="nombre"><br> 
-				<label for="apellido">Apellido Alumno</label> 
-				<input type="text" id="apellido" name="apellido"><br>
-					Familia Numerosa: 
-				<input type="checkbox" id="famNumerosa" name="famNumerosa" value="1" checked> 
+				<label for="curso">Curso</label> 
+				<input type="text" id="curso" name="curso"><br>
+				<label for="tasa">Tasa</label> 
+				<input type="text" id="tasa" name="tasa"><br>
 				Activo: 
-				<input type="checkbox" id="activo" name="activo" value="1" checked><br> 
+				<input type="checkbox" id="activo" name="activo" value="0"><br>
 				<input type="submit" value="Enviar">
 			</form>
 		</div>
@@ -45,15 +45,15 @@
 			<tr>
 				<th>ID</th>
 				<th>NOMBRE</th>
-				<th>APELLIDO</th>
-				<th>MUNICIPIO</th>
+				<th>CURSO</th>
+				<th>TASA</th>
 			</tr>
-			<c:forEach items="${lista}" var="alumno">
+			<c:forEach items="${lista}" var="asignatura">
 				<tr>
-					<td>${alumno.id}</td>
-					<td>${alumno.nombre}</td>
-					<td>${alumno.apellido}</td>
-					<td>${alumno.municipio}</td>
+					<td>${asignatura.id}</td>
+					<td>${asignatura.nombre}</td>
+					<td>${asignatura.curso}</td>
+					<td>${asignatura.tasa}</td>
 				</tr>
 			</c:forEach>
 		</table>
