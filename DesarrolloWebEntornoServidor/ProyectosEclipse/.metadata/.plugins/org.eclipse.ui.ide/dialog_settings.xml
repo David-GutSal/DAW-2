@@ -6,6 +6,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\alumnofp\Downloads\GutierrezDavid\GutierrezDavidCastronegroSpringBoot"/>
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\Servers"/>
+			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidCastronegroSpringBoot"/>
 			<item value="D:\Escuela\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio"/>
 			<item value="D:\Escuela\dawes_25_26\UT3\colegio"/>
 			<item value="D:\Escuela\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\GutierrezDavidCastronegroSpringBoot"/>
@@ -42,8 +45,8 @@
 			<item value="C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosEclipse\Librería"/>
 		</list>
 		<section name="SmartImportWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="63"/>
-			<item key="DIALOG_Y_ORIGIN" value="82"/>
+			<item key="DIALOG_X_ORIGIN" value="254"/>
+			<item key="DIALOG_Y_ORIGIN" value="207"/>
 			<item key="DIALOG_WIDTH" value="885"/>
 			<item key="DIALOG_HEIGHT" value="629"/>
 			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
