@@ -15,7 +15,7 @@
 
 <div class="container">
 <div class="form">
-<form action="alumnos/insertarAlumno" method="post">
+<form action="insertarAlumno" method="post">
     <div id="formulario">
         <label for="id">DNI Alumno</label>
         <input type="text" id="id" name="id">

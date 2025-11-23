@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class BorrarAlumnosController
  */
-@WebServlet("/alumnos/borrarAlumno")
+@WebServlet("/alumnos/borrarAlumnos")
 public class BorrarAlumnosController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

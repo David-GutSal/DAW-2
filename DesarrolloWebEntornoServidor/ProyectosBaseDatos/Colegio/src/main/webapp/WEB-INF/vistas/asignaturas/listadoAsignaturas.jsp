@@ -15,23 +15,23 @@
 </head>
 <body>
 
-	<h1>Listado alumnos</h1>
+	<h1>Listado asignaturas</h1>
 	<%@include file="/menu.html" %>
 
 	<div class="container">
 		<div class="form">
 			<form action="listadoAsignaturas"
 				method="post">
-				<label for="id">Id Asignatura</label> 
+				<label for="id">Id Asignatura</label>
 				<input type="text" id="id" name="id"> 
 				<label for="nombre">Nombre Asignatura</label> 
 				<input type="text" id="nombre" name="nombre"><br> 
 				<label for="curso">Curso</label> 
-				<input type="text" id="curso" name="curso"><br>
+				<input type="number" id="curso" name="curso">
 				<label for="tasa">Tasa</label> 
-				<input type="text" id="tasa" name="tasa"><br>
+				<input type="number" id="tasa" name="tasa">
 				Activo: 
-				<input type="checkbox" id="activo" name="activo" value="0"><br>
+				<input type="checkbox" id="activo" name="activo" value="1"><br>
 				<input type="submit" value="Enviar">
 			</form>
 		</div>

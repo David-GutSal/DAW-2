@@ -6,8 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import servicios.IAlumnosService;
-import serviciosImp.AlumnosServiceImp;
+import servicios.IAsignaturasService;
+import serviciosImp.AsignaturasServiceImp;
 
 import java.io.IOException;
 
@@ -40,8 +40,8 @@ public class BorrarAsignaturasController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 	    
-	    IAlumnosService a = new AlumnosServiceImp();
-	    a.borrarAlumno(id);
+		IAsignaturasService a = new AsignaturasServiceImp();
+	    a.borrarAsignatura(id);
 	    
         RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/borrarAsignaturas.jsp");
         d.forward(request, response);

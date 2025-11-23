@@ -8,24 +8,26 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/Colegio/css/index.css">
 <link rel="stylesheet" href="/Colegio/css/formularios.css">
-<title>Actualizar Alumnos</title>
+<title>Actualizar Asignaturas</title>
 </head>
 <body>
-	<h1>Actualizar alumnos</h1>
+	<h1>Actualizar Asignaturas</h1>
 	<%@include file="/menu.html" %>
 	<div class="container">
-		<h2>Actualizar Alumnos</h2>
+		<h2>Actualizar Asignaturas</h2>
 		<div class="form">
-			<form action="alumnos/formularioActualizarAlumnos" method="post">
+			<form action="formularioActualizarAsignaturas" method="post">
 
-				<label for="id">Id Alumno</label> 
+				<label for="id">Id Asignatura</label> 
 				<input type="text" id="id" name="id"> 
-				<label for="nombre">Nombre Alumno</label> 
+				
+				<label for="nombre">Nombre Asignatura</label> 
 				<input type="text" id="nombre" name="nombre"><br> 
-				<label for="apellido">Apellido Alumno</label> 
-				<input type="text" id="apellido" name="apellido"><br>
-				Familia Numerosa: 
-				<input type="checkbox" id="famNumerosa" name="famNumerosa" value="1" checked> 
+				
+				<label for="curso">Curso Asignatura</label> 
+				<input type="number" id="curso" name="curso">
+				<label for="tasa">Tasa Asignatura</label> 
+				<input type="number" id="tasa" name="tasa">
 				Activo: 
 				<input type="checkbox" id="activo"name="activo" value="1" checked><br> 
 				<input type="submit" value="Enviar">
@@ -33,36 +35,26 @@
 		</div>
 	</div>
 	
-	<c:forEach items="${lista}" var="alumno">
+	<c:forEach items="${lista}" var="asignatura">
 		<div class="form">
-			<form action="http://localhost:8080/colegio/alumnos/actualizarAlumno" method="post">
-			    <label for="id"> Id Alumno </label>
-				<input type="text" id="id" name="id" value="${alumno.id}" hidden>
-				<label for="nombre">Nombre Alumno</label>
-				<input type="text" id="nombre" name="nombre" value="${alumno.nombre}"><br>
-				<label for="apellido">Apellido Alumno</label>
-				<input type="text" id="apellido" name="apellido" value="${alumno.apellido}"><br>
-				Familia Numerosa:
-				<c:if test="${alumno.familiaNumerosa == 1}">
-					<input type="checkbox" id="familiaNumerosa" name="familiaNumerosa" value="1" checked>
-				</c:if>
-				<c:if test="${alumno.familiaNumerosa == 0}">
-					<input type="checkbox" id="familiaNumerosa" name="familiaNumerosa" value="1">
-				</c:if>
+			<form action="actualizarAsignaturas" method="post">
+			    <label for="id"> Id Asignatura</label>
+				<input type="text" id="id" name="id" value="${asignatura.id}" hidden>
+				<label for="nombre">Nombre Asignatura</label>
+				<input type="text" id="nombre" name="nombre" value="${asignatura.nombre}"><br>
+				<label for="curso">Curso Asignatura</label>
+				<input type="number" id="curso" name="curso" value="${asignatura.curso}"><br>
+				<label for="tasa">Tasa Asignatura</label>
+				<input type="number" id="tasa" name="tasa" value="${asignatura.tasa}"><br>
+				
 				Activo:
-				<c:if test="${alumno.activo == 1}">
+				<c:if test="${asignatura.activo == 1}">
 					<input type="checkbox" id="activo" name="activo" value="1" checked><br>
 				</c:if>
-				<c:if test="${alumno.activo == 0}">
+				<c:if test="${asignatura.activo == 0}">
 					<input type="checkbox" id="activo" name="activo" value="0" checked><br>
 				</c:if>
-				<label for="municipios">Municipio</label>
-				<select name="municipio" id="municipios">
-					<c:forEach items="${desplegableMunicipios}" var="municipio">
-						<option value="${municipio.id}">  ${municipio.descripcion}</option>
-					</c:forEach>
-					<option value="${alumno.idMunicipio}" selected> ${alumno.municipio} </option>
-				</select><br>
+				
 
 			<input type="submit" value="Modificar">
 			</form>

@@ -1,29 +1,21 @@
 package controllers.asignaturas;
 
 import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import utils.DBUtils;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dao.IAlumnosDAO;
 import dao.IAsignaturasDAO;
-import daoImp.AlumnosDAOImpl;
 import daoImp.AsignaturasDAOImpl;
-import dto.AlumnoDTO;
 import dto.AsignaturaDTO;
 
 /**

@@ -24,15 +24,13 @@ public class AlumnosServiceImp implements IAlumnosService {
 	}
 
 	@Override
-	public int insertarAlumno(String id, String nombre, String apellido, String idMunicipio, int familiaNumerosa,
-			int activo) {
+	public int insertarAlumno(String id, String nombre, String apellido, String idMunicipio, int familiaNumerosa, int activo) {
 		IAlumnosDAO alumnos = new AlumnosDAOImpl();
 		return alumnos.insertarAlumno(id, nombre, apellido, idMunicipio, familiaNumerosa, activo);
 	}
 
 	@Override
-	public int actualizarAlumno(String id, String nombre, String apellido, String idMunicipio, int familiaNumerosa,
-			int activo) {
+	public int actualizarAlumno(String id, String nombre, String apellido, String idMunicipio, int familiaNumerosa, int activo) {
 		IAlumnosDAO alumnos = new AlumnosDAOImpl();
 		return alumnos.actualizarAlumno(id, nombre, apellido, idMunicipio, familiaNumerosa, activo);
 	}

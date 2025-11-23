@@ -6,15 +6,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import servicios.IAlumnosService;
-import serviciosImp.AlumnosServiceImp;
+import servicios.IAsignaturasService;
+import serviciosImp.AsignaturasServiceImp;
 
 import java.io.IOException;
 
 /**
  * Servlet implementation class ActualizarAlumnosController
  */
-@WebServlet("/asignaturas/actualizarAsignatura")
+@WebServlet("/asignaturas/actualizarAsignaturas")
 public class ActualizarAsignaturasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,28 +40,22 @@ public class ActualizarAsignaturasController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   String id = request.getParameter("id");
 		    String nombre = request.getParameter("nombre");
-		    String apellido = request.getParameter("apellido");
-		    String idMunicipio = request.getParameter("municipio");
-		    String familiaNumerosa = request.getParameter("famNumerosa");
+		    String curso = request.getParameter("curso");
+		    String tasa = request.getParameter("tasa");
 		    String activo = request.getParameter("activo");
 		    
-			System.out.print(idMunicipio);
+			if (tasa == null || tasa.trim().isEmpty())
+			    tasa = "0";
+
+			if (activo != null)
+			    activo = "1";
+			else
+			    activo = "0";
+
+			IAsignaturasService a = new AsignaturasServiceImp();
+		    a.actualizarAsignatura(id, nombre, curso, Double.parseDouble(tasa), Integer.parseInt(activo));
 		    
-		    if(familiaNumerosa != null)
-	        	familiaNumerosa = "1";
-	        else
-	        	familiaNumerosa = "0";
-	        
-	        if(activo != null)
-	        	activo = "1";
-	        else
-	        	activo = "0";
-	        
-		    
-		    IAlumnosService a = new AlumnosServiceImp();
-		    a.actualizarAlumno(id, nombre, apellido, idMunicipio, Integer.parseInt(familiaNumerosa), Integer.parseInt(activo));
-		    
-	        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/actualizarAsignatura.jsp");
+	        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/actualizarAsignaturas.jsp");
 	        d.forward(request, response);
 	}
 

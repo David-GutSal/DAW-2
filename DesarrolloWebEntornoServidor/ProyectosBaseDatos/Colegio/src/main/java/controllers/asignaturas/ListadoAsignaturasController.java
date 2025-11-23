@@ -6,7 +6,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import serviciosImp.AlumnosServiceImp;
 import serviciosImp.AsignaturasServiceImp;
 
 import java.io.IOException;
@@ -15,9 +14,7 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dto.AlumnoDTO;
 import dto.AsignaturaDTO;
-import servicios.IAlumnosService;
 import servicios.IAsignaturasService;
 
 /**
@@ -43,7 +40,8 @@ public class ListadoAsignaturasController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/listadoAsignaturas.jsp");
+		RequestDispatcher d = getServletContext()
+				.getRequestDispatcher("/WEB-INF/vistas/asignaturas/listadoAsignaturas.jsp");
 		d.forward(request, response);
 
 	}
@@ -55,26 +53,30 @@ public class ListadoAsignaturasController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
-        String nombre = request.getParameter("nombre");
-        String curso = request.getParameter("curso");
-        String tasa = request.getParameter("tasa");
-        String activo =  request.getParameter("activo");
-        
-        logger.info(activo);
-        
-        if(activo != null)
-        	activo = "1";
-        else
-        	activo = "0";
-        
-        IAsignaturasService a = new AsignaturasServiceImp();
-        ArrayList<AsignaturaDTO> listaAsignaturas = new ArrayList<>();
-        
-        listaAsignaturas = a.obtenerAsignaturasPorIdNombreCursoTasa(id, nombre, Integer.parseInt(curso), Integer.parseInt(tasa), Integer.parseInt(activo));
-        
-        request.setAttribute("lista", listaAsignaturas);
-        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/listadoAsignaturas.jsp");
-        d.forward(request, response);
+		String nombre = request.getParameter("nombre");
+		String curso = request.getParameter("curso");
+		String tasa = request.getParameter("tasa");
+		String activo = request.getParameter("activo");
+
+		logger.info(activo);
+
+		if (tasa == null || tasa.trim().isEmpty())
+		    tasa = "0";
+
+		if (activo != null)
+		    activo = "1";
+		else
+		    activo = "0";
+
+		IAsignaturasService a = new AsignaturasServiceImp();
+		ArrayList<AsignaturaDTO> listaAsignaturas = new ArrayList<>();
+
+		listaAsignaturas = a.obtenerAsignaturasPorIdNombreCursoTasa(id, nombre, curso, Double.parseDouble(tasa), Integer.parseInt(activo));
+
+		request.setAttribute("lista", listaAsignaturas);
+		RequestDispatcher d = getServletContext()
+				.getRequestDispatcher("/WEB-INF/vistas/asignaturas/listadoAsignaturas.jsp");
+		d.forward(request, response);
 	}
 
 }

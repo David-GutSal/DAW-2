@@ -18,19 +18,19 @@ public class AsignaturasServiceImp implements IAsignaturasService{
 	}
 
 	@Override
-	public ArrayList<AsignaturaDTO> obtenerAsignaturasPorIdNombreCursoTasa(String id, String nombre, int curso, int tasa,  int activo) {
+	public ArrayList<AsignaturaDTO> obtenerAsignaturasPorIdNombreCursoTasa(String id, String nombre, String curso, double tasa,  int activo) {
 		IAsignaturasDAO asignatura = new AsignaturasDAOImpl();
 		return asignatura.obtenerAsignaturasPorIdNombreCursoTasa(id, nombre, curso,  tasa, activo);
 	}
 
 	@Override
-	public int insertarAsignatura(String id, String nombre, int curso, int tasa,  int activo) {
+	public int insertarAsignatura(String id, String nombre, String curso, double tasa,  int activo) {
 		IAsignaturasDAO asignaturas = new AsignaturasDAOImpl();
 		return asignaturas.insertarAsignatura(id, nombre, curso, tasa, activo);
 	}
 
 	@Override
-	public int actualizarAsignatura(String id, String nombre, int curso, int tasa,  int activo) {
+	public int actualizarAsignatura(String id, String nombre, String curso, double tasa,  int activo) {
 		IAsignaturasDAO asignaturas = new AsignaturasDAOImpl();
 		return asignaturas.actualizarAsignatura(id, nombre, curso, tasa, activo);
 	}

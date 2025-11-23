@@ -13,7 +13,7 @@
 	<div class="container">
 		<h2>Borrar Alumnos</h2>
 		<div class="form">
-			<form action="alumnos/formularioBorrarAlumnos" method="post">
+			<form action="formularioBorrarAlumnos" method="post">
 
 				<label for="id">Id Alumno</label> 
 				<input type="text" id="id" name="id"> 
@@ -50,7 +50,7 @@
 					<td>${alumno.apellido}</td>
 					<td>${alumno.municipio}</td>
 					<td>
-						<form action="http://localhost:8080/colegio/alumnos/borrarAlumno" method="POST" >
+						<form action="borrarAlumnos" method="POST" >
 							<input type="hidden" name="id" value="${alumno.id}">
 							<input type ="submit" value="Borrar">
 						</form>

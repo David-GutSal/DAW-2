@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class ActualizarAlumnosController
  */
-@WebServlet("/alumnos/actualizarAlumno")
+@WebServlet("/alumnos/actualizarAlumnos")
 public class ActualizarAlumnosController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

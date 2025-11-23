@@ -11,11 +11,11 @@ public interface IAsignaturasService {
 
 	ArrayList<AsignaturaDTO> obtenerAsignaturas() throws SQLException;
 
-	ArrayList<AsignaturaDTO> obtenerAsignaturasPorIdNombreCursoTasa(String id, String nombre, int curso, int tasa,
+	int insertarAsignatura(String id, String nombre, String curso, double tasa, int activo);
+
+	int actualizarAsignatura(String id, String nombre, String curso, double tasa, int activo);
+
+	ArrayList<AsignaturaDTO> obtenerAsignaturasPorIdNombreCursoTasa(String id, String nombre, String curso, double tasa,
 			int activo);
-
-	int insertarAsignatura(String id, String nombre, int curso, int tasa, int activo);
-
-	int actualizarAsignatura(String id, String nombre, int curso, int tasa, int activo);
 
 }

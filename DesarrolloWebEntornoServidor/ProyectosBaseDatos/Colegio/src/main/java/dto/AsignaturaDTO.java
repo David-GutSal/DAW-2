@@ -4,10 +4,10 @@ public class AsignaturaDTO {
 	private int id;
 	private String nombre;
 	private int curso;
-	private int tasa;
+	private double tasa;
 	private int activo;
 
-	public AsignaturaDTO(int id, String nombre, int curso, int tasa, int activo) {
+	public AsignaturaDTO(int id, String nombre, int curso, double tasa, int activo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -18,7 +18,7 @@ public class AsignaturaDTO {
 	
 	
 
-	public AsignaturaDTO(int id, String nombre, int curso, int tasa) {
+	public AsignaturaDTO(int id, String nombre, int curso, double tasa) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -52,12 +52,24 @@ public class AsignaturaDTO {
 		this.curso = curso;
 	}
 
-	public int getTasa() {
+	public double getTasa() {
 		return tasa;
 	}
 
 	public void setTasa(int tasa) {
 		this.tasa = tasa;
+	}
+
+
+
+	public int getActivo() {
+		return activo;
+	}
+
+
+
+	public void setActivo(int activo) {
+		this.activo = activo;
 	}
 	
 	
