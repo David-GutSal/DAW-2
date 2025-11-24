@@ -1,6 +1,7 @@
 package controllers.asignaturas;
 
 import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,16 +13,12 @@ import utils.DesplegableUtils;
 
 import java.io.IOException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Servlet implementation class InsertarAlumnosController
  */
 @WebServlet("/asignaturas/insertarAsignaturas")
 public class InsertarAsignaturasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Logger logger = LoggerFactory.getLogger(InsertarAsignaturasController.class);
        
     /**
      * @see HttpServlet#HttpServlet()

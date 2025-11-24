@@ -131,7 +131,7 @@ public class AlumnosDAOImpl implements IAlumnosDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return resultado;
 	}
 
 	@Override

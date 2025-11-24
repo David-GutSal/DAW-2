@@ -11,9 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import dao.IAsignaturasDAO;
 import daoImp.AsignaturasDAOImpl;
 import dto.AsignaturaDTO;
@@ -24,7 +21,6 @@ import dto.AsignaturaDTO;
 @WebServlet("/asignaturas/obtenertodasasignaturas")
 public class ControladorAsignaturas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Logger logger = LoggerFactory.getLogger(ControladorAsignaturas.class);
        
     /**
      * @see HttpServlet#HttpServlet()
