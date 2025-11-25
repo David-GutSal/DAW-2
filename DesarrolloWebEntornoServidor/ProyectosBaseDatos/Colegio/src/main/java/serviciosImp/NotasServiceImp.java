@@ -16,9 +16,9 @@ public class NotasServiceImp implements INotasService{
 	}
 
 	@Override
-	public ArrayList<NotasDTO> obtenerNotasFiltradas(String id, String id_alumno, String id_asignatura, int nota,  String fecha) {
+	public ArrayList<NotasDTO> obtenerNotasFiltradas(String nota,  String fecha) {
 		INotasDAO notas = new NotasDAOImpl();
-		return notas.obtenerNotasFiltradas(id, id_alumno, id_asignatura, nota, fecha);
+		return notas.obtenerNotasFiltradas(nota, fecha);
 	}
 
 	@Override
@@ -38,4 +38,5 @@ public class NotasServiceImp implements INotasService{
 		INotasDAO notas = new NotasDAOImpl();
 		return notas.borrarNota(id);
 	}
+
 }

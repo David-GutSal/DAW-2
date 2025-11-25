@@ -25,6 +25,12 @@ public class AsignaturaDTO {
 		this.curso = curso;
 		this.tasa = tasa;
 	}
+	
+	public AsignaturaDTO(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
 
 
 

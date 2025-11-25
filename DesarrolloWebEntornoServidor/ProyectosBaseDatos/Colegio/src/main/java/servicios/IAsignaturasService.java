@@ -18,4 +18,6 @@ public interface IAsignaturasService {
 	ArrayList<AsignaturaDTO> obtenerAsignaturasPorIdNombreCursoTasa(String id, String nombre, String curso, double tasa,
 			int activo);
 
+	ArrayList<AsignaturaDTO> obtenerAsignaturasPorId(String idasignatura);
+
 }

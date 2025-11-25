@@ -30,8 +30,7 @@ public class NotasDAOImpl implements INotasDAO {
 			notas = statement.executeQuery("SELECT * FROM notas");
 
 			while (notas.next()) {
-				NotasDTO a = new NotasDTO(notas.getString(1), notas.getString(2), notas.getString(3), notas.getInt(4),
-						notas.getString(5));
+				NotasDTO a = new NotasDTO(notas.getString(1), notas.getString(2), notas.getString(3), notas.getInt(4), notas.getString(5));
 				logger.debug("Contenido de notas " + a.getId());
 				listaNotas.add(a);
 			}
@@ -44,21 +43,16 @@ public class NotasDAOImpl implements INotasDAO {
 	}
 
 	@Override
-	public ArrayList<NotasDTO> obtenerNotasFiltradas(String id, String id_alumno, String id_asignatura, int nota,
-			String fecha) {
+	public ArrayList<NotasDTO> obtenerNotasFiltradas(String nota, String fecha) {
 
 		String sql = "SELECT id, id_alumnos, id_asignaturas, nota, fecha " + "FROM notas "
-				+ "WHERE id LIKE ? AND id_alumnos LIKE ? AND id_asignaturas LIKE ? AND nota = ? AND fecha = ?";
+				+ "WHERE nota = ? AND fecha = '?'";
 
 		ArrayList<NotasDTO> lista = new ArrayList<>();
 
 		try (Connection connection = DBUtils.conexion(); PreparedStatement ps = connection.prepareStatement(sql)) {
-
-			ps.setString(1, "%" + id + "%");
-			ps.setString(2, "%" + id_alumno + "%");
-			ps.setString(3, "%" + id_asignatura + "%");
-			ps.setInt(4, nota);
-			ps.setString(5, fecha);
+			ps.setString(1, nota);
+			ps.setString(2, fecha);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -98,7 +92,7 @@ public class NotasDAOImpl implements INotasDAO {
 
 	@Override
 	public int actualizarNota(String id, String id_alumno, String id_asignatura, int nota, String fecha) {
-		String sql = "UPDATE notas SET id_alumno = ?, curso = ?, tasa = ?, activo = ? " + "WHERE id =  ? ";
+		String sql = "UPDATE notas SET id_alumno = ?, id_asignatura = ?, nota = ?, fecha = ? " + "WHERE id =  ? ";
 		PreparedStatement ps = null;
 		int resultado = 0;
 

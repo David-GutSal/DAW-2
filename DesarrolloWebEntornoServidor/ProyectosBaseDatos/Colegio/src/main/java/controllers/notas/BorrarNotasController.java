@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class BorrarAlumnosController
  */
-@WebServlet("/asignaturas/borrarAsignaturas")
+@WebServlet("/nota/borrarNotas")
 public class BorrarNotasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,7 +43,7 @@ public class BorrarNotasController extends HttpServlet {
 		IAsignaturasService a = new AsignaturasServiceImp();
 	    a.borrarAsignatura(id);
 	    
-        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/borrarAsignaturas.jsp");
+        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/borrarNotas.jsp");
         d.forward(request, response);
 	}
 

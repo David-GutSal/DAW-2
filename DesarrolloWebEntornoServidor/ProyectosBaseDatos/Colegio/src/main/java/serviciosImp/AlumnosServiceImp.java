@@ -41,4 +41,10 @@ public class AlumnosServiceImp implements IAlumnosService {
 		return alumnos.borrarAlumno(id);
 	}
 
+	@Override
+	public ArrayList<AlumnoDTO> obtenerAlumnosPorIdNombreActivo(String id, String nombre, int activo) {
+		IAlumnosDAO alumnos = new AlumnosDAOImpl();
+		return alumnos.obtenerAlumnosPorIdNombre(id, nombre, activo);
+	}
+
 }

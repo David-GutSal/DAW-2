@@ -18,7 +18,7 @@ import dto.AsignaturaDTO;
 /**
  * Servlet implementation class FormularioBorrarAlumnosController
  */
-@WebServlet("/asignaturas/formularioBorrarAsignaturas")
+@WebServlet("/notas/formularioBorrarNotas")
 public class FormularioBorrarNotasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +35,7 @@ public class FormularioBorrarNotasController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/borrarAsignaturas.jsp");
+		RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/borrarNotas.jsp");
         d.forward(request, response);
 	}
 
@@ -64,7 +64,7 @@ public class FormularioBorrarNotasController extends HttpServlet {
 		listaAsignaturas = a.obtenerAsignaturasPorIdNombreCursoTasa(id, nombre, curso, Double.parseDouble(tasa), Integer.parseInt(activo));
         request.setAttribute("lista", listaAsignaturas);
         
-        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/borrarAsignaturas.jsp");
+        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/borrarNotas.jsp");
         d.forward(request, response);
 	}
 

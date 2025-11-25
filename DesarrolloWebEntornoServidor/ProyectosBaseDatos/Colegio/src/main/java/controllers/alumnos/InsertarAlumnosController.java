@@ -41,7 +41,7 @@ public class InsertarAlumnosController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Recuperamos los datos del formulario
+		
 	    String id = request.getParameter("id");
 	    String nombre = request.getParameter("nombre");
 	    String apellido = request.getParameter("apellido");

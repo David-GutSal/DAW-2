@@ -146,4 +146,34 @@ public class AsignaturasDAOImpl implements IAsignaturasDAO {
 		return resultado;
 	}
 
+	@Override
+	public ArrayList<AsignaturaDTO> obtenerAsignaturasPorId(String idasignatura) {
+
+	    String sql = 
+	        "SELECT id, nombre" +
+	        "FROM asignaturas " +
+	        "WHERE id LIKE ?";
+
+	    ArrayList<AsignaturaDTO> lista = new ArrayList<>();
+
+	    try (Connection connection = DBUtils.conexion();
+	         PreparedStatement ps = connection.prepareStatement(sql)) {
+
+	        ps.setString(1, "%" + idasignatura + "%");
+
+	        ResultSet rs = ps.executeQuery();
+	        while (rs.next()) {
+	            AsignaturaDTO a = new AsignaturaDTO(
+	                rs.getInt("id"),
+	                rs.getString("nombre")
+	            );
+	            lista.add(a);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return lista;
+	}
+
 }

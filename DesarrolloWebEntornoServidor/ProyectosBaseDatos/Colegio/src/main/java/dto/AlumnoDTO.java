@@ -28,11 +28,11 @@ public class AlumnoDTO {
 		this.municipio = municipio;
 	}
 	
-	public AlumnoDTO(int id, String nombre, String apellido) {
+	public AlumnoDTO(int id, String nombre, int activo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.apellido = apellido;
+		this.activo = activo;
 	}
 	
 	//Getters, setters... 

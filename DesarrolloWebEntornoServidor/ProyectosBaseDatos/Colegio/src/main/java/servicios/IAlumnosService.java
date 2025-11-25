@@ -11,4 +11,5 @@ public interface IAlumnosService {
 	public int insertarAlumno(String id, String nombre, String apellido, String idMunicipio, int familiaNumerosa, int activo);
 	public int actualizarAlumno(String id, String nombre, String apellido, String idMunicipio, int familiaNumerosa, int activo);
 	public int borrarAlumno(String id);
+	public ArrayList<AlumnoDTO> obtenerAlumnosPorIdNombreActivo(String id, String nombre, int activo);
 }

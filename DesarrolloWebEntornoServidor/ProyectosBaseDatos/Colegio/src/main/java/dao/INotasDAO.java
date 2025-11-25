@@ -10,8 +10,7 @@ public interface INotasDAO {
 
 	int insertarNota(String id, String id_alumno, String id_asignatura, int nota, String fecha);
 
-	ArrayList<NotasDTO> obtenerNotasFiltradas(String id, String id_alumno, String id_asignatura, int nota,
-			String fecha);
+	ArrayList<NotasDTO> obtenerNotasFiltradas(String nota, String fecha);
 
 	int actualizarNota(String id, String id_alumno, String id_asignatura, int nota, String fecha);
 

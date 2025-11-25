@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/colegio/css/index.css">
-<link rel="stylesheet" href="/colegio/css/formularios.css">
+<link rel="stylesheet" href="/Colegio/css/index.css">
+<link rel="stylesheet" href="/Colegio/css/formularios.css">
 <title>Actualizar Alumnos</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
 	<div class="container">
 		<h2>Actualizar Alumnos</h2>
 		<div class="form">
-			<form action="http://localhost:8080/colegio/alumnos/formularioActualizarAlumnos" method="post">
+			<form action="formularioActualizarAlumnos" method="post">
 
 				<label for="id">Id Alumno</label> 
 				<input type="text" id="id" name="id"> 
@@ -35,7 +35,7 @@
 	
 	<c:forEach items="${lista}" var="alumno">
 		<div class="form">
-			<form action="http://localhost:8080/colegio/alumnos/actualizarAlumno" method="post">
+			<form action="actualizarAlumnos" method="post">
 			    <label for="id"> Id Alumno </label>
 				<input type="text" id="id" name="id" value="${alumno.id}" hidden>
 				<label for="nombre">Nombre Alumno</label>

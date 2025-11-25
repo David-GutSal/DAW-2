@@ -4,8 +4,8 @@
 <%@ page isELIgnored="false"%>
 <html>
 <head>
-<link rel="stylesheet" href="/colegio/css/index.css">
-<link rel="stylesheet" href="/colegio/css/formularios.css">
+<link rel="stylesheet" href="/Colegio/css/index.css">
+<link rel="stylesheet" href="/Colegio/css/formularios.css">
 </head>
 <body>
 <header>
@@ -15,7 +15,7 @@
 
 <div class="container">
 <div class="form">
-<form action="http://localhost:8080/colegio/alumnos/insertarAlumno" method="post">
+<form action="insertarAlumno" method="post">
     <div id="formulario">
         <label for="id">DNI Alumno</label>
         <input type="text" id="id" name="id">

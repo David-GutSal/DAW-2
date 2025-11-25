@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class InsertarAlumnosController
  */
-@WebServlet("/asignaturas/insertarAsignaturas")
+@WebServlet("/notas/insertarNotas")
 public class InsertarNotasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +34,7 @@ public class InsertarNotasController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DesplegableUtils.recuperarDesplegableMunicipios(request);
         
-        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/insertarAsignaturas.jsp");
+        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/insertarNotas.jsp");
         d.forward(request, response);
 	}
 
@@ -62,7 +62,7 @@ public class InsertarNotasController extends HttpServlet {
 	    DesplegableUtils.recuperarDesplegableMunicipios(request);
         
 	    
-	    RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/insertarAsignaturas.jsp");
+	    RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/insertarNotas.jsp");
 	    d.forward(request, response);
 	}
 	

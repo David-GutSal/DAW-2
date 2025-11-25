@@ -30,7 +30,7 @@ public class AlumnosDAOImpl implements IAlumnosDAO {
 			alumnos = statement.executeQuery("SELECT * FROM alumnos");
 
 			while (alumnos.next()) {
-				AlumnoDTO a = new AlumnoDTO(alumnos.getInt(1), alumnos.getString(2), alumnos.getString(3));
+				AlumnoDTO a = new AlumnoDTO(alumnos.getInt(1), alumnos.getString(2), alumnos.getString(3), alumnos.getString(4), alumnos.getInt(5), alumnos.getInt(6), alumnos.getInt(7));
 				logger.debug("Contenido de alumno " + a.getNombre() + " " + a.getId());
 				listaAlumnos.add(a);
 			}
@@ -148,10 +148,42 @@ public class AlumnosDAOImpl implements IAlumnosDAO {
 			resultado = ps.executeUpdate();
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return resultado;
+	}
+
+	@Override
+	public ArrayList<AlumnoDTO> obtenerAlumnosPorIdNombre(String id, String nombre, int activo) {
+		String sql = "SELECT a.id, a.nombre, a.activo "
+				+ "FROM alumnos a " + "WHERE a.id LIKE ? AND a.nombre LIKE ? AND a.activo = ?";
+
+		ResultSet alumnoResultSet = null;
+		Connection connection = DBUtils.conexion();
+		ArrayList<AlumnoDTO> listaAlumnos = new ArrayList<>();
+
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+
+			ps.setString(1, "%" + id + "%");
+			ps.setString(2, "%" + nombre + "%");
+			ps.setInt(5, activo);
+
+			logger.debug("Query a ejecutar: " + ps);
+
+			alumnoResultSet = ps.executeQuery();
+
+			while (alumnoResultSet.next()) {
+				AlumnoDTO a = new AlumnoDTO(alumnoResultSet.getInt(1), alumnoResultSet.getString(2), alumnoResultSet.getInt(3));
+				listaAlumnos.add(a);
+			}
+			connection.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listaAlumnos;
 	}
 
 }

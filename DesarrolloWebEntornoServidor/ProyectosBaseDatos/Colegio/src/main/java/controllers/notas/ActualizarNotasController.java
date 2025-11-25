@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class ActualizarAlumnosController
  */
-@WebServlet("/asignaturas/actualizarAsignaturas")
+@WebServlet("/notas/actualizarNotas")
 public class ActualizarNotasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -55,7 +55,7 @@ public class ActualizarNotasController extends HttpServlet {
 			IAsignaturasService a = new AsignaturasServiceImp();
 		    a.actualizarAsignatura(id, nombre, curso, Double.parseDouble(tasa), Integer.parseInt(activo));
 		    
-	        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/actualizarAsignaturas.jsp");
+	        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/actualizarNotas.jsp");
 	        d.forward(request, response);
 	}
 
