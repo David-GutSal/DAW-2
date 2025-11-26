@@ -27,6 +27,12 @@
 				<label for="nombre">Nombre Alumno</label> 
 				<input type="text" id="nombre" name="nombre"><br>
 				 
+				 <select name="alumno" id="alumno">
+            		<c:forEach items="${desplegableAlumno}" var="alumno">
+                		<option value="${alumno.id}">${alumno.nombre}</option>
+            		</c:forEach>
+        		</select>
+        		
 				 <select name="asignatura" id="asignatura">
             		<c:forEach items="${desplegableAsignatura}" var="asignatura">
                 		<option value="${asignatura.id}">${asignatura.nombre}</option>

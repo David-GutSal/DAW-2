@@ -25,12 +25,15 @@ public class NotasDAOImpl implements INotasDAO {
 		Statement statement;
 
 		try {
-
+			String sql = "select al.id, al.nombre, asig.nombre, n.nota, n.fecha from notas n " 
+					+ "inner join alumnos al on al.id = n.id_alumnos "
+					+ "inner join asignaturas asig on n.id_asignaturas = asig.id";
+			
 			statement = connection.createStatement();
-			notas = statement.executeQuery("SELECT * FROM notas");
+			notas = statement.executeQuery(sql);
 
 			while (notas.next()) {
-				NotasDTO a = new NotasDTO(notas.getString(1), notas.getString(2), notas.getString(3), notas.getInt(4), notas.getString(5));
+				NotasDTO a = new NotasDTO(notas.getString(1), notas.getString(2), notas.getString(3), notas.getString(4), notas.getString(5));
 				logger.debug("Contenido de notas " + a.getId());
 				listaNotas.add(a);
 			}
@@ -43,20 +46,27 @@ public class NotasDAOImpl implements INotasDAO {
 	}
 
 	@Override
-	public ArrayList<NotasDTO> obtenerNotasFiltradas(String nota, String fecha) {
+	public ArrayList<NotasDTO> obtenerNotasFiltradas(String id, String nombre, String asignatura, String nota, String fecha, String activo) {
 
-		String sql = "SELECT id, id_alumnos, id_asignaturas, nota, fecha " + "FROM notas "
-				+ "WHERE nota = ? AND fecha = '?'";
+		String sql = "select al.id, al.nombre, asig.nombre, n.nota, n.fecha " 
+				+ "from notas n " 
+				+ "inner join alumnos al on al.id = n.id_alumnos "
+				+ "inner join asignaturas asig on n.id_asignaturas = asig.id "
+				+ "where al.id like ? and al.nombre like ? and asig.nombre like ? and n.nota like ? and n.fecha like ? and al.activo like ?";
 
 		ArrayList<NotasDTO> lista = new ArrayList<>();
 
 		try (Connection connection = DBUtils.conexion(); PreparedStatement ps = connection.prepareStatement(sql)) {
-			ps.setString(1, nota);
-			ps.setString(2, fecha);
+			ps.setString(1, "%"+id+"%" );
+			ps.setString(2, "%" +nombre + "%");
+			ps.setString(3, "%" + asignatura + "%");
+			ps.setString(4, "%"+ nota+"%");
+			ps.setString(5, "%" + fecha + "%");
+			ps.setString(6, "%" + activo + "%");
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				NotasDTO a = new NotasDTO(rs.getString("id"), rs.getString("id_alumno"), rs.getString("id_asignatura"), rs.getInt("nota"), rs.getString("fecha"));
+				NotasDTO a = new NotasDTO(rs.getString("al.id"), rs.getString("al.nombre"), rs.getString("asig.nombre"), rs.getString("n.nota"), rs.getString("n.fecha"));
 				lista.add(a);
 			}
 		} catch (SQLException e) {
@@ -67,7 +77,7 @@ public class NotasDAOImpl implements INotasDAO {
 	}
 
 	@Override
-	public int insertarNota(String id, String id_alumno, String id_asignatura, int nota, String fecha) {
+	public int insertarNota(String id, String id_alumno, String id_asignatura, String nota, String fecha) {
 		String sql = "INSERT INTO notas (id, id_alumnos, id_asignaturas, nota, fecha) VALUES (?, ?, ?, ?, '?')";
 		PreparedStatement ps = null;
 		int resultado = 0;
@@ -75,11 +85,11 @@ public class NotasDAOImpl implements INotasDAO {
 		try {
 			Connection connection = DBUtils.conexion();
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, id);
-			ps.setString(2, id_alumno);
-			ps.setString(3, id_asignatura);
-			ps.setInt(4, nota);
-			ps.setString(5, fecha);
+			ps.setString(1, "%" + id + "%");
+			ps.setString(2, "%"+id_alumno+"%");
+			ps.setString(3, "%"+id_asignatura+"%");
+			ps.setString(4, "%"+nota+"%");
+			ps.setString(5, "%"+fecha+"%");
 
 			resultado = ps.executeUpdate();
 			connection.close();
@@ -91,7 +101,7 @@ public class NotasDAOImpl implements INotasDAO {
 	}
 
 	@Override
-	public int actualizarNota(String id, String id_alumno, String id_asignatura, int nota, String fecha) {
+	public int actualizarNota(String id, String id_alumno, String id_asignatura, String nota, String fecha) {
 		String sql = "UPDATE notas SET id_alumno = ?, id_asignatura = ?, nota = ?, fecha = ? " + "WHERE id =  ? ";
 		PreparedStatement ps = null;
 		int resultado = 0;
@@ -99,11 +109,11 @@ public class NotasDAOImpl implements INotasDAO {
 		try {
 			Connection connection = DBUtils.conexion();
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, id_alumno);
-			ps.setString(2, id_asignatura);
-			ps.setInt(3, nota);
-			ps.setString(4, fecha);
-			ps.setString(5, id);
+			ps.setString(1, "%"+id_alumno+"%");
+			ps.setString(2, "%"+id_asignatura+"%");
+			ps.setString(3, "%"+nota+"%");
+			ps.setString(4, "%"+fecha+"%");
+			ps.setString(5, "%"+id+"%");
 			logger.debug("Query a ejecutar: " + ps);
 			resultado = ps.executeUpdate();
 			connection.close();
@@ -121,7 +131,7 @@ public class NotasDAOImpl implements INotasDAO {
 		Integer resultado = 0;
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setString(1, "%"+id+"%");
 			logger.debug("Query a ejecutar: " + ps);
 			resultado = ps.executeUpdate();
 			connection.close();

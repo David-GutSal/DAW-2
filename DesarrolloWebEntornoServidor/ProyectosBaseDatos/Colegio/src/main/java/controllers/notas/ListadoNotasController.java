@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import serviciosImp.AlumnosServiceImp;
 import serviciosImp.AsignaturasServiceImp;
 import serviciosImp.NotasServiceImp;
+import utils.DesplegableUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -46,7 +47,10 @@ public class ListadoNotasController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
+		
 		RequestDispatcher d = getServletContext()
 				.getRequestDispatcher("/WEB-INF/vistas/notas/listadoNotas.jsp");
 		d.forward(request, response);
@@ -61,7 +65,7 @@ public class ListadoNotasController extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String nombre = request.getParameter("nombre");
-		String idasignatura = request.getParameter("asignatura");
+		String asignatura = request.getParameter("asignatura");
 		String nota = request.getParameter("nota");
 		String fecha = request.getParameter("fecha");
 		String activo = request.getParameter("activo");
@@ -70,6 +74,12 @@ public class ListadoNotasController extends HttpServlet {
 
 		if (fecha == null)
 			fecha = "0001-01-01";
+		
+		if (nota == null)
+			nota = "";
+		
+		if (asignatura == null)
+			asignatura = "";
 
 		if (activo != null)
 		    activo = "1";
@@ -77,31 +87,14 @@ public class ListadoNotasController extends HttpServlet {
 		    activo = "0";
 
 		INotasService n = new NotasServiceImp();
-		IAlumnosService al = new AlumnosServiceImp();
-		IAsignaturasService as = new AsignaturasServiceImp();
 		
 		ArrayList<NotasDTO> listaNotas = new ArrayList<>();
-		ArrayList<NotasDTO> listaBuscarNotas = new ArrayList<>();
-		ArrayList<AlumnoDTO> listaAlumnos = new ArrayList<>();
-		ArrayList<AsignaturaDTO> listaAsignaturas = new ArrayList<>();
-
-		listaAlumnos = al.obtenerAlumnosPorIdNombreActivo(id, nombre, Integer.parseInt(activo));
-		listaAsignaturas = as.obtenerAsignaturasPorId(idasignatura);
-		listaBuscarNotas = n.obtenerNotasFiltradas(nota, fecha);
 		
-		for(AlumnoDTO alumno : listaAlumnos) {
-			for(NotasDTO checkNota : listaBuscarNotas) {
-				for(AsignaturaDTO checkAsignatura : listaAsignaturas) {
-					if(alumno.getId() == Integer.getInteger(checkNota.getId_alumno()) && Integer.getInteger(checkNota.getId_asignatura()) == checkAsignatura.getId()) {
-						NotasDTO notaMostrar = new NotasDTO(String.valueOf(alumno.getId()), alumno.getNombre(), checkAsignatura.getNombre(), checkNota.getNota(), checkNota.getFecha());
-						listaNotas.add(notaMostrar);
-					}
-				}
-			}
-		}
+		listaNotas = n.obtenerNotasFiltradas(id, nombre, asignatura, nota, fecha, activo);
 		
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
 		
-
 		request.setAttribute("lista", listaNotas);
 		RequestDispatcher d = getServletContext()
 				.getRequestDispatcher("/WEB-INF/vistas/notas/listadoNotas.jsp");

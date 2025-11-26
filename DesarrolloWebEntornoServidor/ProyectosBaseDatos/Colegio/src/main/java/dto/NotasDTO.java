@@ -4,10 +4,10 @@ public class NotasDTO {
 	private String id;
 	private String id_alumno;
 	private String id_asignatura;
-	private int nota;
+	private String nota;
 	private String fecha;
 	
-	public NotasDTO(String id, String id_alumno, String id_asignatura, int nota, String fecha) {
+	public NotasDTO(String id, String id_alumno, String id_asignatura, String nota, String fecha) {
 		super();
 		this.id = id;
 		this.id_alumno = id_alumno;
@@ -34,10 +34,10 @@ public class NotasDTO {
 	public void setId_asignatura(String id_asignatura) {
 		this.id_asignatura = id_asignatura;
 	}
-	public int getNota() {
+	public String getNota() {
 		return nota;
 	}
-	public void setNota(int nota) {
+	public void setNota(String nota) {
 		this.nota = nota;
 	}
 	public String getFecha() {

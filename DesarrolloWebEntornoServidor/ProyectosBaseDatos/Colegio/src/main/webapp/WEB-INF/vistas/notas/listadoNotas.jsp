@@ -24,12 +24,17 @@
 				<label for="id">Id Alumno</label>
 				<input type="text" id="id" name="id">
 				
-				<label for="nombre">Nombre Alumno</label> 
-				<input type="text" id="nombre" name="nombre"><br>
-				 
-				 <select name="asignatura" id="asignatura">
+				<label for="alumnos">Nombre Alumno</label> 
+				 <select name="alumnos" id="alumnos">
+            		<c:forEach items="${desplegableAlumno}" var="alumno">
+                		<option value="${alumno.id}">${alumno.id_alumno}</option>
+            		</c:forEach>
+        		</select>
+        		
+        		<label for="asignaturas">Asignaturas</label> 
+				 <select name="asignaturas" id="asignaturas">
             		<c:forEach items="${desplegableAsignatura}" var="asignatura">
-                		<option value="${asignatura.id}">${asignatura.nombre}</option>
+                		<option value="${asignatura.id}">${asignatura.id_asignatura}</option>
             		</c:forEach>
         		</select>
         		
@@ -61,8 +66,8 @@
 			<c:forEach items="${lista}" var="notas">
 				<tr>
 					<td>${notas.id}</td>
-					<td>${notas.nombre}</td>
-					<td>${notas.asignatura}</td>
+					<td>${notas.id_alumno}</td>
+					<td>${notas.id_asignatura}</td>
 					<td>${notas.nota}</td>
 					<td>${notas.fecha}</td>
 				</tr>

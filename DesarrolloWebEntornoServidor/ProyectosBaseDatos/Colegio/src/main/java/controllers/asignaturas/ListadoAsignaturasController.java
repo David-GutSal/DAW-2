@@ -70,7 +70,6 @@ public class ListadoAsignaturasController extends HttpServlet {
 
 		IAsignaturasService a = new AsignaturasServiceImp();
 		ArrayList<AsignaturaDTO> listaAsignaturas = new ArrayList<>();
-
 		listaAsignaturas = a.obtenerAsignaturasPorIdNombreCursoTasa(id, nombre, curso, Double.parseDouble(tasa), Integer.parseInt(activo));
 
 		request.setAttribute("lista", listaAsignaturas);

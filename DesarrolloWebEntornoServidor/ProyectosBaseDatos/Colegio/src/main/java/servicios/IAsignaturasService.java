@@ -20,4 +20,5 @@ public interface IAsignaturasService {
 
 	ArrayList<AsignaturaDTO> obtenerAsignaturasPorId(String idasignatura);
 
+
 }
