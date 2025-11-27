@@ -85,5 +85,12 @@ function comprobarCorreo(){
 function comprobarPalabra(){
   let texto = prompt("Escibe un texto");
   let patron = /\w{0,}[paca|vaca|baca|caca]{1,}\w{0,}/;
-  alert(patron.exec(texto));
+  let myArray;
+  myArray = patron.exec(texto)
+  var msg = "Se ha encontrado " + myArray;
+  console.log(msg);
+}
+
+function comprobarDNI(){
+
 }

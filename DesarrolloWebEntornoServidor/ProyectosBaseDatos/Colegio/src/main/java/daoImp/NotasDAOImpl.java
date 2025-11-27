@@ -52,7 +52,7 @@ public class NotasDAOImpl implements INotasDAO {
 				+ "from notas n " 
 				+ "inner join alumnos al on al.id = n.id_alumnos "
 				+ "inner join asignaturas asig on n.id_asignaturas = asig.id "
-				+ "where al.id like ? and al.nombre like ? and asig.nombre like ? and n.nota like ? and n.fecha like ? and al.activo like ?";
+				+ "where al.id like ? and al.id like ? and asig.id like ? and n.nota like ? and n.fecha >= ? and al.activo like ?";
 
 		ArrayList<NotasDTO> lista = new ArrayList<>();
 
@@ -60,8 +60,8 @@ public class NotasDAOImpl implements INotasDAO {
 			ps.setString(1, "%"+id+"%" );
 			ps.setString(2, "%" +nombre + "%");
 			ps.setString(3, "%" + asignatura + "%");
-			ps.setString(4, "%"+ nota+"%");
-			ps.setString(5, "%" + fecha + "%");
+			ps.setString(4, "%"+ nota +"%");
+			ps.setString(5, fecha);
 			ps.setString(6, "%" + activo + "%");
 
 			ResultSet rs = ps.executeQuery();

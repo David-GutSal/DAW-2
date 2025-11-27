@@ -31,6 +31,7 @@ public class InsertarAlumnosController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		DesplegableUtils.recuperarDesplegableMunicipios(request);
         
         RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/alumnos/insertarAlumno.jsp");

@@ -4,11 +4,8 @@ import java.util.ArrayList;
 
 import dao.IDesplegableDAO;
 import daoImp.DesplegableDAOImp;
-import dto.AsignaturaDTO;
 import dto.DesplegableDTO;
 import jakarta.servlet.http.HttpServletRequest;
-import servicios.IAsignaturasService;
-import serviciosImp.AsignaturasServiceImp;
 
 public class DesplegableUtils {
 	
@@ -26,7 +23,7 @@ public class DesplegableUtils {
 	
 	public static void recuperarDesplegableAlumnos(HttpServletRequest request) {
 		IDesplegableDAO desplegableAlumnos = new DesplegableDAOImp();
-		ArrayList<DesplegableDTO> listaAlumnos = desplegableAlumnos.desplegableAsignaturas();
+		ArrayList<DesplegableDTO> listaAlumnos = desplegableAlumnos.desplegableAlumnos();
 		request.setAttribute("desplegableAlumnos", listaAlumnos);
 	}
 

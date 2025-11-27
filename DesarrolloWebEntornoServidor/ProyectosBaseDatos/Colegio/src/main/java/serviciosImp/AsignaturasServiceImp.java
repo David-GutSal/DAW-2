@@ -40,11 +40,4 @@ public class AsignaturasServiceImp implements IAsignaturasService{
 		IAsignaturasDAO asignaturas = new AsignaturasDAOImpl();
 		return asignaturas.borrarAsignatura(id);
 	}
-
-	@Override
-	public ArrayList<AsignaturaDTO> obtenerAsignaturasPorId(String idasignatura) {
-		IAsignaturasDAO asignatura = new AsignaturasDAOImpl();
-		return asignatura.obtenerAsignaturasPorId(idasignatura);
-	}
-
 }

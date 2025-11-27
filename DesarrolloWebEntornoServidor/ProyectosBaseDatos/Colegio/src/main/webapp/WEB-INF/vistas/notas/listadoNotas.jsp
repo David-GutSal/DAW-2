@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
@@ -26,15 +25,17 @@
 				
 				<label for="alumnos">Nombre Alumno</label> 
 				 <select name="alumnos" id="alumnos">
-            		<c:forEach items="${desplegableAlumno}" var="alumno">
-                		<option value="${alumno.id}">${alumno.id_alumno}</option>
+				 	<option value=""></option>
+            		<c:forEach items="${desplegableAlumnos}" var="alumno">
+                		<option value="${alumno.id}">${alumno.descripcion}</option>
             		</c:forEach>
         		</select>
         		
         		<label for="asignaturas">Asignaturas</label> 
 				 <select name="asignaturas" id="asignaturas">
-            		<c:forEach items="${desplegableAsignatura}" var="asignatura">
-                		<option value="${asignatura.id}">${asignatura.id_asignatura}</option>
+            		<option value=""></option>
+            		<c:forEach items="${desplegableAsignaturas}" var="asignatura">
+                		<option value="${asignatura.id}">${asignatura.descripcion}</option>
             		</c:forEach>
         		</select>
         		

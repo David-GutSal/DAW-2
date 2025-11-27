@@ -46,7 +46,7 @@ public class DesplegableDAOImp implements IDesplegableDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				DesplegableDTO a = new DesplegableDTO(rs.getInt(1), rs.getString(5));
+				DesplegableDTO a = new DesplegableDTO(rs.getInt(1), rs.getString(2));
 				listaAsignaturas.add(a);
 			}
 			
@@ -69,7 +69,7 @@ public class DesplegableDAOImp implements IDesplegableDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				DesplegableDTO a = new DesplegableDTO(rs.getInt(1), rs.getString(5));
+				DesplegableDTO a = new DesplegableDTO(rs.getInt(1), rs.getString(2));
 				listaAlumnos.add(a);
 			}
 			

@@ -16,6 +16,4 @@ public interface IAsignaturasDAO {
 
 	int borrarAsignatura(String id);
 
-	ArrayList<AsignaturaDTO> obtenerAsignaturasPorId(String idasignatura);
-
 }
