@@ -6,8 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import servicios.IAsignaturasService;
-import serviciosImp.AsignaturasServiceImp;
+import servicios.INotasService;
+import serviciosImp.NotasServiceImp;
+import utils.DesplegableUtils;
 
 import java.io.IOException;
 
@@ -30,7 +31,8 @@ public class ActualizarNotasController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -38,24 +40,28 @@ public class ActualizarNotasController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   String id = request.getParameter("id");
-		    String nombre = request.getParameter("nombre");
-		    String curso = request.getParameter("curso");
-		    String tasa = request.getParameter("tasa");
-		    String activo = request.getParameter("activo");
-		    
-			if (tasa == null || tasa.trim().isEmpty())
-			    tasa = "0";
+		
+		String id = request.getParameter("id");
+		String nombre = request.getParameter("alumnos");
+		String asignatura = request.getParameter("asignaturas");
+		String nota = request.getParameter("nota");
+		String fecha = request.getParameter("fecha");
 
-			if (activo != null)
-			    activo = "1";
-			else
-			    activo = "0";
+		if (nota == null)
+			nota = "";
+		
+		if (nombre == null)
+			nombre = "";
+		
+		if (asignatura == null)
+			asignatura = "";
 
-			IAsignaturasService a = new AsignaturasServiceImp();
-		    a.actualizarAsignatura(id, nombre, curso, Double.parseDouble(tasa), Integer.parseInt(activo));
+			INotasService a = new NotasServiceImp();
+		    a.actualizarNotas(id, nombre, asignatura, nota, fecha);
 		    
-	        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/asignaturas/actualizarNotas.jsp");
+			DesplegableUtils.recuperarDesplegableAlumnos(request);
+			DesplegableUtils.recuperarDesplegableAsignaturas(request);
+	        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/actualizarNotas.jsp");
 	        d.forward(request, response);
 	}
 

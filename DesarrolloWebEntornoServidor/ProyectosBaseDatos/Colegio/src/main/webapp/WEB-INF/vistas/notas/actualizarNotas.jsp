@@ -8,55 +8,75 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/Colegio/css/index.css">
 <link rel="stylesheet" href="/Colegio/css/formularios.css">
-<title>Actualizar Asignaturas</title>
+<title>Actualizar Notas</title>
 </head>
 <body>
-	<h1>Actualizar Asignaturas</h1>
+	<h1>Actualizar Notas</h1>
 	<%@include file="/menu.html" %>
 	<div class="container">
-		<h2>Actualizar Asignaturas</h2>
+		<h2>Actualizar Notas</h2>
 		<div class="form">
-			<form action="formularioActualizarAsignaturas" method="post">
+			<form action="formularioActualizarNotas" method="post">
 
-				<label for="id">Id Asignatura</label> 
-				<input type="text" id="id" name="id"> 
-				
-				<label for="nombre">Nombre Asignatura</label> 
-				<input type="text" id="nombre" name="nombre"><br> 
-				
-				<label for="curso">Curso Asignatura</label> 
-				<input type="number" id="curso" name="curso">
-				<label for="tasa">Tasa Asignatura</label> 
-				<input type="number" id="tasa" name="tasa">
-				Activo: 
-				<input type="checkbox" id="activo"name="activo" value="1" checked><br> 
+			<label for="alumnos">Nombre Alumno</label> 
+				 <select name="alumnos" id="alumnos">
+				 	<option value=""></option>
+            		<c:forEach items="${desplegableAlumnos}" var="alumno">
+                		<option value="${alumno.id}">${alumno.descripcion}</option>
+            		</c:forEach>
+        		</select>
+        		<br>
+        		<label for="asignaturas">Asignaturas</label> 
+				 <select name="asignaturas" id="asignaturas">
+				 	<option value=""></option>
+            		<c:forEach items="${desplegableAsignaturas}" var="asignatura">
+                		<option value="${asignatura.id}">${asignatura.descripcion}</option>
+            		</c:forEach>
+        		</select>
+        		<br>
+				<label for="fecha">Fecha</label> 
+				<input type="date" id="fecha" name="fecha">
+				<br>
 				<input type="submit" value="Enviar">
 			</form>
 		</div>
 	</div>
 	
-	<c:forEach items="${lista}" var="asignatura">
+	<c:forEach items="${lista}" var="notas">
 		<div class="form">
-			<form action="actualizarAsignaturas" method="post">
-			    <label for="id"> Id Asignatura</label>
-				<input type="text" id="id" name="id" value="${asignatura.id}" hidden>
-				<label for="nombre">Nombre Asignatura</label>
-				<input type="text" id="nombre" name="nombre" value="${asignatura.nombre}"><br>
-				<label for="curso">Curso Asignatura</label>
-				<input type="number" id="curso" name="curso" value="${asignatura.curso}"><br>
-				<label for="tasa">Tasa Asignatura</label>
-				<input type="number" id="tasa" name="tasa" value="${asignatura.tasa}"><br>
+			<form action="actualizarNotas" method="post">
+				<input type="text" name="id" value="${notas.id}" hidden=true> 
 				
-				Activo:
-				<c:if test="${asignatura.activo == 1}">
-					<input type="checkbox" id="activo" name="activo" value="1" checked><br>
-				</c:if>
-				<c:if test="${asignatura.activo == 0}">
-					<input type="checkbox" id="activo" name="activo" value="0" checked><br>
-				</c:if>
+				<label>Nombre Alumno</label>
+	            <select name="alumnos">
+	                <c:forEach items="${desplegableAlumnos}" var="alumno">
+	                    <option value="${alumno.id}"
+	                        <c:if test="${alumno.id == notas.alumno}">selected</c:if>>
+	                        ${alumno.descripcion}
+	                    </option>
+	                </c:forEach>
+	            </select>
+        		<br>
+        		
+        		<label>Asignaturas</label>
+	            <select name="asignaturas">
+	                <c:forEach items="${desplegableAsignaturas}" var="asignatura">
+	                    <option value="${asignatura.id}"
+	                        <c:if test="${asignatura.id == notas.asignatura}">selected</c:if>>
+	                        ${asignatura.descripcion}
+	                    </option>
+	                </c:forEach>
+	            </select>
+        		
+				<label for="nota">Nota</label>
+				<input type="number" id="nota" name="nota" value="${notas.nota}">
+				<br>
 				
-
-			<input type="submit" value="Modificar">
+				<label for="fecha">Fecha</label> 
+				<input type="date" id="fecha" name="fecha" value="${notas.fecha}">
+				<br>
+				
+				<input type="submit" value="Modificar">
 			</form>
 		</div>
 	</c:forEach>

@@ -15,16 +15,30 @@
 
 	<div class="container">
 		<div class="form">
-			<form action="insertarAsignaturas" method="post">
+			<form action="insertarNotas" method="post">
 				<div id="formulario">
-					<label for="id">Id Asignatura</label> <input type="text" id="id"
-						name="id"> <label for="nombre">Nombre Asignatura</label> <input
-						type="text" id="nombre" name="nombre"><br> <label
-						for="curso">Curso</label> <input type="number" id="curso"
-						name="curso"> <label for="tasa">Tasa</label> <input
-						type="number" id="tasa" name="tasa"> Activo: <input
-						type="checkbox" id="activo" name="activo" value="1" checked><br>
-					<input type="submit" value="Enviar">
+				
+				<label for="alumnos">Nombre Alumno</label> 
+				 <select name="alumnos" id="alumnos">
+            		<c:forEach items="${desplegableAlumnos}" var="alumno">
+                		<option value="${alumno.id}">${alumno.descripcion}</option>
+            		</c:forEach>
+        		</select>
+        		<br>
+        		<label for="asignaturas">Asignaturas</label> 
+				 <select name="asignaturas" id="asignaturas">
+            		<c:forEach items="${desplegableAsignaturas}" var="asignatura">
+                		<option value="${asignatura.id}">${asignatura.descripcion}</option>
+            		</c:forEach>
+        		</select>
+        		<br>
+				<label for="nota">Nota</label>
+				<input type="number" id="nota" name="nota">
+				<br>
+				<label for="fecha">Fecha (dejar vacío para fecha actual)</label> 
+				<input type="date" id="fecha" name="fecha">
+				<br>
+				<input type="submit" value="Enviar">
 				</div>
 			</form>
 

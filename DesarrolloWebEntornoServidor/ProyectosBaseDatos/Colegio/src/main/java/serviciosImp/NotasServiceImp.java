@@ -16,27 +16,33 @@ public class NotasServiceImp implements INotasService{
 	}
 
 	@Override
-	public ArrayList<NotasDTO> obtenerNotasFiltradas(String id, String nombre, String idasignatura, String nota, String fecha, String activo) {
+	public ArrayList<NotasDTO> obtenerNotasFiltradas(String id, String nombre, String asignatura, String nota, String fecha, String activo) {
 		INotasDAO notas = new NotasDAOImpl();
-		return notas.obtenerNotasFiltradas(id, nombre, idasignatura, nota, fecha, activo);
+		return notas.obtenerNotasFiltradas(id, nombre, asignatura, nota, fecha, activo);
 	}
 
 	@Override
-	public int insertarNota(String id, String id_alumno, String id_asignatura, String nota,  String fecha) {
+	public int insertarNota(String alumno, String asignatura, String nota,  String fecha) {
 		INotasDAO notas = new NotasDAOImpl();
-		return notas.insertarNota(id, id_alumno, id_asignatura, nota, fecha);
+		return notas.insertarNota(alumno, asignatura, nota, fecha);
 	}
 
 	@Override
-	public int actualizarNota(String id, String id_alumno, String id_asignatura, String nota,  String fecha) {
+	public ArrayList<NotasDTO> obtenerNotasFiltradas(String nombre, String asignatura, String fecha) {
 		INotasDAO notas = new NotasDAOImpl();
-		return notas.actualizarNota(id, id_alumno, id_asignatura, nota, fecha);
+		return notas.obtenerNotasFiltradas(nombre, asignatura, fecha);
 	}
 
 	@Override
-	public int borrarNota(String id) {
+	public int actualizarNotas(String id, String nombre, String asignatura, String nota, String fecha) {
 		INotasDAO notas = new NotasDAOImpl();
-		return notas.borrarNota(id);
+		return notas.actualizarNota(id, nombre, asignatura, nota, fecha);
+	}
+
+	@Override
+	public int borrarNota(String id, String asignatura, String nota, String fecha) {
+		INotasDAO notas = new NotasDAOImpl();
+		return notas.borrarNota(id, asignatura, nota, fecha);
 	}
 
 }

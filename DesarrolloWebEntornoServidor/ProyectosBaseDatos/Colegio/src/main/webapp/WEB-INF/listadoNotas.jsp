@@ -10,7 +10,7 @@
 </head>
 <body>
 	<c:forEach items="${listaNotas}" var="notas">
-		<li> ID: ${notas.id}. ALUMNO: ${notas.nombre}. ASIGNATURA: ${notas.asignatura}. NOTA: ${notas.nota}. FECHA: ${notas.fecha} </li>
+		<li> ID: ${notas.id}. ALUMNO: ${notas.alumno}. ASIGNATURA: ${notas.asignatura}. NOTA: ${notas.nota}. FECHA: ${notas.fecha} </li>
 	</c:forEach>
 </body>
 </html>

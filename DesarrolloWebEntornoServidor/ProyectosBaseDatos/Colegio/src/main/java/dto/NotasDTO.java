@@ -2,16 +2,16 @@ package dto;
 
 public class NotasDTO {
 	private String id;
-	private String id_alumno;
-	private String id_asignatura;
+	private String alumno;
+	private String asignatura;
 	private String nota;
 	private String fecha;
 	
-	public NotasDTO(String id, String id_alumno, String id_asignatura, String nota, String fecha) {
+	public NotasDTO(String id, String alumno, String asignatura, String nota, String fecha) {
 		super();
 		this.id = id;
-		this.id_alumno = id_alumno;
-		this.id_asignatura = id_asignatura;
+		this.alumno = alumno;
+		this.asignatura = asignatura;
 		this.nota = nota;
 		this.fecha = fecha;
 	}
@@ -22,17 +22,17 @@ public class NotasDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getId_alumno() {
-		return id_alumno;
+	public String getalumno() {
+		return alumno;
 	}
-	public void setId_alumno(String id_alumno) {
-		this.id_alumno = id_alumno;
+	public void setalumno(String alumno) {
+		this.alumno = alumno;
 	}
-	public String getId_asignatura() {
-		return id_asignatura;
+	public String getasignatura() {
+		return asignatura;
 	}
-	public void setId_asignatura(String id_asignatura) {
-		this.id_asignatura = id_asignatura;
+	public void setasignatura(String asignatura) {
+		this.asignatura = asignatura;
 	}
 	public String getNota() {
 		return nota;

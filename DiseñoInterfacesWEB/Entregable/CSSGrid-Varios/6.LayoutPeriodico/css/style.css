@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    padding: 1em;
+    background-color: aqua;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.content-box{
+    width: 100%;
+    display: grid;
+    grid: repeat(2, 30fr) / repeat(4, 40fr);
+    grid: repeat( auto-fill, minmax(150px, 1fr)) / repeat(auto-fill,  minmax(350px, 1fr));
+    gap: 1em;
+}
+
+.card-box{
+    width: 100%;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+    display: grid;
+}
+
+img{
+    width: 100%;
+    height: auto;
+    
+}
+
+.text-container{
+    display: grid;
+    grid: repeat(3, 1fr) / repeat(3, 1fr);
+    justify-items: center;
+    text-align: center;
+    grid-template-areas: 
+        ". h2 ."
+        ". p ."
+        ". button .";
+}
+
+h2{
+    grid-area: h2;
+    width: 100%;
+}
+
+p{
+    grid-area: p;
+    color: rgb(180, 180, 180);
+    width: 15em;
+}
+
+button{
+    width: 60%;
+    height: 60%;
+    border-radius: 5px;
+    color: white;
+    border-style: none;
+    background-color: blue;
+    font-weight: bold;
+    grid-area: button;
+}

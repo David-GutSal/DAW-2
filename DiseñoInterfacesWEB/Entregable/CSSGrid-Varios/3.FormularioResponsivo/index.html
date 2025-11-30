@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Responsivo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Formulario de Inscripción</h1>
+        <form class="responsive-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+            </div>
+            
+            <div class="form-group full-width">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ciudad">Ciudad</label>
+                    <select id="ciudad" name="ciudad">
+                        <option value="">Seleccione una ciudad</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pais">País</label>
+                    <select id="pais" name="pais">
+                        <option value="">Seleccione un país</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group full-width">
+                <label for="nacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="nacimiento" name="nacimiento">
+            </div>
+            
+            <div class="form-group full-width">
+                <label for="comentarios">Comentarios</label>
+                <textarea id="comentarios" name="comentarios" placeholder="Escribe tus comentarios aquí..."></textarea>
+            </div>
+            
+            <div class="form-group full-width checkbox-group">
+                <input type="checkbox" id="terminos" name="terminos">
+                <label for="terminos">Acepto los términos y condiciones</label>
+            </div>
+            
+            <div class="form-group full-width">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

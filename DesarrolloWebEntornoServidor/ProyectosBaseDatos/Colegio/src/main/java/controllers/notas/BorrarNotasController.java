@@ -6,15 +6,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import servicios.IAsignaturasService;
-import serviciosImp.AsignaturasServiceImp;
+import servicios.INotasService;
+import serviciosImp.NotasServiceImp;
+import utils.DesplegableUtils;
 
 import java.io.IOException;
 
 /**
  * Servlet implementation class BorrarAlumnosController
  */
-@WebServlet("/nota/borrarNotas")
+@WebServlet("/notas/borrarNotas")
 public class BorrarNotasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +31,8 @@ public class BorrarNotasController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -39,10 +41,15 @@ public class BorrarNotasController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
+		String asignatura = request.getParameter("asignaturas");
+		String nota = request.getParameter("nota");
+		String fecha = request.getParameter("fecha");
 	    
-		IAsignaturasService a = new AsignaturasServiceImp();
-	    a.borrarAsignatura(id);
+		INotasService a = new NotasServiceImp();
+	    a.borrarNota(id, asignatura, nota, fecha);
 	    
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
         RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/borrarNotas.jsp");
         d.forward(request, response);
 	}

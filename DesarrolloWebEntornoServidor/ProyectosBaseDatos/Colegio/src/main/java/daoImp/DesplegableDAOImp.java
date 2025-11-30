@@ -12,73 +12,78 @@ import utils.DBUtils;
 
 public class DesplegableDAOImp implements IDesplegableDAO {
 
-	@Override
-	public ArrayList<DesplegableDTO> desplegableMunicipios() {
-		String sql = "SELECT * FROM municipios ORDER BY nombre";
-        ArrayList<DesplegableDTO> listaMunicipios = new ArrayList<>();
+    @Override
+    public ArrayList<DesplegableDTO> desplegableMunicipios() {
 
-        try {
-            Connection connection = DBUtils.conexion();
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+        String sql = "SELECT id_municipio, nombre FROM municipios ORDER BY nombre";
+        ArrayList<DesplegableDTO> lista = new ArrayList<>();
+
+        try (Connection connection = DBUtils.conexion();
+             PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-            	DesplegableDTO a = new DesplegableDTO(rs.getInt(1), rs.getString(5));
-                listaMunicipios.add(a);
+                lista.add(new DesplegableDTO(
+                        rs.getInt("id_municipio"),
+                        rs.getString("nombre")
+                ));
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        return listaMunicipios;
-	}
-	
-	@Override
-	public ArrayList<DesplegableDTO> desplegableAsignaturas() {
-		String sql = "SELECT * FROM asignaturas ORDER BY nombre";
-		ArrayList<DesplegableDTO> listaAsignaturas = new ArrayList<>();
-		
-		try {
-			Connection connection = DBUtils.conexion();
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			
-			while (rs.next()) {
-				DesplegableDTO a = new DesplegableDTO(rs.getInt(1), rs.getString(2));
-				listaAsignaturas.add(a);
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return listaAsignaturas;
-	}
-	
-	@Override
-	public ArrayList<DesplegableDTO> desplegableAlumnos() {
-		String sql = "SELECT * FROM alumnos ORDER BY nombre";
-		ArrayList<DesplegableDTO> listaAlumnos = new ArrayList<>();
-		
-		try {
-			Connection connection = DBUtils.conexion();
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			
-			while (rs.next()) {
-				DesplegableDTO a = new DesplegableDTO(rs.getInt(1), rs.getString(2));
-				listaAlumnos.add(a);
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return listaAlumnos;
-	}
+        return lista;
+    }
+
+
+    @Override
+    public ArrayList<DesplegableDTO> desplegableAsignaturas() {
+
+        String sql = "SELECT id, nombre FROM asignaturas ORDER BY nombre";
+        ArrayList<DesplegableDTO> lista = new ArrayList<>();
+
+        try (Connection conn = DBUtils.conexion();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(new DesplegableDTO(
+                        rs.getInt("id"),
+                        rs.getString("nombre")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
+
+    @Override
+    public ArrayList<DesplegableDTO> desplegableAlumnos() {
+
+        String sql = "SELECT id, nombre FROM alumnos ORDER BY nombre";
+        ArrayList<DesplegableDTO> lista = new ArrayList<>();
+
+        try (Connection conn = DBUtils.conexion();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(new DesplegableDTO(
+                    rs.getInt("id"),
+                    rs.getString("nombre")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
 
 }

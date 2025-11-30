@@ -7,143 +7,143 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import dao.IAsignaturasDAO;
 import dto.AsignaturaDTO;
 import utils.DBUtils;
 
 public class AsignaturasDAOImpl implements IAsignaturasDAO {
-	private static Logger logger = LoggerFactory.getLogger(AsignaturasDAOImpl.class);
-	
-	@Override
-	public ArrayList<AsignaturaDTO> obtenerTodosAsignaturas() {
-		Connection connection = DBUtils.conexion();
-		ResultSet asignaturas = null;
-		ArrayList<AsignaturaDTO> listaAsignaturas = new ArrayList<>();
-		Statement statement;
+    
+    @Override
+    public ArrayList<AsignaturaDTO> obtenerTodosAsignaturas() {
 
-		try {
+        String sql = "SELECT * FROM asignaturas";
+        ArrayList<AsignaturaDTO> listaAsignaturas = new ArrayList<>();
 
-			statement = connection.createStatement();
-			asignaturas = statement.executeQuery("SELECT * FROM asignaturas");
+        try (Connection connection = DBUtils.conexion();
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)) {
 
-			while (asignaturas.next()) {
-				AsignaturaDTO a = new AsignaturaDTO(asignaturas.getInt(1), asignaturas.getString(2), asignaturas.getInt(3), asignaturas.getDouble(4));
-				logger.debug("Contenido de asignatura " + a.getNombre() + " " + a.getId());
-				listaAsignaturas.add(a);
-			}
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+            while (rs.next()) {
+                AsignaturaDTO a = new AsignaturaDTO(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getInt("curso"),
+                        rs.getDouble("tasa")
+                );
+                listaAsignaturas.add(a);
+            }
 
-		return listaAsignaturas;
-	}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-	@Override
-	public ArrayList<AsignaturaDTO> obtenerAsignaturasPorIdNombreCursoTasa(String id, String nombre, String curso, double tasa, int activo) {
+        return listaAsignaturas;
+    }
 
-	    String sql = 
-	        "SELECT id, nombre, curso, tasa, activo " +
-	        "FROM asignaturas " +
-	        "WHERE id LIKE ? AND nombre LIKE ? AND curso LIKE ? AND tasa > ? AND activo = ?";
 
-	    ArrayList<AsignaturaDTO> lista = new ArrayList<>();
+    @Override
+    public ArrayList<AsignaturaDTO> obtenerAsignaturasPorIdNombreCursoTasa(
+            String id, String nombre, String curso, double tasa, int activo) {
 
-	    try (Connection connection = DBUtils.conexion();
-	         PreparedStatement ps = connection.prepareStatement(sql)) {
+        String sql = 
+            "SELECT id, nombre, curso, tasa, activo " +
+            "FROM asignaturas " +
+            "WHERE id LIKE ? AND nombre LIKE ? AND curso LIKE ? AND tasa > ? AND activo = ?";
 
-	        ps.setString(1, "%" + id + "%");
-	        ps.setString(2, "%" + nombre + "%");
-	        ps.setString(3, "%" +curso + "%");
-	        ps.setDouble(4, tasa);
-	        ps.setInt(5, activo);
+        ArrayList<AsignaturaDTO> lista = new ArrayList<>();
 
-	        ResultSet rs = ps.executeQuery();
-	        while (rs.next()) {
-	            AsignaturaDTO a = new AsignaturaDTO(
-	                rs.getInt("id"),
-	                rs.getString("nombre"),
-	                rs.getInt("curso"),
-	                rs.getDouble("tasa")
-	            );
-	            lista.add(a);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+        try (Connection connection = DBUtils.conexion();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
 
-	    return lista;
-	}
+            ps.setString(1, "%" + id + "%");
+            ps.setString(2, "%" + nombre + "%");
+            ps.setString(3, "%" + curso + "%");
+            ps.setDouble(4, tasa);
+            ps.setInt(5, activo);
 
-	@Override
-	public int insertarAsignatura(String id, String nombre, String curso, double tasa, int activo) {
-		String sql = "INSERT INTO asignaturas (id, nombre, curso, tasa, activo) VALUES (?, ?, ?, ?, ?)";
-		PreparedStatement ps = null;
-		int resultado = 0;
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    AsignaturaDTO a = new AsignaturaDTO(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getInt("curso"),
+                        rs.getDouble("tasa")
+                    );
+                    lista.add(a);
+                }
+            }
 
-		try {
-			Connection connection = DBUtils.conexion();
-			ps = connection.prepareStatement(sql);
-			ps.setString(1, id);
-			ps.setString(2, nombre);
-			ps.setString(3, curso);
-			ps.setDouble(4, tasa);
-			ps.setInt(5, activo);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
 
-			resultado = ps.executeUpdate();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+    @Override
+    public int insertarAsignatura(String id, String nombre, String curso, double tasa, int activo) {
+        
+        String sql =
+            "INSERT INTO asignaturas (id, nombre, curso, tasa, activo) VALUES (?, ?, ?, ?, ?)";
 
-		return resultado;
-	}
+        try (Connection connection = DBUtils.conexion();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
 
-	@Override
-	public int actualizarAsignatura(String id, String nombre, String curso, double tasa, int activo) {
-		String sql = "UPDATE asignaturas SET nombre = ?, curso = ?, tasa = ?, activo = ? "
-				+ "WHERE id =  ? ";
-		PreparedStatement ps = null;
-		int resultado = 0;
+            ps.setString(1, id);
+            ps.setString(2, nombre);
+            ps.setString(3, curso);
+            ps.setDouble(4, tasa);
+            ps.setInt(5, activo);
 
-		try {
-			Connection connection = DBUtils.conexion();
-			ps = connection.prepareStatement(sql);
-			ps.setString(1, nombre);
-			ps.setString(2, curso);
-			ps.setDouble(3, tasa);
-			ps.setInt(4, activo);
-			ps.setString(5, id);
-			logger.debug("Query a ejecutar: " + ps);
-			resultado = ps.executeUpdate();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return resultado;
-	}
+            return ps.executeUpdate();
 
-	@Override
-	public int borrarAsignatura(String id) {
-		String sql = "UPDATE asignaturas SET activo = 0 "
-				+ "WHERE id = ? ";
-		Connection connection = DBUtils.conexion();
-		PreparedStatement ps;
-		Integer resultado = 0;
-		try {
-			ps = connection.prepareStatement(sql);
-			ps.setString(1, id);
-			logger.debug("Query a ejecutar: " + ps);
-			resultado = ps.executeUpdate();
-			connection.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return resultado;
-	}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+
+    @Override
+    public int actualizarAsignatura(String id, String nombre, String curso, double tasa, int activo) {
+
+        String sql = "UPDATE asignaturas SET nombre = ?, curso = ?, tasa = ?, activo = ? WHERE id = ?";
+
+        try (Connection connection = DBUtils.conexion();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, nombre);
+            ps.setString(2, curso);
+            ps.setDouble(3, tasa);
+            ps.setInt(4, activo);
+            ps.setString(5, id);
+
+            return ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+
+    @Override
+    public int borrarAsignatura(String id) {
+
+        String sql = "UPDATE asignaturas SET activo = 0 WHERE id = ?";
+
+        try (Connection connection = DBUtils.conexion();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, id);
+            return ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 
 }

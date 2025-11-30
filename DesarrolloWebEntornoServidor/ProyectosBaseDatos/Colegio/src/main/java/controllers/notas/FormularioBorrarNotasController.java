@@ -1,19 +1,20 @@
 package controllers.notas;
 
 import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import servicios.IAsignaturasService;
-import serviciosImp.AsignaturasServiceImp;
+import servicios.INotasService;
+import serviciosImp.NotasServiceImp;
 import utils.DesplegableUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import dto.AsignaturaDTO;
+import dto.NotasDTO;
 
 /**
  * Servlet implementation class FormularioBorrarAlumnosController
@@ -34,7 +35,8 @@ public class FormularioBorrarNotasController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
 		RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/borrarNotas.jsp");
         d.forward(request, response);
 	}
@@ -43,26 +45,29 @@ public class FormularioBorrarNotasController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DesplegableUtils.recuperarDesplegableMunicipios(request);
-		String id = request.getParameter("id");
-        String nombre = request.getParameter("nombre");
-        String curso = request.getParameter("curso");
-        String tasa = request.getParameter("tasa");
-        String activo =  request.getParameter("activo");
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
+		
+		String nombre = request.getParameter("alumnos");
+		String asignatura = request.getParameter("asignaturas");
+		String fecha = request.getParameter("fecha");
         
-		if (tasa == null || tasa.trim().isEmpty())
-		    tasa = "0";
+		if (fecha == null || fecha == "")
+			fecha = "0001-01-01";
+		
+		if (nombre == null)
+			nombre = "";
+		
+		if (asignatura == null)
+			asignatura = "";
 
-		if (activo != null)
-		    activo = "1";
-		else
-		    activo = "0";
-
-		ArrayList<AsignaturaDTO> listaAsignaturas = new ArrayList<>();
-        
-		IAsignaturasService a = new AsignaturasServiceImp();
-		listaAsignaturas = a.obtenerAsignaturasPorIdNombreCursoTasa(id, nombre, curso, Double.parseDouble(tasa), Integer.parseInt(activo));
-        request.setAttribute("lista", listaAsignaturas);
+		INotasService n = new NotasServiceImp();
+		
+		ArrayList<NotasDTO> listaNotas = new ArrayList<>();
+		
+		listaNotas = n.obtenerNotasFiltradas(nombre, asignatura, fecha);
+		
+        request.setAttribute("lista", listaNotas);
         
         RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/borrarNotas.jsp");
         d.forward(request, response);

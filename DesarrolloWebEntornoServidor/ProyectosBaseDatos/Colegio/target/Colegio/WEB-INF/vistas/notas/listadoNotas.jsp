@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
@@ -24,18 +23,19 @@
 				<label for="id">Id Alumno</label>
 				<input type="text" id="id" name="id">
 				
-				<label for="nombre">Nombre Alumno</label> 
-				<input type="text" id="nombre" name="nombre"><br>
-				 
-				 <select name="alumno" id="alumno">
-            		<c:forEach items="${desplegableAlumno}" var="alumno">
-                		<option value="${alumno.id}">${alumno.nombre}</option>
+				<label for="alumnos">Nombre Alumno</label> 
+				 <select name="alumnos" id="alumnos">
+				 	<option value=""></option>
+            		<c:forEach items="${desplegableAlumnos}" var="alumno">
+                		<option value="${alumno.id}">${alumno.descripcion}</option>
             		</c:forEach>
         		</select>
         		
-				 <select name="asignatura" id="asignatura">
-            		<c:forEach items="${desplegableAsignatura}" var="asignatura">
-                		<option value="${asignatura.id}">${asignatura.nombre}</option>
+        		<label for="asignaturas">Asignaturas</label> 
+				 <select name="asignaturas" id="asignaturas">
+            		<option value=""></option>
+            		<c:forEach items="${desplegableAsignaturas}" var="asignatura">
+                		<option value="${asignatura.id}">${asignatura.descripcion}</option>
             		</c:forEach>
         		</select>
         		
@@ -67,8 +67,8 @@
 			<c:forEach items="${lista}" var="notas">
 				<tr>
 					<td>${notas.id}</td>
-					<td>${notas.nombre}</td>
-					<td>${notas.asignatura}</td>
+					<td>${notas.id_alumno}</td>
+					<td>${notas.id_asignatura}</td>
 					<td>${notas.nota}</td>
 					<td>${notas.fecha}</td>
 				</tr>
