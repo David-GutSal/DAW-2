@@ -1,0 +1,19 @@
+{
+  "reservas": [
+    {
+      "id": "1",
+      "deporte": "balonmano",
+      "numeroReservas": 8
+    },
+    {
+      "id": "2",
+      "deporte": "baloncesto",
+      "numeroReservas": 9
+    },
+    {
+      "id": "44bb",
+      "deporte": "futbol",
+      "numeroReservas": 28
+    }
+  ]
+}
