@@ -7,168 +7,174 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import dao.IAlumnosDAO;
 import dto.AlumnoDTO;
 import utils.DBUtils;
 
 public class AlumnosDAOImpl implements IAlumnosDAO {
 
-    @Override
-    public ArrayList<AlumnoDTO> obtenerTodosAlumnos() {
+	@Override
+	public ArrayList<AlumnoDTO> obtenerTodosAlumnos() {
 
-        String sql = "SELECT * FROM alumnos";
-        ArrayList<AlumnoDTO> lista = new ArrayList<>();
+		String sql = "SELECT * FROM alumnos";
+		ArrayList<AlumnoDTO> lista = new ArrayList<>();
 
-        try (Connection connection = DBUtils.conexion();
-             Statement statement = connection.createStatement();
-             ResultSet rs = statement.executeQuery(sql)) {
+		try (Connection connection = DBUtils.conexion();
+				Statement statement = connection.createStatement();
+				ResultSet rs = statement.executeQuery(sql)) {
 
-            while (rs.next()) {
-                AlumnoDTO a = new AlumnoDTO(
-                    rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getString("apellidos"),
-                    rs.getString("id_municipio"),
-                    rs.getInt("familia_numerosa"),
-                    rs.getInt("activo"),
-                    rs.getInt("id_municipio")
-                );
-                lista.add(a);
-            }
+			while (rs.next()) {
+				AlumnoDTO a = new AlumnoDTO(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellidos"),
+						rs.getString("id_municipio"), rs.getInt("familia_numerosa"), rs.getInt("activo"),
+						rs.getInt("id_municipio"));
+				lista.add(a);
+			}
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-        return lista;
-    }
+		return lista;
+	}
 
+	@Override
+	public ArrayList<AlumnoDTO> obtenerAlumnosPorIdNombreApellido(String id, String nombre, String apellido,
+			int familiaNumerosa, int activo) {
 
+		String sql = "SELECT a.id, a.nombre, a.apellidos, m.nombre, m.id_municipio, " + "a.familia_numerosa, a.activo "
+				+ "FROM alumnos a JOIN municipios m ON a.id_municipio = m.id_municipio "
+				+ "WHERE a.id LIKE ? AND a.nombre LIKE ? AND a.apellidos LIKE ? "
+				+ "AND a.familia_numerosa = ? AND a.activo = ?";
 
-    @Override
-    public ArrayList<AlumnoDTO> obtenerAlumnosPorIdNombreApellido(
-            String id, String nombre, String apellido, int familiaNumerosa, int activo) {
+		ArrayList<AlumnoDTO> lista = new ArrayList<>();
 
-        String sql =
-            "SELECT a.id, a.nombre, a.apellidos, m.nombre, m.id_municipio, " +
-            "a.familia_numerosa, a.activo " +
-            "FROM alumnos a JOIN municipios m ON a.id_municipio = m.id_municipio " +
-            "WHERE a.id LIKE ? AND a.nombre LIKE ? AND a.apellidos LIKE ? " +
-            "AND a.familia_numerosa = ? AND a.activo = ?";
+		try (Connection connection = DBUtils.conexion(); PreparedStatement ps = connection.prepareStatement(sql)) {
 
-        ArrayList<AlumnoDTO> lista = new ArrayList<>();
+			ps.setString(1, "%" + id + "%");
+			ps.setString(2, "%" + nombre + "%");
+			ps.setString(3, "%" + apellido + "%");
+			ps.setInt(4, familiaNumerosa);
+			ps.setInt(5, activo);
 
-        try (Connection connection = DBUtils.conexion();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					AlumnoDTO a = new AlumnoDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+							rs.getInt(5), rs.getInt(6), rs.getInt(7));
+					lista.add(a);
+				}
+			}
 
-            ps.setString(1, "%" + id + "%");
-            ps.setString(2, "%" + nombre + "%");
-            ps.setString(3, "%" + apellido + "%");
-            ps.setInt(4, familiaNumerosa);
-            ps.setInt(5, activo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    AlumnoDTO a = new AlumnoDTO(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getInt(7)
-                    );
-                    lista.add(a);
-                }
-            }
+		return lista;
+	}
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+	@Override
+	public int insertarAlumno(String id, String nombre, String apellido, String idMunicipio, int familiaNumerosa,
+			int activo) {
 
-        return lista;
-    }
+		String sql = "INSERT INTO alumnos (id, nombre, apellidos, id_municipio, familia_numerosa, activo) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 
+		try (Connection connection = DBUtils.conexion(); PreparedStatement ps = connection.prepareStatement(sql)) {
 
+			ps.setString(1, id);
+			ps.setString(2, nombre);
+			ps.setString(3, apellido);
+			ps.setString(4, idMunicipio);
+			ps.setInt(5, familiaNumerosa);
+			ps.setInt(6, activo);
 
-    @Override
-    public int insertarAlumno(String id, String nombre, String apellido,
-                              String idMunicipio, int familiaNumerosa, int activo) {
+			return ps.executeUpdate();
 
-        String sql =
-            "INSERT INTO alumnos (id, nombre, apellidos, id_municipio, familia_numerosa, activo) " +
-            "VALUES (?, ?, ?, ?, ?, ?)";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-        try (Connection connection = DBUtils.conexion();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+		return 0;
+	}
 
-            ps.setString(1, id);
-            ps.setString(2, nombre);
-            ps.setString(3, apellido);
-            ps.setString(4, idMunicipio);
-            ps.setInt(5, familiaNumerosa);
-            ps.setInt(6, activo);
+	@Override
+	public int actualizarAlumno(String id, String nombre, String apellido, String idMunicipio, int familiaNumerosa,
+			int activo) {
 
-            return ps.executeUpdate();
+		String sql = "UPDATE alumnos SET nombre=?, apellidos=?, id_municipio=?, familia_numerosa=?, activo=? "
+				+ "WHERE id=?";
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+		try (Connection connection = DBUtils.conexion(); PreparedStatement ps = connection.prepareStatement(sql)) {
 
-        return 0;
-    }
+			ps.setString(1, nombre);
+			ps.setString(2, apellido);
+			ps.setString(3, idMunicipio);
+			ps.setInt(4, familiaNumerosa);
+			ps.setInt(5, activo);
+			ps.setString(6, id);
 
+			return ps.executeUpdate();
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-    @Override
-    public int actualizarAlumno(String id, String nombre, String apellido,
-                                String idMunicipio, int familiaNumerosa, int activo) {
+		return 0;
+	}
 
-        String sql =
-            "UPDATE alumnos SET nombre=?, apellidos=?, id_municipio=?, familia_numerosa=?, activo=? " +
-            "WHERE id=?";
+	@Override
+	public int borrarAlumno(String id) {
 
-        try (Connection connection = DBUtils.conexion();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+		String sql = "UPDATE alumnos SET activo=0 WHERE id=?";
 
-            ps.setString(1, nombre);
-            ps.setString(2, apellido);
-            ps.setString(3, idMunicipio);
-            ps.setInt(4, familiaNumerosa);
-            ps.setInt(5, activo);
-            ps.setString(6, id);
+		try (Connection connection = DBUtils.conexion(); PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            return ps.executeUpdate();
+			ps.setString(1, id);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+			return ps.executeUpdate();
 
-        return 0;
-    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
+		return 0;
+	}
 
+	@Override
+	public boolean esFamiliaNumerosa(String idAlumno) {
+		String sql = "SELECT familia_numerosa FROM alumnos WHERE id = ?";
+		boolean esFamiliaNumerosa = false;
+		try {
+			Connection connection = DBUtils.conexion();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, idAlumno);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				esFamiliaNumerosa = rs.getBoolean("familia_numerosa");
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return esFamiliaNumerosa;
+	}
 
-    @Override
-    public int borrarAlumno(String id) {
-
-        String sql = "UPDATE alumnos SET activo=0 WHERE id=?";
-
-        try (Connection connection = DBUtils.conexion();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
-
-            ps.setString(1, id);
-
-            return ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return 0;
-    }
+	@Override
+	public int contarAsignaturasMatriculadas(String idAlumno) {
+		String sql = "SELECT COUNT(*) as total FROM matriculaciones WHERE id_alumnos = ?";
+		int count = 0;
+		try {
+			Connection connection = DBUtils.conexion();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, idAlumno);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt("total");
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 
 }

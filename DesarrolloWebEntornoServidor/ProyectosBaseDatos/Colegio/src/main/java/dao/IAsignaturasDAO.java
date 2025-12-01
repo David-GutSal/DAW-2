@@ -15,5 +15,7 @@ public interface IAsignaturasDAO {
 	int actualizarAsignatura(String id, String nombre, String curso, double tasa, int activo);
 
 	int borrarAsignatura(String id);
+	
+	double obtenerTasaAsignatura(String idAsignatura);
 
 }
