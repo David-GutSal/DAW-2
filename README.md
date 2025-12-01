@@ -9,8 +9,8 @@
 ---
 ### 📊 Badges del Repositorio
 ![Visitas](https://komarev.com/ghpvc/?username=David-GutSal&label=Visitas&color=blueviolet&style=for-the-badge)
-![Repositorio](https://img.shields.io/github/repo-size/David-GutSal/DAW-2?style=for-the-badge&color=6d28d9)
-![Commits](https://img.shields.io/github/commit-activity/y/David-GutSal/DAW-2?style=for-the-badge&color=8b5cf6)
+![Size](https://img.shields.io/github/languages/code-size/David-GutSal/DAW-2?color=6d28d9&style=for-the-badge)
+![Commits este mes](https://img.shields.io/github/commit-activity/m/David-GutSal/DAW-2?style=for-the-badge&color=8b5cf6)
 ![Último commit](https://img.shields.io/github/last-commit/David-GutSal/DAW-2?style=for-the-badge&color=7c3aed)
 </div>
 
