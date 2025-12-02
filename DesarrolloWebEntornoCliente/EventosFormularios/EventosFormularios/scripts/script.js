@@ -92,5 +92,7 @@ function comprobarPalabra(){
 }
 
 function comprobarDNI(){
-
+  let texto = prompt("Escibe un DNI");
+  let patron = /[A-Z]{1}\d{8}/;
+  alert(patron.test(texto));
 }
