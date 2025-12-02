@@ -1,0 +1,362 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    transition: background-color 0.5s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #007bff;
+}
+
+header h1 {
+    color: #007bff;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header .subtitle {
+    color: #6c757d;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Ejercicios */
+.exercise {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 25px;
+    transition: transform 0.3s ease;
+}
+
+.exercise:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.exercise h2 {
+    color: #495057;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+    font-size: 1.8rem;
+}
+
+.exercise h2 i {
+    margin-right: 10px;
+    color: #007bff;
+}
+
+.exercise-content {
+    padding: 15px 0;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+/* Status y resultados */
+.status {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.result-area {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-top: 20px;
+    border-left: 4px solid #007bff;
+}
+
+.result {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f1f3f4;
+    border-radius: 5px;
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+    transition: color 0.3s ease;
+}
+
+.form-group label:hover {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Checkboxes */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-item input {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* Regex ejercicios */
+.regex-exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.regex-exercise {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.regex-exercise h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.regex-exercise input {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+/* Input group */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: 600;
+}
+
+.input-group input {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    border: 2px solid #ced4da;
+    border-radius: 5px;
+}
+
+/* Color preview */
+.color-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.color-preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid #dee2e6;
+}
+
+/* Mensajes de error y info */
+.error, .error-message {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.info-message {
+    color: #17a2b8;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #d1ecf1;
+    border-radius: 4px;
+    display: none;
+}
+
+/* Validaciones */
+input:invalid, select:invalid {
+    border-color: #dc3545;
+}
+
+input:valid, select:valid {
+    border-color: #28a745;
+}
+
+/* Instrucciones */
+.instructions {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #e7f3ff;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}
+
+.instructions ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .exercise {
+        padding: 20px;
+    }
+    
+    .regex-exercises {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .input-group input {
+        width: 100%;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.result, .status, .info-message, .error {
+    animation: fadeIn 0.5s ease;
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Eventos y Formularios</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-code"></i> Ejercicios de Eventos y Formularios</h1>
+            <p class="subtitle">Desarrollo Web en Entorno Cliente</p>
+        </header>
+
+        <main>
+            <!-- Ejercicio 1 -->
+            <section class="exercise" id="ejercicio1">
+                <h2><i class="fas fa-bell"></i> Ejercicio 1: Aviso Programado</h2>
+                <div class="exercise-content">
+                    <p>Al hacer click en "Aviso", comenzará a mostrar cada 5 segundos un alert. "Parar Aviso" detendrá los avisos.</p>
+                    <div class="buttons">
+                        <button id="avisoBtn" class="btn btn-primary">Aviso</button>
+                        <button id="pararAvisoBtn" class="btn btn-secondary">Parar Aviso</button>
+                    </div>
+                    <div class="status" id="avisoStatus">Estado: Detenido</div>
+                </div>
+            </section>
+
+            <!-- Ejercicio 2 -->
+            <section class="exercise" id="ejercicio2">
+                <h2><i class="fas fa-keyboard"></i> Ejercicio 2: Información de DNI por Letra</h2>
+                <div class="exercise-content">
+                    <p>Presiona una letra para ver cuántos DNIs de 4 cifras (0001-9999) tienen esa letra.</p>
+                    <div class="input-area">
+                        <div class="input-group">
+                            <label for="letraInput">Letra del DNI:</label>
+                            <input type="text" id="letraInput" maxlength="1" placeholder="Escribe una letra">
+                            <button id="calcularDNI" class="btn btn-primary">Calcular</button>
+                        </div>
+                    </div>
+                    <div id="dniResult" class="result-area">
+                        <p>Información de DNI aparecerá aquí</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ejercicio 3 -->
+            <section class="exercise" id="ejercicio3">
+                <h2><i class="fas fa-mouse-pointer"></i> Ejercicio 3: Cambio de Fondo</h2>
+                <div class="exercise-content">
+                    <p>Haz doble click en cualquier punto de la pantalla para cambiar el fondo a un color aleatorio.</p>
+                    <div class="color-info">
+                        <p>Color actual: <span id="colorActual">#FFFFFF</span></p>
+                        <div id="colorPreview" class="color-preview"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ejercicio 4 -->
+            <section class="exercise" id="ejercicio4">
+                <h2><i class="fas fa-search"></i> Ejercicio 4: Expresiones Regulares</h2>
+                <div class="exercise-content">
+                    <div class="regex-exercises">
+                        <div class="regex-exercise">
+                            <h3>a) 10 dígitos seguidos</h3>
+                            <input type="text" id="regex1Input" placeholder="Introduce texto para buscar 10 dígitos seguidos">
+                            <button id="regex1Btn" class="btn btn-primary">Comprobar</button>
+                            <div class="result" id="regex1Result"></div>
+                        </div>
+
+                        <div class="regex-exercise">
+                            <h3>b) 10 dígitos al final</h3>
+                            <input type="text" id="regex2Input" placeholder="Introduce texto">
+                            <button id="regex2Btn" class="btn btn-primary">Comprobar</button>
+                            <div class="result" id="regex2Result"></div>
+                        </div>
+
+                        <div class="regex-exercise">
+                            <h3>c) Validar fecha DD-MM-AAAA o DD-MM-AA</h3>
+                            <input type="text" id="regex3Input" placeholder="Formato: DD-MM-AAAA o DD-MM-AA">
+                            <button id="regex3Btn" class="btn btn-primary">Validar</button>
+                            <div class="result" id="regex3Result"></div>
+                        </div>
+
+                        <div class="regex-exercise">
+                            <h3>d) Validar email con dominio específico</h3>
+                            <input type="text" id="regex4Input" placeholder="ejemplo@dominio.com">
+                            <button id="regex4Btn" class="btn btn-primary">Validar</button>
+                            <div class="result" id="regex4Result"></div>
+                        </div>
+
+                        <div class="regex-exercise">
+                            <h3>e) Buscar palabras paca, vaca, baca, caca</h3>
+                            <p>Texto: "Paca llevaba una vaca en la baca que se hizo caca"</p>
+                            <button id="regex5Btn" class="btn btn-primary">Buscar coincidencias</button>
+                            <div class="result" id="regex5Result"></div>
+                        </div>
+
+                        <div class="regex-exercise">
+                            <h3>f) Validar formato DNI</h3>
+                            <input type="text" id="regex6Input" placeholder="Formato: 12345678A">
+                            <button id="regex6Btn" class="btn btn-primary">Validar formato</button>
+                            <button id="regex6ValidarBtn" class="btn btn-secondary">Validar letra</button>
+                            <div class="result" id="regex6Result"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ejercicio 5 -->
+            <section class="exercise" id="ejercicio5">
+                <h2><i class="fas fa-clipboard-list"></i> Ejercicio 5: Formulario Avanzado</h2>
+                <div class="exercise-content">
+                    <form id="formularioAvanzado" novalidate>
+                        <div class="form-group">
+                            <label for="dni">DNI:</label>
+                            <input type="text" id="dni" name="dni" pattern="\d{8}[A-Za-z]" required>
+                            <small>Formato: 8 números y 1 letra</small>
+                            <div class="error" id="dniError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email">
+                            <small>Formato válido y dominio: gmail.com, hotmail.com o calasanzsalamanca.com</small>
+                            <div class="error" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="palabra1">Primera palabra:</label>
+                            <input type="text" id="palabra1" name="palabra1" required>
+                            <div class="error" id="palabra1Error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="palabra2">Segunda palabra:</label>
+                            <input type="text" id="palabra2" name="palabra2" required>
+                            <small>Debe ser un anagrama de la primera palabra</small>
+                            <div class="error" id="palabra2Error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pais">País:</label>
+                            <select id="pais" name="pais" required>
+                                <option value="" selected disabled>No inicializado</option>
+                                <option value="España">España</option>
+                                <option value="Francia">Francia</option>
+                                <option value="Irlanda">Irlanda</option>
+                            </select>
+                            <div class="error" id="paisError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad:</label>
+                            <select id="ciudad" name="ciudad" required disabled>
+                                <option value="" selected disabled>No inicializado</option>
+                            </select>
+                            <div class="error" id="ciudadError"></div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar Formulario</button>
+                        <button type="reset" class="btn btn-secondary">Limpiar</button>
+                    </form>
+                    <div id="formResult" class="result-area"></div>
+                </div>
+            </section>
+
+            <!-- Ejercicio 6 -->
+            <section class="exercise" id="ejercicio6">
+                <h2><i class="fas fa-palette"></i> Ejercicio 6: Formulario con Validación HTML5</h2>
+                <div class="exercise-content">
+                    <form id="formularioHTML5" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha:</label>
+                                <input type="date" id="fecha" name="fecha" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="tel" id="telefono" name="telefono" pattern="\d{9}" required>
+                                <small>9 dígitos sin espacios</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="buscarPor">Buscar por:</label>
+                                <input type="text" id="buscarPor" name="buscarPor" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email2">Email (opcional):</label>
+                                <input type="email" id="email2" name="email2">
+                            </div>
+                            <div class="form-group">
+                                <label for="color">Color favorito:</label>
+                                <input type="color" id="color" name="color" value="#ffff00">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sitioWeb">Sitio Web (opcional):</label>
+                                <input type="url" id="sitioWeb" name="sitioWeb">
+                            </div>
+                            <div class="form-group">
+                                <label for="edad">Edad (opcional):</label>
+                                <input type="number" id="edad" name="edad" min="0" max="120">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="reset" class="btn btn-secondary">Limpiar</button>
+                    </form>
+                    <div class="instructions">
+                        <p><strong>Instrucciones:</strong></p>
+                        <ul>
+                            <li>Campos obligatorios: Nombre, Fecha, Teléfono, Buscar por</li>
+                            <li>Los errores se marcarán con borde rojo si el campo obligatorio está vacío</li>
+                            <li>Si un campo tiene valor pero formato incorrecto, se usará el color seleccionado</li>
+                            <li>Pasa el ratón sobre las etiquetas para resaltar el campo correspondiente</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ejercicio 7 -->
+            <section class="exercise" id="ejercicio7">
+                <h2><i class="fas fa-bed"></i> Ejercicio 7: Formulario de Búsqueda de Alojamiento</h2>
+                <div class="exercise-content">
+                    <form id="formularioAlojamiento">
+                        <div class="form-group">
+                            <label for="provincia">Provincia de Castilla y León:</label>
+                            <select id="provincia" name="provincia">
+                                <option value="">Seleccione una provincia</option>
+                                <option value="Ávila">Ávila</option>
+                                <option value="Burgos">Burgos</option>
+                                <option value="León">León</option>
+                                <option value="Palencia">Palencia</option>
+                                <option value="Salamanca">Salamanca</option>
+                                <option value="Segovia">Segovia</option>
+                                <option value="Soria">Soria</option>
+                                <option value="Valladolid">Valladolid</option>
+                                <option value="Zamora">Zamora</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tipoAlojamiento">Tipo de alojamiento:</label>
+                            <select id="tipoAlojamiento" name="tipoAlojamiento">
+                                <option value="">Seleccione un tipo</option>
+                                <option value="casa_rural">Casa rural</option>
+                                <option value="hotel_rural">Hotel Rural</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="hostal">Hostal</option>
+                                <option value="apartamento">Apartamento</option>
+                            </select>
+                            <div id="hotelInfo" class="info-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Características:</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="montana" name="caracteristicas" value="montana">
+                                    <label for="montana">Montaña</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="meseta" name="caracteristicas" value="meseta">
+                                    <label for="meseta">Meseta</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="nucleo" name="caracteristicas" value="nucleo">
+                                    <label for="nucleo">En núcleo poblacional</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="aislado" name="caracteristicas" value="aislado">
+                                    <label for="aislado">Aislado</label>
+                                </div>
+                            </div>
+                            <div id="compatibilidadError" class="error-message"></div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Buscar Alojamiento</button>
+                    </form>
+                    <div id="alojamientoResult" class="result-area"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Desarrollo de Aplicaciones Web - Desarrollo Web en Entorno Cliente</p>
+            <p>Tema 6: Eventos y Formularios</p>
+        </footer>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
