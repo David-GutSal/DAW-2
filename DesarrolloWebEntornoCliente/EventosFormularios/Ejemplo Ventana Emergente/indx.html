@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propagación de Eventos (Bubbling)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .demo-area {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-title {
+            color: #3498db;
+            margin-top: 0;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .elements-container {
+            position: relative;
+            height: 400px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .element {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 5px;
+        }
+        
+        .element:hover {
+            transform: scale(1.02);
+        }
+        
+        .element-level-1 {
+            width: 350px;
+            height: 350px;
+            background-color: rgba(52, 152, 219, 0.2);
+            border: 3px solid #3498db;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .element-level-2 {
+            width: 250px;
+            height: 250px;
+            background-color: rgba(46, 204, 113, 0.2);
+            border: 3px solid #2ecc71;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .element-level-3 {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(231, 76, 60, 0.2);
+            border: 3px solid #e74c3c;
+            top: 125px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+        
+        .element-level-4 {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(155, 89, 182, 0.2);
+            border: 3px solid #9b59b6;
+            top: 160px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+        }
+        
+        .element-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .element-id {
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        
+        .log-area {
+            flex: 1;
+            min-width: 300px;
+            background-color: #2c3e50;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        
+        .log-title {
+            color: #ecf0f1;
+            margin-top: 0;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        
+        .log-container {
+            height: 400px;
+            overflow-y: auto;
+            background-color: #1a252f;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .log-entry {
+            padding: 8px 0;
+            border-bottom: 1px solid #2c3e50;
+        }
+        
+        .log-time {
+            color: #3498db;
+        }
+        
+        .log-event {
+            color: #2ecc71;
+        }
+        
+        .log-element {
+            color: #e74c3c;
+        }
+        
+        .log-phase {
+            color: #f39c12;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button#stopPropagationBtn {
+            background-color: #e74c3c;
+        }
+        
+        button#stopPropagationBtn:hover {
+            background-color: #c0392b;
+        }
+        
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .toggle-label {
+            font-weight: bold;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #2ecc71;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+        
+        .explanation {
+            max-width: 800px;
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .explanation h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .explanation ul {
+            padding-left: 20px;
+        }
+        
+        .explanation li {
+            margin-bottom: 10px;
+        }
+        
+        .code-example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            overflow-x: auto;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .demo-area, .log-area {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Propagación de Eventos (Bubbling)</h1>
+    <p class="subtitle">Haz clic en cualquiera de los elementos anidados para ver cómo el evento se propaga desde el elemento objetivo hasta sus ancestros (fase de bubbling).</p>
+    
+    <div class="container">
+        <div class="demo-area">
+            <h2 class="demo-title">Elementos Anidados</h2>
+            <div class="elements-container">
+                <div class="element element-level-1" id="div1">
+                    <div class="element-label">Div 1</div>
+                    <div class="element-id">#div1 (más externo)</div>
+                    <p>Haz clic aquí</p>
+                </div>
+                
+                <div class="element element-level-2" id="div2">
+                    <div class="element-label">Div 2</div>
+                    <div class="element-id">#div2</div>
+                    <p>Haz clic aquí</p>
+                </div>
+                
+                <div class="element element-level-3" id="div3">
+                    <div class="element-label">Div 3</div>
+                    <div class="element-id">#div3</div>
+                    <p>Haz clic aquí</p>
+                </div>
+                
+                <div class="element element-level-4" id="div4">
+                    <div class="element-label">Div 4</div>
+                    <div class="element-id">#div4 (más interno)</div>
+                    <p>Haz clic aquí</p>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="clearLogBtn">Limpiar Registro</button>
+                <button id="stopPropagationBtn">Activar stopPropagation()</button>
+                
+                <div class="toggle-container">
+                    <span class="toggle-label">Capturing:</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="capturingToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="log-area">
+            <h2 class="log-title">Registro de Eventos</h2>
+            <div class="log-container" id="logContainer">
+                <!-- Los registros de eventos aparecerán aquí -->
+                <div class="log-entry">Haz clic en cualquier elemento para comenzar...</div>
+            </div>
+            <div class="controls">
+                <div>Eventos capturados: <span id="eventCount">0</span></div>
+                <div>Stop Propagation: <span id="stopPropagationStatus">Desactivado</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="explanation">
+        <h3>¿Qué es la Propagación de Eventos (Bubbling)?</h3>
+        <p>En el modelo de eventos del DOM, cuando ocurre un evento en un elemento, este no solo se ejecuta en ese elemento, sino que también se propaga a sus ancestros en el árbol DOM. Esta propagación ocurre en tres fases:</p>
+        
+        <ol>
+            <li><strong>Fase de Capturing (Captura)</strong>: El evento desciende desde el elemento raíz hasta el elemento objetivo.</li>
+            <li><strong>Fase de Target (Objetivo)</strong>: El evento alcanza el elemento objetivo.</li>
+            <li><strong>Fase de Bubbling (Burbujeo)</strong>: El evento asciende desde el elemento objetivo hasta el elemento raíz.</li>
+        </ol>
+        
+        <p>Por defecto, los event listeners se ejecutan durante la fase de bubbling (a menos que se especifique lo contrario con el tercer parámetro de addEventListener).</p>
+        
+        <div class="code-example">
+// Código JavaScript para este ejemplo:<br>
+// Agregar event listeners a todos los elementos<br>
+const elements = document.querySelectorAll('.element');<br>
+<br>
+elements.forEach(element => {<br>
+&nbsp;&nbsp;// Para la fase de bubbling (por defecto)<br>
+&nbsp;&nbsp;element.addEventListener('click', function(event) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;logEvent(event, 'BUBBLING');<br>
+&nbsp;&nbsp;});<br>
+<br>
+&nbsp;&nbsp;// Para la fase de capturing (cuando se activa el toggle)<br>
+&nbsp;&nbsp;element.addEventListener('click', function(event) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;logEvent(event, 'CAPTURING');<br>
+&nbsp;&nbsp;}, true); // true indica fase de capturing<br>
+});<br>
+<br>
+// Detener la propagación cuando el botón está activado<br>
+if (stopPropagationEnabled) {<br>
+&nbsp;&nbsp;event.stopPropagation();<br>
+&nbsp;&nbsp;logEvent(event, 'STOPPED (no más propagación)');<br>
+}
+        </div>
+        
+        <p>En este ejemplo, al hacer clic en el elemento más interno (div4), puedes observar cómo el evento se propaga hacia arriba a través de todos sus ancestros (div3 → div2 → div1).</p>
+    </div>
+
+    <script>
+        // Elementos del DOM
+        const elements = document.querySelectorAll('.element');
+        const logContainer = document.getElementById('logContainer');
+        const clearLogBtn = document.getElementById('clearLogBtn');
+        const stopPropagationBtn = document.getElementById('stopPropagationBtn');
+        const capturingToggle = document.getElementById('capturingToggle');
+        const eventCountElement = document.getElementById('eventCount');
+        const stopPropagationStatus = document.getElementById('stopPropagationStatus');
+        
+        // Variables de estado
+        let stopPropagationEnabled = false;
+        let eventCount = 0;
+        
+        // Función para registrar eventos en el log
+        function logEvent(event, phase) {
+            eventCount++;
+            eventCountElement.textContent = eventCount;
+            
+            const now = new Date();
+            const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}.${now.getMilliseconds().toString().padStart(3, '0')}`;
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            
+            // Determinar el elemento clickeado basado en la fase
+            let elementId;
+            if (phase === 'CAPTURING') {
+                elementId = event.currentTarget.id;
+            } else {
+                elementId = event.currentTarget.id;
+            }
+            
+            logEntry.innerHTML = `
+                <span class="log-time">[${timeString}]</span>
+                <span class="log-event">Click</span> en 
+                <span class="log-element">${elementId}</span> | 
+                Fase: <span class="log-phase">${phase}</span>
+            `;
+            
+            logContainer.prepend(logEntry);
+            
+            // Limitar el número de entradas en el log
+            const logEntries = logContainer.querySelectorAll('.log-entry');
+            if (logEntries.length > 20) {
+                logContainer.removeChild(logEntries[logEntries.length - 1]);
+            }
+        }
+        
+        // Función para manejar eventos con stopPropagation
+        function handleEventWithStopPropagation(event, phase) {
+            logEvent(event, phase);
+            
+            if (stopPropagationEnabled && phase === 'BUBBLING') {
+                event.stopPropagation();
+                logEvent(event, 'STOPPED (no más propagación)');
+            }
+        }
+        
+        // Agregar event listeners a todos los elementos
+        elements.forEach(element => {
+            // Para la fase de bubbling (por defecto)
+            element.addEventListener('click', function(event) {
+                handleEventWithStopPropagation(event, 'BUBBLING');
+            });
+            
+            // Para la fase de capturing (solo cuando el toggle está activado)
+            element.addEventListener('click', function(event) {
+                if (capturingToggle.checked) {
+                    logEvent(event, 'CAPTURING');
+                }
+            }, true); // true indica fase de capturing
+        });
+        
+        // Limpiar el registro de eventos
+        clearLogBtn.addEventListener('click', function() {
+            logContainer.innerHTML = '<div class="log-entry">Haz clic en cualquier elemento para comenzar...</div>';
+            eventCount = 0;
+            eventCountElement.textContent = eventCount;
+        });
+        
+        // Alternar stopPropagation
+        stopPropagationBtn.addEventListener('click', function() {
+            stopPropagationEnabled = !stopPropagationEnabled;
+            
+            if (stopPropagationEnabled) {
+                stopPropagationBtn.textContent = 'Desactivar stopPropagation()';
+                stopPropagationBtn.style.backgroundColor = '#27ae60';
+                stopPropagationStatus.textContent = 'Activado';
+                stopPropagationStatus.style.color = '#2ecc71';
+            } else {
+                stopPropagationBtn.textContent = 'Activar stopPropagation()';
+                stopPropagationBtn.style.backgroundColor = '#e74c3c';
+                stopPropagationStatus.textContent = 'Desactivado';
+                stopPropagationStatus.style.color = '#e74c3c';
+            }
+        });
+        
+        // Agregar un pequeño efecto visual al hacer clic
+        elements.forEach(element => {
+            element.addEventListener('mousedown', function() {
+                this.style.transform = this.style.transform.replace('scale(1.02)', 'scale(0.98)');
+            });
+            
+            element.addEventListener('mouseup', function() {
+                this.style.transform = this.style.transform.replace('scale(0.98)', 'scale(1.02)');
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = this.style.transform.includes('scale') 
+                    ? this.style.transform.replace(/scale\([^)]+\)/, '') 
+                    : this.style.transform;
+            });
+        });
+        
+        // Inicializar mensaje de explicación
+        console.log('Ejemplo de propagación de eventos cargado.');
+        console.log('Haz clic en los elementos anidados para ver cómo se propaga el evento.');
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "tiposEquipo": [
+    {
+      "id": "1",
+      "tipo": "portátil"
+    },
+    {
+      "id": "2",
+      "tipo": "tablet"
+    },
+    {
+      "id": "3",
+      "tipo": "sobremesa"
+    }
+  ],
+  "reservas": [
+    {
+      "id": "1",
+      "nombre": "Sonia",
+      "numExpediente": "DAW-1234",
+      "correoE": "sonia@educa.calasanz.es",
+      "tipoEquipo": "portatil",
+      "fecha": "03/12/2025",
+      "hora": "11:00",
+      "duracion": 3,
+      "observaciones": ""
+    },
+    {
+      "id": "6795",
+      "numExpediente": "DAW-1234",
+      "correoE": "dada@gmail.com",
+      "tipoEquipo": "portátil",
+      "fecha": "2025-12-04",
+      "hora": "16:02"
+    },
+    {
+      "id": "c516",
+      "numExpediente": "DAW-1234",
+      "correoE": "dada@gmail.com",
+      "tipoEquipo": "tablet",
+      "fecha": "2025-12-25",
+      "hora": "16:06",
+      "observaciones": ""
+    },
+    {
+      "id": "e571",
+      "numExpediente": "DAW-1234",
+      "correoE": "dada@gmail.com",
+      "tipoEquipo": "portátil",
+      "fecha": "2025-12-18",
+      "hora": "17:09"
+    }
+  ]
+}

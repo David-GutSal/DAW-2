@@ -1,0 +1,35 @@
+form {
+    background-color: rgb(178, 34, 34, 0.8);
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+label {
+    display: block;
+}
+
+.error {
+    color: red;
+}
+
+input:invalid {
+    border: 2px dashed red;
+}
+
+/* Estilos ventana emergente */
+h1 {
+    color: firebrick;
+    text-align: center;
+}
+
+#datosUsuario, button{
+    text-align: center;
+    border: black solid 1px;
+    border-radius: 2em 2em;
+}
+
+#divBotones {
+    text-align: center;
+    margin: 10px auto;
+}

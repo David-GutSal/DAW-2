@@ -1,0 +1,205 @@
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.4;
+}
+
+.cabecera {
+    background-color: #0066cc;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 3px solid #004499;
+}
+
+.cabecera img {
+    width: 70px;
+    height: 70px;
+    float: left;
+    margin-right: 40px;
+}
+
+.cabecera h1 {
+    margin: 5px 0;
+    font-size: 24px;
+}
+
+.cabecera p {
+    margin: 0;
+    font-style: italic;
+}
+
+.contenedor {
+    width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.errores {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    height: 150px;
+    overflow: auto;
+}
+
+form {
+    margin-top: 10px;
+}
+
+form h2 {
+    color: #0066cc;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+legend {
+    font-weight: bold;
+    color: #0066cc;
+    padding: 0 10px;
+}
+
+.campo {
+    margin-bottom: 10px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+
+.radio-grupo {
+    margin-top: 5px;
+}
+
+.radio-opcion {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.radio-opcion input {
+    margin-right: 8px;
+}
+
+.contador {
+    text-align: right;
+    font-size: 12px;
+    color: #666;
+    margin-top: 3px;
+}
+
+.botones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 8px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#btnReservar {
+    background-color: #28a745;
+    color: white;
+}
+
+#btnLimpiar {
+    background-color: #6c757d;
+    color: white;
+}
+
+.pie {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+    border-top: 3px solid #0066cc;
+}
+
+.columna {
+    width: 48%;
+    float: left;
+    margin-right: 4%;
+}
+
+.columna:last-child {
+    margin-right: 0;
+}
+
+.pie h3 {
+    color: #66b3ff;
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.pie p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.derechos {
+    clear: both;
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #555;
+    font-size: 12px;
+    color: #aaa;
+}
+
+/** Clase a aplicar cuando sea necesario */
+.error-input {
+    border-color: red !important;
+    background-color: #ffe6e6;
+}
+
+.hover-duracion .radio-opcion {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.contador-advertencia {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.contador-error {
+    color: #dc3545;
+    font-weight: bold;
+}

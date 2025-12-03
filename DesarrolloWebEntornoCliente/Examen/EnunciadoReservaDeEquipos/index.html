@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/scripts.js"></script>
+    <link rel="stylesheet" href="./style/estilos.css">
+    <title> Reserva de equipos </title>
+</head>
+<body>
+    <div class="cabecera">
+        <img src="./img/logo.jpg" alt="Logo Colegio Calasanz">
+        <h1>Sistema de Reserva de Equipos Informáticos</h1>
+        <p>Colegio Calasanz - Departamento de Informática</p>
+    </div>
+
+    <div class="contenedor">
+        <div id="divErrores" class="errores"></div>
+        
+        <form id="formularioReserva" novalidate>
+            <h2>Formulario de Reserva</h2>
+            
+            <fieldset>
+                <legend>Datos del Solicitante</legend>
+                <div class="campo">
+                    <label for="expediente">Nº Expediente: *</label>
+                    <input type="text" id="expediente" name="expediente" required pattern="DAW-\d{4}">
+                </div>
+                
+                <div class="campo">
+                    <label for="email">Correo institucional: *</label>
+                    <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@educa.calasanz.es">
+                </div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Detalles de la Reserva</legend>
+                
+                <div class="campo">
+                    <label for="equipo">Tipo de equipo: *</label>
+                    <select id="equipo" name="equipo" required>
+                        <option value="" >Seleccione tipo de equipo</option>
+            
+                    </select>
+                </div>
+                
+                <div class="campo">
+                    <label for="fecha">Fecha de reserva: *</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                
+                <div class="campo">
+                    <label for="hora">Hora de inicio: *</label>
+                    <input type="time" id="hora" name="hora" required >
+                </div>
+                
+                <div class="campo">
+                    <label>Duración (horas): *</label>
+                    <div class="radio-grupo" id="grupoDuracion">
+                        <label class="radio-opcion">
+                            <input type="radio" name="duracion" value="2" required>
+                            2 horas
+                        </label>
+                        <label class="radio-opcion">
+                            <input type="radio" name="duracion" value="3" required>
+                            3 horas
+                        </label>
+                        <label class="radio-opcion">
+                            <input type="radio" name="duracion" value="4" required>
+                            4 horas
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Observaciones</legend>
+                
+                <div class="campo">
+                    <label for="observaciones">Observaciones:</label>
+                    <textarea id="observaciones" name="observaciones" rows="4" maxlength="250"></textarea>
+                    <div id="contadorCaracteres" class="contador">Caracteres: 0/250</div>
+                </div>
+            </fieldset>
+            
+            <div class="botones">
+                <button type="submit" id="btnReservar">Reservar Equipo</button>
+                <button type="reset" id="btnLimpiar">Limpiar Formulario</button>
+            </div>
+        </form>
+    </div>
+    
+    <footer class="pie">
+        <div class="columna">
+            <h3>Colegio Calasanz</h3>
+            <p>Departamento de Informática</p>
+            <p>Pº Canalejas, 139-159 - 37001 - Salamanca</p>
+            <p>Tel:  923 26 79 61</p>
+        </div>
+        <address class="columna">
+            <h3>Contacto</h3>
+            <p>info@calasanzsalamanca.es</p>
+        </address>
+        <div class="derechos">
+            &copy; 2025 Colegio Calasanz - Sistema de Reservas v1.0
+        </div>
+    </footer>
+</body>
+</html>
