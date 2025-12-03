@@ -67,8 +67,8 @@
 			<c:forEach items="${lista}" var="notas">
 				<tr>
 					<td>${notas.id}</td>
-					<td>${notas.id_alumno}</td>
-					<td>${notas.id_asignatura}</td>
+					<td>${notas.alumno}</td>
+					<td>${notas.asignatura}</td>
 					<td>${notas.nota}</td>
 					<td>${notas.fecha}</td>
 				</tr>

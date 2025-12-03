@@ -34,7 +34,7 @@
             		</c:forEach>
         		</select>
         		<br>
-				<label for="fecha">Fecha (dejar vacío para fecha actual)</label> 
+				<label for="fecha">Fecha</label> 
 				<input type="date" id="fecha" name="fecha">
 				<br>
 				<input type="submit" value="Enviar">
@@ -45,28 +45,28 @@
 	<c:forEach items="${lista}" var="notas">
 		<div class="form">
 			<form action="actualizarNotas" method="post">
-				<input type="text" id="id" name="id" value="${notas.id}" hidden=true> 
+				<input type="text" name="id" value="${notas.id}" hidden=true> 
 				
-				<label for="alumnos">Nombre Alumno</label> 
-				<select name="alumnos" id="alumnos">
-            		<c:forEach items="${desplegableAlumnos}" var="alumno">
-                		<option value="${alumno.id}" 
-						    <c:if test="${alumno.id == notas.id_alumno}">selected</c:if>>
-						    ${alumno.descripcion}
-						</option>
-            		</c:forEach>
-        		</select>
+				<label>Nombre Alumno</label>
+	            <select name="alumnos">
+	                <c:forEach items="${desplegableAlumnos}" var="alumno">
+	                    <option value="${alumno.id}"
+	                        <c:if test="${alumno.id == notas.alumno}">selected</c:if>>
+	                        ${alumno.descripcion}
+	                    </option>
+	                </c:forEach>
+	            </select>
         		<br>
         		
-        		<label for="asignaturas">Asignaturas</label> 
-				 <select name="asignaturas" id="asignaturas">
-            		<c:forEach items="${desplegableAsignaturas}" var="asignatura">
-                		<option value="${asignatura.id}" 
-					    <c:if test="${asignatura.id == notas.id_asignatura}">selected</c:if>>
-					    ${asignatura.descripcion}
-					</option>
-            		</c:forEach>
-        		</select>
+        		<label>Asignaturas</label>
+	            <select name="asignaturas">
+	                <c:forEach items="${desplegableAsignaturas}" var="asignatura">
+	                    <option value="${asignatura.id}"
+	                        <c:if test="${asignatura.id == notas.asignatura}">selected</c:if>>
+	                        ${asignatura.descripcion}
+	                    </option>
+	                </c:forEach>
+	            </select>
         		
 				<label for="nota">Nota</label>
 				<input type="number" id="nota" name="nota" value="${notas.nota}">

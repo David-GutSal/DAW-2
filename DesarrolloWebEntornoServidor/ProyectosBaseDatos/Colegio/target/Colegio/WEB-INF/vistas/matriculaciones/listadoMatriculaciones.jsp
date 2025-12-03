@@ -20,16 +20,16 @@
 
 	<div class="container">
 		<div class="form">
-			<form action="listadoAsignaturas"
+			<form action="listadoMatriculaciones"
 				method="post">
-				<label for="id">Id Asignatura</label>
-				<input type="text" id="id" name="id"> 
-				
 				<label for="nombre">Nombre Asignatura</label> 
-				<input type="text" id="nombre" name="nombre"><br> 
+				<input type="text" id="asignatura" name="asignatura"><br> 
 				
-				<label for="curso">Curso</label> 
-				<input type="number" id="curso" name="curso">
+				<label for="nombre">Nombre Alumno</label> 
+				<input type="text" id="alumno" name="alumno"><br> 
+				
+				<label for="date">Fecha (desde)</label> 
+				<input type="date" id="date" name="date">
 				
 				<label for="tasa">Tasa</label> 
 				<input type="number" id="tasa" name="tasa">
@@ -47,17 +47,19 @@
 	<c:if test="${not empty lista}">
 		<table>
 			<tr>
-				<th>ID</th>
-				<th>NOMBRE</th>
-				<th>CURSO</th>
-				<th>TASA</th>
+				<th>Nombre Asignatura</th>
+				<th>Nombre Alumno</th>
+				<th>Fecha</th>
+				<th>Activo</th>
+				<th>Tasa</th>
 			</tr>
-			<c:forEach items="${lista}" var="asignatura">
+			<c:forEach items="${lista}" var="matricula">
 				<tr>
-					<td>${asignatura.id}</td>
-					<td>${asignatura.nombre}</td>
-					<td>${asignatura.curso}</td>
-					<td>${asignatura.tasa}</td>
+					<td>${matricula.asignatur}</td>
+					<td>${matricula.alumno}</td>
+					<td>${matricula.fecha}</td>
+					<td>${matricula.activo}</td>
+					<td>${matricula.tasa}</td>
 				</tr>
 			</c:forEach>
 		</table>
