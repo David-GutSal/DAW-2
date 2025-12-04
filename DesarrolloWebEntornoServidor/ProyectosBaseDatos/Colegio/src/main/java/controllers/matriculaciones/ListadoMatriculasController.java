@@ -7,13 +7,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import serviciosImp.MatriculaServiceImp;
+import servicios.IMatriculacionesService;
+import serviciosImp.MatriculacionesServiceImp;
+import utils.DesplegableUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import dto.MatriculaDTO;
-import servicios.IMatriculaService;
 
 /**
  * Servlet implementation class ListadoAlumnosController
@@ -36,7 +37,10 @@ public class ListadoMatriculasController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
+		
 		RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/matriculaciones/listadoMatriculaciones.jsp");
 		d.forward(request, response);
 
@@ -48,9 +52,9 @@ public class ListadoMatriculasController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        String asignatura = request.getParameter("asignatura");
-        String alumno = request.getParameter("alumno");
-        String fecha = request.getParameter("fecha");
+        String asignatura = request.getParameter("asignaturas");
+        String alumno = request.getParameter("alumnos");
+        String fecha = request.getParameter("date");
         String activo =  request.getParameter("activo");
         String tasa =  request.getParameter("tasa");
         
@@ -60,7 +64,7 @@ public class ListadoMatriculasController extends HttpServlet {
         if(alumno == null)
         	alumno = "";
         
-        if(fecha == null)
+        if(fecha == "")
         	fecha = "0001-01-01";
          
         if(tasa == null)
@@ -71,11 +75,13 @@ public class ListadoMatriculasController extends HttpServlet {
         else
         	activo = "0";
         
-        IMatriculaService  m = new MatriculaServiceImp();
+        IMatriculacionesService  m = new MatriculacionesServiceImp();
         ArrayList<MatriculaDTO> listaMatriculas = new ArrayList<>();
         
-        listaMatriculas = m.obtenerMatriculasFiltradas(asignatura, alumno, fecha, activo, tasa);
+        listaMatriculas = m.obtenerMatriculasFiltradas(asignatura, alumno, fecha, Integer.parseInt(activo), tasa);
         
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
         request.setAttribute("lista", listaMatriculas);
         RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/matriculaciones/listadoMatriculaciones.jsp");
         d.forward(request, response);

@@ -22,12 +22,24 @@
 		<div class="form">
 			<form action="listadoMatriculaciones"
 				method="post">
-				<label for="nombre">Nombre Asignatura</label> 
-				<input type="text" id="asignatura" name="asignatura"><br> 
 				
-				<label for="nombre">Nombre Alumno</label> 
-				<input type="text" id="alumno" name="alumno"><br> 
-				
+			<label for="alumnos">Nombre Alumno</label> 
+				 <select name="alumnos" id="alumnos">
+				 	<option value=""></option>
+            		<c:forEach items="${desplegableAlumnos}" var="alumno">
+                		<option value="${alumno.id}">${alumno.descripcion}</option>
+            		</c:forEach>
+        		</select>
+        		
+        	<br>
+        	<label for="asignaturas">Asignaturas</label> 
+				 <select name="asignaturas" id="asignaturas">
+				 	<option value=""></option>
+            		<c:forEach items="${desplegableAsignaturas}" var="asignatura">
+                		<option value="${asignatura.id}">${asignatura.descripcion}</option>
+            		</c:forEach>
+        		</select>
+        		
 				<label for="date">Fecha (desde)</label> 
 				<input type="date" id="date" name="date">
 				
@@ -35,7 +47,7 @@
 				<input type="number" id="tasa" name="tasa">
 				
 				Activo: 
-				<input type="checkbox" id="activo" name="activo" value="1"><br>
+				<input type="checkbox" id="activo" name="activo" value="1" checked><br>
 				<input type="submit" value="Enviar">
 			</form>
 		</div>
@@ -55,7 +67,7 @@
 			</tr>
 			<c:forEach items="${lista}" var="matricula">
 				<tr>
-					<td>${matricula.asignatur}</td>
+					<td>${matricula.asignatura}</td>
 					<td>${matricula.alumno}</td>
 					<td>${matricula.fecha}</td>
 					<td>${matricula.activo}</td>

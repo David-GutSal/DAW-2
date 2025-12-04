@@ -1,4 +1,4 @@
-package controllers.notas;
+package controllers.matriculaciones;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -6,25 +6,25 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;                     
 import jakarta.servlet.http.HttpServletResponse;
-import servicios.INotasService;
-import serviciosImp.NotasServiceImp;
+import servicios.IMatriculacionesService;
+import serviciosImp.MatriculacionesServiceImp;
 import utils.DesplegableUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import dto.NotasDTO;                                         
+import dto.MatriculaDTO;                                         
                                                                     
 /**                                                                 
- * * Servlet implementation class formularioActualizarNotas */
-@WebServlet("/notas/formularioActualizarNotas")
-public class FormularioActualizarNotasController extends HttpServlet {
+ * * Servlet implementation class formularioActualizarMatriculaciones */
+@WebServlet("/matriculaciones/formularioActualizarMatriculaciones")
+public class FormularioActualizarMatriculacionesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FormularioActualizarNotasController() {
+    public FormularioActualizarMatriculacionesController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +35,7 @@ public class FormularioActualizarNotasController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DesplegableUtils.recuperarDesplegableAlumnos(request);
 		DesplegableUtils.recuperarDesplegableAsignaturas(request);
-		RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/actualizarNotas.jsp");
+		RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/matriculaciones/actualizarMatriculacion.jsp");
         d.forward(request, response);
 
 	}
@@ -47,28 +47,26 @@ public class FormularioActualizarNotasController extends HttpServlet {
 		DesplegableUtils.recuperarDesplegableAlumnos(request);
 		DesplegableUtils.recuperarDesplegableAsignaturas(request);
 		
-		String nombre = request.getParameter("alumnos");
-		String asignatura = request.getParameter("asignaturas");
-		String fecha = request.getParameter("fecha");
+		String alumno = request.getParameter("alumno");
+        String asignatura = request.getParameter("asignatura");
+        String fecha = request.getParameter("date");
 
-		if (fecha == null || fecha == "")
-			fecha = "0001-01-01";
-		
-		if (nombre == null)
-			nombre = "";
-		
-		if (asignatura == null)
-			asignatura = "";
-
-		
-		
-		ArrayList<NotasDTO> listaNotas = new ArrayList<>();
-		INotasService n = new NotasServiceImp();
-		listaNotas = n.obtenerNotasFiltradas(nombre, asignatura, fecha);
-
-        request.setAttribute("lista", listaNotas);
+        if(alumno == null)
+        	alumno = "";
         
-        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/notas/actualizarNotas.jsp");
+        if(asignatura == null)
+        	asignatura = "";
+        
+        if(fecha == "")
+        	fecha = "0001-01-01";
+
+		ArrayList<MatriculaDTO> listaMatriculas = new ArrayList<>();
+		IMatriculacionesService m = new MatriculacionesServiceImp();
+		listaMatriculas = m.obtenerMatriculasFiltradas(alumno, asignatura, fecha);
+		
+        request.setAttribute("lista", listaMatriculas);
+        
+        RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/matriculaciones/actualizarMatriculacion.jsp");
         d.forward(request, response);
         
         

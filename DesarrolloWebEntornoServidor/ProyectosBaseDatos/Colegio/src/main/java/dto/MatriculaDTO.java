@@ -5,10 +5,19 @@ public class MatriculaDTO {
 	private String asignatura;
 	private String alumno;
 	private String fecha;
-	private String activo;
+	private int activo;
 	private String tasa;
 	
-	public MatriculaDTO(String asignatura, String alumno, String fecha, String activo, String tasa) {
+	public MatriculaDTO(String id, String asignatura, String alumno, String fecha, String tasa) {
+		super();
+		this.id = id;
+		this.asignatura = asignatura;
+		this.alumno = alumno;
+		this.fecha = fecha;
+		this.tasa = tasa;
+	}
+
+	public MatriculaDTO(String asignatura, String alumno, String fecha, int activo, String tasa) {
 		super();
 		this.asignatura = asignatura;
 		this.alumno = alumno;
@@ -17,7 +26,7 @@ public class MatriculaDTO {
 		this.tasa = tasa;
 	}
 
-	public MatriculaDTO(String id, String asignatura, String alumno, String fecha, String activo, String tasa) {
+	public MatriculaDTO(String id, String asignatura, String alumno, String fecha, int activo, String tasa) {
 		super();
 		this.id = id;
 		this.asignatura = asignatura;
@@ -51,10 +60,10 @@ public class MatriculaDTO {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	public String getActivo() {
+	public int getActivo() {
 		return activo;
 	}
-	public void setActivo(String activo) {
+	public void setActivo(int activo) {
 		this.activo = activo;
 	}
 	public String getTasa() {
@@ -63,5 +72,13 @@ public class MatriculaDTO {
 	public void setTasa(String tasa) {
 		this.tasa = tasa;
 	}
+
+	@Override
+	public String toString() {
+		return "MatriculaDTO [id=" + id + ", asignatura=" + asignatura + ", alumno=" + alumno + ", fecha=" + fecha
+				+ ", activo=" + activo + ", tasa=" + tasa + "]";
+	}
+	
+	
 	
 }

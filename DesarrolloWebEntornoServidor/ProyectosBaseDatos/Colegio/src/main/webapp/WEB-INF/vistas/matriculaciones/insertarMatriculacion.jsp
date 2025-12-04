@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/colegio/css/index.css">
-<link rel="stylesheet" href="/colegio/css/formularios.css">
+<link rel="stylesheet" href="/Colegio/css/index.css">
+<link rel="stylesheet" href="/Colegio/css/formularios.css">
 <title>Insertar Matriculación</title>
 </head>
 <body>

@@ -1,0 +1,66 @@
+package controllers.matriculaciones;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import servicios.IMatriculacionesService;
+import serviciosImp.MatriculacionesServiceImp;
+import utils.DesplegableUtils;
+
+import java.io.IOException;
+
+
+@WebServlet("/matriculaciones/actualizarMatriculacion")
+public class ActualizarMatriculacionesController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ActualizarMatriculacionesController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String id = request.getParameter("id");
+		String nombre = request.getParameter("alumnos");
+		String asignatura = request.getParameter("asignaturas");
+		String fecha = request.getParameter("fecha");
+		String tasa = request.getParameter("tasa");
+
+		if (nombre == null)
+			nombre = "";
+		
+		if (asignatura == null)
+			asignatura = "";
+		
+		if (fecha == "")
+			fecha = "0001-01-01";
+
+		IMatriculacionesService m = new MatriculacionesServiceImp();
+		m.actualizarMatriculaciones(id, nombre, asignatura, fecha, tasa);
+		    
+		DesplegableUtils.recuperarDesplegableAlumnos(request);
+		DesplegableUtils.recuperarDesplegableAsignaturas(request);
+	    RequestDispatcher d = getServletContext().getRequestDispatcher("/WEB-INF/vistas/matriculaciones/actualizarMatriculacion.jsp");
+	    d.forward(request, response);
+	}
+
+}
