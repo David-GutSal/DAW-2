@@ -1,141 +1,174 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-areas: 
-        "header header"
-        "main main"
-        "main main"
-        "footer footer";
-    grid-template-columns: 1fr 300px;
-    grid-template-rows: auto auto 1fr auto;
-    min-height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr 60px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  height: 100vh;
 }
 
 .header {
-    grid-area: header;
-    display: grid;
-        grid-template-areas: 
-        "media-image menu buscar";
-    background-color: #444;
-    align-items: center;
-    padding: 10px;
+  grid-area: header;
+  display: grid;
+  background-color: #444;
+  grid-template-columns: auto 1fr 1fr;
+  align-items: center;
+  padding: 15px;
 }
 
 .media-image img {
-    grid-area: media-image;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    object-fit: cover;
+  grid-area: media-image;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .menu {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    list-style: none;
-    justify-self: baseline;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  list-style: none;
+  justify-self: flex-start;
 }
 
-.menu li{
-    
+.buscar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  justify-content: end;
+  gap: 15px;
 }
 
-.buscar{
-    display: grid;
-    grid-area: buscar;
-    grid-template-columns: 75% 25%;
-    justify-self: end;
-    gap: 5%;
+.buscar input {
+  height: 30px;
+  border-radius: 5px;
+  border-style: none;
+  width: 40%;
+  justify-self: end;
 }
-
-.buscar input{
-    height: 30px;
-}
-.buscar button{
-    border-radius: 5px;
-    border-style: none;
-    min-width: 80px;
+.buscar button {
+  border-radius: 5px;
+  border-style: none;
+  width: 8em;
+  justify-self: end;
 }
 
 .header a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
 }
 
-
 .main {
-    grid-area: main;
-    padding: 20px;
-    background-color: #f9f9f9;
+  grid-area: main;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
 .footer {
-    grid-area: footer;
-    background-color: #333;
-    color: white;
-    padding: 20px;
+  grid-area: footer;
+  background-color: #333;
+  color: white;
+  padding: 20px;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
 }
 
 .enlaces {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 10px;
 }
 
 .enlaces a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .derechos {
-    text-align: right;
+  text-align: right;
 }
 
 @media (max-width: 600px) {
-    .grid-container {
-        grid-template-areas: 
-            "header"
-            "main"
-            "main"
-            "footer";
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto 1fr;
-    }
-    
-    .menu {
-        grid-area: menu;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 10px;
-    }
-    
-    .derechos {
-        text-align: center;
-    }
-    
-    .enlaces {
-        justify-content: center;
-    }
+  .grid-container {
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+  }
+  .header {
+    display: grid;
+    grid-row: 1fr 1fr 1fr;
+    grid-template-areas:
+      "media-image"
+      "menu "
+      "buscar";
+    gap: 10px;
+  }
+
+  .menu {
+    grid-area: menu;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .media-image img {
+    grid-area: media-image;
+  }
+
+  .buscar {
+    grid-area: buscar;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
+  }
+
+  .buscar input {
+    height: 30px;
+    border-radius: 5px;
+    border-style: none;
+    width: 150%;
+
+  }
+  .buscar button {
+    border-radius: 5px;
+    border-style: none;
+    width: 8em;
+    justify-content: end;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .contacto {
+    text-align: center;
+  }
+
+  .enlaces {
+    display: grid;
+    justify-self: center;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 10px;
+  }
+
+  .derechos {
+    text-align: center;
+  }
 }

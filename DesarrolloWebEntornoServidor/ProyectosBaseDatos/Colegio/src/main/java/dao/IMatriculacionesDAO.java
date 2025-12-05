@@ -17,4 +17,6 @@ public interface IMatriculacionesDAO {
 	ArrayList<MatriculaDTO> obtenerMatriculasFiltradas(String asignatura, String alumno, String fecha);
 
 	int actualizarMatriculaciones(String id, String nombre, String asignatura, String fecha, String tasa);
+
+	int borrarMatricula(String id);
 }

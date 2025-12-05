@@ -11,20 +11,28 @@
 <body>
 	<%@include file="/menu.html" %>
 	<div class="container">
-		<h2>Borrar Asignatura</h2>
+		<h2>Borrar Matricula</h2>
 		<div class="form">
-			<form action="formularioBorrarAsignaturas" method="post">
+			<form action="formularioBorrarMatriculas" method="post">
 
-				<label for="id">Id asignatura</label> 
-				<input type="text" id="id" name="id"> 
-				<label for="nombre">Nombre asignatura</label> 
-				<input type="text" id="nombre" name="nombre"><br> 
-				<label for="curso">Curso asignatura</label> 
-				<input type="number" id="curso" name="curso">
-				<label for="tasa">Tasa asignatura</label> 
-				<input type="number" id="tasa" name="tasa">
-				Activo: 
-				<input type="checkbox" id="activo"name="activo" value="1" checked><br> 
+			<label for="alumnos">Nombre Alumno</label> 
+				 <select name="alumnos" id="alumnos">
+				 	<option value=""></option>
+            		<c:forEach items="${desplegableAlumnos}" var="alumno">
+                		<option value="${alumno.id}">${alumno.descripcion}</option>
+            		</c:forEach>
+        		</select>
+        		<br>
+        		<label for="asignaturas">Asignaturas</label> 
+				 <select name="asignaturas" id="asignaturas">
+				 	<option value=""></option>
+            		<c:forEach items="${desplegableAsignaturas}" var="asignatura">
+                		<option value="${asignatura.id}">${asignatura.descripcion}</option>
+            		</c:forEach>
+        		</select>
+				<label for="date">Fecha</label>
+				<input type="date" id="date" name="date">
+				 
 				<input type="submit" value="Enviar">
 			</form>
 		</div>
@@ -36,26 +44,19 @@
 	</c:if>
 	<c:if test="${not empty lista}">
 		<table>
-			<tr>
-				<th>ID</th>
-				<th>NOMBRE</th>
-				<th>CURSO</th>
-				<th>TASA</th>
-				<th>BORRAR</th>
-			</tr>
-			<c:forEach items="${lista}" var="asignatura">
-				<tr>
-					<td id="id">${asignatura.id}</td>
-					<td>${asignatura.nombre}</td>
-					<td>${asignatura.curso}</td>
-					<td>${asignatura.tasa}</td>
-					<td>
-						<form action="borrarAsignaturas" method="POST" >
-							<input type="hidden" name="id" value="${asignatura.id}">
+			<c:forEach items="${lista}" var="matriculas">
+				<ul>
+					<li>Alumno: ${matriculas.alumno}</li>
+					<li>Asignatura: ${matriculas.asignatura}</li>
+					<li>Fecha: ${matriculas.fecha}</li>
+					<li>Tasa: ${matriculas.tasa}</li>
+					<li>
+						<form action="borrarMatriculacion" method="POST" >
+							<input type="hidden" name="id" value="${matriculas.id}">
 							<input type ="submit" value="Borrar">
 						</form>
-					</td>
-				</tr>
+					</li>
+				</ul>
 			</c:forEach>
 		</table>
 	</c:if>

@@ -26,6 +26,7 @@
             		</c:forEach>
         		</select>
         		<br>
+        		
         		<label for="asignaturas">Asignaturas</label> 
 				 <select name="asignaturas" id="asignaturas">
 				 	<option value=""></option>
@@ -33,6 +34,7 @@
                 		<option value="${asignatura.id}">${asignatura.descripcion}</option>
             		</c:forEach>
         		</select>
+        		
         		<br>
 				<label for="fecha">Fecha</label> 
 				<input type="date" id="fecha" name="fecha">

@@ -12,7 +12,11 @@ C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\ma
 C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\asignaturas\FormularioBorrarAsignaturasController.java
 C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\asignaturas\InsertarAsignaturasController.java
 C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\asignaturas\ListadoAsignaturasController.java
+C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\matriculaciones\ActualizarMatriculacionesController.java
+C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\matriculaciones\BorrarMatriculasController.java
 C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\matriculaciones\CalcularTasaController.java
+C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\matriculaciones\FormularioActualizarMatriculacionesController.java
+C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\matriculaciones\FormularioBorrarMatriculasController.java
 C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\matriculaciones\InsertarMatriculacionesController.java
 C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\matriculaciones\ListadoMatriculasController.java
 C:\Materias\DAW-2\DesarrolloWebEntornoServidor\ProyectosBaseDatos\Colegio\src\main\java\controllers\notas\ActualizarNotasController.java

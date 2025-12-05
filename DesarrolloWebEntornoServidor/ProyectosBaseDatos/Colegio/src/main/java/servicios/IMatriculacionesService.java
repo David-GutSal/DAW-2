@@ -16,4 +16,6 @@ public interface IMatriculacionesService {
 
 	public int actualizarMatriculaciones(String id, String nombre, String asignatura, String fecha, String tasa);
 
+	public int borrarMatricula(String id);
+
 }

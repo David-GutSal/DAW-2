@@ -160,7 +160,7 @@ public class AlumnosDAOImpl implements IAlumnosDAO {
 
 	@Override
 	public int contarAsignaturasMatriculadas(String idAlumno) {
-		String sql = "SELECT COUNT(*) as total FROM matriculaciones WHERE id_alumnos = ?";
+		String sql = "SELECT COUNT(*) as total FROM matriculaciones WHERE id_alumno = ?";
 		int count = 0;
 		try {
 			Connection connection = DBUtils.conexion();

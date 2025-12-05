@@ -142,35 +142,52 @@ public class MatriculacionesDAOImpl implements IMatriculacionesDAO {
 
 	@Override
 	public int actualizarMatriculaciones(String id, String nombre, String asignatura, String fecha, String tasa) {
+	    String sql1 = "UPDATE matriculaciones SET id_asignatura = ?, id_alumno = ?, fecha = ? WHERE id = ?";
+	    String sql2 = "UPDATE caja SET importe = ? WHERE idmatricula = ?";
+	    int filasAfectadas = 0;
+	    try (Connection con = DBUtils.conexion()) {
 
-        String sql1 ="UPDATE matriculaciones SET id_asignatura = ?, id_alumno = ?, fecha = ? WHERE id = ?";
-        String sql2 ="UPDATE caja SET importe = ? WHERE idmatricula = ?";
+	        try (PreparedStatement ps1 = con.prepareStatement(sql1)) {
+	            ps1.setString(1, asignatura);
+	            ps1.setString(2, nombre);
+	            ps1.setString(3, fecha);
+	            ps1.setString(4, id);
+	            filasAfectadas += ps1.executeUpdate();
+	        }
 
-        try (Connection con = DBUtils.conexion();
-             PreparedStatement ps = con.prepareStatement(sql1)) {
+	        try (PreparedStatement ps2 = con.prepareStatement(sql2)) {
+	            ps2.setString(1, tasa);
+	            ps2.setString(2, id);
+	            filasAfectadas += ps2.executeUpdate();
+	        }
+	        return filasAfectadas;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return 0;
+	    }
+	}
 
-        	ps.setString(1, asignatura);
-        	ps.setString(2, nombre); 
-        	ps.setString(3, fecha); 
-        	ps.setString(4, id);
-            return ps.executeUpdate();
+	@Override
+	public int borrarMatricula(String id) {
+	    String sql1 = "DELETE FROM caja WHERE idmatricula like ?";
+	    String sql2 = "DELETE FROM matriculaciones WHERE id like ?";
+	    int filasAfectadas = 0;
+	    try (Connection con = DBUtils.conexion()) {
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-        try (Connection con = DBUtils.conexion();
-        		PreparedStatement ps = con.prepareStatement(sql2)) {
-        	
-        	ps.setString(1, tasa);
-        	ps.setString(4, id);
-        	return ps.executeUpdate();
-        	
-        } catch (SQLException e) {
-        	e.printStackTrace();
-        }
+	        try (PreparedStatement ps1 = con.prepareStatement(sql1)) {
+	            ps1.setString(1, id);
+	            filasAfectadas += ps1.executeUpdate();
+	        }
 
-        return 0;
-    }
+	        try (PreparedStatement ps2 = con.prepareStatement(sql2)) {
+	            ps2.setString(1, id);
+	            filasAfectadas += ps2.executeUpdate();
+	        }
+	        return filasAfectadas;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return 0;
+	    }
+	}
 
 }
