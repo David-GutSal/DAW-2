@@ -47,8 +47,8 @@ public class FormularioActualizarMatriculacionesController extends HttpServlet {
 		DesplegableUtils.recuperarDesplegableAlumnos(request);
 		DesplegableUtils.recuperarDesplegableAsignaturas(request);
 		
-		String alumno = request.getParameter("alumno");
-        String asignatura = request.getParameter("asignatura");
+		String alumno = request.getParameter("alumnos");
+        String asignatura = request.getParameter("asignaturas");
         String fecha = request.getParameter("date");
 
         if(alumno == null)

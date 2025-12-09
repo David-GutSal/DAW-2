@@ -47,7 +47,7 @@ public class FormularioBorrarMatriculasController extends HttpServlet {
 		
 		String alumno = request.getParameter("alumnos");
 		String asignatura = request.getParameter("asignaturas");
-		String fecha = request.getParameter("fecha");
+		String fecha = request.getParameter("date");
         
 		if (fecha == null || fecha == "")
 			fecha = "0001-01-01";

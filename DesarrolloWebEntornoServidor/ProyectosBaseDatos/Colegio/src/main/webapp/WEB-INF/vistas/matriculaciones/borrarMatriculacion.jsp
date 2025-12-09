@@ -41,8 +41,17 @@
 
 		<c:forEach items="${lista}" var="matriculas">
 			<ul>
-				<li>Alumno: ${matriculas.alumno}</li>
-				<li>Asignatura: ${matriculas.asignatura}</li>
+				<li>Alumno: <c:forEach items="${desplegableAlumnos}" var="al">
+						<c:if test="${al.id == matriculas.alumno}">
+					            ${al.descripcion}
+					        </c:if>
+					</c:forEach></li>
+				<li>Asignatura: <c:forEach items="${desplegableAsignaturas}"
+						var="as">
+						<c:if test="${as.id == matriculas.asignatura}">
+					            ${as.descripcion}
+					        </c:if>
+					</c:forEach></li>
 				<li>Fecha: ${matriculas.fecha}</li>
 				<li>Tasa: ${matriculas.tasa}</li>
 				<li>
