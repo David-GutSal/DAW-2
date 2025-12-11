@@ -1,312 +1,171 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    width: 100%;
-    min-height: 100vh;
-    background-color: #f0f0f0;
-    padding: 10px;
+  font-family: Arial, sans-serif;
+  background: #fff;
 }
 
 header {
-    text-align: center;
-    margin: 1em 0 1.5em 0;
-    color: #333;
-}
-
-header h1 {
-    font-size: 1.8em;
-    font-weight: bold;
+  text-align: center;
+  margin: 1em 0;
 }
 
 form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto auto auto auto;
-    gap: 15px;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 92%;
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;  
+  grid-auto-rows: auto;
+  column-gap: 28px;                 
+  row-gap: 20px;                    
 }
 
 .form-section {
-    border: 1px solid #000;
-    padding: 15px;
-    background-color: #ffffff;
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    gap: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid rgb(200,200,200);
+  padding: 1.25rem;
+  background-color: #fafafa;
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  overflow: hidden;
 }
 
-.form-section h2 {
-    background-color: #6b6b6b;
-    color: white;
-    padding: 8px;
-    margin: -15px -15px 0 -15px;
-    font-size: 1.1em;
-    font-weight: bold;
-    border-bottom: 1px solid #000;
+.form-section:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1;
 }
 
-.form-section > p {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    align-items: center;
-    gap: 10px;
-    margin: 0;
+.form-section:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.form-section:nth-of-type(3) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.form-section:nth-of-type(4) {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .form-section label {
-    font-weight: bold;
-    margin-bottom: 0;
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: #222;
 }
 
 .form-section input[type="text"],
-.form-section input[type="date"],
-.form-section input[type="tel"],
 .form-section input[type="email"],
+.form-section input[type="tel"],
 .form-section input[type="password"],
+.form-section input[type="date"],
 .form-section select,
+.form-section textarea,
 .form-section input[type="file"] {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid #cfcfcf;
+  border-radius: 3px;
+  font-size: 0.95rem;
 }
 
-.form-section progress {
-    width: 100%;
-    height: 20px;
+.form-section textarea {
+  min-height: 80px;
+  box-sizing: border-box;
 }
 
-/* Estilos para la sección de méritos académicos */
-.form-section:nth-child(2) ul {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 5px;
-    margin: 10px 0;
+.form-section ul,
+.form-section ul.sector {
+  padding-left: 0;
 }
 
-.form-section:nth-child(2) ul li {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    align-items: center;
-    gap: 5px;
+.form-section ul li {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 4px 0;
+  column-gap: 10px;
 }
 
-.form-section:nth-child(2) ul li label {
-    font-weight: normal;
-    grid-column: 2;
+.form-section ul li label {
+  white-space: nowrap;
 }
 
-.form-section:nth-child(2) ul li input[type="radio"] {
-    grid-column: 1;
-    margin: 0;
+
+.form-section input[type="checkbox"],
+.form-section input[type="radio"] {
+  margin: 0;
+  margin-left: 8px;
 }
 
-.form-section:nth-child(2) > p:last-of-type {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 5px;
-    margin-top: 10px;
+.form-section:nth-child(1) p:nth-of-type(5) input[type=file] {
+  width: auto;
 }
 
-.form-section:nth-child(2) textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-top: 5px;
-    grid-column: 1 / -1;
+.form-section input[type="file"] {
+  border: none;
+  padding: 0;
 }
 
-/* Estilos para la sección de sectores */
-.form-section:nth-child(3) .sector {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin: 10px 0;
+.form-section p {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 10px;
 }
 
-.form-section:nth-child(3) .sector li {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    align-items: center;
-    gap: 5px;
+.form-section p label {
+  white-space: nowrap;
+}
+progress{
+    margin-left: 74.5%;
 }
 
-.form-section:nth-child(3) .sector li label {
-    font-weight: normal;
-    grid-column: 2;
+textarea {
+  grid-column: 1 / -1; 
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.form-section:nth-child(3) .sector li input[type="checkbox"] {
-    grid-column: 1;
-    margin: 0;
+#titulacion {
+  margin-top: 5px;
 }
 
-/* Estilos para botones */
+
 #botones {
-    grid-column: 1 / -1;
-    text-align: center;
-    margin-top: 10px;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-content: center;
-    gap: 20px;
+  grid-column: 1 / 3;
+  text-align: center;
+  padding-top: 6px;
 }
 
 #botones button {
-    padding: 10px 20px;
-    border: 1px solid #000;
-    border-radius: 3px;
-    background-color: #6b6b6b;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    gap: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 40px; 
+  padding: 0 14px;
+  margin: 0 8px;
+  border: 1px solid #bbb;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-size: 0.95rem;
 }
 
-#botones button:hover {
-    background-color: #5a5a5a;
+
+#botones #enviar {
+  background: #e9e9e9;
 }
 
-#enviar {
-    background-color: #4a6fa5 !important;
+@media (max-width: 481px) {
+
 }
 
-#enviar:hover {
-    background-color: #3a5a8c !important;
-}
-
-/* Ajustes para el input file */
-.form-section input[type="file"] {
-    padding: 3px;
-}
-
-/* Ajustes para selects */
-.form-section select {
-    padding: 8px;
-    margin-top: 5px;
-}
-
-/* Grid layout específico para escritorio */
-.form-section:nth-child(1) {
-    grid-area: 1 / 1 / 3 / 2;
-}
-
-.form-section:nth-child(2) {
-    grid-area: 1 / 2 / 3 / 3;
-}
-
-.form-section:nth-child(3) {
-    grid-area: 3 / 1 / 4 / 2;
-}
-
-.form-section:nth-child(4) {
-    grid-area: 3 / 2 / 4 / 3;
-}
-
-#botones {
-    grid-area: 4 / 1 / 5 / 3;
-}
-
-/* Ajustes para el párrafo del progreso */
-.form-section > p:first-of-type {
-    margin-top: 10px;
-}
-
-.form-section > p:first-of-type label {
-    grid-column: 1;
-}
-
-.form-section > p:first-of-type progress {
-    grid-column: 2;
-}
-
-/* Ajustes para párrafos especiales */
-.form-section:nth-child(2) > p:nth-of-type(1) {
-    margin-top: 10px;
-}
-
-.form-section:nth-child(2) > p:nth-of-type(2) {
-    grid-column: 1 / -1;
-    margin-top: 10px;
-}
-
-/* Estilos para la sección de otros aspectos */
-.form-section:nth-child(4) > p {
-    grid-template-columns: 300px 1fr;
-}
-
-/* Responsive para móviles */
-@media (max-width: 768px) {
-    form {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto auto;
-    }
-    
-    .form-section:nth-child(1) {
-        grid-area: 1 / 1 / 2 / 2;
-    }
-    
-    .form-section:nth-child(2) {
-        grid-area: 2 / 1 / 3 / 2;
-    }
-    
-    .form-section:nth-child(3) {
-        grid-area: 3 / 1 / 4 / 2;
-    }
-    
-    .form-section:nth-child(4) {
-        grid-area: 4 / 1 / 5 / 2;
-    }
-    
-    #botones {
-        grid-area: 5 / 1 / 6 / 2;
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .form-section:nth-child(3) .sector {
-        grid-template-columns: 1fr;
-    }
-    
-    .form-section > p {
-        grid-template-columns: 1fr;
-        gap: 5px;
-    }
-    
-    .form-section > p label {
-        grid-column: 1;
-    }
-    
-    .form-section > p input,
-    .form-section > p select,
-    .form-section > p progress {
-        grid-column: 1;
-    }
-    
-    .form-section:nth-child(4) > p {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Ajustes adicionales */
-.form-section ul {
-    padding-left: 0;
-}
-
-/* Asegurar que todos los elementos dentro de form-section usen grid */
-.form-section > * {
-    display: grid;
-}
