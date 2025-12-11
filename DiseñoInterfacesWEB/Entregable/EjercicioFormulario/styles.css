@@ -1,98 +1,312 @@
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     font-family: Arial, sans-serif;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    padding: 10px;
 }
 
-header{
+header {
     text-align: center;
-    margin: 1em;
+    margin: 1em 0 1.5em 0;
+    color: #333;
+}
+
+header h1 {
+    font-size: 1.8em;
+    font-weight: bold;
 }
 
 form {
-  display: grid;
-  grid-template-columns: repeat(4, 24%);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 20px;
-  width: 100%;
-  height: 95%;
-  justify-content: center;
-}
-
-.form-section{
-    border: 1px solid black;
-    padding: 1em;
-    background-color: rgb(107, 107, 107);
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto auto;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-li{
-  list-style: none;
+.form-section {
+    border: 1px solid #000;
+    padding: 15px;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.form-section h2 {
+    background-color: #6b6b6b;
+    color: white;
+    padding: 8px;
+    margin: -15px -15px 0 -15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+}
+
+.form-section > p {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.form-section label {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.form-section input[type="text"],
+.form-section input[type="date"],
+.form-section input[type="tel"],
+.form-section input[type="email"],
+.form-section input[type="password"],
+.form-section select,
+.form-section input[type="file"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form-section progress {
+    width: 100%;
+    height: 20px;
+}
+
+/* Estilos para la sección de méritos académicos */
+.form-section:nth-child(2) ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.form-section:nth-child(2) ul li {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-section:nth-child(2) ul li label {
+    font-weight: normal;
+    grid-column: 2;
+}
+
+.form-section:nth-child(2) ul li input[type="radio"] {
+    grid-column: 1;
+    margin: 0;
+}
+
+.form-section:nth-child(2) > p:last-of-type {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.form-section:nth-child(2) textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 5px;
+    grid-column: 1 / -1;
+}
+
+/* Estilos para la sección de sectores */
+.form-section:nth-child(3) .sector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.form-section:nth-child(3) .sector li {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-section:nth-child(3) .sector li label {
+    font-weight: normal;
+    grid-column: 2;
+}
+
+.form-section:nth-child(3) .sector li input[type="checkbox"] {
+    grid-column: 1;
+    margin: 0;
+}
+
+/* Estilos para botones */
+#botones {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    gap: 20px;
+}
+
+#botones button {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: #6b6b6b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 5px;
+}
+
+#botones button:hover {
+    background-color: #5a5a5a;
+}
+
+#enviar {
+    background-color: #4a6fa5 !important;
+}
+
+#enviar:hover {
+    background-color: #3a5a8c !important;
+}
+
+/* Ajustes para el input file */
+.form-section input[type="file"] {
+    padding: 3px;
+}
+
+/* Ajustes para selects */
+.form-section select {
+    padding: 8px;
+    margin-top: 5px;
+}
+
+/* Grid layout específico para escritorio */
 .form-section:nth-child(1) {
-  grid-area: 1 / 1 / 3 / 3;
-}
-.form-section:nth-child(1) progress{
-  margin-left: 60%;
-}
-.form-section:nth-child(1) input[type=text]{
-  width: 82.8%;
-}
-.form-section:nth-child(1) input[type=date]{
-  width: 81.5%;
-}
-.form-section:nth-child(1) input[type=tel]{
-  width: 91.6%;
-}
-.form-section:nth-child(1) input[type=email]{
-  width: 83.5%;
-}
-.form-section:nth-child(1) input[type=password]{
-  width: 89.1%;
+    grid-area: 1 / 1 / 3 / 2;
 }
 
 .form-section:nth-child(2) {
-  grid-area: 1 / 3 / 3 / 5;
+    grid-area: 1 / 2 / 3 / 3;
 }
+
 .form-section:nth-child(3) {
-  grid-area: 3 / 1 / 5 / 3;
-}
-.form-section:nth-child(4) {
-  grid-area: 3 / 3 / 5 / 5;
-}
-#botones {
-  grid-area: 5 / 2 / 6 / 4;
-  text-align: center;
-}
-
-@media (max-width: 481px) {
-  form {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .form-section:nth-child(1) {
-    grid-area: 1 / 1 / 2 / 2;
-  }
-  .form-section:nth-child(2) {
-    grid-area: 2 / 1 / 3 / 2;
-  }
-  .form-section:nth-child(3) {
     grid-area: 3 / 1 / 4 / 2;
-  }
-  .form-section:nth-child(4) {
-    grid-area: 4 / 1 / 5 / 2;
-  }
-  #botones {
-    grid-area: 5 / 1 / 6 / 2;
-  }
+}
+
+.form-section:nth-child(4) {
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+#botones {
+    grid-area: 4 / 1 / 5 / 3;
+}
+
+/* Ajustes para el párrafo del progreso */
+.form-section > p:first-of-type {
+    margin-top: 10px;
+}
+
+.form-section > p:first-of-type label {
+    grid-column: 1;
+}
+
+.form-section > p:first-of-type progress {
+    grid-column: 2;
+}
+
+/* Ajustes para párrafos especiales */
+.form-section:nth-child(2) > p:nth-of-type(1) {
+    margin-top: 10px;
+}
+
+.form-section:nth-child(2) > p:nth-of-type(2) {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+}
+
+/* Estilos para la sección de otros aspectos */
+.form-section:nth-child(4) > p {
+    grid-template-columns: 300px 1fr;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+    }
+    
+    .form-section:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+    
+    .form-section:nth-child(2) {
+        grid-area: 2 / 1 / 3 / 2;
+    }
+    
+    .form-section:nth-child(3) {
+        grid-area: 3 / 1 / 4 / 2;
+    }
+    
+    .form-section:nth-child(4) {
+        grid-area: 4 / 1 / 5 / 2;
+    }
+    
+    #botones {
+        grid-area: 5 / 1 / 6 / 2;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .form-section:nth-child(3) .sector {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-section > p {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    
+    .form-section > p label {
+        grid-column: 1;
+    }
+    
+    .form-section > p input,
+    .form-section > p select,
+    .form-section > p progress {
+        grid-column: 1;
+    }
+    
+    .form-section:nth-child(4) > p {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Ajustes adicionales */
+.form-section ul {
+    padding-left: 0;
+}
+
+/* Asegurar que todos los elementos dentro de form-section usen grid */
+.form-section > * {
+    display: grid;
 }
