@@ -30,21 +30,26 @@ public class AsignaturaDAOImplHib implements IAsignaturasDAO{
 	@Override
 	public ArrayList<AsignaturaDTO> obtenerAsignaturasPorFiltros(String id, String nombre, String curso, String tasa,
 			int activo) {
+		if(tasa == null) {
+			tasa = "0.0";
+		}
 		String jpq = "SELECT new dto.AsignaturaDTO (a.id, a.nombre, a.curso, a.tasa, a.activo)"
 				+ " FROM AsignaturaEntity a "
-				+ " WHERE a.asignatura.id = a.id "
-				+ " AND CAST (a.id AS string) LIKE :id "
+				+ " WHERE a.id LIKE :id "
 				+ " AND a.nombre LIKE :nombre "
 				+ " AND a.curso LIKE :curso "
-				+ " AND a.tasa LIKE :tasa "
+				+ " AND a.tasa >= :tasa "
 				+ " AND a.activo = :activo ";
 				SessionFactory factory = DBUtils.creadorSessionFactory();
 				Session s = factory.getCurrentSession();
 				s.beginTransaction();
 
-		Query<AsignaturaDTO> query = s.createQuery(jpq, AsignaturaDTO.class).setParameter("id", "%" + id + "%")
-				.setParameter("nombre", "%" + nombre + "%").setParameter("curso", "%" + curso + "%")
-				.setParameter("tasa", tasa).setParameter("activo", activo);
+		Query<AsignaturaDTO> query = s.createQuery(jpq, AsignaturaDTO.class)
+				.setParameter("id", "%" + id + "%")
+				.setParameter("nombre", "%" + nombre + "%")
+				.setParameter("curso", "%" + curso + "%")
+				.setParameter("tasa", Double.parseDouble(tasa))
+				.setParameter("activo", Integer.valueOf(activo));
 		List<AsignaturaDTO> lista = query.getResultList();
 		s.close();
 		return new ArrayList<>(lista);
@@ -55,7 +60,7 @@ public class AsignaturaDAOImplHib implements IAsignaturasDAO{
 		SessionFactory factory = DBUtils.creadorSessionFactory();
 		Session s = factory.getCurrentSession();
 		s.beginTransaction();
-		AsignaturaEntity a = new AsignaturaEntity(Integer.parseInt(id), nombre, Integer.parseInt(curso), tasa, activo);
+		AsignaturaEntity a = new AsignaturaEntity(Integer.parseInt(id), nombre, curso, Double.valueOf(tasa), activo);
 		Integer idPk = (Integer) s.save(a);
 		s.getTransaction().commit();
 		s.close();
@@ -67,7 +72,7 @@ public class AsignaturaDAOImplHib implements IAsignaturasDAO{
 		SessionFactory factory = DBUtils.creadorSessionFactory();
 		Session s = factory.getCurrentSession();
 		s.beginTransaction();
-		AsignaturaEntity a = new AsignaturaEntity(Integer.parseInt(id), nombre, Integer.parseInt(curso), tasa, activo);
+		AsignaturaEntity a = new AsignaturaEntity(Integer.parseInt(id), nombre, curso, Double.valueOf(tasa), activo);
 		s.update(a);
 		s.getTransaction().commit();
 		s.close();

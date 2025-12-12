@@ -38,7 +38,6 @@
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
     -->
-    <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" global="jdbc/BBDDColegio" maxActive="100" maxIdle="20" maxWait="10000" minIdle="5" name="jdbc/BBDDColegio" password="AVNS_VfSu0SV217PwgX5hlVR" type="javax.sql.DataSource" url="jdbc:mysql://ghw-server-proyectoatraco.f.aivencloud.com:13213/colegio?  serverTimezone=UTC" username="avnadmin"/>
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
   </GlobalNamingResources>
 
@@ -143,11 +142,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-<<<<<<< HEAD
-      </Host>
-=======
       <Context docBase="colegio" path="/colegio" reloadable="true" source="org.eclipse.jst.jee.server:colegio"/></Host>
->>>>>>> a7159d52d131552ce019e31aa3d3357f3c0443ad
     </Engine>
   </Service>
 </Server>

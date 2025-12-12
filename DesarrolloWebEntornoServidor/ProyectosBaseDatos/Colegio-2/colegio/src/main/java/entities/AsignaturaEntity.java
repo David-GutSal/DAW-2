@@ -19,10 +19,10 @@ public class AsignaturaEntity {
 	private String nombre;
 	
 	@Column(name = "curso")
-	private Integer curso;
+	private String curso;
 	
 	@Column(name = "tasa")
-	private String tasa;
+	private Double tasa;
 	
 	@Column(name = "activo")
 	private Integer activo;
@@ -33,26 +33,29 @@ public class AsignaturaEntity {
 	@OneToMany(mappedBy = "asignatura")
 	Set<NotaEntity> notas;
 
-	public AsignaturaEntity(Integer id, String nombre, Integer curso, String tasa, Integer activo,
-			Set<MatriculacionEntity> matriculaciones, Set<NotaEntity> notas) {
+	public AsignaturaEntity(Integer id, String nombre, String curso, Double tasa, Integer activo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.curso = curso;
 		this.tasa = tasa;
 		this.activo = activo;
-		this.matriculaciones = matriculaciones;
-		this.notas = notas;
 	}
 	
+	public String getCurso() {
+		return curso;
+	}
 
-	public AsignaturaEntity(Integer id, String nombre, Integer curso, String tasa, Integer activo) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
+	public void setCurso(String curso) {
 		this.curso = curso;
+	}
+
+	public Double getTasa() {
+		return tasa;
+	}
+
+	public void setTasa(Double tasa) {
 		this.tasa = tasa;
-		this.activo = activo;
 	}
 
 	public Integer getId() {
@@ -69,22 +72,6 @@ public class AsignaturaEntity {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Integer getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Integer curso) {
-		this.curso = curso;
-	}
-
-	public String getTasa() {
-		return tasa;
-	}
-
-	public void setTasa(String tasa) {
-		this.tasa = tasa;
 	}
 
 	public Integer getActivo() {
