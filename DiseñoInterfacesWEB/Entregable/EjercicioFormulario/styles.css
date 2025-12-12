@@ -126,7 +126,24 @@ form {
   white-space: nowrap;
 }
 progress{
-    margin-left: 74.5%;
+  margin-left: 74.5%;
+  border: 0;
+  border-radius: 20px;
+}
+
+progress::-webkit-progress-bar {
+    border-radius: 20px;
+    background-color: rgb(236, 236, 236);
+    border: 1px solid rgb(207, 207, 207);
+}
+
+progress::-webkit-progress-value {
+    border-radius: 20px;
+    background-color: blue;
+}
+
+progress::-moz-progress-bar {
+    border-radius: 20px;
 }
 
 textarea {
@@ -147,7 +164,7 @@ textarea {
 }
 
 #botones button {
-  display: inline-flex;
+  display: inline-flex; /*Cambiar*/
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
@@ -157,7 +174,6 @@ textarea {
   border: 1px solid #bbb;
   background: #f0f0f0;
   border-radius: 4px;
-  font-size: 0.95rem;
 }
 
 

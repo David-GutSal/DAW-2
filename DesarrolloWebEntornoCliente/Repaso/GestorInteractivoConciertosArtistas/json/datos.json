@@ -1,0 +1,77 @@
+{
+    "generosMusicales": [
+        {
+            "id": "1",
+            "nombre": "Rock"
+        },
+        {
+            "id": "2",
+            "nombre": "Pop"
+        },
+        {
+            "id": "3",
+            "nombre": "Jazz"
+        },
+        {
+            "id": "4",
+            "nombre": "Clásica"
+        },
+        {
+            "id": "5",
+            "nombre": "Hip Hop"
+        },
+        {
+            "id": "6",
+            "nombre": "Electrónica"
+        }
+    ],
+    "artistas":[
+        {
+            "id": "1",
+            "nombre": "Rolling Stones",
+            "generoMusicalId": "1",
+            "pais": "Reino Unido",
+            "anioInicio": 1960
+        },
+        {
+            "id": "2",
+            "nombre": "Madonna",
+            "generoMusicalId": "2",
+            "pais": "Estados Unidos",
+            "anioInicio": 1979
+        },
+        {
+            "id": "3",
+            "nombre": "Taylor Swift",
+            "generoMusicalId": "2",
+            "pais": "Estados Unidos",
+            "anioInicio": 2006
+        }
+    ],
+    "conciertos": [
+        {
+            "id": "1",
+            "título": "Concierto de los Rolling Stones",
+            "fecha": "2024-09-15",
+            "lugar": "Estadio Wembley, Londres",    
+            "artistaId": "1",
+            "aforo": 90000
+        },
+        {
+            "id": "2",
+            "título": "Madonna en vivo",
+            "fecha": "2024-10-20",
+            "lugar": "Madison Square Garden, Nueva York",    
+            "artistaId": "2",
+            "aforo": 20000
+        } ,
+        {
+            "id": "3",
+            "título": "Tour mundial de Taylor Swift",
+            "fecha": "2024-11-05",
+            "lugar": "Staples Center, Los Ángeles",    
+            "artistaId": "3",
+            "aforo": 21000
+        }  
+    ]
+}
