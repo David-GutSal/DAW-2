@@ -31,7 +31,6 @@ form {
   display: grid;
   gap: 0.6rem;
   align-content: start;
-  overflow: hidden;
 }
 
 .form-section:nth-of-type(1) {
@@ -126,7 +125,7 @@ form {
   white-space: nowrap;
 }
 progress{
-  margin-left: 74.5%;
+  justify-self: end;
   border: 0;
   border-radius: 20px;
 }
@@ -158,23 +157,28 @@ textarea {
 
 
 #botones {
-  grid-column: 1 / 3;
-  text-align: center;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center; 
+  gap: 12px;                
   padding-top: 6px;
+  grid-column: 1 / -1;
 }
 
+
 #botones button {
-  display: inline-flex; /*Cambiar*/
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  height: 40px; 
-  padding: 0 14px;
-  margin: 0 8px;
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
+  height: 40px;
+  width: 110px;
+  padding: 0 12px;
   border: 1px solid #bbb;
   background: #f0f0f0;
   border-radius: 4px;
 }
+
+
 
 
 #botones #enviar {
@@ -183,5 +187,21 @@ textarea {
 
 @media (max-width: 481px) {
 
+  form {
+    grid-template-columns: 1fr !important;
+    width: 95%;
+  }
+
+  .form-section {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  #botones {
+    grid-column: 1 !important;
+  }
 }
+
+
+
 

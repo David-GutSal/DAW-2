@@ -1,5 +1,6 @@
 package entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,13 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "matriculaciones")
 public class MatriculacionEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	
@@ -35,6 +37,27 @@ public class MatriculacionEntity {
 	@Column
 	@JoinColumn(name = "activo")
 	private Integer activo;
+	
+	@OneToOne (mappedBy = "matricula", cascade = CascadeType.REMOVE)
+	private CajaEntity caja;
+
+
+	
+	
+	public MatriculacionEntity(Integer id, AsignaturaEntity asignatura, AlumnoEntity alumnos, String fecha,
+			Integer activo, CajaEntity caja) {
+		super();
+		this.id = id;
+		this.asignatura = asignatura;
+		this.alumnos = alumnos;
+		this.fecha = fecha;
+		this.activo = activo;
+		this.caja = caja;
+	}
+
+	public MatriculacionEntity() {
+		super();
+	}
 
 
 	public MatriculacionEntity(Integer id, AsignaturaEntity asignatura, AlumnoEntity alumnos, String fecha,
@@ -47,6 +70,15 @@ public class MatriculacionEntity {
 		this.activo = activo;
 	}
 
+
+
+	public CajaEntity getCaja() {
+		return caja;
+	}
+
+	public void setCaja(CajaEntity caja) {
+		this.caja = caja;
+	}
 
 	public Integer getId() {
 		return id;

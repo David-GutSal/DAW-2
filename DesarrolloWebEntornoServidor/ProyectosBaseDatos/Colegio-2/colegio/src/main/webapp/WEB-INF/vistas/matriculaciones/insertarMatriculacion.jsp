@@ -21,7 +21,6 @@
                                 method="post">
                                 <label for="alumno">Alumno</label>
                                 <select name="alumno" id="alumno" required>
-                                    <option value="">Seleccione un alumno</option>
                                     <c:forEach items="${desplegableAlumnos}" var="alumno">
                                         <option value="${alumno.id}">${alumno.descripcion}</option>
                                     </c:forEach>
@@ -29,7 +28,6 @@
 
                                 <label for="asignatura">Asignatura</label>
                                 <select name="asignatura" id="asignatura" required>
-                                    <option value="">Seleccione una asignatura</option>
                                     <c:forEach items="${desplegableAsignaturas}" var="asignatura">
                                         <option value="${asignatura.id}">
                                             ${asignatura.descripcion}

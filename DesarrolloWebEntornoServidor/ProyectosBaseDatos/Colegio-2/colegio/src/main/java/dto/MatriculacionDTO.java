@@ -10,7 +10,6 @@ public class MatriculacionDTO {
     private int activo;
     private double tasa;
 
-    // Constructor completo con tasa
     public MatriculacionDTO(int id, int idAsignatura, String nombreAsignatura, int idAlumno, String nombreAlumno,
             String fecha, int activo, double tasa) {
         super();
@@ -24,7 +23,6 @@ public class MatriculacionDTO {
         this.tasa = tasa;
     }
 
-    // Constructor completo sin tasa (para compatibilidad)
     public MatriculacionDTO(int id, int idAsignatura, String nombreAsignatura, int idAlumno, String nombreAlumno,
             String fecha, int activo) {
         super();
@@ -37,7 +35,6 @@ public class MatriculacionDTO {
         this.activo = activo;
     }
 
-    // Constructor sin nombres (para inserción)
     public MatriculacionDTO(int id, int idAsignatura, int idAlumno, String fecha, int activo) {
         super();
         this.id = id;
@@ -46,8 +43,6 @@ public class MatriculacionDTO {
         this.fecha = fecha;
         this.activo = activo;
     }
-
-    // Getters y setters
 
     public int getId() {
         return id;

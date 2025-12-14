@@ -35,7 +35,6 @@ public class AlumnoDTO {
 		this.apellido = apellido;
 	}
 	
-	//Getters, setters... 
 
 	public int getId() {
 		return id;

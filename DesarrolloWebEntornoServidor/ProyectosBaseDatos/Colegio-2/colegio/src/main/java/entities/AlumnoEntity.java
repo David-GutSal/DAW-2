@@ -35,7 +35,7 @@ public class AlumnoEntity {
 	@JoinColumn(name="id_municipio")
 	private MunicipiosEntity municipio;
 	
-	@OneToMany(mappedBy = "id")
+	@OneToMany(mappedBy = "alumnos")
 	Set<MatriculacionEntity> matriculaciones;
 	
 	@OneToMany(mappedBy = "alumno", fetch = FetchType.EAGER)
@@ -65,6 +65,10 @@ public class AlumnoEntity {
 		this.famNumerosa = famNumerosa;
 		this.activo = activo;
 		this.municipio = municipio;
+	}
+	
+	public AlumnoEntity() {
+		super();
 	}
 
 	public int getId() {

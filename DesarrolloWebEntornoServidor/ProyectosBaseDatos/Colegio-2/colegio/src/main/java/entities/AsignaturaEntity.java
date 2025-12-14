@@ -42,6 +42,10 @@ public class AsignaturaEntity {
 		this.activo = activo;
 	}
 	
+	public AsignaturaEntity() {
+		super();
+	}
+	
 	public String getCurso() {
 		return curso;
 	}

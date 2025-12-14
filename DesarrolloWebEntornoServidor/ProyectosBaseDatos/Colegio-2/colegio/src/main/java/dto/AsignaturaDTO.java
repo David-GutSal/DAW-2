@@ -29,7 +29,6 @@ public class AsignaturaDTO {
 		this.nombre = nombre;
 	}
 	
-	//Getters, setters...
 
 	public int getId() {
 		return id;

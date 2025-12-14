@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "municipios")
 public class MunicipiosEntity {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_municipio")
 	private int idMunicipio;
 	@Column(name = "id_provincia")

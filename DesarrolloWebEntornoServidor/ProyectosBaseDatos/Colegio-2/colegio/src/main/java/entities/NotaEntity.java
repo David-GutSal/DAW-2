@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "notas")
 public class NotaEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	
@@ -26,12 +26,16 @@ public class NotaEntity {
 	private AsignaturaEntity asignatura;
 	
 	@Column(name = "nota")
-	private Double nota;
+	private String nota;
 	
 	@Column(name = "fecha")
 	private String fecha;
+	
+	public NotaEntity() {
+		super();
+	}
 
-	public NotaEntity(Integer id, AlumnoEntity alumno, AsignaturaEntity asignatura, Double nota, String fecha) {
+	public NotaEntity(Integer id, AlumnoEntity alumno, AsignaturaEntity asignatura, String nota, String fecha) {
 		super();
 		this.id = id;
 		this.alumno = alumno;
@@ -64,11 +68,11 @@ public class NotaEntity {
 		this.asignatura = asignatura;
 	}
 
-	public Double getNota() {
+	public String getNota() {
 		return nota;
 	}
 
-	public void setNota(Double nota) {
+	public void setNota(String nota) {
 		this.nota = nota;
 	}
 

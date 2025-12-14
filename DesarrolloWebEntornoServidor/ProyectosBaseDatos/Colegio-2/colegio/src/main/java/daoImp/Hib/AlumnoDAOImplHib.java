@@ -94,13 +94,34 @@ public class AlumnoDAOImplHib implements IAlumnosDAO {
 
 	@Override
 	public boolean esFamiliaNumerosa(String idAlumno) {
-		// TODO Auto-generated method stub
-		return false;
+	    Session s = DBUtils.creadorSessionFactory().openSession();
+	    try {
+	        Query<Integer> q = s.createQuery(
+	            "SELECT a.famNumerosa FROM AlumnoEntity a WHERE a.id = :id", Integer.class
+	        );
+	        q.setParameter("id", Integer.parseInt(idAlumno));
+	        Integer res = q.uniqueResult();
+	        return res != null && res == 1;
+	    } finally {
+	        s.close();
+	    }
 	}
 
 	@Override
 	public int contarAsignaturasMatriculadas(String idAlumno) {
-		// TODO Auto-generated method stub
-		return 0;
+	    Session s = DBUtils.creadorSessionFactory().openSession();
+	    try {
+	        Query<Long> q = s.createQuery(
+	            "SELECT COUNT(m.id) FROM MatriculacionEntity m WHERE m.alumnos.id = :id",
+	            Long.class
+	        );
+	        q.setParameter("id", Integer.parseInt(idAlumno));
+	        Long total = q.uniqueResult();
+	        return total != null ? total.intValue() : 0;
+	    } finally {
+	        s.close();
+	    }
 	}
+
+
 }
