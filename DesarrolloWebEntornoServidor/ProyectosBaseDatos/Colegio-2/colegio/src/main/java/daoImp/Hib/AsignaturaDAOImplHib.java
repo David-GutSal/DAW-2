@@ -42,9 +42,7 @@ public class AsignaturaDAOImplHib implements IAsignaturasDAO {
                    + "AND a.tasa >= :tasa "
                    + "AND a.activo = :activo";
 
-        double tasaMin = (tasa == null || tasa.trim().isEmpty())
-                ? 0.0
-                : Double.parseDouble(tasa);
+        double tasaMin = (tasa == null || tasa.trim().isEmpty()) ? 0.0 : Double.parseDouble(tasa);
 
         SessionFactory factory = DBUtils.creadorSessionFactory();
         Session s = factory.getCurrentSession();
@@ -60,6 +58,7 @@ public class AsignaturaDAOImplHib implements IAsignaturasDAO {
         List<AsignaturaDTO> lista = query.getResultList();
         s.close();
 
+        
         return new ArrayList<>(lista);
     }
 

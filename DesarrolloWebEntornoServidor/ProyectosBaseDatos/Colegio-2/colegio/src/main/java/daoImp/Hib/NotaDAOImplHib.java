@@ -34,8 +34,7 @@ public class NotaDAOImplHib implements INotasDAO {
 
     @Override
     public ArrayList<NotaDTO> obtenerNotasPorFiltros(
-            String idAlumno, String nombreAlumno, String asignatura,
-            String nota, String fecha, int activo) {
+            String idAlumno, String nombreAlumno, String asignatura, String nota, String fecha, int activo) {
 
         String hql = "SELECT new dto.NotaDTO( "
                    + "n.id, n.nota, a.id, a.nombre, al.id, al.nombre, n.fecha) "
