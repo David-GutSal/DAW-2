@@ -13,16 +13,12 @@ import utils.DesplegableUtils;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Servlet implementation class InsertarMatriculacionesController
  */
 @WebServlet("/matriculaciones/insertarMatriculacion")
 public class InsertarMatriculacionesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	  private static Logger logger = LoggerFactory.getLogger(InsertarMatriculacionesController.class);
        
     /**
      * @see HttpServlet#HttpServlet()

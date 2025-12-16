@@ -2,74 +2,187 @@
   "name": "Darkest Dark Eclipse - Deep Black",
   "type": "dark",
   "colors": {
-    "editor.background": "#000000",
-    "editor.foreground": "#E6E6E6",
-    "editorCursor.foreground": "#FFFFFF",
-    "editor.lineHighlightBackground": "#0A0A0A",
-  "editor.selectionBackground": "#1A1A1A",
-  "editorIndentGuide.background1": "#111111",
-  "editorIndentGuide.activeBackground1": "#2A2A2A",
-    "sideBar.background": "#040404",
-    "sideBar.foreground": "#D9D9D9",
-    "activityBar.background": "#040404",
-    "activityBar.foreground": "#D9D9D9",
-    "statusBar.background": "#040404",
-    "statusBar.foreground": "#D9D9D9",
-    "titleBar.activeBackground": "#040404",
-    "titleBar.activeForeground": "#D9D9D9",
-    "terminal.background": "#000000",
-    "terminal.foreground": "#E6E6E6"
+
+    "editor.background": "#010101", 
+    // Fondo del editor de código (zona donde escribes)
+
+    "editor.foreground": "#ffffff", 
+    // Texto normal del código (cuando no entra en ningún token)
+
+    "editorCursor.foreground": "#FFFFFF", 
+    // Cursor (la barra que parpadea)
+
+    "editor.lineHighlightBackground": "#0A0A0A", 
+    // Línea actual donde está el cursor
+
+    "editor.selectionBackground": "#1A1A1A", 
+    // Fondo del texto seleccionado
+
+    "editorIndentGuide.background1": "#111111", 
+    // Guías de indentación (líneas verticales)
+
+    "editorIndentGuide.activeBackground1": "#2A2A2A", 
+    // Guía de indentación activa (la del bloque actual)
+
+    "sideBar.background": "#040404", 
+    // Fondo de la barra lateral (Explorador, Git, Extensiones)
+
+    "sideBar.foreground": "#D9D9D9", 
+    // Texto de la barra lateral
+
+    "activityBar.background": "#040404", 
+    // Fondo de la barra izquierda (iconos grandes)
+
+    "activityBar.foreground": "#D9D9D9", 
+    // Iconos activos de la activity bar
+
+    "statusBar.background": "#040404", 
+    // Barra inferior (status bar)
+
+    "statusBar.foreground": "#D9D9D9", 
+    // Texto de la status bar
+
+    "titleBar.activeBackground": "#040404", 
+    // Barra superior de la ventana (cuando está activa)
+
+    "titleBar.activeForeground": "#D9D9D9", 
+    // Texto del título del proyecto/archivo
+
+    "terminal.background": "#000000", 
+    // Fondo del terminal integrado
+
+    "terminal.foreground": "#E6E6E6",
+    // Texto del terminal
+
+    "editorBracketMatch.border": "#D8D8D8",
+
+    "editorBracketHighlight.foreground1": "#D8D8D8",
+
+    "editorBracketHighlight.foreground2": "#D8D8D8",
+
+    "editorBracketHighlight.foreground3": "#D8D8D8",
+
+    "editorBracketHighlight.foreground4": "#D8D8D8",
+
+    "editorBracketHighlight.foreground5": "#D8D8D8",
+
+    "editorBracketHighlight.foreground6": "#D8D8D8"
+
   },
   "tokenColors": [
-    {
-      "scope": ["comment", "punctuation.definition.comment"],
-      "settings": {
-        "foreground": "#4B4B4B",
-        "fontStyle": "italic"
-      }
-    },
-    {
-      "scope": ["string", "constant.other.symbol"],
-      "settings": {
-        "foreground": "#9CDC7C"
-      }
-    },
-    {
-      "scope": ["variable", "identifier"],
-      "settings": {
-        "foreground": "#E6E6E6"
-      }
-    },
-    {
-      "scope": ["keyword", "storage.type"],
-      "settings": {
-        "foreground": "#C586C0"
-      }
-    },
-    {
-      "scope": ["constant.numeric"],
-      "settings": {
-        "foreground": "#B5CEA8"
-      }
-    },
-    {
-      "scope": ["entity.name.function", "support.function"],
-      "settings": {
-        "foreground": "#DCDCAA"
-      }
-    },
-    {
-      "scope": ["entity.name.type", "support.type"],
-      "settings": {
-        "foreground": "#569CD6",
-        "fontStyle": "bold"
-      }
-    },
-    {
-      "scope": ["storage.modifier", "storage.type.annotation"],
-      "settings": {
-        "foreground": "#CE9178"
-      }
+
+  {
+    "scope": ["comment", "punctuation.definition.comment"],
+    "settings": {
+      "foreground": "#4B4B4B",
+      "fontStyle": "italic"
+      // Comentarios (// /* */ # etc.)
     }
-  ]
+  },
+
+  {
+    "scope": ["string", "constant.other.symbol"],
+    "settings": {
+      "foreground": "#FFC600"
+      // Strings ("texto", 'texto', `template`)
+    }
+  },
+
+  {
+    "scope": ["variable", "identifier"],
+    "settings": {
+      "foreground": "#79ABFF"
+      // Variables y nombres genéricos    variables generales: #79ABFF  declaracion de variables: #BED6FF
+    }
+  },
+
+  {
+    "scope": ["keyword", "storage.type"],
+    "settings": {
+      "foreground": "#C586C0"
+      // Palabras clave: if, else, return, class, public, etc.
+    }
+  },
+
+  {
+    "scope": ["constant.numeric"],
+    "settings": {
+      "foreground": "#7FB347"
+      // Números: 123, 3.14, 0xFF
+    }
+  },
+
+  {
+    "scope": ["entity.name.function", "support.function"],
+    "settings": {
+      "foreground": "#BED6FF"
+      // Nombres de funciones y métodos     declaracion de metodos: #BED6FF
+    }
+  },
+
+  {
+    "scope": ["entity.name.type", "support.type"],
+    "settings": {
+      "foreground": "#D25252",
+      "fontStyle": "bold"
+      // Tipos / clases / interfaces    clases: #D25252
+    }
+  },
+
+  {
+    "scope": ["storage.modifier", "storage.type.annotation"],
+    "settings": {
+      "foreground": "#CE9178"
+      // Modificadores: static, final, readonly, annotations
+    }
+  },
+  {
+  "scope": [
+    "entity.name.type.type-parameter",
+    "entity.name.type.generic"
+  ],
+  "settings": {
+    "foreground": "#BFA4A4" // E, T, K, V
+  }
+},
+{
+  "scope": [
+    "punctuation.definition.typeparameters",
+    "punctuation.definition.generic"
+  ],
+  "settings": {
+    "foreground": "#D8D8D8"
+  }
+},
+{
+  "scope": [
+    "entity.name.type.annotation",
+    "entity.name.annotation"
+  ],
+  "settings": {
+    "foreground": "#FFFFFF" // nombre de la anotación
+  }
+},
+{
+  "scope": [
+    "punctuation.definition.annotation",
+    "punctuation.decorator"
+  ],
+  "settings": {
+    "foreground": "#EB4B64" // símbolo @
+  }
 }
+
+
+
+
+]
+}
+
+// anotaciones #FFFFFF
+
+// referencia de la anotacion #EB4B64
+
+// brackets: #D8D8D8
+
+// variables tipo <E> : #BFA4A4

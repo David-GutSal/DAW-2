@@ -8,7 +8,7 @@
 		<property name="connection.url">jdbc:mysql://ghw-server-proyectoatraco.f.aivencloud.com:13213/colegio</property>
 		<property name="connection.username">avnadmin</property>
 		<property name="connection.password">AVNS_VfSu0SV217PwgX5hlVR</property> 
-		
+		<property name="hibernate.connection.pool_size">5</property>
 		<property name="connection.pool_size">1</property>
 		
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -18,7 +18,7 @@
 		<property name="format_sql">true</property>
 		<property name="current_session_context_class">thread</property>
 		
-		<property name="hibernate.connection.pool_size">5</property>
+		
 		
 		<mapping class="entities.AlumnoEntity"></mapping>
 		<mapping class="entities.MunicipiosEntity"></mapping>

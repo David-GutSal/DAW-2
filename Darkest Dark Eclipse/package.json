@@ -2,8 +2,8 @@
   "name": "darkest-dark-eclipse-markdown",
   "displayName": "Darkest Dark Eclipse Markdown Theme",
   "description": "Un tema oscuro inspirado en Darkest Dark de Eclipse, adaptado para Markdown y Visual Studio Code.",
-  "version": "0.0.1",
-  "publisher": "tu-nombre",
+  "version": "0.0.3",
+  "publisher": "David-GutSal",
   "engines": {
     "vscode": ">=1.50.0"
   },
