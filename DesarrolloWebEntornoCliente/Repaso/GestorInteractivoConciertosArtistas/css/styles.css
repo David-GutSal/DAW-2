@@ -129,11 +129,13 @@ form{
   background-color: aquamarine;
 }
 #submit{
+  margin-left: 2em;
   grid-area: 5 / 1 / 6 / 2;
 }
 #reset{
+  margin-right: 2em;
   grid-area: 5 / 3 / 6 / 4;
 }
 #submit, #reset{
-  height: 20%;
+  height: 25%;
 }

@@ -73,5 +73,28 @@
             "artistaId": "3",
             "aforo": 21000
         }  
-    ]
+    ],
+    "paises": [
+        {
+        "id": "1",
+        "nombre": "Estados Unidos"
+    },
+        {
+        "id": "2",
+        "nombre": "Reino Unido"
+    },
+        {
+        "id": "3",
+        "nombre": "Londres"
+    },
+        {
+        "id": "4",
+        "nombre": "Nueva York"
+    },
+        {
+        "id": "5",
+        "nombre": "Los Ángeles"
+    }
+] 
+    
 }
