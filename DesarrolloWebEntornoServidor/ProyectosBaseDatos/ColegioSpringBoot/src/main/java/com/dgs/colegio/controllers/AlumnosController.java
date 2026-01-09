@@ -1,0 +1,134 @@
+package com.dgs.colegio.controllers;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.dgs.colegio.dao.interfaces.IDesplegablesDAO;
+import com.dgs.colegio.dtos.AlumnoDTO;
+import com.dgs.colegio.dtos.DesplegableDTO;
+import com.dgs.colegio.repository.AlumnoRepository;
+import com.dgs.colegio.repository.MunicipioRepository;
+import com.dgs.colegio.service.interfaces.IAlumnosService;
+
+@Controller
+@RequestMapping("/alumnos")
+public class AlumnosController {
+	@Autowired
+	IAlumnosService alumnosService;
+	@Autowired
+	IDesplegablesDAO desplegables;
+	@Autowired
+	AlumnoRepository alumnoRepository;
+	@Autowired
+	MunicipioRepository municipioRepository;
+
+	@GetMapping("/insertarAlumno")
+	public String formularioInsertarAlumno(ModelMap model) {
+		ArrayList<DesplegableDTO> listaMunicipios = desplegables.desplegableMunicipios();
+		model.addAttribute("desplegableMunicipios", listaMunicipios);
+		return "alumnos/insertarAlumno";
+	}
+
+	@PostMapping("/insertarAlumno")
+	public String insertarAlumno(@RequestParam("id") Integer id, @RequestParam("nombre") String nombre,
+			@RequestParam("apellido") String apellido,
+			@RequestParam(value = "famNumerosa", required = false) String famNumerosa,
+			@RequestParam(value = "activo", required = false) String activo,
+			@RequestParam("municipios") Integer idMunicipio, ModelMap model) {
+		ArrayList<DesplegableDTO> listaMunicipios = desplegables.desplegableMunicipios();
+		model.addAttribute("desplegableMunicipios", listaMunicipios);
+		Integer familiaNumerosa = famNumerosa != null ? 1 : 0;
+		Integer act = activo != null ? 1 : 0;
+		Integer resultado = alumnosService.insertarAlumno(id, nombre, apellido, idMunicipio, familiaNumerosa, act);
+		model.addAttribute("resultado", resultado);
+		return "alumnos/insertarAlumnos";
+	}
+
+	@GetMapping("/listadoAlumnos")
+	public String formularioListadoAlumnos() {
+		return "alumnos/listadoAlumnos";
+	}
+
+	@PostMapping("/listadoAlumnos")
+	public String listadoAlumnos(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "apellido", required = false) String apellido,
+			@RequestParam(value = "famNumerosa", required = false) String famNumerosa,
+			@RequestParam(value = "activo", required = false) String activo, ModelMap model) {
+		int familiaNumerosa = (famNumerosa != null) ? 1 : 0;
+		int act = (activo != null) ? 1 : 0;
+		ArrayList<AlumnoDTO> listaAlumnos = alumnosService.obtenerAlumnosPorIdNombreApellido(id, nombre, apellido,
+				familiaNumerosa, act);
+		model.addAttribute("lista", listaAlumnos);
+		return "alumnos/insertarAlumnos";
+	}
+
+	@GetMapping(value = "/formularioActualizarAlumnos")
+	public String formularioModificarAlumnos(ModelMap model) {
+		return "alumnos/actualizarAlumnos";
+	}
+
+	@PostMapping(value = "/formularioActualizarAlumnos")
+	public String formularioModificarAlumnos(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "apellido", required = false) String apellido,
+			@RequestParam(value = "famNumerosa", required = false) String famNumerosa,
+			@RequestParam(value = "activo", required = false) String activo, ModelMap model) {
+		ArrayList<DesplegableDTO> listaMunicipios = desplegables.desplegableMunicipios();
+		model.addAttribute("desplegableMunicipios", listaMunicipios);
+		Integer familiaNumerosa = famNumerosa != null ? 1 : 0;
+		Integer act = activo != null ? 1 : 0;
+		ArrayList<AlumnoDTO> listaAlumnos = alumnosService.obtenerAlumnosPorIdNombreApellido(id, nombre, apellido,
+				familiaNumerosa, act);
+		model.addAttribute("lista", listaAlumnos);
+		return "alumnos/actualizarAlumnos";
+	}
+
+	@PostMapping(value = "/actualizarAlumno")
+	public String modificarAlumnos(@RequestParam("id") Integer id, @RequestParam("nombre") String nombre,
+			@RequestParam("apellido") String apellido,
+			@RequestParam(value = "famNumerosa", required = false) Integer famNumerosa,
+			@RequestParam(value = "activo", required = false) Integer activo,
+			@RequestParam("municipio") Integer idMunicipio, ModelMap model) {
+		ArrayList<DesplegableDTO> listaMunicipios = desplegables.desplegableMunicipios();
+		model.addAttribute("desplegableMunicipios", listaMunicipios);
+		Integer familiaNumerosa = famNumerosa != null ? 1 : 0;
+		Integer act = activo != null ? 1 : 0;
+		Integer resultado = alumnosService.actualizarAlumno(id, nombre, apellido, idMunicipio, familiaNumerosa, act);
+		model.addAttribute("resultado", resultado);
+		return "alumnos/actualizarAlumnos";
+	}
+
+	@GetMapping(value = "/formularioBorrarAlumnos")
+	public String getFormularioEliminarAlumnos() {
+		return "alumnos/borrarAlumnos";
+	}
+
+	@PostMapping(value = "/formularioBorrarAlumnos")
+	public String formularioEliminarAlumnos(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
+			@RequestParam(value = "famNumerosa", required = false) Integer famNumerosa,
+			@RequestParam(value = "activo", required = false) Integer activo, ModelMap model) {
+		Integer familiaNumerosa = famNumerosa != null ? 1 : 0;
+		Integer act = activo != null ? 1 : 0;
+		ArrayList<AlumnoDTO> listaAlumnos = alumnosService.obtenerAlumnosPorIdNombreApellido(id, nombre, apellido,
+				familiaNumerosa, act);
+		model.addAttribute("lista", listaAlumnos);
+		return "alumnos/borrarAlumnos";
+	}
+
+	@PostMapping(value = "/borrarAlumno")
+	public String eliminarAlumnos(@RequestParam("id") Integer id, ModelMap model) {
+		Integer resultado = alumnosService.borrarAlumno(id);
+		model.addAttribute("resultado", resultado);
+		return "alumnos/borrarAlumnos";
+	}
+
+}
