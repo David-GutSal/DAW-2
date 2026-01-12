@@ -16,7 +16,7 @@ public interface IAlumnosDAO {
 
 	int borrarAlumno(int id);
 
-	boolean esFamiliaNumerosa(String idAlumno);
+	boolean esFamiliaNumerosa(Integer idAlumno);
 
-	int contarAsignaturasMatriculadas(String idAlumno);
+	int contarAsignaturasMatriculadas(Integer idAlumno);
 }

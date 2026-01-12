@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.dgs.colegio.dtos.AlumnoDTO;
 import com.dgs.colegio.entities.AlumnoEntity;
 
+@Repository
 public interface AlumnoRepository extends CrudRepository<AlumnoEntity, Integer> {
 	@Query("select new com.dgs.colegio.dtos.AlumnoDTO (a.id,a.nombre,a.apellidos,a.municipio.nombre,a.municipio.idMunicipio,a.famNumerosa,a.activo) "
 			+ "FROM com.dgs.colegio.entities.AlumnoEntity a "

@@ -30,14 +30,15 @@ public class AlumnosController {
 	MunicipioRepository municipioRepository;
 
 	@GetMapping("/insertarAlumno")
-	public String formularioInsertarAlumno(ModelMap model) {
+	public void formularioInsertarAlumno(ModelMap model) {
 		ArrayList<DesplegableDTO> listaMunicipios = desplegables.desplegableMunicipios();
 		model.addAttribute("desplegableMunicipios", listaMunicipios);
-		return "alumnos/insertarAlumno";
 	}
 
 	@PostMapping("/insertarAlumno")
-	public String insertarAlumno(@RequestParam("id") Integer id, @RequestParam("nombre") String nombre,
+	public String insertarAlumno(
+			@RequestParam("id") Integer id, 
+			@RequestParam("nombre") String nombre,
 			@RequestParam("apellido") String apellido,
 			@RequestParam(value = "famNumerosa", required = false) String famNumerosa,
 			@RequestParam(value = "activo", required = false) String activo,
@@ -67,7 +68,7 @@ public class AlumnosController {
 		ArrayList<AlumnoDTO> listaAlumnos = alumnosService.obtenerAlumnosPorIdNombreApellido(id, nombre, apellido,
 				familiaNumerosa, act);
 		model.addAttribute("lista", listaAlumnos);
-		return "alumnos/insertarAlumnos";
+		return "alumnos/listadoAlumnos";
 	}
 
 	@GetMapping(value = "/formularioActualizarAlumnos")

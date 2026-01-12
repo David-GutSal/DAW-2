@@ -19,7 +19,6 @@ public class AlumnosServiceImpl implements IAlumnosService {
 			int activo) {
 		return alumnosDAO.insertarAlumno(id, nombre, apellido, idMunicipio, familiaNumerosa, activo);
 	}
-	// Resto de metodos
 
 	@Override
 	public ArrayList<AlumnoDTO> obtenerAlumnos() throws SQLException {

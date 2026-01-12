@@ -58,17 +58,17 @@ public class AlumnosDAOImpl implements IAlumnosDAO {
 		return alumno.getId();
 		}
 
-
 	@Override
-	public boolean esFamiliaNumerosa(String idAlumno) {
+	public boolean esFamiliaNumerosa(Integer idAlumno) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public int contarAsignaturasMatriculadas(String idAlumno) {
+	public int contarAsignaturasMatriculadas(Integer idAlumno) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 }
