@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dgs.colegio.dao.interfaces.IAlumnosDAO;
 import com.dgs.colegio.dao.interfaces.IAsignaturasDAO;
@@ -11,6 +12,7 @@ import com.dgs.colegio.dao.interfaces.IMatriculacionesDAO;
 import com.dgs.colegio.dtos.MatriculacionDTO;
 import com.dgs.colegio.service.interfaces.IMatriculacionesService;
 
+@Service
 public class MatriculacionesServiceImp implements IMatriculacionesService {
 	@Autowired
 	IAsignaturasDAO asignaturasDAO;

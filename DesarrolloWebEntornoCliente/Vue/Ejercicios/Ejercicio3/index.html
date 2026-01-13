@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="scripts/script.js"></script>
+</head>
+
+<body>
+    <h1>Propósitos de año nuevo</h1>
+    <div id="app">
+        <ul v-if="propositos.length > 1">
+            <div v-for="(propositos, index) in propositos" v-on:click="borrar">
+                <li v-if="propositos.hecho == false" >{{propositos.texto}}</li>
+                <li v-else-if="propositos.hecho == true"><del>{{propositos.texto}}</del></li>
+                <input type="checkbox" v-model="propositos.hecho">
+            </div>
+        </ul>
+        <p v-else>La lista de propósitos está vacía</p>
+    </div>
+
+    <script>
+        const mountedApp = appObj.mount("#app");
+    </script>
+</body>
+
+</html>

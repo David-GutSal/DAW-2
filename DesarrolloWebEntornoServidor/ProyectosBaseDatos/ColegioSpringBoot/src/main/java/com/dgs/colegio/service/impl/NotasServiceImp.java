@@ -4,11 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dgs.colegio.dao.interfaces.INotasDAO;
 import com.dgs.colegio.dtos.NotaDTO;
 import com.dgs.colegio.service.interfaces.INotasService;
 
+@Service
 public class NotasServiceImp implements INotasService {
 	@Autowired
 	INotasDAO notas;

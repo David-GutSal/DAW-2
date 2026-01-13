@@ -4,11 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dgs.colegio.dao.interfaces.IFaltasDAO;
 import com.dgs.colegio.dtos.FaltaDTO;
 import com.dgs.colegio.service.interfaces.IFaltasService;
 
+@Service
 public class FaltasServiceImp implements IFaltasService {
 	@Autowired
 	IFaltasDAO faltas;

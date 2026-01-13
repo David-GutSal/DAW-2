@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dgs.colegio.dao.interfaces.IDesplegablesDAO;
 import com.dgs.colegio.dtos.AsignaturaDTO;
-import com.dgs.colegio.repository.AsignaturaRepository;
 import com.dgs.colegio.service.interfaces.IAsignaturasService;
 
 @Controller
@@ -20,10 +18,6 @@ import com.dgs.colegio.service.interfaces.IAsignaturasService;
 public class AsignaturasController {
 	@Autowired
 	IAsignaturasService asignaturaService;
-	@Autowired
-	IDesplegablesDAO desplegables;
-	@Autowired
-	AsignaturaRepository asignaturaRepository;
 	
 	@GetMapping("/insertarAsignatura")
 	public void insertarAsignatura() {
