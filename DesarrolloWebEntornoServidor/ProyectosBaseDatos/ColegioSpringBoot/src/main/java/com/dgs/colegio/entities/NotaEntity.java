@@ -26,22 +26,26 @@ public class NotaEntity {
 	private AsignaturaEntity asignatura;
 	
 	@Column(name = "nota")
-	private String nota;
+	private Integer nota;
 	
 	@Column(name = "fecha")
 	private String fecha;
 	
-	public NotaEntity() {
+	public NotaEntity(Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
 		super();
 	}
 
-	public NotaEntity(Integer id, AlumnoEntity alumno, AsignaturaEntity asignatura, String nota, String fecha) {
+	public NotaEntity(Integer id, AlumnoEntity alumno, AsignaturaEntity asignatura, Integer nota, String fecha) {
 		super();
 		this.id = id;
 		this.alumno = alumno;
 		this.asignatura = asignatura;
 		this.nota = nota;
 		this.fecha = fecha;
+	}
+
+	public NotaEntity(Integer id2, Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
+		super();
 	}
 
 	public Integer getId() {
@@ -68,11 +72,11 @@ public class NotaEntity {
 		this.asignatura = asignatura;
 	}
 
-	public String getNota() {
+	public Integer getNota() {
 		return nota;
 	}
 
-	public void setNota(String nota) {
+	public void setNota(Integer nota) {
 		this.nota = nota;
 	}
 

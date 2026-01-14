@@ -2,9 +2,12 @@ package com.dgs.colegio.dao.impl;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.dgs.colegio.dao.interfaces.IFaltasDAO;
 import com.dgs.colegio.dtos.FaltaDTO;
 
+@Repository
 public class FaltasDAOImpl implements IFaltasDAO {
 
 	@Override

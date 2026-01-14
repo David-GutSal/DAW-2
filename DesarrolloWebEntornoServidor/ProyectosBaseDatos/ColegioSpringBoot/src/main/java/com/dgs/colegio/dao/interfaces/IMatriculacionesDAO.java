@@ -8,10 +8,10 @@ import com.dgs.colegio.dtos.MatriculacionDTO;
 
 
 public interface IMatriculacionesDAO {
-	double obtenerTasaAsignatura(String idAsignatura);
+	double obtenerTasaAsignatura(Integer idAsignatura);
 
-	int insertarMatriculacion(String idAsignatura, String idAlumno,
-			String fecha, String tasa) throws SQLException;
+	int insertarMatriculacion(Integer idAsignatura, Integer idAlumno,
+			String fecha, Double tasa) throws SQLException;
 
 	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltros(String nombreAsignatura, String nombreAlumno,
 			String fecha, int activo);
@@ -19,8 +19,8 @@ public interface IMatriculacionesDAO {
 	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltrosSinFecha(String nombreAsignatura, String nombreAlumno,
 			int activo);
 
-	int actualizarMatriculacion(String id, String idAsignatura, String idAlumno,
-			String fecha, String tasa) throws SQLException;
+	int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno,
+			String fecha, Double tasa) throws SQLException;
 
-	int borrarMatriculacion(String id) throws SQLException;
+	int borrarMatriculacion(Integer id) throws SQLException;
 }

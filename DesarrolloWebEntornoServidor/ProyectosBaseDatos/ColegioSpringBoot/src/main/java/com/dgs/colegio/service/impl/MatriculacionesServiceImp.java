@@ -37,7 +37,7 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 	}
 
 	@Override
-	public int insertarMatriculacion(String idAsignatura, String idAlumno, String fecha, String tasa) {
+	public int insertarMatriculacion(Integer idAsignatura, Integer idAlumno, String fecha, Double tasa) {
 		try {
 			return matriculaciones.insertarMatriculacion(idAsignatura, idAlumno, fecha, tasa);
 		} catch (SQLException e) {
@@ -59,7 +59,7 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 	}
 
 	@Override
-	public int actualizarMatriculacion(String id, String idAsignatura, String idAlumno, String fecha, String tasa) {
+	public int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno, String fecha, Double tasa) {
 		try {
 			return matriculaciones.actualizarMatriculacion(id, idAsignatura, idAlumno, fecha, tasa);
 		} catch (SQLException e) {
@@ -69,7 +69,7 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 	}
 
 	@Override
-	public int borrarMatriculacion(String id) {
+	public int borrarMatriculacion(Integer id) {
 		try {
 			return matriculaciones.borrarMatriculacion(id);
 		} catch (SQLException e) {

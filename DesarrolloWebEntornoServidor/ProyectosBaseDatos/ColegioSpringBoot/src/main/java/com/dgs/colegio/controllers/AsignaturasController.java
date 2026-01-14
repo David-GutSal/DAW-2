@@ -31,8 +31,8 @@ public class AsignaturasController {
 			@RequestParam("tasa") String tasa,
 			@RequestParam(value = "activo", required = false) Integer activo, ModelMap model) {
 		Integer act = activo != null ? 1 : 0;
-		Double tasaS = (tasa != null) ? Double.parseDouble(tasa) : 0.0;
-		Integer resultado = asignaturaService.insertarAsignatura(id, nombre, curso, tasaS, act);
+		Double tasaString = (tasa != null) ? Double.parseDouble(tasa) : 0.0;
+		Integer resultado = asignaturaService.insertarAsignatura(id, nombre, curso, tasaString, act);
 		model.addAttribute("resultado", resultado);
 	}
 
@@ -49,8 +49,8 @@ public class AsignaturasController {
 			@RequestParam(value = "tasa", required = false) String tasa,
 			@RequestParam(value = "activo", required = false) Integer activo, ModelMap model) {
 		int act = (activo != null) ? 1 : 0;
-		Double tasaS = (tasa != "") ? Double.parseDouble(tasa) : 0.0;
-		ArrayList<AsignaturaDTO> listaAsignaturas = asignaturaService.obtenerAsignaturasPorFiltros(id, nombre.toString(), curso, tasaS, act);
+		Double tasaString = (tasa != "") ? Double.parseDouble(tasa) : 0.0;
+		ArrayList<AsignaturaDTO> listaAsignaturas = asignaturaService.obtenerAsignaturasPorFiltros(id, nombre.toString(), curso, tasaString, act);
 		model.addAttribute("lista", listaAsignaturas);
 		return "asignaturas/listadoAsignaturas";
 	}
@@ -68,8 +68,8 @@ public class AsignaturasController {
 			@RequestParam(value = "tasa", required = false) String tasa,
 			@RequestParam(value = "activo", required = false) Integer activo, ModelMap model) {
 		Integer act = activo != null ? 1 : 0;
-		Double tasaS = (tasa != "") ? Double.parseDouble(tasa) : 0.0;
-		ArrayList<AsignaturaDTO> listaAsignaturas = asignaturaService.obtenerAsignaturasPorFiltros(id, nombre, curso, tasaS, act);
+		Double tasaString = (tasa != "") ? Double.parseDouble(tasa) : 0.0;
+		ArrayList<AsignaturaDTO> listaAsignaturas = asignaturaService.obtenerAsignaturasPorFiltros(id, nombre, curso, tasaString, act);
 		model.addAttribute("lista", listaAsignaturas);
 		return "asignaturas/actualizarAsignaturas";
 	}
@@ -82,8 +82,8 @@ public class AsignaturasController {
 			@RequestParam(value = "tasa", required = false) String tasa,
 			@RequestParam(value = "activo", required = false) Integer activo, ModelMap model) {
 		Integer act = activo != null ? 1 : 0;
-		Double tasaS = (tasa != "") ? Double.parseDouble(tasa) : 0.0;
-		Integer resultado = asignaturaService.actualizarAsignatura(id, nombre, curso, tasaS, act);
+		Double tasaString = (tasa != "") ? Double.parseDouble(tasa) : 0.0;
+		Integer resultado = asignaturaService.actualizarAsignatura(id, nombre, curso, tasaString, act);
 		model.addAttribute("resultado", resultado);
 		return "asignaturas/actualizarAsignaturas";
 	}
@@ -101,8 +101,8 @@ public class AsignaturasController {
 			@RequestParam(value = "tasa", required = false) String tasa,
 			@RequestParam(value = "activo", required = false) Integer activo, ModelMap model) {
 		Integer act = activo != null ? 1 : 0;
-		Double tasaS = (tasa != "") ? Double.parseDouble(tasa) : 0.0;
-		ArrayList<AsignaturaDTO> listaAsignaturas = asignaturaService.obtenerAsignaturasPorFiltros(id, nombre, curso, tasaS, act);
+		Double tasaString = (tasa != "") ? Double.parseDouble(tasa) : 0.0;
+		ArrayList<AsignaturaDTO> listaAsignaturas = asignaturaService.obtenerAsignaturasPorFiltros(id, nombre, curso, tasaString, act);
 		model.addAttribute("lista", listaAsignaturas);
 		return "asignaturas/borrarAsignaturas";
 	}

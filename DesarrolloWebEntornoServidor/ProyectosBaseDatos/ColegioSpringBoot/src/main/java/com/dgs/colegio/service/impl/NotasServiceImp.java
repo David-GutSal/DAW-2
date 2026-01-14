@@ -22,29 +22,29 @@ public class NotasServiceImp implements INotasService {
     }
 
     @Override
-    public ArrayList<NotaDTO> obtenerNotasPorFiltros(String idAlumno, String nombreAlumno, String asignatura,
-            String nota, String fecha, int activo) {
+    public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String asignatura,
+            Integer nota, String fecha, int activo) {
         return notas.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, fecha, activo);
     }
 
     @Override
-    public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(String idAlumno, String nombreAlumno, String asignatura,
-            String nota, int activo) {
+    public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String asignatura,
+            Integer nota, int activo) {
         return notas.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, asignatura, nota, activo);
     }
 
     @Override
-    public int insertarNota(String idAlumno, String idAsignatura, String nota, String fecha) {
+    public int insertarNota(Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
         return notas.insertarNota(idAlumno, idAsignatura, nota, fecha);
     }
 
     @Override
-    public int actualizarNota(String id, String idAlumno, String idAsignatura, String nota, String fecha) {
+    public int actualizarNota(Integer id, Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
         return notas.actualizarNota(id, idAlumno, idAsignatura, nota, fecha);
     }
 
     @Override
-    public int borrarNota(String id) {
+    public int borrarNota(Integer id) {
         return notas.borrarNota(id);
     }
 

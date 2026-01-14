@@ -9,8 +9,8 @@ import com.dgs.colegio.dtos.MatriculacionDTO;
 public interface IMatriculacionesService {
 	public double calcularTasa(Integer idAlumno, Integer idAsignatura);
 
-	int insertarMatriculacion(String idAsignatura, String idAlumno,
-			String fecha, String tasa);
+	int insertarMatriculacion(Integer idAsignatura, Integer idAlumno,
+			String fecha, Double tasa);
 
 	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltros(String nombreAsignatura, String nombreAlumno,
 			String fecha, int activo);
@@ -18,8 +18,8 @@ public interface IMatriculacionesService {
 	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltrosSinFecha(String nombreAsignatura, String nombreAlumno,
 			int activo);
 
-	int actualizarMatriculacion(String id, String idAsignatura, String idAlumno,
-			String fecha, String tasa);
+	int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno,
+			String fecha, Double tasa);
 
-	int borrarMatriculacion(String id);
+	int borrarMatriculacion(Integer id);
 }

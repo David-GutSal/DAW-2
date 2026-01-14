@@ -44,8 +44,7 @@ public class MatriculacionEntity {
 
 	
 	
-	public MatriculacionEntity(Integer id, AsignaturaEntity asignatura, AlumnoEntity alumnos, String fecha,
-			Integer activo, CajaEntity caja) {
+	public MatriculacionEntity(Integer id, AsignaturaEntity asignatura, AlumnoEntity alumnos, String fecha, Integer activo, CajaEntity caja) {
 		super();
 		this.id = id;
 		this.asignatura = asignatura;
@@ -59,9 +58,7 @@ public class MatriculacionEntity {
 		super();
 	}
 
-
-	public MatriculacionEntity(Integer id, AsignaturaEntity asignatura, AlumnoEntity alumnos, String fecha,
-			Integer activo) {
+	public MatriculacionEntity(Integer id, AsignaturaEntity asignatura, AlumnoEntity alumnos, String fecha, Integer activo) {
 		super();
 		this.id = id;
 		this.asignatura = asignatura;
@@ -69,8 +66,6 @@ public class MatriculacionEntity {
 		this.fecha = fecha;
 		this.activo = activo;
 	}
-
-
 
 	public CajaEntity getCaja() {
 		return caja;
@@ -84,50 +79,40 @@ public class MatriculacionEntity {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public AsignaturaEntity getAsignatura() {
 		return asignatura;
 	}
 
-
 	public void setAsignatura(AsignaturaEntity asignatura) {
 		this.asignatura = asignatura;
 	}
-
 
 	public AlumnoEntity getAlumnos() {
 		return alumnos;
 	}
 
-
 	public void setAlumnos(AlumnoEntity alumnos) {
 		this.alumnos = alumnos;
 	}
-
 
 	public String getFecha() {
 		return fecha;
 	}
 
-
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-
 
 	public Integer getActivo() {
 		return activo;
 	}
 
-
 	public void setActivo(Integer activo) {
 		this.activo = activo;
 	}
-	
 	
 }

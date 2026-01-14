@@ -1,0 +1,6 @@
+.st{
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+}

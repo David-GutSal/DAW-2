@@ -53,7 +53,10 @@ public class AsignaturasDAOImpl implements IAsignaturasDAO {
 
 	@Override
 	public double obtenerTasaAsignatura(Integer idAsignatura) {
-		// TODO Auto-generated method stub
+		AsignaturaEntity tasa = asignaturaRepository.findById(idAsignatura).get();
+		if(tasa.getActivo() == 1) {
+			return tasa.getTasa();
+		}
 		return 0;
 	}
 

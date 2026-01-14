@@ -1,0 +1,22 @@
+p, div {
+    margin: 25px;
+    text-align: center;
+    border: 1px solid black;
+    color:crimson;
+    font-weight: bold;
+}
+
+img {
+    width:100px;
+    height:100px;
+    margin: 50px 25px;
+}
+
+.divAlt {
+    color: blue;
+    padding: 5px;
+}
+
+a, input {
+    margin: 10px 25px;
+}
