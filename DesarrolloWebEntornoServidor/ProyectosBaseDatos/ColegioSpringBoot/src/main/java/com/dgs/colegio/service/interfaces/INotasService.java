@@ -10,15 +10,15 @@ import com.dgs.colegio.dtos.NotaDTO;
 public interface INotasService {
     public ArrayList<NotaDTO> obtenerNotas() throws SQLException;
 
-    public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String asignatura,
-            Integer nota, String fecha, int activo);
+    public int insertarNota(String alumno, String asignatura, String nota, String fecha);
 
-    public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String asignatura,
-            Integer nota, int activo);
+    public int actualizarNota(String id, String idAlumno, String idAsignatura, String nota, String fecha);
 
-    public int insertarNota(Integer idAlumno, Integer idAsignatura, Integer nota, String fecha);
+    public int borrarNota(String id);
 
-    public int actualizarNota(Integer id, Integer idAlumno, Integer idAsignatura, Integer nota, String fecha);
+	public ArrayList<NotaDTO> obtenerNotasPorFiltros(String idAlumno, String nombreAlumno, String asignatura,
+            String nota, String fecha, int activo);
 
-    public int borrarNota(Integer id);
+	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(String idAlumno, String nombreAlumno, String asignatura,
+            String nota, int activo);
 }

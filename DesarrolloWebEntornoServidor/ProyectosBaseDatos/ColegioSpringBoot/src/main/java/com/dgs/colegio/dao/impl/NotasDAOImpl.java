@@ -23,15 +23,13 @@ public class NotasDAOImpl implements INotasDAO {
 	}
 
 	@Override
-	public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String asignatura,
-			Integer nota, String fecha, int activo) {
-		return notaRepository.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, fecha, activo);
+	public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String asignatura, Integer nota, String fecha, Integer act) {
+		return notaRepository.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, fecha, act);
 	}
 
 	@Override
-	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String asignatura,
-			Integer nota, int activo) {
-		return notaRepository.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, activo);
+	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String asignatura, Integer nota, Integer act) {
+		return notaRepository.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, asignatura, nota, act);
 	}
 
 	@Override

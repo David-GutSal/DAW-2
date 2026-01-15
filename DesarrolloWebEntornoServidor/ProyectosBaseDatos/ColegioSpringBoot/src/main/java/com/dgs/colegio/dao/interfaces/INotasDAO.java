@@ -10,16 +10,16 @@ public interface INotasDAO {
 
     ArrayList<NotaDTO> obtenerTodasNotas();
 
-	ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String asignatura,
-			Integer nota, int activo);
+	int insertarNota(String idAlumno, String idAsignatura, String nota, String fecha);
 
-	ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String asignatura, Integer nota,
-			String fecha, int activo);
+	int actualizarNota(String id, String idAlumno, String idAsignatura, String nota, String fecha);
 
-	int insertarNota(Integer idAlumno, Integer idAsignatura, Integer nota, String fecha);
+	int borrarNota(String id);
 
-	int actualizarNota(Integer id, Integer idAlumno, Integer idAsignatura, Integer nota, String fecha);
+	ArrayList<NotaDTO> obtenerNotasPorFiltros(String idAlumno, String nombreAlumno, String asignatura, String nota,
+			String fecha, Integer act);
 
-	int borrarNota(Integer id);
+	ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(String idAlumno, String nombreAlumno, String asignatura,
+			String nota, Integer act);
 
 }

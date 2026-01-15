@@ -23,14 +23,14 @@ public class NotasServiceImp implements INotasService {
 
     @Override
     public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String asignatura,
-            Integer nota, String fecha, int activo) {
-        return notas.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, fecha, activo);
+    		Integer nota, String fecha, Integer act) {
+        return notas.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, fecha, act);
     }
 
     @Override
     public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String asignatura,
-            Integer nota, int activo) {
-        return notas.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, asignatura, nota, activo);
+    		Integer nota, Integer act) {
+        return notas.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, asignatura, nota, act);
     }
 
     @Override
