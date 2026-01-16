@@ -59,9 +59,9 @@ public class NotasController {
 	
 	@PostMapping("/listadoNota")
 	public String listadoAlumnos(
-			@RequestParam(value = "alumno", required = false) String idAlumno,
+			@RequestParam(value = "id", required = false) Integer idAlumno,
 			@RequestParam(value = "alumno", required = false) String nombreAlumno,
-			@RequestParam(value = "asignatura", required = false) String asignatura,
+			@RequestParam(value = "asignatura", required = false) String nombreAsignatura,
 			@RequestParam(value = "nota", required = false) String nota,
 			@RequestParam(value = "fecha", required = false) String fecha,
 			@RequestParam(value = "activo", required = false) Integer activo,  ModelMap model) {
@@ -70,9 +70,9 @@ public class NotasController {
 		
 		ArrayList<NotaDTO> listaNotas;
 		if (fecha == null || fecha.trim().isEmpty()) {
-			listaNotas = notasService.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, fecha, act);
+			listaNotas = notasService.obtenerNotasPorFiltros(idAlumno, nombreAlumno, nombreAsignatura, nota, fecha, act);
         } else {
-        	listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, asignatura,nota, act);
+        	listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, nombreAsignatura,nota, act);
         }
 		
 		model.addAttribute("lista", listaNotas);
@@ -86,7 +86,7 @@ public class NotasController {
 	
 	@PostMapping(value = "/formularioActualizarNotas")
 	public String formularioModificarNotas(
-			@RequestParam(value = "alumno", required = false) String idAlumno,
+			@RequestParam(value = "id", required = false) String idAlumno,
 			@RequestParam(value = "alumno", required = false) String alumno,
 			@RequestParam(value = "asignatura", required = false) String asignatura,
 			@RequestParam(value = "nota", required = false) String nota,
@@ -137,7 +137,7 @@ public class NotasController {
 
 	@PostMapping(value = "/formularioBorrarNotas")
 	public String formularioEliminarNotas(
-			@RequestParam(value = "alumno", required = false) String idAlumno,
+			@RequestParam(value = "id", required = false) String idAlumno,
 			@RequestParam(value = "alumno", required = false) String alumno,
 			@RequestParam(value = "asignatura", required = false) String asignatura,
 			@RequestParam(value = "nota", required = false) String nota,

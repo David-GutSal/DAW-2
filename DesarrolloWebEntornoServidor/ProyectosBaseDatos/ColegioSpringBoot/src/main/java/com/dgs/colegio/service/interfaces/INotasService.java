@@ -14,11 +14,11 @@ public interface INotasService {
 
     public int actualizarNota(String id, String idAlumno, String idAsignatura, String nota, String fecha);
 
-    public int borrarNota(String id);
+    public int borrarNota(Integer id);
 
-	public ArrayList<NotaDTO> obtenerNotasPorFiltros(String idAlumno, String nombreAlumno, String asignatura,
+	public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String nombreAsignatura,
             String nota, String fecha, int activo);
 
-	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(String idAlumno, String nombreAlumno, String asignatura,
+	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String nombreAsignatura,
             String nota, int activo);
 }

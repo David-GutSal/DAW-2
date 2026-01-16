@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.dgs.colegio.dao.interfaces.INotasDAO;
 import com.dgs.colegio.dtos.NotaDTO;
+import com.dgs.colegio.entities.AlumnoEntity;
+import com.dgs.colegio.entities.AsignaturaEntity;
 import com.dgs.colegio.entities.NotaEntity;
+import com.dgs.colegio.repository.AlumnoRepository;
+import com.dgs.colegio.repository.AsignaturaRepository;
 import com.dgs.colegio.repository.NotaRepository;
 
 @Repository
@@ -15,6 +19,8 @@ public class NotasDAOImpl implements INotasDAO {
 
 	@Autowired
 	NotaRepository notaRepository;
+	AlumnoRepository alumnoRepository;
+	AsignaturaRepository asignaturaRepository;
 	
 	@Override
 	public ArrayList<NotaDTO> obtenerTodasNotas() {
@@ -23,25 +29,30 @@ public class NotasDAOImpl implements INotasDAO {
 	}
 
 	@Override
-	public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String asignatura, Integer nota, String fecha, Integer act) {
-		return notaRepository.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, fecha, act);
+	public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String nombreAsignatura, String nota, String fecha, Integer act) {
+		return notaRepository.obtenerNotasPorFiltros(idAlumno, nombreAlumno, nombreAsignatura, nota, fecha, act);
 	}
 
 	@Override
-	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String asignatura, Integer nota, Integer act) {
-		return notaRepository.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, asignatura, nota, act);
+	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String nombreAsignatura, String nota, Integer act) {
+		return notaRepository.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, nombreAsignatura, nota, act);
 	}
 
 	@Override
 	public int insertarNota(Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
-		NotaEntity nuevaNota = new NotaEntity( idAlumno,  idAsignatura,  nota,  fecha);
+		AlumnoEntity idAl = alumnoRepository.findById(idAlumno).get();
+		AsignaturaEntity idAs = asignaturaRepository.findById(idAsignatura).get();
+		NotaEntity nuevaNota = new NotaEntity( idAl,  idAs,  nota,  fecha);
 		notaRepository.save(nuevaNota);
 		return nuevaNota.getId();
 	}
 
 	@Override
 	public int actualizarNota(Integer id, Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
-		NotaEntity nuevaNota = new NotaEntity( id, idAlumno,  idAsignatura,  nota,  fecha);
+		AlumnoEntity idAl = alumnoRepository.findById(idAlumno).get();
+		AsignaturaEntity idAs = asignaturaRepository.findById(idAsignatura).get();
+		
+		NotaEntity nuevaNota = new NotaEntity( id, idAl,  idAs,  nota,  fecha);
 		notaRepository.save(nuevaNota);
 		return nuevaNota.getId();
 	}

@@ -14,38 +14,41 @@ import com.dgs.colegio.service.interfaces.INotasService;
 public class NotasServiceImp implements INotasService {
 	@Autowired
 	INotasDAO notas;
+
+	@Override
+	public ArrayList<NotaDTO> obtenerNotas() throws SQLException {
+		notas.obtenerTodasNotas();
+		return null;
+	}
+
+	@Override
+	public int insertarNota(String alumno, String asignatura, String nota, String fecha) {
+		return notas.insertarNota(alumno, asignatura, nota, fecha);
+	}
+
+	@Override
+	public int actualizarNota(String id, String idAlumno, String idAsignatura, String nota, String fecha) {
+		return notas.actualizarNota(id, idAlumno, idAsignatura, nota, fecha);
+	}
+
+	@Override
+	public int borrarNota(Integer id) {
+		return notas.borrarNota(id);
+	}
+
+	@Override
+	public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String nombreAsignatura,
+			String nota, String fecha, int activo) {
+		return notas.obtenerNotasPorFiltros( idAlumno,  nombreAlumno,  nombreAsignatura,
+				 nota,  fecha,  activo);
+	}
+
+	@Override
+	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(String idAlumno, String nombreAlumno,
+			String nombreAsignatura, String nota, int activo) {
+		return notas.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, nombreAsignatura, nota, activo);
+	}
 	
-    @Override
-    public ArrayList<NotaDTO> obtenerNotas() throws SQLException {
-
-        return notas.obtenerTodasNotas();
-    }
-
-    @Override
-    public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String asignatura,
-    		Integer nota, String fecha, Integer act) {
-        return notas.obtenerNotasPorFiltros(idAlumno, nombreAlumno, asignatura, nota, fecha, act);
-    }
-
-    @Override
-    public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno, String asignatura,
-    		Integer nota, Integer act) {
-        return notas.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, asignatura, nota, act);
-    }
-
-    @Override
-    public int insertarNota(Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
-        return notas.insertarNota(idAlumno, idAsignatura, nota, fecha);
-    }
-
-    @Override
-    public int actualizarNota(Integer id, Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
-        return notas.actualizarNota(id, idAlumno, idAsignatura, nota, fecha);
-    }
-
-    @Override
-    public int borrarNota(Integer id) {
-        return notas.borrarNota(id);
-    }
+ 
 
 }
