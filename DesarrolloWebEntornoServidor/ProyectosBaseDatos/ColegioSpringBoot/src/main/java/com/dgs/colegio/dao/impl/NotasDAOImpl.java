@@ -19,7 +19,9 @@ public class NotasDAOImpl implements INotasDAO {
 
 	@Autowired
 	NotaRepository notaRepository;
+	@Autowired
 	AlumnoRepository alumnoRepository;
+	@Autowired
 	AsignaturaRepository asignaturaRepository;
 	
 	@Override
@@ -39,10 +41,10 @@ public class NotasDAOImpl implements INotasDAO {
 	}
 
 	@Override
-	public int insertarNota(Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
+	public int insertarNota(Integer idAlumno, Integer idAsignatura, String nota, String fecha) {
 		AlumnoEntity idAl = alumnoRepository.findById(idAlumno).get();
 		AsignaturaEntity idAs = asignaturaRepository.findById(idAsignatura).get();
-		NotaEntity nuevaNota = new NotaEntity( idAl,  idAs,  nota,  fecha);
+		NotaEntity nuevaNota = new NotaEntity( idAl,  idAs,  Integer.parseInt(nota),  fecha);
 		notaRepository.save(nuevaNota);
 		return nuevaNota.getId();
 	}

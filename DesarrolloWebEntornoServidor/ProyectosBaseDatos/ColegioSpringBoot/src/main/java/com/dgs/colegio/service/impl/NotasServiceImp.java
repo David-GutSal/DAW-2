@@ -22,12 +22,12 @@ public class NotasServiceImp implements INotasService {
 	}
 
 	@Override
-	public int insertarNota(String alumno, String asignatura, String nota, String fecha) {
+	public int insertarNota(Integer alumno, Integer asignatura, String nota, String fecha) {
 		return notas.insertarNota(alumno, asignatura, nota, fecha);
 	}
 
 	@Override
-	public int actualizarNota(String id, String idAlumno, String idAsignatura, String nota, String fecha) {
+	public int actualizarNota(Integer id, Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
 		return notas.actualizarNota(id, idAlumno, idAsignatura, nota, fecha);
 	}
 
@@ -38,14 +38,14 @@ public class NotasServiceImp implements INotasService {
 
 	@Override
 	public ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String nombreAsignatura,
-			String nota, String fecha, int activo) {
+			String nota, String fecha, Integer activo) {
 		return notas.obtenerNotasPorFiltros( idAlumno,  nombreAlumno,  nombreAsignatura,
 				 nota,  fecha,  activo);
 	}
 
 	@Override
-	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(String idAlumno, String nombreAlumno,
-			String nombreAsignatura, String nota, int activo) {
+	public ArrayList<NotaDTO> obtenerNotasPorFiltrosSinFecha(Integer idAlumno, String nombreAlumno,
+			String nombreAsignatura, String nota, Integer activo) {
 		return notas.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, nombreAsignatura, nota, activo);
 	}
 	

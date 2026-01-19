@@ -17,7 +17,9 @@ import com.dgs.colegio.repository.MunicipioRepository;
 public class DesplegablesDAOImpl implements IDesplegablesDAO {
 	@Autowired
 	private MunicipioRepository municipioRepository;
+	@Autowired
 	private AsignaturaRepository asignaturaRepository;
+	@Autowired
 	private AlumnoRepository alumnoRepository;
 
 	@Override

@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(231, 236, 228);
+}
+.carouselButton{
+    background-color: rgba(255, 255, 255, 0.664);
+    width: 10em;
+}
+.carouselBorder{
+    border: 2px solid black;
+}
+
+.test{
+    background-color: rgba(146, 204, 255, 0.616);
+}
