@@ -33,7 +33,7 @@ public class NotasController {
 	}
 	
 	@PostMapping("/insertarNota")
-	public void insertarAsignatura(
+	public void insertarNota(
 			@RequestParam(value = "alumno", required = false) Integer alumno,
 			@RequestParam(value = "asignatura", required = false) Integer asignatura,
 			@RequestParam(value = "nota", required = false) String nota,
@@ -70,10 +70,9 @@ public class NotasController {
 		
 		ArrayList<NotaDTO> listaNotas;
 		if (fecha == null || fecha.trim().isEmpty()) {
-			fecha = "0001-01-01";
-			listaNotas = notasService.obtenerNotasPorFiltros(idAlumno, nombreAlumno, nombreAsignatura, nota, fecha, act);
+			listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, nombreAsignatura,nota, act);
         } else {
-        	listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(idAlumno, nombreAlumno, nombreAsignatura,nota, act);
+        	listaNotas = notasService.obtenerNotasPorFiltros(idAlumno, nombreAlumno, nombreAsignatura, nota, fecha, act);
         }
 		
 		model.addAttribute("lista", listaNotas);
@@ -95,33 +94,33 @@ public class NotasController {
 		
 		ArrayList<NotaDTO> listaNotas;
 		if (fecha == null || fecha.trim().isEmpty()) {
-			fecha = "0001-01-01";
-			listaNotas = notasService.obtenerNotasPorFiltros(0, alumno, asignatura, fecha, nota ,1);
+			listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(null, alumno, asignatura,"", 1);
         } else {
-        	listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(0, alumno, asignatura,"", 1);
+        	listaNotas = notasService.obtenerNotasPorFiltros(null, alumno, asignatura, fecha, "" ,1);
         }
 		
+		ArrayList<DesplegableDTO> listaAlumnos = desplegables.desplegableAlumnos();
+		ArrayList<DesplegableDTO> listaAsignaturas = desplegables.desplegableAsignaturas();
+		model.addAttribute("desplegableAlumnos", listaAlumnos);
+		model.addAttribute("desplegableAsignaturas", listaAsignaturas);
 		model.addAttribute("lista", listaNotas);
+		
 		return "notas/actualizarNotas";
 	}
 	
 	@PostMapping(value = "/actualizarNota")
 	public String modificarNotas(
 			@RequestParam(value = "id", required = false) Integer id,
-			@RequestParam(value = "nombreAlumno", required = false) String alumno,
-			@RequestParam(value = "asignatura", required = false) String asignatura,
-			@RequestParam(value = "nota", required = false) String nota,
+			@RequestParam(value = "alumno", required = false) Integer alumno,
+			@RequestParam(value = "asignatura", required = false) Integer asignatura,
+			@RequestParam(value = "nota", required = false) Integer nota,
 			@RequestParam(value = "fecha", required = false) String fecha, ModelMap model) {
 		
-		ArrayList<NotaDTO> listaNotas;
-		if (fecha == null || fecha.trim().isEmpty()) {
-			fecha = "0001-01-01";
-			listaNotas = notasService.obtenerNotasPorFiltros(0, alumno, asignatura, nota, fecha, 1);
-        } else {
-        	listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(0, alumno, asignatura, nota, 1);
-        }
+		Integer resultado = notasService.actualizarNota(id, alumno, asignatura, nota, fecha);
 		
-		model.addAttribute("lista", listaNotas);
+
+		model.addAttribute("resultado", resultado);
+
 		return "notas/actualizarNotas";
 	}
 
@@ -133,19 +132,21 @@ public class NotasController {
 	@PostMapping(value = "/formularioBorrarNotas")
 	public String formularioEliminarNotas(
 			@RequestParam(value = "id", required = false) Integer idAlumno,
-			@RequestParam(value = "alumno", required = false) String alumno,
+			@RequestParam(value = "nombreAlumno", required = false) String alumno,
 			@RequestParam(value = "asignatura", required = false) String asignatura,
 			@RequestParam(value = "nota", required = false) String nota,
 			@RequestParam(value = "fecha", required = false) String fecha, ModelMap model) {
 
 		ArrayList<NotaDTO> listaNotas;
 		if (fecha == null || fecha.trim().isEmpty()) {
-			fecha = "0001-01-01";
-			listaNotas = notasService.obtenerNotasPorFiltros(idAlumno, alumno, asignatura, nota,fecha, 1);
+        	listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(null, alumno, asignatura,"", 1);
         } else {
-        	listaNotas = notasService.obtenerNotasPorFiltrosSinFecha(idAlumno, alumno, asignatura,nota, 1);
+			listaNotas = notasService.obtenerNotasPorFiltros(null, alumno, asignatura, "",fecha, 1);
         }
-		
+		ArrayList<DesplegableDTO> listaAlumnos = desplegables.desplegableAlumnos();
+		ArrayList<DesplegableDTO> listaAsignaturas = desplegables.desplegableAsignaturas();
+		model.addAttribute("desplegableAlumnos", listaAlumnos);
+		model.addAttribute("desplegableAsignaturas", listaAsignaturas);
 		model.addAttribute("lista", listaNotas);
 		return "notas/borrarNotas";
 	}

@@ -8,3 +8,11 @@ img{
 .borde-azul{
     border: 2px solid blue;
 }
+li{
+    list-style: none;
+    margin-top: 5px;
+}
+
+nuevoBorde{
+    border-style: dotted;
+}

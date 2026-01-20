@@ -34,6 +34,9 @@ public class NotaEntity {
 	public NotaEntity(Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
 		super();
 	}
+	public NotaEntity() {
+		super();
+	}
 
 	public NotaEntity(Integer id, AlumnoEntity alumno, AsignaturaEntity asignatura, Integer nota, String fecha) {
 		super();
@@ -49,10 +52,6 @@ public class NotaEntity {
 		this.asignatura = asignatura;
 		this.nota = nota;
 		this.fecha = fecha;
-	}
-
-	public NotaEntity(Integer id2, Integer idAlumno, Integer idAsignatura, Integer nota, String fecha) {
-		super();
 	}
 
 	public Integer getId() {
