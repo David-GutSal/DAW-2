@@ -86,10 +86,8 @@ public class NotasController {
 	
 	@PostMapping(value = "/formularioActualizarNotas")
 	public String formularioModificarNotas(
-			@RequestParam(value = "id", required = false) Integer idAlumno,
 			@RequestParam(value = "nombreAlumno", required = false) String alumno,
 			@RequestParam(value = "asignatura", required = false) String asignatura,
-			@RequestParam(value = "nota", required = false) String nota,
 			@RequestParam(value = "fecha", required = false) String fecha, ModelMap model) {
 		
 		ArrayList<NotaDTO> listaNotas;

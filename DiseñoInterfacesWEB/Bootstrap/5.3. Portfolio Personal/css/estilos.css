@@ -9,6 +9,16 @@ body{
     border: 2px solid black;
 }
 
-.test{
+li{
+    list-style: none;
+}
+
+.test1{
     background-color: rgba(146, 204, 255, 0.616);
+}
+.test2{
+    background-color: rgba(112, 188, 255, 0.616);
+}
+.test3{
+    background-color: rgba(45, 157, 255, 0.616);
 }

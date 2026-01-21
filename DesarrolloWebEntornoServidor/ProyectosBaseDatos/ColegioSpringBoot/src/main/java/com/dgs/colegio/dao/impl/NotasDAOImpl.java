@@ -44,7 +44,7 @@ public class NotasDAOImpl implements INotasDAO {
 	public int insertarNota(Integer idAlumno, Integer idAsignatura, String nota, String fecha) {
 		AlumnoEntity idAl = alumnoRepository.findById(idAlumno).get();
 		AsignaturaEntity idAs = asignaturaRepository.findById(idAsignatura).get();
-		NotaEntity nuevaNota = new NotaEntity( idAl,  idAs,  Integer.parseInt(nota),  fecha);
+		NotaEntity nuevaNota = new NotaEntity( idAl,  idAs,  Integer.parseInt(nota), fecha);
 		notaRepository.save(nuevaNota);
 		return nuevaNota.getId();
 	}

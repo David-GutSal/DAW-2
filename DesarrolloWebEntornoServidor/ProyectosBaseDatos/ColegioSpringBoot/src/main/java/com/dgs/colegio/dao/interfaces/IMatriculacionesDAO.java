@@ -16,9 +16,6 @@ public interface IMatriculacionesDAO {
 	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltros(String nombreAsignatura, String nombreAlumno,
 			String fecha, int activo);
 
-	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltrosSinFecha(String nombreAsignatura, String nombreAlumno,
-			int activo);
-
 	int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno,
 			String fecha, Double tasa) throws SQLException;
 

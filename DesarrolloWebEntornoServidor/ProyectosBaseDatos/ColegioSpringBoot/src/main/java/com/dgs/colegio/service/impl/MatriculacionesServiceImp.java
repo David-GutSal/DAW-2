@@ -53,12 +53,6 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 	}
 
 	@Override
-	public ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltrosSinFecha(String nombreAsignatura,
-			String nombreAlumno, int activo) {
-		return matriculaciones.obtenerMatriculacionesPorFiltrosSinFecha(nombreAsignatura, nombreAlumno, activo);
-	}
-
-	@Override
 	public int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno, String fecha, Double tasa) {
 		try {
 			return matriculaciones.actualizarMatriculacion(id, idAsignatura, idAlumno, fecha, tasa);

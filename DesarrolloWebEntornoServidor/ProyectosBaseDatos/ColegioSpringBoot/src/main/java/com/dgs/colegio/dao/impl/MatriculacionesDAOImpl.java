@@ -35,13 +35,6 @@ public class MatriculacionesDAOImpl implements IMatriculacionesDAO {
 	}
 
 	@Override
-	public ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltrosSinFecha(String nombreAsignatura,
-			String nombreAlumno, int activo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno, String fecha, Double tasa)
 			throws SQLException {
 		// TODO Auto-generated method stub
