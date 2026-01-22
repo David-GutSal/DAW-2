@@ -44,6 +44,20 @@ public class MatriculacionEntity {
 
 	
 	
+	public MatriculacionEntity(Integer id, AlumnoEntity alumnos) {
+		super();
+		this.id = id;
+		this.alumnos = alumnos;
+	}
+
+	public MatriculacionEntity(AsignaturaEntity asignatura, AlumnoEntity alumnos, String fecha, Integer activo) {
+		super();
+		this.asignatura = asignatura;
+		this.alumnos = alumnos;
+		this.fecha = fecha;
+		this.activo = activo;
+	}
+
 	public MatriculacionEntity(Integer id, AsignaturaEntity asignatura, AlumnoEntity alumnos, String fecha, Integer activo, CajaEntity caja) {
 		super();
 		this.id = id;

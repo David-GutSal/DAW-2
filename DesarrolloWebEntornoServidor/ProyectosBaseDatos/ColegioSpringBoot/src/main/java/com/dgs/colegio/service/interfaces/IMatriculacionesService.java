@@ -10,7 +10,7 @@ public interface IMatriculacionesService {
 	public double calcularTasa(Integer idAlumno, Integer idAsignatura);
 
 	int insertarMatriculacion(Integer idAsignatura, Integer idAlumno,
-			String fecha, Double tasa);
+			double tasa, String fecha);
 
 	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltros(String nombreAsignatura, String nombreAlumno,
 			String fecha, int activo);

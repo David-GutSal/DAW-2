@@ -1,4 +1,4 @@
-const { createApp, ref } = Vue;
+const { createApp, ref, computed } = Vue;
 
 const app = Vue.createApp({
   setup() {
@@ -8,10 +8,16 @@ const app = Vue.createApp({
     let click = ref([0, 0, 0, 0, 0, 0]);
     let nombre = ref(["a", "b", "c", "d", "e", "f"]);
 
-    let guardar = (event, index)=> {
+    const guardar = (event, index) => {
       const valorRecogido = event.target.value;
-      nombre[index] = valorRecogido;
-  }
+      nombre.value[index] = valorRecogido;
+      cambiarColor.value[index] = false;
+    };
+    
+    const cambiarBorde = computed((index) => {
+      return click.value[index] == 5 ? 'nuevoBorde' : '';
+
+    });
 
     return {
       imgs,
@@ -19,7 +25,8 @@ const app = Vue.createApp({
       cambiarColor,
       click,
       nombre,
-      guardar
+      guardar,
+      cambiarBorde
     };
   },
 });

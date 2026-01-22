@@ -45,10 +45,6 @@ public class NotasController {
 		
 		Integer resultado = notasService.insertarNota(alumno, asignatura, nota, fecha);
 		
-		ArrayList<DesplegableDTO> listaAlumnos = desplegables.desplegableAlumnos();
-		ArrayList<DesplegableDTO> listaAsignaturas = desplegables.desplegableAsignaturas();
-		model.addAttribute("desplegableAlumnos", listaAlumnos);
-		model.addAttribute("desplegableAsignaturas", listaAsignaturas);
 		model.addAttribute("resultado", resultado);
 	}
 	

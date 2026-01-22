@@ -16,7 +16,9 @@ import com.dgs.colegio.service.interfaces.IMatriculacionesService;
 public class MatriculacionesServiceImp implements IMatriculacionesService {
 	@Autowired
 	IAsignaturasDAO asignaturasDAO;
+	@Autowired
 	IAlumnosDAO alumnosDAO;
+	@Autowired
 	IMatriculacionesDAO matriculaciones;
 	
 	@Override
@@ -24,11 +26,10 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 
 		double tasaBase = asignaturasDAO.obtenerTasaAsignatura(idAsignatura);
 
-
 		boolean esFamiliaNumerosa = alumnosDAO.esFamiliaNumerosa(idAlumno);
 
 		double tasaFinal = tasaBase;
-
+		
 		if (esFamiliaNumerosa) {
 			tasaFinal = tasaFinal * 0.50;
 		}
@@ -37,9 +38,9 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 	}
 
 	@Override
-	public int insertarMatriculacion(Integer idAsignatura, Integer idAlumno, String fecha, Double tasa) {
+	public int insertarMatriculacion(Integer alumno, Integer asignatura, double tasa, String fecha) {
 		try {
-			return matriculaciones.insertarMatriculacion(idAsignatura, idAlumno, fecha, tasa);
+			return matriculaciones.insertarMatriculacion(alumno, asignatura, tasa, fecha);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

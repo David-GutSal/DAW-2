@@ -44,6 +44,23 @@
         <h2 th:if="${resultado > 0}" style="color: green;">Matriculación insertada correctamente</h2>
         <h2 th:if="${resultado == 0}" style="color: red;">Error al insertar la matriculación</h2>
     </div>
+    	<script>
+		$(document).ready(function() {
+			$(document).on('change', '#alumno, #asignatura', function() {
+				$.ajax({
+					type : "POST",
+					url : "http://localhost:8080/ColegioSpringBoot/tasa",
+					data : {
+						alumnos : $("#alumno").val(),
+						asignaturas : $("#asignatura").val()
+					},
+					success : function(data) {
+						$("#tasa").val(data);
+					}
+				});
+			});
+		});
+	</script>
 </body>
 
 </html>

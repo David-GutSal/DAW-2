@@ -11,7 +11,7 @@ public interface IMatriculacionesDAO {
 	double obtenerTasaAsignatura(Integer idAsignatura);
 
 	int insertarMatriculacion(Integer idAsignatura, Integer idAlumno,
-			String fecha, Double tasa) throws SQLException;
+			double tasa, String fecha) throws SQLException;
 
 	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltros(String nombreAsignatura, String nombreAlumno,
 			String fecha, int activo);

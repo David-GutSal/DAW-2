@@ -1,5 +1,6 @@
 package com.dgs.colegio.controllers;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dgs.colegio.dao.interfaces.IDesplegablesDAO;
-import com.dgs.colegio.dao.interfaces.IMatriculacionesDAO;
 import com.dgs.colegio.dtos.DesplegableDTO;
 import com.dgs.colegio.dtos.MatriculacionDTO;
+import com.dgs.colegio.service.interfaces.IMatriculacionesService;
 
 @Controller
 @RequestMapping("/matriculaciones")
@@ -23,7 +24,7 @@ public class MatriculacionesController {
 	@Autowired
 	IDesplegablesDAO desplegables;
 	@Autowired
-	IMatriculacionesDAO matriculacionesService;
+	IMatriculacionesService matriculacionesService;
 	
 	@GetMapping("/listadoMatriculaciones")
 	public String formularioListadoNota() {
@@ -47,31 +48,28 @@ public class MatriculacionesController {
 		return "matriculaciones/listadoMatriculaciones";
 	}
 	
-	@GetMapping("/insertarMatriculaciones")
+	@GetMapping("/insertarMatriculacion")
 	public void insertarNota(ModelMap model) {
 		ArrayList<DesplegableDTO> listaAlumnos = desplegables.desplegableAlumnos();
 		ArrayList<DesplegableDTO> listaAsignaturas = desplegables.desplegableAsignaturas();
+		
 		model.addAttribute("desplegableAlumnos", listaAlumnos);
 		model.addAttribute("desplegableAsignaturas", listaAsignaturas);
 	}
 	
-	@PostMapping("/insertarMatriculaciones")
+	@PostMapping("/insertarMatriculacion")
 	public void insertarNota(
 			@RequestParam(value = "alumno", required = false) Integer alumno,
 			@RequestParam(value = "asignatura", required = false) Integer asignatura,
-			@RequestParam(value = "nota", required = false) String tasa,
-			@RequestParam(value = "fecha", required = false) String fecha,  ModelMap model) {
+			@RequestParam(value = "nota", required = false) double tasa,
+			@RequestParam(value = "fecha", required = false) String fecha,  ModelMap model) throws SQLException {
 		
 		if (fecha == null || fecha.trim().isEmpty()) {
             fecha = LocalDate.now().toString();
         }
 		
-		Integer resultado = notasService.insertarNota(alumno, asignatura, nota, fecha);
-		
-		ArrayList<DesplegableDTO> listaAlumnos = desplegables.desplegableAlumnos();
-		ArrayList<DesplegableDTO> listaAsignaturas = desplegables.desplegableAsignaturas();
-		model.addAttribute("desplegableAlumnos", listaAlumnos);
-		model.addAttribute("desplegableAsignaturas", listaAsignaturas);
+		Integer resultado = matriculacionesService.insertarMatriculacion(alumno, asignatura, tasa, fecha);
+
 		model.addAttribute("resultado", resultado);
 	}
 }
