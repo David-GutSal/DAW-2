@@ -35,7 +35,17 @@ public class MatriculacionDTO {
         this.activo = activo;
     }
 
-    public MatriculacionDTO(int id, int idAsignatura, int idAlumno, String fecha, int activo) {
+	public MatriculacionDTO(int id, int idAsignatura, int idAlumno, String fecha, int activo, double tasa) {
+		super();
+		this.id = id;
+		this.idAsignatura = idAsignatura;
+		this.idAlumno = idAlumno;
+		this.fecha = fecha;
+		this.activo = activo;
+		this.tasa = tasa;
+	}
+
+	public MatriculacionDTO(int id, int idAsignatura, int idAlumno, String fecha, int activo) {
         super();
         this.id = id;
         this.idAsignatura = idAsignatura;

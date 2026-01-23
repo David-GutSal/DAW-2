@@ -17,8 +17,8 @@
             <form th:action="@{/matriculaciones/formularioActualizarMatriculaciones}" method="post">
                 <label for="nombreAlumno">Nombre Alumno</label>
                 <input type="text" id="nombreAlumno" name="nombreAlumno"><br>
-                <label for="asignatura">Asignatura</label>
-                <input type="text" id="asignatura" name="asignatura"><br>
+                <label for="nombreAsignatura">Asignatura</label>
+                <input type="text" id="nombreAsignatura" name="nombreAsignatura"><br>
                 <label for="fecha">Fecha</label>
                 <input type="date" id="fecha" name="fecha"><br>
                 <input type="submit" value="Buscar">
@@ -44,7 +44,7 @@
             </select><br>
 
             <label for="tasa">Tasa</label>
-            <input type="text" id="tasa" name="tasa" th:value="${matriculacion.tasa}"><br>
+            <input type="text" id="tasa" name="tasa"  readonly th:value="${matriculacion.tasa}"><br>
 
             <label for="fecha">Fecha</label>
             <input type="date" id="fecha" name="fecha" th:value="${matriculacion.fecha}"><br>
@@ -57,6 +57,40 @@
         <h2 th:if="${resultado > 0}" style="color: green;">Matriculación actualiza correctamente</h2>
         <h2 th:if="${resultado == 0}" style="color: red;">Error al actualizar la matriculación</h2>
     </div>
+    	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$(document)
+									.on(
+											'change',
+											'#alumno, #asignatura',
+											function() {
+												$
+														.ajax({
+															type : "POST",
+															url : "/tasa",
+															data : {
+																alumnos : $(
+																		"#alumno")
+																		.val(),
+																asignaturas : $(
+																		"#asignatura")
+																		.val()
+															},
+															success : function(
+																	data) {
+																$("#tasa").val(
+																		data);
+															},
+															error : function() {
+																alert("Error al calcular la tasa. Verifica la selección.");
+															}
+														});
+											});
+						});
+	</script>
 </body>
 
 </html>

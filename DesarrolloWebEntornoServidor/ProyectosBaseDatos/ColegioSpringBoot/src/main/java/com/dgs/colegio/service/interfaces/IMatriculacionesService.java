@@ -15,8 +15,10 @@ public interface IMatriculacionesService {
 	ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltros(String nombreAsignatura, String nombreAlumno,
 			String fecha, int activo);
 
-	int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno,
-			String fecha, Double tasa);
+	int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno, String fecha, Double tasa);
 
 	int borrarMatriculacion(Integer id);
+
+	public ArrayList<MatriculacionDTO> obtenerMatriculacionesParaId(String asignatura, String alumno, String fecha,
+			int i);
 }

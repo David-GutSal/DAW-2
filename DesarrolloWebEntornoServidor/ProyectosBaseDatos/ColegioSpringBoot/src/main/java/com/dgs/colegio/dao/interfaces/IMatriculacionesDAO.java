@@ -20,4 +20,6 @@ public interface IMatriculacionesDAO {
 			String fecha, Double tasa) throws SQLException;
 
 	int borrarMatriculacion(Integer id) throws SQLException;
+
+	ArrayList<MatriculacionDTO> obtenerMatriculacionesParaId(String asignatura, String alumno, String fecha, int i);
 }

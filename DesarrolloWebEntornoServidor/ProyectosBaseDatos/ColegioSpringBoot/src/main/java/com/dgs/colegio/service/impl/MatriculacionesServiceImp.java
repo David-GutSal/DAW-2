@@ -22,7 +22,7 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 	IMatriculacionesDAO matriculaciones;
 	
 	@Override
-	public double calcularTasa(Integer idAlumno, Integer idAsignatura) {
+	public double calcularTasa(Integer idAsignatura, Integer idAlumno) {
 
 		double tasaBase = asignaturasDAO.obtenerTasaAsignatura(idAsignatura);
 
@@ -54,9 +54,9 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 	}
 
 	@Override
-	public int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno, String fecha, Double tasa) {
+	public int actualizarMatriculacion(Integer id, Integer idAlumno, Integer idAsignatura, String fecha, Double tasa) {
 		try {
-			return matriculaciones.actualizarMatriculacion(id, idAsignatura, idAlumno, fecha, tasa);
+			return matriculaciones.actualizarMatriculacion(id, idAlumno, idAsignatura, fecha, tasa);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -71,5 +71,11 @@ public class MatriculacionesServiceImp implements IMatriculacionesService {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public ArrayList<MatriculacionDTO> obtenerMatriculacionesParaId(String asignatura, String alumno, String fecha,
+			int i) {
+		return matriculaciones.obtenerMatriculacionesParaId(asignatura, alumno, fecha, i);
 	}
 }

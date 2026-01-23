@@ -27,12 +27,12 @@ public class MatriculacionesController {
 	IMatriculacionesService matriculacionesService;
 	
 	@GetMapping("/listadoMatriculaciones")
-	public String formularioListadoNota() {
+	public String formularioListadoMatriculacion() {
 		return "matriculaciones/listadoMatriculaciones";
 	}
 	
 	@PostMapping("/listadoMatriculaciones")
-	public String listadoAlumnos(
+	public String listadoMatriculaciones(
 			@RequestParam(value = "nombreAsignatura", required = false) String nombreAsignatura,
 			@RequestParam(value = "nombreAlumno", required = false) String nombreAlumno,
 			@RequestParam(value = "fecha", required = false) String fecha,
@@ -43,13 +43,13 @@ public class MatriculacionesController {
 			fecha = "0001-01-01";
 		}
 		
-		ArrayList<MatriculacionDTO> listaNotas = matriculacionesService.obtenerMatriculacionesPorFiltros(nombreAsignatura, nombreAlumno, fecha, act);
-		model.addAttribute("lista", listaNotas);
+		ArrayList<MatriculacionDTO> listaMatriculaciones = matriculacionesService.obtenerMatriculacionesPorFiltros(nombreAsignatura, nombreAlumno, fecha, act);
+		model.addAttribute("lista", listaMatriculaciones);
 		return "matriculaciones/listadoMatriculaciones";
 	}
 	
 	@GetMapping("/insertarMatriculacion")
-	public void insertarNota(ModelMap model) {
+	public void insertarMatriculacion(ModelMap model) {
 		ArrayList<DesplegableDTO> listaAlumnos = desplegables.desplegableAlumnos();
 		ArrayList<DesplegableDTO> listaAsignaturas = desplegables.desplegableAsignaturas();
 		
@@ -58,10 +58,10 @@ public class MatriculacionesController {
 	}
 	
 	@PostMapping("/insertarMatriculacion")
-	public void insertarNota(
+	public void insertarMatriculacion(
 			@RequestParam(value = "alumno", required = false) Integer alumno,
 			@RequestParam(value = "asignatura", required = false) Integer asignatura,
-			@RequestParam(value = "nota", required = false) double tasa,
+			@RequestParam(value = "tasa", required = false) double tasa,
 			@RequestParam(value = "fecha", required = false) String fecha,  ModelMap model) throws SQLException {
 		
 		if (fecha == null || fecha.trim().isEmpty()) {
@@ -71,5 +71,46 @@ public class MatriculacionesController {
 		Integer resultado = matriculacionesService.insertarMatriculacion(alumno, asignatura, tasa, fecha);
 
 		model.addAttribute("resultado", resultado);
+	}
+	
+	@GetMapping("/formularioActualizarMatriculaciones")
+	public String actualizarMatriculacion(ModelMap model) {
+		
+		return "matriculaciones/actualizarMatriculaciones";
+	}
+	
+	@PostMapping("/formularioActualizarMatriculaciones")
+	public String actualizarMatriculacion(
+			@RequestParam(value = "nombreAlumno", required = false) String alumno,
+			@RequestParam(value = "nombreAsignatura", required = false) String asignatura,
+			@RequestParam(value = "fecha", required = false) String fecha,  ModelMap model) throws SQLException {
+		
+		if(fecha == null || fecha.trim().isEmpty()) {
+			fecha = "0001-01-01";
+		}
+		
+		ArrayList<MatriculacionDTO> listaMatriculaciones = matriculacionesService.obtenerMatriculacionesParaId(asignatura, alumno, fecha, 1);
+		
+		ArrayList<DesplegableDTO> listaAlumnos = desplegables.desplegableAlumnos();
+		ArrayList<DesplegableDTO> listaAsignaturas = desplegables.desplegableAsignaturas();
+		
+		model.addAttribute("desplegableAlumnos", listaAlumnos);
+		model.addAttribute("desplegableAsignaturas", listaAsignaturas);
+		model.addAttribute("lista", listaMatriculaciones);
+		return "matriculaciones/actualizarMatriculaciones";
+	}
+	
+	@PostMapping(value = "/actualizarMatriculacion")
+	public String modificarMatriculacion(
+			@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "alumno", required = false) Integer alumno,
+			@RequestParam(value = "asignatura", required = false) Integer asignatura,
+			@RequestParam(value = "tasa", required = false) Double tasa,
+			@RequestParam(value = "fecha", required = false) String fecha, ModelMap model) {
+		
+		Integer resultado = matriculacionesService.actualizarMatriculacion(id, alumno, asignatura, fecha, tasa);
+
+		model.addAttribute("resultado", resultado);
+		return "matriculaciones/actualizarMatriculaciones";
 	}
 }

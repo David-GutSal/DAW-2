@@ -41,7 +41,7 @@ public class MatriculacionesDAOImpl implements IMatriculacionesDAO {
 
 	@Override
 	@Transactional
-	public int insertarMatriculacion(Integer idAsignatura, Integer idAlumno, double tasa, String fecha)
+	public int insertarMatriculacion(Integer idAlumno, Integer idAsignatura, double tasa, String fecha)
 			throws SQLException {
 		AlumnoEntity idAl = alumnoRepository.findById(idAlumno).get();
 		AsignaturaEntity idAs = asignaturaRepository.findById(idAsignatura).get();
@@ -61,16 +61,30 @@ public class MatriculacionesDAOImpl implements IMatriculacionesDAO {
 	}
 
 	@Override
-	public int actualizarMatriculacion(Integer id, Integer idAsignatura, Integer idAlumno, String fecha, Double tasa)
+	@Transactional
+	public int actualizarMatriculacion(Integer id, Integer idAlumno, Integer idAsignatura, String fecha, Double tasa)
 			throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		AlumnoEntity idAl = alumnoRepository.findById(idAlumno).get();
+		AsignaturaEntity idAs = asignaturaRepository.findById(idAsignatura).get();
+	
+		MatriculacionEntity matriculacion = new MatriculacionEntity(id, idAs, idAl, fecha, 1);
+		matriculacionRepository.save(matriculacion);
+		
+		CajaEntity caja = new CajaEntity(matriculacion , tasa);
+		cajaRepository.save(caja);
+		return matriculacion.getId();
 	}
 
 	@Override
 	public int borrarMatriculacion(Integer id) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public ArrayList<MatriculacionDTO> obtenerMatriculacionesParaId(String asignatura, String alumno, String fecha,
+			int i) {
+		return matriculacionRepository.obtenerMatriculacionesParaId(asignatura, alumno, fecha, i);
 	}
 
 }
