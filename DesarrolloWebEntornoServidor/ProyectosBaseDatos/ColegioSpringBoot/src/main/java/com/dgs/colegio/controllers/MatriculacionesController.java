@@ -113,4 +113,33 @@ public class MatriculacionesController {
 		model.addAttribute("resultado", resultado);
 		return "matriculaciones/actualizarMatriculaciones";
 	}
+	
+	
+	@GetMapping(value = "/formularioBorrarMatriculaciones")
+	public String getFormularioEliminarNotas() {
+		return "matriculaciones/borrarMatriculaciones";
+	}
+
+	@PostMapping(value = "/formularioBorrarMatriculaciones")
+	public String formularioEliminarNotas(
+			@RequestParam(value = "nombreAlumno", required = false) String alumno,
+			@RequestParam(value = "asignatura", required = false) String asignatura,
+			@RequestParam(value = "fecha", required = false) String fecha,  ModelMap model) throws SQLException {
+		
+		if(fecha == null || fecha.trim().isEmpty()) {
+			fecha = "0001-01-01";
+		}
+		ArrayList<MatriculacionDTO> listaMatriculaciones = matriculacionesService.obtenerMatriculacionesPorFiltros(asignatura, alumno, fecha, 1);
+		
+		model.addAttribute("lista", listaMatriculaciones);
+		return "matriculaciones/borrarMatriculaciones";
+	}
+
+	@PostMapping(value = "/borrarMatriculacion")
+	public String eliminarNotas(
+			@RequestParam("id") Integer id, ModelMap model) {
+		Integer resultado = matriculacionesService.borrarMatriculacion(id);
+		model.addAttribute("resultado", resultado);
+		return "matriculaciones/borrarMatriculaciones";
+	}
 }

@@ -65,6 +65,17 @@ public class MatriculacionDTO {
 		this.tasa = tasa;
 	}
 
+	public MatriculacionDTO(int id, String nombreAsignatura, String nombreAlumno, String fecha, int activo,
+			double tasa) {
+		super();
+		this.id = id;
+		this.nombreAsignatura = nombreAsignatura;
+		this.nombreAlumno = nombreAlumno;
+		this.fecha = fecha;
+		this.activo = activo;
+		this.tasa = tasa;
+	}
+
 	public int getId() {
         return id;
     }

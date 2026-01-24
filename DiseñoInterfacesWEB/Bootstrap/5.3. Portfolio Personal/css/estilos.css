@@ -1,24 +1,47 @@
-body{
-    background-color: rgb(253, 250, 255);
-}
-.carouselButton{
-    background-color: rgba(255, 255, 255, 0.664);
-    width: 10em;
-}
-.carouselBorder{
-    border: 2px solid black;
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(224, 224, 224);
 }
 
-li{
-    list-style: none;
+/* ===== HEADER ===== */
+.nav-custom {
+    text-align: center;
+    padding: 12px 20px;
+    background-color: #0d6efd;
+    color: #fff !important;
+    margin-left: 5px;
 }
 
-.test1{
-    background-color: rgba(146, 204, 255, 0.616);
+.nav-custom i {
+    font-size: 1.2rem;
 }
-.test2{
-    background-color: rgba(112, 188, 255, 0.616);
+
+.borderButton{
+    border: 1px solid black;
 }
-.test3{
-    background-color: rgba(45, 157, 255, 0.616);
+
+.nav-custom:not(.active) {
+    background-color: #0b4f6c;
+}
+
+.nav-custom:hover {
+    background-color: #084298;
+}
+
+/* ===== CARRUSEL ===== */
+.carousel-inner img {
+    height: 500px;
+    object-fit: cover;
+}
+
+.carousel-control-prev, .carousel-control-next{
+    background-color: rgba(255, 255, 255, 0.466);
+}
+
+.carousel-bar.left {
+    left: 0;
+}
+
+.carousel-bar.right {
+    right: 0;
 }

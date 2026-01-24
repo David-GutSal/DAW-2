@@ -63,22 +63,36 @@ public class MatriculacionesDAOImpl implements IMatriculacionesDAO {
 	@Override
 	@Transactional
 	public int actualizarMatriculacion(Integer id, Integer idAlumno, Integer idAsignatura, String fecha, Double tasa)
-			throws SQLException {
-		AlumnoEntity idAl = alumnoRepository.findById(idAlumno).get();
-		AsignaturaEntity idAs = asignaturaRepository.findById(idAsignatura).get();
-	
-		MatriculacionEntity matriculacion = new MatriculacionEntity(id, idAs, idAl, fecha, 1);
-		matriculacionRepository.save(matriculacion);
-		
-		CajaEntity caja = new CajaEntity(matriculacion , tasa);
-		cajaRepository.save(caja);
-		return matriculacion.getId();
+	        throws SQLException {
+	    MatriculacionEntity matriculacion = matriculacionRepository.findById(id).get();
+	    
+	    matriculacion.setAsignatura(asignaturaRepository.findById(idAsignatura).get());
+	    matriculacion.setAlumnos(alumnoRepository.findById(idAlumno).get());
+	    matriculacion.setFecha(fecha);
+	    matriculacion.setActivo(1);
+	    
+	    
+	    matriculacionRepository.save(matriculacion);
+	    
+	  
+	    CajaEntity caja = matriculacion.getCaja();
+	    if (caja != null) {
+	        
+	        caja.setImporte(tasa);
+	        cajaRepository.save(caja);
+	    } else {
+	        caja = new CajaEntity(matriculacion, tasa);
+	        cajaRepository.save(caja);
+	    }
+	    return matriculacion.getId();
 	}
 
 	@Override
 	public int borrarMatriculacion(Integer id) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		MatriculacionEntity matriculacion = matriculacionRepository.findById(id).get();
+		matriculacion.setActivo(0);
+		matriculacionRepository.save(matriculacion);
+		return matriculacion.getId();
 	}
 
 	@Override

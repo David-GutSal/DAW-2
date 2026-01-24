@@ -12,7 +12,8 @@ import com.dgs.colegio.entities.MatriculacionEntity;
 public interface MatriculacionRepository extends CrudRepository<MatriculacionEntity, Integer> {
 
 	@Query("SELECT new com.dgs.colegio.dtos.MatriculacionDTO("
-            + "a.nombre, " 
+			+ "m.id, "
+            + "a.nombre, "
             + "al.nombre, "
             + "m.fecha, "
             + "CAST(m.activo AS int), "  

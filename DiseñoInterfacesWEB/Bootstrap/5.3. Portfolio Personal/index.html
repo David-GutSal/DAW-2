@@ -1,92 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="css/fontello.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- CSS propio -->
     <link rel="stylesheet" href="css/estilos.css">
-    <title>Portfolio Personal</title>
+
+    <title>Portfolio</title>
 </head>
 
 <body>
+
+<!-- ================= HEADER ================= -->
+<header class="container bg-white">
     <div class="container">
-        <header class="row-fluid">
-            <div class="row-fluid test1">
-                <div class="col-3 justify-content-start align-content-center test2">
-                    <p><span>David Gutierrez Salvat</span> · Alumno</p>
-                </div>
-                <ul class="nav justify-content-end test3 col-auto mr-auto">
+        <div class="row align-items-center py-3">
+
+            <!-- Logo / Nombre -->
+            <div class="col-md-6 text-center text-md-start">
+                <strong>ADRIÁN PAZOS</strong>
+                <span class="text-muted ms-2">Docente FP Informática</span>
+            </div>
+
+            <!-- Navegación -->
+            <nav class="col-md-6">
+                <ul class="nav justify-content-center justify-content-md-end">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Portafolio</a>
+                        <a class="nav-link active nav-custom" href="#">
+                            Portafolio
+                            <i class="bi bi-briefcase-fill d-block"></i>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Acerca de</a>
+                        <a class="nav-link nav-custom" href="#">
+                            Acerca de
+                            <i class="bi bi-person-fill d-block"></i>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link nav-custom" href="#">
+                            
+                            Contacto
+                            <i class="bi bi-envelope-fill d-block"></i>
+                        </a>
                     </li>
                 </ul>
-            </div>
-            <div id="carousel_Indicators" class="carousel slide row-fluid" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel_Indicators" data-slide-to="0" class="active "></li>
-                    <li data-target="#carousel_Indicators" data-slide-to="1"></li>
-                    <li data-target="#carousel_Indicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="5.3. Imagenes/slide1.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="5.3. Imagenes/slide2.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="5.3. Imagenes/slide3.jpg" alt="Third slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel_Indicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev carouselButton carouselBorder" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next" href="#carousel_Indicators" role="button" data-slide="next">
-                    <span class="carousel-control-next  carouselButton carouselBorder" aria-hidden="true"></span>
-                </a>
-            </div>
-        </header>
-
-        <main class="row">
-
-        </main>
-        <div class="row">
+            </nav>
 
         </div>
-        <footer class="row">
-
-        </footer>
     </div>
 
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active borderButton"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="borderButton"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="borderButton"></button>
+    </div>
+
+    <div class="carousel-inner position-relative">
+
+        <!-- Barras laterales -->
+        <div class="carousel-bar left"></div>
+        <div class="carousel-bar right"></div>
+
+        <div class="carousel-item active">
+            <img src="5.3. Imagenes/slide1.jpg" class="d-block w-100" alt="">
+        </div>
+        <div class="carousel-item">
+            <img src="5.3. Imagenes/slide2.jpg" class="d-block w-100" alt="">
+        </div>
+        <div class="carousel-item">
+            <img src="5.3. Imagenes/slide3.jpg" class="d-block w-100" alt="">
+        </div>
+    </div>
+
+    <!-- Controles -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+</header>
+
+<!-- ================= CARRUSEL ================= -->
 
 
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
