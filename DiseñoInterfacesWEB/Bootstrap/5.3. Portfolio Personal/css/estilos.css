@@ -3,13 +3,33 @@ body {
     background-color: rgb(224, 224, 224);
 }
 
-/* ===== HEADER ===== */
+.container-custom {
+    width: 75%;
+}
+
+header{
+    margin-top: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
 .nav-custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 12px 20px;
-    background-color: #0d6efd;
     color: #fff !important;
-    margin-left: 5px;
+    
+}
+.backColor1{
+    background-color: #40A3E1;
+}
+.backColor2{
+    background-color: #065483;
+}
+.backColor3{
+    background-color: #003C56;
 }
 
 .nav-custom i {
@@ -20,15 +40,10 @@ body {
     border: 1px solid black;
 }
 
-.nav-custom:not(.active) {
-    background-color: #0b4f6c;
-}
-
 .nav-custom:hover {
     background-color: #084298;
 }
 
-/* ===== CARRUSEL ===== */
 .carousel-inner img {
     height: 500px;
     object-fit: cover;
@@ -36,12 +51,141 @@ body {
 
 .carousel-control-prev, .carousel-control-next{
     background-color: rgba(255, 255, 255, 0.466);
+    border: 2px solid black;
 }
 
-.carousel-bar.left {
-    left: 0;
+.carousel-indicators [data-bs-target] {
+    width: 30px;
+    height: 4px;
+    border: 2px solid #000;
+    opacity: 1;
 }
 
-.carousel-bar.right {
-    right: 0;
+.contenedor-imagen {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+.portfolio-header{
+    color: #88A8C4;
+    height: 80px;
+}
+.portfolio-header span{
+    font-size: 30px;
+}
+.portafolioBorede{
+    border-top: 5px solid #47A3D4;
+}
+
+.contenedor-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contenedor-imagen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(13, 110, 253, 0.4);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.contenedor-imagen:hover::after {
+    opacity: 1;
+}
+
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+.progress-bar{
+    background-color: #40A3E1;
+}
+
+h5{
+    color: gray;
+    font-size: 18px;
+
+}
+
+h4{
+    color: #084298;
+    font-size: 30px;
+}
+
+.progress,
+.progress-bar {
+    border-radius: 0 !important;
+}
+.progress{
+    background-color: #065483;
+}
+.colorP{
+    color: #084298;
+}
+
+
+
+.contactoBorde{
+    border-top: 2px solid rgb(207, 207, 207);
+}
+
+form{
+    width: 80%;
+}
+
+.form-control{
+    border-radius: 0 !important;
+}
+
+.btn-primary{
+    width: 110px;
+    background-color: #40A3E1;
+    border-style: none;
+}
+
+.icono-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin: 0 8px;
+    border-radius: 50%;
+    background-color: #63a1ff;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.icon1{
+    background-color: #1D7EBE;
+}
+.icon2{
+    background-color: #602F83;
+}
+.icon3{
+    background-color: #314674;
+}
+
+.icono-social:hover {
+    background-color: #0b5ed7;
+}
+
+@media (max-width: 991.98px) {
+    nav ul {
+        width: 100%;
+    }
+
+    nav .nav-item {
+        flex: 1;
+    }
+
+    nav .nav-link {
+        width: 100%;
+    }
 }
