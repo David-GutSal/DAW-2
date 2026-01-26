@@ -1,0 +1,14 @@
+#divPpal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.bordeAzul {
+    border: 5px solid blue;
+}
+
+.bordeVerde {
+    border: 5px solid green;
+}

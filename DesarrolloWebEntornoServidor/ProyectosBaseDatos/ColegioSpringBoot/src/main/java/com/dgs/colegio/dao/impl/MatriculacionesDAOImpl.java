@@ -89,10 +89,8 @@ public class MatriculacionesDAOImpl implements IMatriculacionesDAO {
 
 	@Override
 	public int borrarMatriculacion(Integer id) throws SQLException {
-		MatriculacionEntity matriculacion = matriculacionRepository.findById(id).get();
-		matriculacion.setActivo(0);
-		matriculacionRepository.save(matriculacion);
-		return matriculacion.getId();
+		matriculacionRepository.deleteById(id);
+		return id;
 	}
 
 	@Override

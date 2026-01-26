@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos básicos de Vue</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="./estilos/estilos.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="divPpal">
+            <div v-for="(imagen,index) in datosImagenes" :key="index">
+                <img :src="imagen.url" alt="imagen.nombre" :class="estilosBorde[index] ? 'bordeAzul' : 'bordeVerde'" @mouseenter="cambiarEstiloBorde(index)" @click="aumentarContador(index)">
+                <p> {{imagen.nombre}}</p>
+            </div>
+        </div>
+        <div>
+            <p v-for="(imagen,index) in datosImagenes" :key="index">
+                {{imagen.nombre}} -- {{imagen.contador}}
+            </p>
+        </div>
+        <div>
+            <input type="text" v-for="(imagen,index) in datosImagenes" :key="index" v-model="nombreTemporal[index]" @keyPress.enter="actualizarNombre(index)">
+        </div>
+    </div>
+
+    <script>
+        const mountedApp1 = app.mount("#app");
+    </script>
+</body>
+
+</html>

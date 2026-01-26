@@ -69,7 +69,12 @@ public class MatriculacionesController {
         }
 		
 		Integer resultado = matriculacionesService.insertarMatriculacion(alumno, asignatura, tasa, fecha);
-
+		
+		ArrayList<DesplegableDTO> listaAlumnos = desplegables.desplegableAlumnos();
+		ArrayList<DesplegableDTO> listaAsignaturas = desplegables.desplegableAsignaturas();
+		
+		model.addAttribute("desplegableAlumnos", listaAlumnos);
+		model.addAttribute("desplegableAsignaturas", listaAsignaturas);
 		model.addAttribute("resultado", resultado);
 	}
 	

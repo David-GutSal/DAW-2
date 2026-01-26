@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer proyecto con VUE</title>
+    <!-- CDN (Content Delivery Network): 
+         https://v3.vuejs.org/guide/installation.html#cdn-->
+    </script><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- script propio de código js-->
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="./estilos/estilos.css">
+</head>
+
+<body>
+    <!-- Elemento con id app que será el elemento principal dentro del cual se
+    ejecutará Vue-->
+    <div id="app">
+        <!-- Elemento h1 que va a contener el texto incluido en la propiedad mensaje
+        declarada en main.js-->
+        <h1 title="mensaje"> {{mensaje}}</h1>
+        <p v-bind:title="mensaje"> Sitúa el ratón encima de este texto </p>
+        <!-- Es posible incluir también expresiones completas -->
+        <h2>Mensaje actual: {{ valor > 0 ? mensaje : "Nuevo Hola Mundo" }}</h2>
+    </div>
+
+    <div>
+        <p id="fueraVue">EN ESTA ZONA NO SON EFECTIVAS LAS DIRECTIVAS VUE</p>
+    </div>
+    <!--
+        Montar la aplicación con Vue. La variable a la que se asigna
+        se suele llamar mountedApp, pero es un nombre totalmente opcional.
+        Es necesario hacerlo para indicarle a Vue el elemento donde se va a montar
+        toda la aplicación.
+        Hay que montarlo una vez se hayan interpretado todos los scripts anteriores.
+    -->
+    <script>
+        const mountedApp = appObj.mount("#app");
+    </script>
+</body>
+
+</html>

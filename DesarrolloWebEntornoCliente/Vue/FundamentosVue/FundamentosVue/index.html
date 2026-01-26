@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos básicos de Vue</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="./estilos/estilos.css">
+</head>
+
+<body>
+    <div id="app">
+        <p v-bind:title="mensaje">
+            Sitúa el ratón encima de este texto
+        </p>
+        <hr>
+        <!-- En el siguiente enlace la url destino se carga de forma dinámica-->
+        <a :href="enlace"> Este enlace te llevará a la documentación oficial de Vue 3</a>
+        <!-- Esta directiva v-bind se puede utilizar con cualquier atributo que admita el elemento
+        , como por ejemplo class, style, etc.-->
+        <hr>
+
+        <!-- ENLACE BIDIRECCIONAL. Se enlaza el elemento input con la propiedad mensaje. 
+            Cuando se introduzca un nuevo valor en el input, la propiedad mensaje actualizará su valor-->
+        <input v-model="mensaje">
+
+        <!-- Dependiendo del valor de la propiedad tipo, se mostrará un elemento u otro-->
+        <h2 v-if="tipo === 1"> A </h2>
+        <h3 v-else-if="tipo === 2"> B </h3>
+        <h4 v-else-if="tipo === 3"> C </h4>
+        <h1 v-else> No es ni 1, ni 2, ni 3. </h1>
+    </div>
+
+    <!-- Segundo elemento para ejecutar Vue-->
+    <div id="lista">
+        <!-- El elemento ul solo se incluirá en caso de que el array de libros contenga alguno-->
+        <ul v-if="libros.length > 0">
+            <!-- Por cada libro se incuira un nuevo elemento de la lista cuyo valor será el título-->
+            <li v-for="(libro, index) in libros" :key="index"> <!-- :key es igual que poner v-bind:key-->
+              {{index}}: {{libro.titulo}}
+            </li>
+        </ul>
+
+        <!-- La forma alternativa de capturar un evento es: @click="mostrarAlerta"-->
+        <button v-on:click="mostrarAlerta"> Mostrar alerta</button>
+
+    </div>
+    <script>
+        const mountedApp1 = app.mount("#app");
+        const mountedApp2=  lista.mount('#lista');
+    </script>
+</body>
+
+</html>

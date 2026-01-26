@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./script/script.js"></script>
+</head>
+<body>
+    
+    <h1>Venta de ropa y complementos de segunda mano</h1>
+
+    <div class="content-fluid" id="app">
+        <div class="row">
+            <div class="col">
+                <form action="">
+                    <label for="prenda">Prenda</label>
+                    <input type="text" id="prenda" v-model="nuevaPrenda.prenda">
+                    <br>
+                    <label for="color">Color</label>
+                    <input type="color" name="color" id="color" v-model="nuevaPrenda.color">
+                    <br>
+                    <label for="talla">Talla</label>
+                    <select v-model = "nuevaPrenda.talla">
+                        <option value="default">Seleccione una opcion</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                    </select>
+                    <br>
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" v-model="nuevaPrenda.precio">
+                    <br>
+                    <button @click.prevent="guardarPrenda" >Dar de Alta</button>
+                </form>
+            </div>
+            <div class="col">
+                <table class="tabla1">
+                    <tr>
+                        <th>Prenda</th>
+                        <th>Talla</th>
+                        <th>Precio</th>
+                        <th>Acción</th>
+                        <th></th>
+                    </tr>
+                    <tr v-for="(prenda, index) in prendas" :key="index" >
+                        <td>{{prenda.prenda}}</td>
+                        <td>{{prenda.talla}}</td>
+                        <td><input type="number" :value="prenda.precio" disabled></td>
+                        <td><button @click="modificar(index)">Modificar</button></td>
+                        <td><button @click="vender(index)">Vender</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row texto " >
+            <p v-if="prendas.length == 0">Enhorabuena, parece que
+has vendido todas las prendas que has puesto a la venta. ¿Por qué no sigues vendiendo lo que ya no
+usas?</p>
+        </div>
+        <div class="row">
+                <table class="tabla2">
+                    <tr>
+                        <th>Tipo de Prenda</th>
+                        <th>Talla</th>
+                        <th>Precio</th>
+                    </tr>
+                    <tr v-for="prenda in 6" v-if="prendas.length > 0">
+                        <td>{{prendas.prenda}}</td>
+                        <td>{{prendas.talla}}</td>
+                        <td>{{prendas.precio}}</td>
+                    </tr>
+                </table> 
+        </div>
+        
+
+    </div>
+
+    <script>app.mount("#app");</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="scripts/script.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app1">
+        <select v-model = "valor">
+            <option value="default">Seleccione una opcion</option>
+            <option value="input">Input</option>
+            <option value="texto">Span</option>
+            <option value="tabla">Tabla</option>
+        </select>
+        
+        <input type="input" v-if="valor === 'input'">
+        <span v-else-if="valor === 'texto'">“Esto es un span”</span>
+        <table v-else-if="valor === 'tabla'">
+            <tr>
+                <th>AAA</th>
+                <th>BBB</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="app2">
+        <table v-if="personas.length > 2">
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+            </tr>
+            <tr v-for = "(personas) in personas">
+                <td>{{personas.dni}}</td> 
+                <td>{{personas.nombre}}</td> 
+                <td>{{personas.apellido}}</td> 
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        const mountedApp1 = appObj1.mount("#app1");
+        const mountedApp2 = appObj2.mount("#app2");
+    </script>
+</body>
+
+</html>

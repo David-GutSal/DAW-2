@@ -1,0 +1,18 @@
+Incluir una sección de imagenes
+    6 imagenes
+    6 textos
+Incluir una sección de información
+    Sección derecha
+        6 textos
+        6 números
+    Sección izquierda
+        6 inputs tipo texto
+        6 inputs tipo number
+Incluir una sección de urls
+    6 inputs tipo texto
+
+
+Datos a almacenar de cada imagen:
+    url
+    Nombre
+    contador
