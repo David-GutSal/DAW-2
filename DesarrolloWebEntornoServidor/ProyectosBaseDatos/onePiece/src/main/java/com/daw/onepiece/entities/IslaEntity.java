@@ -3,13 +3,13 @@ package com.daw.onepiece.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Isla")
+@Table(name = "`Isla`")
 public class IslaEntity {
     @Id
-    @Column(name = "id")
+    @Column(name = "`id`")
     private int id;
     
-    @Column(name = "nombre")
+    @Column(name = "`nombre`")
     private String nombre;
     
     public IslaEntity() {

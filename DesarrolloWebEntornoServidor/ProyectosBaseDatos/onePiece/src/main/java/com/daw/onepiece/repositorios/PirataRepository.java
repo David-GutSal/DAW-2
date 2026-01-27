@@ -16,7 +16,7 @@ public interface PirataRepository extends CrudRepository<PirataEntity, Integer>{
 	@Query("SELECT new com.daw.onepiece.dtos.PirataDTO("
 		    + "p.id, "
 		    + "p.nombre, "
-		    + "p.frutabelDiablo, "
+		    + "p.frutaDelDiablo, "
 		    + "t.nombre, "
 		    + "p.fechaNacimiento, "
 		    + "i.nombre, "
@@ -27,14 +27,14 @@ public interface PirataRepository extends CrudRepository<PirataEntity, Integer>{
 		    + "LEFT JOIN r.tripulacion t "
 		    + "WHERE (:id IS NULL OR p.id = :id) "
 		    + "AND (:nombre IS NULL OR p.nombre LIKE CONCAT('%', :nombre, '%')) "
-		    + "AND (:fruta IS NULL OR p.frutabelDiablo LIKE CONCAT('%', :fruta, '%')) "
+		    + "AND (:fruta IS NULL OR p.frutaDelDiablo LIKE CONCAT('%', :fruta, '%')) "
 		    + "AND (:activo IS NULL OR p.estaActivo = :activo)")
 	
 	ArrayList<PirataDTO> obtenerPiratasPorFiltro(
 			@Param("id") Integer id,
 			@Param("nombre") String nombre, 
 			@Param("fruta") String fruta, 
-			@Param("activo") Integer act
+			@Param("activo") Boolean act
 			);
 
 }

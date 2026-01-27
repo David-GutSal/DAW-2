@@ -5,8 +5,8 @@ const app = createApp({
 
     let nuevaPrenda = ref({
         prenda: "",
-        color: "rgb(245, 23, 4)",
-        talla: "A",
+        color: "",
+        talla: "default",
         precio: 0
   })
     let prendas = ref([{
@@ -59,7 +59,8 @@ const app = createApp({
         vendidos.push(index);
     }
     let guardarPrenda = () =>{
-        prendas.push(nuevaPrenda);
+        prendas.value.push({ ...nuevaPrenda.value });
+        nuevaPrenda.value = { prenda: "", color: "", talla: "default", precio: 0 };
     }
     return {
         nuevaPrenda,

@@ -10,21 +10,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TesoreriaMarina")
+@Table(name = "`TesoreriaMarina`")
 public class TesoreriaEntity {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "`id`")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "tipoOperacion")
+	@Column(name = "`tipoOperacion`")
 	private String tipoOperacion;
 
-	@Column(name = "importe")
+	@Column(name = "`importe`")
 	private Long cantidad;
 
-	@Column(name = "fechaTransaccion")
+	@Column(name = "`fechaTransaccion`")
 	private LocalDateTime fechaOperacion;
 
 	public TesoreriaEntity() {

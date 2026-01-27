@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos básicos de Vue</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="./estilos/estilos.css">
+</head>
+
+<body>
+    <h1>VENTA DE ROPA Y COMPLEMENTOS DE 2ª MANO </h1>
+    <div id="app">
+        <form action="" @submit.prevent="altaPrenda">
+            <label for="prenda">Prenda</label>
+            <input type="text" name="prenda" id="prenda" v-model="prendaNueva.prenda" required>
+            <label for="color">Color</label>
+            <input type="color" name="color" id="color" v-model="prendaNueva.color" required>
+            <label for="talla">Talla </label>
+            <select name="talla" id="talla" v-model="prendaNueva.talla" required>
+                <option value="xs">XS</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+            </select>
+            <label for="precio"> Precio</label>
+            <input type="number" name="precio" id="precio" step="0.5" v-model="prendaNueva.precio" required>
+            <button type="submit"> Dar de alta </button>
+        </form>
+
+        <table>
+            <tr>
+                <th>Prenda</th>
+                <th>Talla</th>
+                <th>Precio</th>
+                <th>Acción</th>
+                <th></th>
+            </tr>
+            <tr v-for="(prenda,index) in prendasDisponibles" :key="index">
+                <td>{{prenda.prenda}}</td>
+                <td>{{prenda.talla}}</td>
+                <td><input type="number" name="precioP" id="precioP" :disabled="prenda.textoBoton == 'Modificar' ? true : false" v-model="prenda.precio"></td>
+                <td><input type="button" :value="prenda.textoBoton" @click="modificar(index)"></td>
+                <td><input type="button" value="Vender" @click="vender(index)"></td>
+            </tr>
+        </table>
+
+        <p>
+            <span v-if="prendasDisponibles.length == 0">Enhorabuena, parece que 
+has vendido todas las prendas que has puesto a la venta. ¿Por qué no sigues vendiendo lo que ya no 
+usas?</span>
+        </p>
+
+        <table>
+            <tr>
+                <th>Tipo de prenda</th>
+                <th>Talla</th>
+                <th>Precio de venta</th>
+            </tr>
+            <tr v-for="(prenda,index) in prendasVendidas" :key="index">
+                <td>{{prenda.prenda}}</td>
+                <td>{{prenda.talla}}</td>
+                <td>{{prenda.precio}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const mountedApp1 = app.mount("#app");
+    </script>
+</body>
+
+</html>

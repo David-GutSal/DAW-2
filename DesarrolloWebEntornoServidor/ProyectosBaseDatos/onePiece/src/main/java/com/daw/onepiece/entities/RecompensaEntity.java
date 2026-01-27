@@ -1,23 +1,30 @@
 package com.daw.onepiece.entities;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "`Recompensa`")
 public class RecompensaEntity {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "`id`")
     private int id;
     
     @ManyToOne
-    @JoinColumn(name = "pirata_id")
+    @JoinColumn(name = "`pirata_id`")
     private PirataEntity pirata;
     
-    @Column(name = "cantidad")
+    @Column(name = "`cantidad`")
     private Double cantidad;
     
-    @Column(name = "estaVigente")
+    @Column(name = "`estaVigente`")
     private Boolean vigente;
 
 	public RecompensaEntity(int id, PirataEntity pirata, Double cantidad, Boolean vigente) {

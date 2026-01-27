@@ -16,9 +16,16 @@ public class PirataServiceImpl implements IPirataService{
 	IPirataDAO pirataDAO;
 	
 	@Override
-	public ArrayList<PirataDTO> obtenerPiratasPorFiltro(Integer id, String nombre, String fruta, Integer act) {
+	public ArrayList<PirataDTO> obtenerPiratasPorFiltro(Integer id, String nombre, String fruta, Boolean act) {
 		
 		return pirataDAO.obtenerPiratasPorFiltro(id, nombre, fruta, act);
+	}
+
+	@Override
+	public Integer insertarPirata(String nombre, String frutaDiablo, String fechaNacimiento, Integer islas,
+			Boolean act) {
+		
+		return pirataDAO.insertarPirata(nombre, frutaDiablo, fechaNacimiento, islas, act);
 	}
 
 }

@@ -37,8 +37,8 @@
                     <button @click.prevent="guardarPrenda" >Dar de Alta</button>
                 </form>
             </div>
-            <div class="col">
-                <table class="tabla1">
+            <div class="col tabla1">
+                <table>
                     <tr>
                         <th>Prenda</th>
                         <th>Talla</th>
@@ -57,26 +57,22 @@
             </div>
         </div>
         <div class="row texto " >
-            <p v-if="prendas.length == 0">Enhorabuena, parece que
-has vendido todas las prendas que has puesto a la venta. ¿Por qué no sigues vendiendo lo que ya no
-usas?</p>
+            <p v-if="prendas.length == 0">Enhorabuena, parece que has vendido todas las prendas que has puesto a la venta. ¿Por qué no sigues vendiendo lo que ya no usas?</p>
         </div>
-        <div class="row">
-                <table class="tabla2">
+        <div class="row tabla2">
+                <table>
                     <tr>
                         <th>Tipo de Prenda</th>
                         <th>Talla</th>
                         <th>Precio</th>
                     </tr>
-                    <tr v-for="prenda in 6" v-if="prendas.length > 0">
+                    <tr v-for="(prendas, index) in prendas.slice(0, 6)" :key="index">
                         <td>{{prendas.prenda}}</td>
                         <td>{{prendas.talla}}</td>
                         <td>{{prendas.precio}}</td>
                     </tr>
                 </table> 
         </div>
-        
-
     </div>
 
     <script>app.mount("#app");</script>

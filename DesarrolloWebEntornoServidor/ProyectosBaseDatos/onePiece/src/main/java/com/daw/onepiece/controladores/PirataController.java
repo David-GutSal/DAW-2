@@ -1,5 +1,7 @@
 package com.daw.onepiece.controladores;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.daw.onepiece.dao.interfaces.IDesplegablesDAO;
+import com.daw.onepiece.dtos.DesplegableDTO;
 import com.daw.onepiece.dtos.PirataDTO;
 import com.daw.onepiece.repositorios.PirataRepository;
 import com.daw.onepiece.servicio.interfaces.IPirataService;
@@ -21,6 +25,8 @@ public class PirataController {
 	IPirataService pirataService;
 	@Autowired
 	PirataRepository pirataRepository;
+	@Autowired
+	IDesplegablesDAO desplegables;
 
 	@GetMapping("/listadoPiratas")
 	public String formularioListadoPiratas() {
@@ -34,12 +40,38 @@ public class PirataController {
 			@RequestParam(value = "fruta", required = false) String fruta,
 			@RequestParam(value = "activo", required = false) String activo, ModelMap model) {
 		
-		Integer act = (activo != null) ? 1 : 0;
+		Boolean act = (activo != null) ? true : false;
 		ArrayList<PirataDTO> listaPiratas = pirataService.obtenerPiratasPorFiltro(id, nombre, fruta, act);
 		model.addAttribute("lista", listaPiratas);
 		return "piratas/listadoPiratas";
 	}
 
-
+	@GetMapping("/insertarPirata")
+	public void insertarPirata(ModelMap model) {
+		ArrayList<DesplegableDTO> listaIslas = desplegables.desplegableIslas();
+		
+		model.addAttribute("desplegableIslas", listaIslas);
+	}
+	
+	@PostMapping("/insertarPirata")
+	public void insertarPirata(
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "frutaDiablo", required = false) String frutaDiablo,
+			@RequestParam(value = "fechaNacimiento", required = false) String fechaNacimiento,
+			@RequestParam(value = "islas", required = false) Integer islas,
+			@RequestParam(value = "activo", required = false) String activo,  ModelMap model) throws SQLException {
+		
+		if (fechaNacimiento == null || fechaNacimiento.trim().isEmpty()) {
+			fechaNacimiento = LocalDate.now().toString();
+        }
+		Boolean act = (activo != null) ? true : null;
+		
+		Integer resultado = pirataService.insertarPirata(nombre, frutaDiablo, fechaNacimiento, islas, act);
+		
+		ArrayList<DesplegableDTO> listaIslas = desplegables.desplegableIslas();
+		
+		model.addAttribute("desplegableIslas", listaIslas);
+		model.addAttribute("resultado", resultado);
+	}
 
 }

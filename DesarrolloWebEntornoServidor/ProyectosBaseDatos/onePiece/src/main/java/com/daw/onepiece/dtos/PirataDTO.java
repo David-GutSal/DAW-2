@@ -10,7 +10,7 @@ public class PirataDTO {
 	private String tripulacion;
 	private String fechaNacimiento;
 	private String islaOrigen;
-	private int activo;
+	private boolean activo;
 
 	public PirataDTO() {
 	}
@@ -25,7 +25,7 @@ public class PirataDTO {
 				? fechaNacimiento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
 				: "";
 		this.islaOrigen = islaOrigen;
-		this.activo = activo ? 1 : 0;
+		this.activo = activo ? true : false;
 	}
 
 	public int getId() {
@@ -76,11 +76,11 @@ public class PirataDTO {
 		this.islaOrigen = islaOrigen;
 	}
 
-	public int getActivo() {
+	public boolean isActivo() {
 		return activo;
 	}
 
-	public void setActivo(int activo) {
+	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
 

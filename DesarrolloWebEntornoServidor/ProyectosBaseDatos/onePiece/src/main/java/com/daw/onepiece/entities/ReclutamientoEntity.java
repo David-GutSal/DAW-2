@@ -8,24 +8,24 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Reclutamiento")
+@Table(name = "`Reclutamiento`")
 public class ReclutamientoEntity {
     @Id
-    @Column(name = "id")
+    @Column(name = "`id`")
     private int id;
     
     @ManyToOne
-    @JoinColumn(name = "pirata_id")
+    @JoinColumn(name = "`pirata_id`")
     private PirataEntity pirata;
     
     @ManyToOne
-    @JoinColumn(name = "tripulacion_id")
+    @JoinColumn(name = "`tripulacion_id`")
     private TripulacionEntity tripulacion;
     
-    @Column(name = "rol")
+    @Column(name = "`rol`")
     private String rol;
     
-    @Column(name = "esMiembroActual")
+    @Column(name = "`esMiembroActual`")
     private boolean esMiembroActual;
     
     public ReclutamientoEntity() {
