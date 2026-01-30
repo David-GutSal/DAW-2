@@ -27,13 +27,13 @@ public interface PirataRepository extends CrudRepository<PirataEntity, Integer>{
 		    + "LEFT JOIN r.tripulacion t "
 		    + "WHERE (:id IS NULL OR p.id = :id) "
 		    + "AND (:nombre IS NULL OR p.nombre LIKE CONCAT('%', :nombre, '%')) "
-		    + "AND (:fruta IS NULL OR p.frutaDelDiablo LIKE CONCAT('%', :fruta, '%')) "
+		    + "AND (:frutaDiablo IS NULL OR p.frutaDelDiablo LIKE CONCAT('%', :frutaDiablo, '%')) "
 		    + "AND (:activo IS NULL OR p.estaActivo = :activo)")
 	
 	ArrayList<PirataDTO> obtenerPiratasPorFiltro(
 			@Param("id") Integer id,
 			@Param("nombre") String nombre, 
-			@Param("fruta") String fruta, 
+			@Param("frutaDiablo") String frutaDiablo, 
 			@Param("activo") Boolean act
 			);
 

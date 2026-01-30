@@ -99,14 +99,14 @@
                                         <label for="isla" class="form-label">Isla de Origen *</label>
                                         <select class="form-select" name="isla" required>
                                             <option th:each="isla : ${desplegableIslas}" th:value="${isla.id}"
-                                                th:text="${isla.nombre}" th:selected="${isla.id == pirata.idIsla}">
+                                                th:text="${isla.nombre}" th:selected="${isla.nombre == pirata.islaOrigen}">
                                             </option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-check mt-4 pt-2">
                                             <input class="form-check-input" type="checkbox" name="activo" value="1"
-                                                th:checked="${pirata.activo == 1}">
+                                                th:checked="${pirata.activo == true}">
                                             <label class="form-check-label">Pirata Activo</label>
                                         </div>
                                     </div>

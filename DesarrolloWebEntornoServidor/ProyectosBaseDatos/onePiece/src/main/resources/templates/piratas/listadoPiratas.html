@@ -84,7 +84,7 @@
                                     <tr th:each="pirata : ${lista}">
                                         <td th:text="${pirata.id}"></td>
                                         <td><strong th:text="${pirata.nombre}"></strong></td>
-                                        <td th:text="${pirata.fruta != null ? pirata.fruta : 'Sin fruta'}">
+                                        <td th:text="${pirata.frutaDiablo != null ? pirata.frutaDiablo : 'Sin fruta'}">
                                         </td>
                                          <td th:text="${pirata.tripulacion}"></td>
                                         <td th:text="${pirata.fechaNacimiento}"></td>

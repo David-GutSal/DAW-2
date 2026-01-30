@@ -39,6 +39,16 @@ public class TripulacionEntity {
 		this.barco = barco;
 		this.activo = activo;
 	}
+	
+	public TripulacionEntity(int id, String nombre, String barco, Boolean activo,
+			List<ReclutamientoEntity> reclutamientos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.barco = barco;
+		this.activo = activo;
+		this.reclutamientos = reclutamientos;
+	}
 
 	public int getId() {
 		return id;

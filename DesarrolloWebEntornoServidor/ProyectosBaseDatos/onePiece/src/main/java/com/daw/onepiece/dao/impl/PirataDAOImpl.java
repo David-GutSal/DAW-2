@@ -34,7 +34,21 @@ public class PirataDAOImpl implements IPirataDAO{
 		PirataEntity pirata = new PirataEntity(nombre, frutaDiablo, LocalDate.parse(fechaNacimiento), isla, act);
 		pirataRepository.save(pirata);
 		
-		return pirata.getId();
+		return (int) pirataRepository.count();
+	}
+
+	@Override
+	public Integer actualizarPirata(Integer id, String nombre, String frutaDiablo, String fechaNacimiento, Integer islas,
+			Boolean act) {
+		PirataEntity pirata = pirataRepository.findById(id).get();
+		IslaEntity isla = islaRepository.findById(islas).get();
+		pirata.setNombre(nombre);
+		pirata.setFrutaDelDiablo(frutaDiablo);
+		pirata.setFechaNacimiento(LocalDate.parse(fechaNacimiento));
+		pirata.setIsla(isla);
+		pirata.setEstaActivo(act);
+		pirataRepository.save(pirata);
+		return id;
 	}
 
 }

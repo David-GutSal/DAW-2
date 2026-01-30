@@ -37,11 +37,11 @@ public class PirataController {
 	public String listadoPiratas(
 			@RequestParam(value = "id", required = false) Integer id,
 			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "fruta", required = false) String fruta,
+			@RequestParam(value = "frutaDiablo", required = false) String frutaDiablo,
 			@RequestParam(value = "activo", required = false) String activo, ModelMap model) {
 		
 		Boolean act = (activo != null) ? true : false;
-		ArrayList<PirataDTO> listaPiratas = pirataService.obtenerPiratasPorFiltro(id, nombre, fruta, act);
+		ArrayList<PirataDTO> listaPiratas = pirataService.obtenerPiratasPorFiltro(id, nombre, frutaDiablo, act);
 		model.addAttribute("lista", listaPiratas);
 		return "piratas/listadoPiratas";
 	}
@@ -72,6 +72,47 @@ public class PirataController {
 		
 		model.addAttribute("desplegableIslas", listaIslas);
 		model.addAttribute("resultado", resultado);
+	}
+	
+	@GetMapping("/formularioActualizarPiratas")
+	public String actualizarMatriculacion(ModelMap model) {
+		ArrayList<DesplegableDTO> listaIslas = desplegables.desplegableIslas();
+		model.addAttribute("desplegableIslas", listaIslas);
+		return "piratas/actualizarPiratas";
+	}
+	
+	@PostMapping("/formularioActualizarPiratas")
+	public String actualizarPirata(
+			@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "frutaDiablo", required = false) String frutaDiablo,
+			@RequestParam(value = "activo", required = false) String activo,  ModelMap model) throws SQLException {
+		
+		Boolean act = (activo != null) ? true : false;
+		ArrayList<PirataDTO> listaPiratas = pirataService.obtenerPiratasPorFiltro(id, nombre, frutaDiablo, act);
+		ArrayList<DesplegableDTO> listaIslas = desplegables.desplegableIslas();
+		
+		model.addAttribute("desplegableIslas", listaIslas);
+		model.addAttribute("lista", listaPiratas);
+		return "piratas/actualizarPiratas";
+	}
+	
+	@PostMapping(value = "/actualizarPirata")
+	public String modificarPirata(
+			@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "frutaDiablo", required = false) String frutaDiablo,
+			@RequestParam(value = "fechaNacimiento", required = false) String fechaNacimiento,
+			@RequestParam(value = "isla", required = false) Integer isla,
+			@RequestParam(value = "activo", required = false) String activo, ModelMap model) {
+		
+		Boolean act = (activo != null) ? true : false;
+		Integer resultado = pirataService.actualizarPirata(id, nombre, frutaDiablo, fechaNacimiento, isla, act);
+		ArrayList<DesplegableDTO> listaIslas = desplegables.desplegableIslas();
+		
+		model.addAttribute("desplegableIslas", listaIslas);
+		model.addAttribute("resultado", resultado);
+		return "piratas/actualizarPiratas";
 	}
 
 }

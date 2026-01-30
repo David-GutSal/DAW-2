@@ -28,4 +28,10 @@ public class PirataServiceImpl implements IPirataService{
 		return pirataDAO.insertarPirata(nombre, frutaDiablo, fechaNacimiento, islas, act);
 	}
 
+	@Override
+	public Integer actualizarPirata(Integer id, String nombre, String frutaDiablo, String fechaNacimiento, Integer isla,
+			Boolean act) {
+		return pirataDAO.actualizarPirata(id, nombre, frutaDiablo, fechaNacimiento, isla, act);
+	}
+
 }

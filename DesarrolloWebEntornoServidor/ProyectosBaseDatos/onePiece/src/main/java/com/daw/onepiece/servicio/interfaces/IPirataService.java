@@ -10,4 +10,7 @@ public interface IPirataService {
 
 	Integer insertarPirata(String nombre, String frutaDiablo, String fechaNacimiento, Integer islas, Boolean act);
 
+	Integer actualizarPirata(Integer id, String nombre, String frutaDiablo, String fechaNacimiento, Integer isla,
+			Boolean act);
+
 }

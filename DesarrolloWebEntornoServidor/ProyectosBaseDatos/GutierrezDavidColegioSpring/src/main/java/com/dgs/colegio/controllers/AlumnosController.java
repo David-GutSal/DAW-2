@@ -37,7 +37,7 @@ public class AlumnosController {
 
 	@PostMapping("/insertarAlumno")
 	public String insertarAlumno(
-			@RequestParam("id") Integer id, 
+			@RequestParam("id") Integer id,
 			@RequestParam("nombre") String nombre,
 			@RequestParam("apellido") String apellido,
 			@RequestParam(value = "famNumerosa", required = false) String famNumerosa,

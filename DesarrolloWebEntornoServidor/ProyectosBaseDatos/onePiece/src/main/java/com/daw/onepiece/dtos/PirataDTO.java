@@ -1,31 +1,28 @@
 package com.daw.onepiece.dtos;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class PirataDTO {
 	private int id;
 	private String nombre;
-	private String fruta;
+	private String frutaDiablo;
 	private String tripulacion;
-	private String fechaNacimiento;
+	private LocalDate fechaNacimiento;
 	private String islaOrigen;
 	private boolean activo;
 
 	public PirataDTO() {
 	}
 
-	public PirataDTO(int id, String nombre, String fruta, String tripulacion, LocalDate fechaNacimiento,
+	public PirataDTO(int id, String nombre, String frutaDiablo, String tripulacion, LocalDate fechaNacimiento,
 			String islaOrigen, boolean activo) {
 		this.id = id;
 		this.nombre = nombre;
-		this.fruta = fruta;
+		this.frutaDiablo = frutaDiablo;
 		this.tripulacion = tripulacion;
-		this.fechaNacimiento = fechaNacimiento != null
-				? fechaNacimiento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-				: "";
+		this.fechaNacimiento = fechaNacimiento;
 		this.islaOrigen = islaOrigen;
-		this.activo = activo ? true : false;
+		this.activo = activo;
 	}
 
 	public int getId() {
@@ -44,12 +41,12 @@ public class PirataDTO {
 		this.nombre = nombre;
 	}
 
-	public String getFruta() {
-		return fruta;
+	public String getFrutaDiablo() {
+		return frutaDiablo;
 	}
 
-	public void setFruta(String fruta) {
-		this.fruta = fruta;
+	public void setFrutaDiablo(String frutaDiablo) {
+		this.frutaDiablo = frutaDiablo;
 	}
 
 	public String getTripulacion() {
@@ -60,11 +57,11 @@ public class PirataDTO {
 		this.tripulacion = tripulacion;
 	}
 
-	public String getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
