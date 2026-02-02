@@ -73,10 +73,10 @@
                                         <td th:text="${pirata.frutaDiablo != null ? pirata.frutaDiablo : 'Sin fruta'}">
                                         </td>
                                         <td th:text="${#temporals.format(pirata.fechaNacimiento, 'dd/MM/yyyy')}"></td>
-                                        <td th:text="${pirata.isla}"></td>
+                                        <td th:text="${pirata.islaOrigen}"></td>
                                         <td>
-                                            <span th:if="${pirata.activo == 1}" class="badge bg-success">Activo</span>
-                                            <span th:if="${pirata.activo == 0}" class="badge bg-danger">
+                                            <span th:if="${pirata.activo == true}" class="badge bg-success">Activo</span>
+                                            <span th:if="${pirata.activo == false}" class="badge bg-danger">
                                                 Inactivo</span>
                                         </td>
                                         <td>

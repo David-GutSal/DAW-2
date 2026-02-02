@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.daw.onepiece.dao.interfaces.IDesplegablesDAO;
 import com.daw.onepiece.dtos.DesplegableDTO;
 import com.daw.onepiece.dtos.PirataDTO;
-import com.daw.onepiece.repositorios.PirataRepository;
 import com.daw.onepiece.servicio.interfaces.IPirataService;
 
 @Controller
@@ -23,8 +22,6 @@ import com.daw.onepiece.servicio.interfaces.IPirataService;
 public class PirataController {
 	@Autowired
 	IPirataService pirataService;
-	@Autowired
-	PirataRepository pirataRepository;
 	@Autowired
 	IDesplegablesDAO desplegables;
 
@@ -113,6 +110,31 @@ public class PirataController {
 		model.addAttribute("desplegableIslas", listaIslas);
 		model.addAttribute("resultado", resultado);
 		return "piratas/actualizarPiratas";
+	}
+	
+	@GetMapping(value = "/formularioBorrarPiratas")
+	public String getFormularioEliminarPiratas() {
+		return "piratas/borrarPiratas";
+	}
+
+	@PostMapping(value = "/formularioBorrarPiratas")
+	public String formularioEliminarPiratas(
+			@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre,  ModelMap model) {
+		
+		ArrayList<PirataDTO> listaPiratas = pirataService.obtenerPiratasPorFiltro(id, nombre, "", true);
+		ArrayList<DesplegableDTO> listaIslas = desplegables.desplegableIslas();
+		
+		model.addAttribute("desplegableIslas", listaIslas);
+		model.addAttribute("lista", listaPiratas);
+		return "piratas/borrarPiratas";
+	}
+
+	@PostMapping(value = "/borrarPirata")
+	public String eliminarPiratas(@RequestParam("id") Integer id, ModelMap model) {
+		Integer resultado = pirataService.borrarPirata(id);
+		model.addAttribute("resultado", resultado);
+		return "piratas/borrarPiratas";
 	}
 
 }

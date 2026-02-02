@@ -34,4 +34,9 @@ public class PirataServiceImpl implements IPirataService{
 		return pirataDAO.actualizarPirata(id, nombre, frutaDiablo, fechaNacimiento, isla, act);
 	}
 
+	@Override
+	public Integer borrarPirata(Integer id) {
+		return pirataDAO.borrarPirata(id);
+	}
+
 }

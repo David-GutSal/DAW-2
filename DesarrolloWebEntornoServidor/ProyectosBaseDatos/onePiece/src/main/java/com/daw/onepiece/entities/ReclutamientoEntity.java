@@ -40,6 +40,13 @@ public class ReclutamientoEntity {
         this.esMiembroActual = esMiembroActual;
     }
 
+	public ReclutamientoEntity(int id, PirataEntity pirata, TripulacionEntity tripulacion) {
+		super();
+		this.id = id;
+		this.pirata = pirata;
+		this.tripulacion = tripulacion;
+	}
+
 	public int getId() {
 		return id;
 	}

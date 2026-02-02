@@ -51,4 +51,12 @@ public class PirataDAOImpl implements IPirataDAO{
 		return id;
 	}
 
+	@Override
+	public Integer borrarPirata(Integer id) {
+		PirataEntity pirata = pirataRepository.findById(id).get();
+		pirata.setEstaActivo(false);
+		pirataRepository.save(pirata);
+		return id;
+	}
+
 }

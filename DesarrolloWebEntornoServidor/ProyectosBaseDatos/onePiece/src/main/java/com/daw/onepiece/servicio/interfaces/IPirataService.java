@@ -13,4 +13,6 @@ public interface IPirataService {
 	Integer actualizarPirata(Integer id, String nombre, String frutaDiablo, String fechaNacimiento, Integer isla,
 			Boolean act);
 
+	Integer borrarPirata(Integer id);
+
 }

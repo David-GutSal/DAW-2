@@ -1,47 +1,52 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <PiePagina :telUser="telefono" dir="C/Arriba 15" />  
+  <h1>{{ mensaje }}</h1>
+  <hr />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <span>Libros disponibles:</span>
+  <ListaLibros :libros="libros" />
 
-  <main>
-    <TheWelcome />
-  </main>
+  <hr />
+
+  <PiePagina :telUser="telefono" dir="C/Arriba 25" />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+  import { ref } from "vue"
+  import PiePagina from "./components/PiePagina.vue"
+  import ListaLibros from "./components/ListaLibros.vue"
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  export default {
+    name: "App",
+    components: {
+      PiePagina,
+      ListaLibros
+    },
+    setup() {
+      const mensaje = ref("Librería Mi Mundo de Papel")
+      const telefono = ref(923451111)
+      const libros = ref([
+        { titulo: "La villa de las telas" },
+        { titulo: "La isla de las tormentas" },
+        { titulo: "Dime quien soy" }
+      ])
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+      const mostrarAlerta = () => {
+        alert("Número de libros almacenados: " + libros.value.length)
+      }
+
+      return {
+        mensaje,
+        telefono,
+        libros,
+        mostrarAlerta
+      }
+    }
   }
+</script>
 
-  .logo {
-    margin: 0 2rem 0 0;
+<style>
+  h1 {
+    text-align: center;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>

@@ -83,9 +83,9 @@
                                         <td><span class="badge bg-info" th:text="${tripulacion.numeroMiembros}"></span>
                                         </td>
                                         <td>
-                                            <span th:if="${tripulacion.estaActiva == 1}"
+                                            <span th:if="${tripulacion.estaActiva == true}"
                                                 class="badge bg-success">Activa</span>
-                                            <span th:if="${tripulacion.estaActiva == 0}"
+                                            <span th:if="${tripulacion.estaActiva == false}"
                                                 class="badge bg-danger">Inactiva</span>
                                         </td>
                                         <td>
