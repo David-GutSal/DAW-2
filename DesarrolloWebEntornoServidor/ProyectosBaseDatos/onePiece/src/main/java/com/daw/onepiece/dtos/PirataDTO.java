@@ -10,6 +10,7 @@ public class PirataDTO {
 	private LocalDate fechaNacimiento;
 	private String islaOrigen;
 	private boolean activo;
+	private String rol;
 
 	public PirataDTO() {
 	}
@@ -23,6 +24,22 @@ public class PirataDTO {
 		this.fechaNacimiento = fechaNacimiento;
 		this.islaOrigen = islaOrigen;
 		this.activo = activo;
+	}
+
+	public PirataDTO(int id, String nombre, String frutaDiablo, String rol) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.frutaDiablo = frutaDiablo;
+		this.rol = rol;
+	}
+	
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	public int getId() {

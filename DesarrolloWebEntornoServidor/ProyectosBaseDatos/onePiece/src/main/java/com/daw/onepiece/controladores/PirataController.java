@@ -38,6 +38,9 @@ public class PirataController {
 			@RequestParam(value = "activo", required = false) String activo, ModelMap model) {
 		
 		Boolean act = (activo != null) ? true : false;
+		if(frutaDiablo == "") {
+			frutaDiablo = null;
+		}
 		ArrayList<PirataDTO> listaPiratas = pirataService.obtenerPiratasPorFiltro(id, nombre, frutaDiablo, act);
 		model.addAttribute("lista", listaPiratas);
 		return "piratas/listadoPiratas";
@@ -86,6 +89,9 @@ public class PirataController {
 			@RequestParam(value = "activo", required = false) String activo,  ModelMap model) throws SQLException {
 		
 		Boolean act = (activo != null) ? true : false;
+		if(frutaDiablo == "") {
+			frutaDiablo = null;
+		}
 		ArrayList<PirataDTO> listaPiratas = pirataService.obtenerPiratasPorFiltro(id, nombre, frutaDiablo, act);
 		ArrayList<DesplegableDTO> listaIslas = desplegables.desplegableIslas();
 		

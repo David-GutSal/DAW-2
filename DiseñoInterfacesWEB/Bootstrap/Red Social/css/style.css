@@ -34,3 +34,11 @@ li{
 .options-menu{
     border-bottom: 1px solid black;
 }
+
+.bordeComentario{
+    border-bottom: 1px solid gray;
+}
+
+.fondo{
+    background-color: aqua;
+}

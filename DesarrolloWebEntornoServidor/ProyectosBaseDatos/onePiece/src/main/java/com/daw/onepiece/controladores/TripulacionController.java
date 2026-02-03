@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.daw.onepiece.dtos.PirataDTO;
 import com.daw.onepiece.dtos.TripulacionDTO;
+import com.daw.onepiece.servicio.interfaces.IPirataService;
 import com.daw.onepiece.servicio.interfaces.ITripulacionService;
 
 @Controller
@@ -18,6 +20,8 @@ import com.daw.onepiece.servicio.interfaces.ITripulacionService;
 public class TripulacionController {
 	@Autowired
 	ITripulacionService tripulacionService;
+	@Autowired
+	IPirataService pirataService;
 	
 	@GetMapping("/listadoTripulaciones")
 	public String formularioListadoTripulaciones() {
@@ -31,26 +35,36 @@ public class TripulacionController {
 			@RequestParam(value = "estaActiva", required = false) String activo, ModelMap model) {
 		
 		Boolean act = (activo != null) ? true : false;
-		ArrayList<TripulacionDTO> listaPiratas = tripulacionService.obtenerTripulacionesPorFiltro("" , nombre, barco, act);
-		model.addAttribute("lista", listaPiratas);
+		ArrayList<TripulacionDTO> listaTripulaciones = tripulacionService.obtenerTripulacionesPorFiltro("" , nombre, barco, act);
+		model.addAttribute("lista", listaTripulaciones);
 		return "tripulaciones/listadoTripulaciones";
 	}
 	
-	@GetMapping("/detallesTripulaciones")
-	public String formularioDetallesTripulaciones() {
-		return "tripulaciones/detallesTripulaciones";
+	@GetMapping("/detallesTripulacion")
+	public String formularioDetallesTripulaciones(
+			@RequestParam("id") String id, ModelMap model) {
+	
+	    ArrayList<PirataDTO> listaPiratas = tripulacionService.obtenerMiembros(id);	
+	    TripulacionDTO tripulacion = tripulacionService.obtenerlistaTripulacionesPorId(id);
+	    
+	    model.addAttribute("tripulacion", tripulacion);
+	    model.addAttribute("miembros", listaPiratas);
+	    
+	    ArrayList<PirataDTO> piratasActivos = pirataService.obtenerPiratasPorFiltro(null, "", null, true); 
+	    model.addAttribute("piratasActivos", piratasActivos);
+    
+    return "tripulaciones/detallesTripulacion";
 	}
 	
-	@PostMapping("/detallesTripulaciones")
-	public String detallesTripulaciones(
-			@RequestParam(value = "id", required = false) String id,
-			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "barco", required = false) String barco,
-			@RequestParam(value = "estaActiva", required = false) String activo, ModelMap model) {
+	@PostMapping("/agregarMiembro")
+	public String formularioAgregarNuevoMiembro(
+			@RequestParam("idPirata") String idPirata,
+			@RequestParam("idTripulacion") String idTripulacion,
+			@RequestParam("rol") String rol, ModelMap model) {
 		
-		Boolean act = (activo != null) ? true : false;
-		ArrayList<TripulacionDTO> listaPiratas = tripulacionService.obtenerTripulacionesPorFiltro(id, nombre, barco, act);
-		model.addAttribute("lista", listaPiratas);
-		return "tripulaciones/detallesTripulaciones";
+		int resultado = tripulacionService.actualizarTripulacion(idPirata, rol, idTripulacion);
+		
+		model.addAttribute("resultado", resultado);
+		return "tripulaciones/detallesTripulacion";
 	}
 }

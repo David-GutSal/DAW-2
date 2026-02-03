@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.daw.onepiece.dtos.PirataDTO;
 import com.daw.onepiece.dtos.TripulacionDTO;
 import com.daw.onepiece.entities.TripulacionEntity;
 
@@ -32,4 +33,18 @@ public interface TripulacionRepository extends CrudRepository<TripulacionEntity,
 			@Param("activo") Boolean act
 			);
 
+	@Query("SELECT new com.daw.onepiece.dtos.PirataDTO("
+		    + "p.id, "
+		    + "p.nombre, "
+		    + "p.frutaDelDiablo, "
+		    + "r.rol) "
+		    + "FROM PirataEntity p "
+		    + "JOIN p.isla i "
+		    + "LEFT JOIN ReclutamientoEntity r ON r.pirata = p AND r.esMiembroActual = true "
+		    + "LEFT JOIN r.tripulacion t "
+		    + "WHERE (CASE WHEN :id IS NULL THEN TRUE ELSE CAST(t.id AS string) LIKE CONCAT('%', :id, '%')END) ")
+	
+	ArrayList<PirataDTO> obtenerMiembros(
+			@Param("id") String id
+			);
 }
