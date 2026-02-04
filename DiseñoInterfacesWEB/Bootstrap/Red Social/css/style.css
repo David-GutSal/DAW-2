@@ -1,44 +1,77 @@
-header{
-    background-color: blue;
+/* ================= GENERAL ================= */
+
+body {
+    background-color: #E5EAEA;
 }
 
-.bi-rocket-takeoff-fill{
-    font-size: 30px !important; 
-    color: white;
+a {
+    text-decoration: none;
 }
 
-.bi{
+/* ================= HEADER ================= */
+
+.header-bar {
+    background-color: #1672B3;
+    height: 56px;
+}
+
+.header-icons i {
+    color: rgba(255,255,255,0.7);
     font-size: 20px;
-    color: white;
 }
 
-.fa-search{
-    color: gray;
+.header-icons i:hover {
+    color: #fff;
 }
 
-.search-bar {
-    max-width: 700px;
-    
-}
-.form-control{
-   border-radius: 0% !important; 
+/* BUSCADOR */
+.search-bar .input-group-text {
+    background: #fff;
+    border: none;
 }
 
-.options-menu-icon{
-    color: rgb(100, 100, 100) !important;
-    font-style: normal;
-}
-li{
-    list-style: none;
-}
-.options-menu{
-    border-bottom: 1px solid black;
+.search-bar .form-control {
+    border: none;
+    box-shadow: none;
+    font-size: 14px;
 }
 
-.bordeComentario{
-    border-bottom: 1px solid gray;
+/* ================= SIDEBAR ================= */
+
+.sidebar a {
+    display: block;
+    padding: 8px 0;
+    color: #555;
 }
 
-.fondo{
-    background-color: aqua;
+.sidebar i {
+    margin-right: 6px;
+}
+
+/* ================= CONTENIDO ================= */
+
+
+.post-text {
+    font-size: 14px;
+    color: #444;
+}
+
+.like-row {
+    margin-top: 10px;
+}
+
+/* CAJA DE PUBLICAR */
+.publish-box {
+    height: 40px;
+    background-color: #f0f2f5;
+    border-radius: 20px;
+}
+
+.publicarButton{
+    width: 130px;
+}
+
+.fondoComentario{
+    background-color: #ffffff00;
+    border-style: none;
 }
