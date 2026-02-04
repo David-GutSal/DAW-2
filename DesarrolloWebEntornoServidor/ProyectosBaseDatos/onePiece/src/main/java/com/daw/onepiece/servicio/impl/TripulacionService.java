@@ -36,4 +36,9 @@ public class TripulacionService implements ITripulacionService {
 		return tripulacionDAO.actualizarTripulacion( idPirata,  rol,  idTripulacion);
 	}
 
+	@Override
+	public int eliminarDeTripulacion(String idPirata, String idTripulacion) {
+		return tripulacionDAO.eliminarDeTripulacion( idPirata,  idTripulacion);
+	}
+
 }

@@ -64,6 +64,35 @@ public class TripulacionController {
 		
 		int resultado = tripulacionService.actualizarTripulacion(idPirata, rol, idTripulacion);
 		
+	    ArrayList<PirataDTO> listaPiratas = tripulacionService.obtenerMiembros(idTripulacion);	
+	    TripulacionDTO tripulacion = tripulacionService.obtenerlistaTripulacionesPorId(idTripulacion);
+	    
+	    model.addAttribute("tripulacion", tripulacion);
+	    model.addAttribute("miembros", listaPiratas);
+	    
+	    ArrayList<PirataDTO> piratasActivos = pirataService.obtenerPiratasPorFiltro(null, "", null, true); 
+	    model.addAttribute("piratasActivos", piratasActivos);
+		
+		model.addAttribute("resultado", resultado);
+		return "tripulaciones/detallesTripulacion";
+	}
+	
+	@PostMapping("/eliminarMiembro")
+	public String formularioEliminarNuevoMiembro(
+			@RequestParam("idPirata") String idPirata,
+			@RequestParam("idTripulacion") String idTripulacion, ModelMap model) {
+		
+		int resultado = tripulacionService.eliminarDeTripulacion(idPirata, idTripulacion);
+		
+		ArrayList<PirataDTO> listaPiratas = tripulacionService.obtenerMiembros(idTripulacion);	
+		TripulacionDTO tripulacion = tripulacionService.obtenerlistaTripulacionesPorId(idTripulacion);
+		
+		model.addAttribute("tripulacion", tripulacion);
+		model.addAttribute("miembros", listaPiratas);
+		
+		ArrayList<PirataDTO> piratasActivos = pirataService.obtenerPiratasPorFiltro(null, "", null, true); 
+		model.addAttribute("piratasActivos", piratasActivos);
+		
 		model.addAttribute("resultado", resultado);
 		return "tripulaciones/detallesTripulacion";
 	}

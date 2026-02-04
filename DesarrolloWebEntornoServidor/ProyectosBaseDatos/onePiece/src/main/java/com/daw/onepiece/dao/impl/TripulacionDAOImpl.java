@@ -9,8 +9,10 @@ import com.daw.onepiece.dao.interfaces.ITripulacionDAO;
 import com.daw.onepiece.dtos.PirataDTO;
 import com.daw.onepiece.dtos.TripulacionDTO;
 import com.daw.onepiece.entities.PirataEntity;
+import com.daw.onepiece.entities.ReclutamientoEntity;
 import com.daw.onepiece.entities.TripulacionEntity;
 import com.daw.onepiece.repositorios.PirataRepository;
+import com.daw.onepiece.repositorios.ReclutamientoRepository;
 import com.daw.onepiece.repositorios.TripulacionRepository;
 
 @Repository
@@ -20,6 +22,8 @@ public class TripulacionDAOImpl implements ITripulacionDAO {
 	TripulacionRepository tripulacionRepository;
 	@Autowired
 	PirataRepository pirataRepository;
+	@Autowired
+	ReclutamientoRepository reclutaminetoRepository;
 
 	@Override
 	public ArrayList<TripulacionDTO> obtenerTripulacionesPorFiltro(String id, String nombre, String barco, Boolean act) {
@@ -43,8 +47,16 @@ public class TripulacionDAOImpl implements ITripulacionDAO {
 	public int actualizarTripulacion(String idPirata, String rol, String idTripulacion) {
 		TripulacionEntity tripulacion = tripulacionRepository.findById(Integer.parseInt(idTripulacion)).get();
 		PirataEntity pirata = pirataRepository.findById(Integer.parseInt(idPirata)).get();
-		TripulacionDTO tripulacionDto = new TripulacionDTO(tripulacion.getId(), tripulacion.getNombre(), tripulacion.getBarco(),tripulacion.getActivo());
-		
+		ReclutamientoEntity recluta = new ReclutamientoEntity(pirata, tripulacion, rol, true);
+		reclutaminetoRepository.save(recluta);
+		return Integer.parseInt(idTripulacion);
+	}
+
+	@Override
+	public int eliminarDeTripulacion(String idPirata, String idTripulacion) {
+		ReclutamientoEntity recluta = reclutaminetoRepository.buscarMiembro(idPirata, idTripulacion);
+		recluta.setEsMiembroActual(false);
+		reclutaminetoRepository.save(recluta);
 		return Integer.parseInt(idTripulacion);
 	}
 

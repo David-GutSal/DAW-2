@@ -10,9 +10,12 @@
 </template>
 
 <script setup>
-
-
 defineProps(["propositos"]);
+
+const emit = defineEmits(["borrarP"]);
+const borrar = (inedx) => {
+    emit("borrar", inedx);
+}
 
 </script>
 

@@ -47,6 +47,28 @@ public class ReclutamientoEntity {
 		this.tripulacion = tripulacion;
 	}
 
+	public ReclutamientoEntity(PirataEntity pirata, TripulacionEntity tripulacion, String rol) {
+		super();
+		this.pirata = pirata;
+		this.tripulacion = tripulacion;
+		this.rol = rol;
+	}
+	
+	public ReclutamientoEntity(PirataEntity pirata, TripulacionEntity tripulacion, String rol, boolean esMiembroActual) {
+		super();
+		this.pirata = pirata;
+		this.tripulacion = tripulacion;
+		this.rol = rol;
+		this.esMiembroActual = esMiembroActual;
+	}
+	
+	public ReclutamientoEntity(PirataEntity pirata, TripulacionEntity tripulacion, boolean esMiembroActual) {
+		super();
+		this.pirata = pirata;
+		this.tripulacion = tripulacion;
+		this.esMiembroActual = esMiembroActual;
+	}
+
 	public int getId() {
 		return id;
 	}

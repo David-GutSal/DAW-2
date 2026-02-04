@@ -15,4 +15,6 @@ public interface ITripulacionService {
 
 	int actualizarTripulacion(String idPirata, String rol, String idTripulacion);
 
+	int eliminarDeTripulacion(String idPirata, String idTripulacion);
+
 }

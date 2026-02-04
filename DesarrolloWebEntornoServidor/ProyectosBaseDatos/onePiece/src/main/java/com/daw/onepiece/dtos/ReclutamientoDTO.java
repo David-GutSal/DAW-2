@@ -10,8 +10,7 @@ public class ReclutamientoDTO {
 	public ReclutamientoDTO() {
 	}
 	
-	public ReclutamientoDTO(Integer id, Integer pirata_id, Integer tripulacion_id, String rol,
-			Boolean esMiembroActual) {
+	public ReclutamientoDTO(Integer id, Integer pirata_id, Integer tripulacion_id, String rol, Boolean esMiembroActual) {
 		super();
 		this.id = id;
 		this.pirata_id = pirata_id;

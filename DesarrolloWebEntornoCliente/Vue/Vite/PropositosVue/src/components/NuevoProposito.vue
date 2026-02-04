@@ -5,13 +5,16 @@
 
 <script setup>
 import { ref } from "vue"
-const propos = defineProps(["propositos"]);
 
 let hecho = ref(false);
 let nuevoProp = ref("");
+
+
+const emit = defineEmits(["agregarProp"]);
+
 const agregarProp = () => {
-    let proposito = { texto: nuevoProp.value, hecho: false }
-    propos.propositos.push(proposito);
+    let proposito = { texto: nuevoProp.value, hecho: hecho }
+    emit("agregarProp", proposito);
     nuevoProp.value = "";
 }
 

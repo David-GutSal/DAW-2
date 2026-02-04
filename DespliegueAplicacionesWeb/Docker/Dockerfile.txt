@@ -1,0 +1,11 @@
+FROM node:14
+
+WORKDIR ./EjercicioDocker
+
+COPY . ./EjercicioDocker
+
+RUN npm install
+
+EXPOSE 80
+
+CMD [ "node", "server.js" ]
