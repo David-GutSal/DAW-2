@@ -53,11 +53,11 @@ public class TripulacionDAOImpl implements ITripulacionDAO {
 	}
 
 	@Override
-	public int eliminarDeTripulacion(String idPirata, String idTripulacion) {
+	public int eliminarDeTripulacion(Integer idPirata, Integer idTripulacion) {
 		ReclutamientoEntity recluta = reclutaminetoRepository.buscarMiembro(idPirata, idTripulacion);
 		recluta.setEsMiembroActual(false);
 		reclutaminetoRepository.save(recluta);
-		return Integer.parseInt(idTripulacion);
+		return idTripulacion;
 	}
 
 }

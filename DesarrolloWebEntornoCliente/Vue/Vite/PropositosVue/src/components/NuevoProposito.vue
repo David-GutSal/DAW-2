@@ -13,6 +13,7 @@ let nuevoProp = ref("");
 const emit = defineEmits(["agregarProp"]);
 
 const agregarProp = () => {
+
     let proposito = { texto: nuevoProp.value, hecho: hecho }
     emit("agregarProp", proposito);
     nuevoProp.value = "";

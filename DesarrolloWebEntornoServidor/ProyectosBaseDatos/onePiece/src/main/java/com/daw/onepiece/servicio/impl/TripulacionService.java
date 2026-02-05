@@ -37,7 +37,7 @@ public class TripulacionService implements ITripulacionService {
 	}
 
 	@Override
-	public int eliminarDeTripulacion(String idPirata, String idTripulacion) {
+	public int eliminarDeTripulacion(Integer idPirata, Integer idTripulacion) {
 		return tripulacionDAO.eliminarDeTripulacion( idPirata,  idTripulacion);
 	}
 

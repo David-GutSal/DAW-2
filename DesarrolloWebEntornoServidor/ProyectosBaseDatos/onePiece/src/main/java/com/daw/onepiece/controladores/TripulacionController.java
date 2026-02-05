@@ -79,13 +79,13 @@ public class TripulacionController {
 	
 	@PostMapping("/eliminarMiembro")
 	public String formularioEliminarNuevoMiembro(
-			@RequestParam("idPirata") String idPirata,
-			@RequestParam("idTripulacion") String idTripulacion, ModelMap model) {
+			@RequestParam("idPirata") Integer idPirata,
+			@RequestParam("idTripulacion") Integer idTripulacion, ModelMap model) {
 		
 		int resultado = tripulacionService.eliminarDeTripulacion(idPirata, idTripulacion);
 		
-		ArrayList<PirataDTO> listaPiratas = tripulacionService.obtenerMiembros(idTripulacion);	
-		TripulacionDTO tripulacion = tripulacionService.obtenerlistaTripulacionesPorId(idTripulacion);
+		ArrayList<PirataDTO> listaPiratas = tripulacionService.obtenerMiembros(String.valueOf(idTripulacion));	
+		TripulacionDTO tripulacion = tripulacionService.obtenerlistaTripulacionesPorId(String.valueOf(idTripulacion));
 		
 		model.addAttribute("tripulacion", tripulacion);
 		model.addAttribute("miembros", listaPiratas);

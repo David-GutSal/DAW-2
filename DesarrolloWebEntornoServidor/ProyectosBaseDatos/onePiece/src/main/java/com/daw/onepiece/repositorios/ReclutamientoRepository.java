@@ -9,14 +9,10 @@ import com.daw.onepiece.entities.ReclutamientoEntity;
 
 @Repository
 public interface ReclutamientoRepository extends CrudRepository<ReclutamientoEntity, Integer> {
-	@Query("SELECT new com.daw.onepiece.dtos.ReclutamientoDTO("
-		    + "r.id, r.pirata, r.tripulacion, r.rol, r.esMiembroActual) "
-		    + "FROM ReclutamientoEntity r "
-		    + "WHERE (r.pirata LIKE CONCAT('%', :pirata_id, '%')) "
-		    + "AND (r.tripulacion LIKE CONCAT('%', :tripulacion_id, '%')) ")
+	@Query("SELECT r FROM ReclutamientoEntity r WHERE r.pirata.id = :pirata_id AND r.tripulacion.id = :tripulacion_id")
 	
 	ReclutamientoEntity buscarMiembro(
-			@Param("pirata_id") String idPirata, 
-			@Param("tripulacion_id") String idTripulacion);
+			@Param("pirata_id") Integer idPirata, 
+			@Param("tripulacion_id") Integer idTripulacion);
 
 }
