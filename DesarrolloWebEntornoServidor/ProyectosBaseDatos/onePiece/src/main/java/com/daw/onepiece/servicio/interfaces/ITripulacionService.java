@@ -17,4 +17,10 @@ public interface ITripulacionService {
 
 	int eliminarDeTripulacion(Integer idPirata, Integer idTripulacion);
 
+	Integer borrarTripulacion(Integer id);
+
+	Integer actualizarTripulacion(String id, String nombre, String barco, boolean activa);
+
+	Integer insertarTripulacion(String nombre, String barco, boolean activa);
+
 }

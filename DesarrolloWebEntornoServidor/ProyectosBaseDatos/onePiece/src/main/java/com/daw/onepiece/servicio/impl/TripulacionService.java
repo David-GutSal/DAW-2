@@ -41,4 +41,22 @@ public class TripulacionService implements ITripulacionService {
 		return tripulacionDAO.eliminarDeTripulacion( idPirata,  idTripulacion);
 	}
 
+	@Override
+	public Integer borrarTripulacion(Integer id) {
+		return tripulacionDAO.borrarTripulacion(id);
+		
+	}
+
+	@Override
+	public Integer actualizarTripulacion(String id, String nombre, String barco, boolean activa) {
+		return tripulacionDAO.actualizarTripulacion(id, nombre, barco, activa);
+		
+	}
+
+	@Override
+	public Integer insertarTripulacion(String nombre, String barco, boolean activa) {
+		return tripulacionDAO.insertarTripulacion(nombre, barco, activa);
+		
+	}
+
 }

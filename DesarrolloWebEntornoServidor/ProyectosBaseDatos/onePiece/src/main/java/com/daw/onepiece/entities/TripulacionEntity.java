@@ -50,6 +50,13 @@ public class TripulacionEntity {
 		this.reclutamientos = reclutamientos;
 	}
 
+	public TripulacionEntity(String nombre, String barco, Boolean activo) {
+		super();
+		this.nombre = nombre;
+		this.barco = barco;
+		this.activo = activo;
+	}
+
 	public int getId() {
 		return id;
 	}

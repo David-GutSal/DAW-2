@@ -1,6 +1,7 @@
 package com.daw.onepiece.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +24,7 @@ public class TripulacionDAOImpl implements ITripulacionDAO {
 	@Autowired
 	PirataRepository pirataRepository;
 	@Autowired
-	ReclutamientoRepository reclutaminetoRepository;
+	ReclutamientoRepository reclutamientoRepository;
 
 	@Override
 	public ArrayList<TripulacionDTO> obtenerTripulacionesPorFiltro(String id, String nombre, String barco, Boolean act) {
@@ -45,19 +46,56 @@ public class TripulacionDAOImpl implements ITripulacionDAO {
 
 	@Override
 	public int actualizarTripulacion(String idPirata, String rol, String idTripulacion) {
-		TripulacionEntity tripulacion = tripulacionRepository.findById(Integer.parseInt(idTripulacion)).get();
-		PirataEntity pirata = pirataRepository.findById(Integer.parseInt(idPirata)).get();
-		ReclutamientoEntity recluta = new ReclutamientoEntity(pirata, tripulacion, rol, true);
-		reclutaminetoRepository.save(recluta);
-		return Integer.parseInt(idTripulacion);
+	    TripulacionEntity tripulacion = tripulacionRepository.findById(Integer.parseInt(idTripulacion)).get();
+	    PirataEntity pirata = pirataRepository.findById(Integer.parseInt(idPirata)).get();
+	    
+	    Optional<ReclutamientoEntity> existingReclutamiento = reclutamientoRepository.findByPirataAndTripulacion(pirata, tripulacion);
+	    
+	    if (existingReclutamiento.isPresent()) {
+	        ReclutamientoEntity recluta = existingReclutamiento.get();
+	        recluta.setEsMiembroActual(true);
+	        recluta.setRol(rol); 
+	        reclutamientoRepository.save(recluta);
+	    } else {
+	        ReclutamientoEntity recluta = new ReclutamientoEntity(pirata, tripulacion, rol, true);
+	        reclutamientoRepository.save(recluta);
+	    }
+	    
+	    return Integer.parseInt(idTripulacion);
 	}
 
 	@Override
 	public int eliminarDeTripulacion(Integer idPirata, Integer idTripulacion) {
-		ReclutamientoEntity recluta = reclutaminetoRepository.buscarMiembro(idPirata, idTripulacion);
+		ReclutamientoEntity recluta = reclutamientoRepository.buscarMiembro(idPirata, idTripulacion);
 		recluta.setEsMiembroActual(false);
-		reclutaminetoRepository.save(recluta);
+		reclutamientoRepository.save(recluta);
 		return idTripulacion;
+	}
+
+	@Override
+	public Integer borrarTripulacion(Integer id) {
+		TripulacionEntity tripulacion = tripulacionRepository.findById(id).get();
+		tripulacion.setActivo(false);
+		tripulacionRepository.save(tripulacion);
+		return id;
+		
+	}
+
+	@Override
+	public Integer actualizarTripulacion(String id, String nombre, String barco, boolean activa) {
+		TripulacionEntity tripulacion = tripulacionRepository.findById(Integer.parseInt(id)).get();
+		tripulacion.setActivo(activa);
+		tripulacion.setBarco(barco);
+		tripulacion.setNombre(nombre);
+		tripulacionRepository.save(tripulacion);
+		return Integer.parseInt(id);
+	}
+
+	@Override
+	public Integer insertarTripulacion(String nombre, String barco, boolean activa) {
+		TripulacionEntity tripulacion = new TripulacionEntity(nombre, barco, activa);
+		tripulacionRepository.save(tripulacion); 
+		return 1;
 	}
 
 }

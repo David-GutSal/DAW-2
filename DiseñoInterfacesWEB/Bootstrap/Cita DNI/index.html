@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cita Previa DNI y Pasaporte - Cuerpo Nacional de Policía</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config" src="js/scripts.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-[#111318] dark:text-white transition-colors duration-200">
+    <!-- Header / Navbar -->
+    <header
+        class="sticky top-0 z-50 w-full bg-white dark:bg-background-dark border-b border-[#dbdfe6] dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <!-- Logos Section -->
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2">
+                        <div class="h-10 w-auto">
+                            <svg class="h-full w-auto text-primary" fill="none" viewbox="0 0 48 48"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill="currentColor" fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="hidden md:block">
+                            <p class="text-[10px] font-bold uppercase leading-none text-gray-500 dark:text-gray-400">
+                                Ministerio del Interior</p>
+                            <h1 class="text-sm font-extrabold tracking-tight text-[#111318] dark:text-white">POLICÍA
+                                NACIONAL</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Inicio</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Documentación</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Tasas</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Consulta Cita</a>
+                    <div class="h-4 w-px bg-gray-300 dark:bg-gray-700 mx-2"></div>
+                    <button class="flex items-center gap-1 text-sm font-semibold">
+                        <span class="material-symbols-outlined text-[20px]">language</span>
+                        ES
+                    </button>
+                </nav>
+                <!-- CTA Button -->
+                <div class="flex items-center gap-4">
+                    <button
+                        class="bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all shadow-md shadow-primary/20">
+                        Pedir Cita
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
+            <div class="flex flex-col gap-6">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider w-fit">
+                    Portal Oficial de Tramitación
+                </div>
+                <h1
+                    class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-[#111318] dark:text-white">
+                    Cita Previa DNI <br /><span class="text-primary">y Pasaporte</span>
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
+                    Solicite o renueve sus documentos de identidad de forma ágil y segura. Acceda al sistema oficial de
+                    gestión de citas de la Policía Nacional para trámites en toda España.
+                </p>
+                <div class="flex flex-wrap gap-4 mt-4">
+                    <button
+                        class="bg-primary text-white px-8 py-4 rounded-xl text-base font-bold hover:bg-blue-700 transition-all shadow-lg shadow-primary/25 flex items-center gap-2">
+                        <span>Iniciar Solicitud</span>
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    <button
+                        class="bg-white dark:bg-gray-800 border border-[#dbdfe6] dark:border-gray-700 px-8 py-4 rounded-xl text-base font-bold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
+                        Consultar Cita
+                    </button>
+                </div>
+                <div class="flex items-center gap-6 mt-4">
+                    <div class="flex -space-x-2">
+                        <div class="w-8 h-8 rounded-full border-2 border-white dark:border-background-dark bg-gray-200 bg-cover"
+                            data-alt="Perfil de usuario para testimonio 1"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCmUCbPBpNhMI3DmduIwYiR33RAq8qBLeh1gzIgCHAORiS3xZgxePuyMB7Jo4F5UaHOxyLeN4hj9fSnUsSUGiXjXH-uljgT5iuXoWbBMAzoSShfhjA0Q8oOQs6qOrhHpjzfpQKjFnuVZpXiW4FD7IccUNiZdEc_dnYxk9oci5AB8NMlBzXYScBZJvGAluIUNc4vUQxxdZdR-9ame9A80fYEc7ZWFB7FQuLOvjUBNwyo-WOiB4dNB1vqjOfJYkkwa4qE5g0G80Kb8dw");'>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border-2 border-white dark:border-background-dark bg-gray-200 bg-cover"
+                            data-alt="Perfil de usuario para testimonio 2"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2u5QVzMw4d5JfVlB4NZGVuR0GBJgRkH3EZVyTEWkqVhIoxHlBxOSADeKfOHoHQFZFT6NlptD8_VzgMtsS1LJAa6Rbaz58E1SZE5-0P4BAZFhHuKdRhnJKrV23a-mq9U98vkZfEIHzSZhkuNT1S-z_HqODm_Qx-_p-ZUCeL5I1W3maKyJmAvLet43zJmdoz9sByItGdJm8PHFGsrwmyPpxeTZD3iERiNI7OsOhEuDJStYQ3dy_9GOojBeTlbcFdQLhRgSACYKd5Q8");'>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border-2 border-white dark:border-background-dark bg-gray-200 bg-cover"
+                            data-alt="Perfil de usuario para testimonio 3"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQBiBxgPOzz64CHFsRG0S6uGE1P267M_v1wuEk7q0vGpZ6JVBTfIz2_p1Lnzp4YoUPHP6oHJu8milvrXz_yUYQBwyW3l2HceGZG0YXrh4Pbd0UR9UGIkUkK6xKfnEL_O5MKvCcdFXBdhZf5jhX5Dke0cJ2wla-CAG5IBJwM14AiiHDn3YcLD2uvgGhsHR-dOhCnddryISe2Wye9QQxRXAR2OIn0CwM8FHm5NLT3U1POnncLvohyETY2mlWV6r-8ICESH1QrgjVRyY");'>
+                        </div>
+                    </div>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                        <span class="text-[#111318] dark:text-white font-bold">+2M de ciudadanos</span> atendidos este
+                        año
+                    </p>
+                </div>
+            </div>
+            <div class="relative group">
+                <div
+                    class="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl group-hover:bg-primary/10 transition-colors">
+                </div>
+                <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gray-200 bg-cover bg-center border border-white dark:border-gray-800"
+                    data-alt="Oficina moderna de expedición del DNI"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuCRHfYe0A1wHu8W21XR5NTFvo-O6LVnvsauQIGPUebOlYigT0jrzNFoAk0dGLBbQ0A6UYzZsgIvBkpQG2zM7rHi4gcb9DzdAoh_Rk2lM7fHPSPA3z0Sh28vS0WrK36d1mipQzP84DxmfjgsiSpA4WvG6jjTNzART32mgvksFjYkVftH81pGanbTBFbnZWgclWY10m6e99TN5PxOeM-zvsGQ1uVEJ1wUrj45zTlb66lqDHiUVWegK3xFhDeWzyWg2jlzZWjRFc2Vs");'>
+                </div>
+            </div>
+        </section>
+        <!-- Alert Notification -->
+        <div class="mt-8">
+            <div
+                class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 rounded-2xl border-l-4 border-primary bg-white dark:bg-gray-800 p-6 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="p-2 bg-primary/10 rounded-lg text-primary">
+                        <span class="material-symbols-outlined">notifications_active</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <p class="text-lg font-bold">Aviso sobre Tasas y Pagos</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                            Para agilizar el trámite en oficina, se recomienda realizar el pago de tasas de forma
+                            telemática durante el proceso de solicitud de cita.
+                        </p>
+                    </div>
+                </div>
+                <a class="inline-flex items-center gap-2 text-primary font-bold text-sm whitespace-nowrap hover:underline underline-offset-4"
+                    href="#">
+                    Ver tasas vigentes
+                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+                </a>
+            </div>
+        </div>
+        <!-- Services Section -->
+        <section class="mt-20">
+            <div class="flex flex-col items-center text-center gap-4 mb-12">
+                <h2 class="text-3xl font-black tracking-tight text-[#111318] dark:text-white">Nuestros Servicios</h2>
+                <p class="text-gray-500 dark:text-gray-400 max-w-2xl">
+                    Seleccione el tipo de trámite que desea realizar. Disponemos de servicios específicos para la
+                    renovación, primera inscripción o gestión de certificados electrónicos.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Service Card 1 -->
+                <div
+                    class="group flex flex-col gap-6 rounded-2xl border border-[#dbdfe6] dark:border-gray-800 bg-white dark:bg-gray-800 p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all">
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-[32px]">id_card</span>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <h3 class="text-xl font-bold">DNI Electrónico</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Renovación por caducidad, pérdida o robo, cambio de datos y primera inscripción para
+                            ciudadanos españoles residentes en España.
+                        </p>
+                    </div>
+                    <a class="mt-auto inline-flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform"
+                        href="#">
+                        Saber más
+                        <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                    </a>
+                </div>
+                <!-- Service Card 2 -->
+                <div
+                    class="group flex flex-col gap-6 rounded-2xl border border-[#dbdfe6] dark:border-gray-800 bg-white dark:bg-gray-800 p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all">
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-[32px]">public</span>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <h3 class="text-xl font-bold">Pasaporte Español</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Obtención y renovación del documento de viaje necesario para traslados fuera de la Unión
+                            Europea y el espacio Schengen.
+                        </p>
+                    </div>
+                    <a class="mt-auto inline-flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform"
+                        href="#">
+                        Saber más
+                        <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                    </a>
+                </div>
+                <!-- Service Card 3 -->
+                <div
+                    class="group flex flex-col gap-6 rounded-2xl border border-[#dbdfe6] dark:border-gray-800 bg-white dark:bg-gray-800 p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all">
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-[32px]">fingerprint</span>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <h3 class="text-xl font-bold">Certificados Digitales</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Activación de los certificados de firma y autenticación integrados en el chip del DNIe 3.0 y
+                            4.0 para trámites online.
+                        </p>
+                    </div>
+                    <a class="mt-auto inline-flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform"
+                        href="#">
+                        Saber más
+                        <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Stats Section -->
+        <section
+            class="mt-24 py-12 bg-primary/5 dark:bg-primary/10 rounded-3xl grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+            <div class="flex flex-col items-center gap-1">
+                <p class="text-4xl font-black text-primary">2.400+</p>
+                <p class="text-sm font-bold text-gray-500 uppercase">Oficinas</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+                <p class="text-4xl font-black text-primary">15min</p>
+                <p class="text-sm font-bold text-gray-500 uppercase">Tiempo medio</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+                <p class="text-4xl font-black text-primary">24/7</p>
+                <p class="text-sm font-bold text-gray-500 uppercase">Cita Online</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+                <p class="text-4xl font-black text-primary">98%</p>
+                <p class="text-sm font-bold text-gray-500 uppercase">Satisfacción</p>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="mt-20 bg-white dark:bg-background-dark border-t border-[#dbdfe6] dark:border-gray-800 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="h-8 w-auto text-primary">
+                            <svg class="h-full w-auto" fill="none" viewbox="0 0 48 48"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill="currentColor" fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg font-bold">Policía Nacional</h2>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Sistema oficial de Cita Previa para la expedición de documentos de identidad y viaje. Ministerio
+                        del Interior, Gobierno de España.
+                    </p>
+                    <div class="flex gap-4">
+                        <a class="text-gray-400 hover:text-primary transition-colors" href="#">
+                            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                <path
+                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="text-gray-400 hover:text-primary transition-colors" href="#">
+                            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-gray-400">Tramitación</h3>
+                    <ul class="flex flex-col gap-3 text-sm font-medium">
+                        <li><a class="hover:text-primary transition-colors" href="#">Solicitar Cita</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Consultar o Anular Cita</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Documentación necesaria</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Pago de tasas</a></li>
+                    </ul>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-gray-400">Información</h3>
+                    <ul class="flex flex-col gap-3 text-sm font-medium">
+                        <li><a class="hover:text-primary transition-colors" href="#">Preguntas frecuentes (FAQ)</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Oficinas de expedición</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Requisitos por edad</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Portal de transparencia</a></li>
+                    </ul>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-gray-400">Enlaces Institucionales</h3>
+                    <ul class="flex flex-col gap-3 text-sm font-medium">
+                        <li><a class="hover:text-primary transition-colors" href="#">Ministerio del Interior</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Policía Nacional (Web Oficial)</a>
+                        </li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Sede Electrónica</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Portal de Accesibilidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-[#dbdfe6] dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-xs text-gray-500 font-medium">
+                    © 2024 Dirección General de la Policía. Todos los derechos reservados.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500 font-medium">
+                    <a class="hover:text-primary transition-colors" href="#">Aviso Legal</a>
+                    <a class="hover:text-primary transition-colors" href="#">Política de Privacidad</a>
+                    <a class="hover:text-primary transition-colors" href="#">Cookies</a>
+                    <a class="hover:text-primary transition-colors" href="#">Accesibilidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

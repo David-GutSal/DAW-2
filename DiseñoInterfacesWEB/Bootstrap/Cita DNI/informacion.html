@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cita Previa DNI/Pasaporte - Información, FAQs y Oficinas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-[#111318] dark:text-gray-100 transition-colors duration-200">
+    <!-- Header Navigation -->
+    <header
+        class="sticky top-0 z-50 bg-white dark:bg-[#1a2233] border-b border-[#f0f2f4] dark:border-gray-800 px-6 lg:px-40 py-4 shadow-sm">
+        <div class="max-w-[1280px] mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div class="text-primary size-8">
+                        <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <h1 class="text-[#111318] dark:text-white text-lg font-bold leading-tight tracking-tight">Cita
+                            Previa</h1>
+                        <span class="text-xs font-medium text-gray-500 uppercase tracking-widest">DNI y Pasaporte</span>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center gap-8 ml-4">
+                    <a class="text-[#111318] dark:text-gray-200 text-sm font-semibold hover:text-primary transition-colors"
+                        href="#">Inicio</a>
+                    <a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Ayuda</a>
+                    <a class="text-[#111318] dark:text-gray-200 text-sm font-semibold hover:text-primary transition-colors"
+                        href="#oficinas">Oficinas</a>
+                    <a class="text-[#111318] dark:text-gray-200 text-sm font-semibold hover:text-primary transition-colors"
+                        href="#tramites">Trámites</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="flex items-center justify-center rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-md shadow-primary/20">
+                    Solicitar Cita
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-[1280px] mx-auto px-6 lg:px-40 pb-20">
+        <!-- Hero Section -->
+        <section class="py-12 md:py-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-black text-[#111318] dark:text-white mb-4 tracking-tight">Información y
+                Ayuda</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
+                Resuelve tus dudas sobre la obtención o renovación de tus documentos de identidad de forma rápida y
+                sencilla.
+            </p>
+            <div class="relative max-w-2xl mx-auto group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <span
+                        class="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+                </div>
+                <input
+                    class="block w-full pl-12 pr-4 py-4 bg-white dark:bg-[#1a2233] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-base"
+                    placeholder="Busca por trámite, oficina o requisitos..." type="text" />
+                <button
+                    class="absolute inset-y-2 right-2 px-6 bg-primary text-white rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors">Buscar</button>
+            </div>
+        </section>
+        <!-- FAQ Section -->
+        <section class="py-12 border-t border-gray-100 dark:border-gray-800">
+            <div class="flex items-center gap-3 mb-10">
+                <span class="material-symbols-outlined text-primary text-3xl">quiz</span>
+                <h2 class="text-2xl font-bold text-[#111318] dark:text-white">Preguntas Frecuentes</h2>
+            </div>
+            <div class="grid gap-4 max-w-4xl">
+                <!-- FAQ Item 1 -->
+                <details
+                    class="group bg-white dark:bg-[#1a2233] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300"
+                    open="">
+                    <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
+                        <span class="text-[#111318] dark:text-white font-semibold text-lg">¿Qué documentación necesito
+                            para renovar el DNI?</span>
+                        <span
+                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-4">
+                        Para la renovación general necesitarás: una fotografía reciente en color con fondo blanco, el
+                        DNI anterior y, en caso de cambio de domicilio, el certificado de empadronamiento emitido en los
+                        últimos 3 meses.
+                    </div>
+                </details>
+                <!-- FAQ Item 2 -->
+                <details
+                    class="group bg-white dark:bg-[#1a2233] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300">
+                    <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
+                        <span class="text-[#111318] dark:text-white font-semibold text-lg">¿Cómo puedo pagar la tasa de
+                            expedición?</span>
+                        <span
+                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-4">
+                        Puedes realizar el pago telemáticamente al solicitar tu cita previa con certificado digital, o
+                        en efectivo/tarjeta directamente en la oficina el día de tu cita. La tasa actual es de 12€ para
+                        el DNI y 30€ para el Pasaporte.
+                    </div>
+                </details>
+                <!-- FAQ Item 3 -->
+                <details
+                    class="group bg-white dark:bg-[#1a2233] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300">
+                    <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
+                        <span class="text-[#111318] dark:text-white font-semibold text-lg">¿Qué hacer en caso de pérdida
+                            o robo?</span>
+                        <span
+                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-4">
+                        Debe interponer una denuncia en comisaría y solicitar una cita para un duplicado lo antes
+                        posible. Si el documento estaba en vigor, se expedirá un duplicado con la misma validez.
+                    </div>
+                </details>
+                <!-- FAQ Item 4 -->
+                <details
+                    class="group bg-white dark:bg-[#1a2233] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300">
+                    <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
+                        <span class="text-[#111318] dark:text-white font-semibold text-lg">¿Requisitos para la
+                            fotografía oficial?</span>
+                        <span
+                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-4">
+                        La foto debe ser reciente, en color, con fondo blanco y liso, tomada de frente con la cabeza
+                        totalmente descubierta y sin gafas de cristales oscuros o cualquier otra prenda que pueda
+                        impedir o dificultar la identificación.
+                    </div>
+                </details>
+            </div>
+        </section>
+        <!-- Documentation Checklist Section -->
+        <section class="py-12 border-t border-gray-100 dark:border-gray-800" id="tramites">
+            <div class="flex items-center gap-3 mb-10">
+                <span class="material-symbols-outlined text-primary text-3xl">description</span>
+                <h2 class="text-2xl font-bold text-[#111318] dark:text-white">Documentación por Trámite</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- DNI Card -->
+                <div
+                    class="bg-white dark:bg-[#1a2233] p-8 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all border-t-4 border-t-primary">
+                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">badge</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 dark:text-white">Renovación DNI</h3>
+                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> 1
+                            Fotografía reciente</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> DNI
+                            Anterior (si no hay pérdida)</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
+                            Certificado Empadronamiento*</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Pago
+                            de tasa: 12,00 €</li>
+                    </ul>
+                    <button
+                        class="mt-8 w-full py-2 px-4 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors">Ver
+                        Detalles</button>
+                </div>
+                <!-- Passport Card -->
+                <div
+                    class="bg-white dark:bg-[#1a2233] p-8 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all border-t-4 border-t-primary">
+                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">menu_book</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 dark:text-white">Pasaporte</h3>
+                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> DNI
+                            en vigor</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> 1
+                            Fotografía (si DNI no reciente)</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
+                            Pasaporte anterior (renovación)</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Pago
+                            de tasa: 30,00 €</li>
+                    </ul>
+                    <button
+                        class="mt-8 w-full py-2 px-4 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors">Ver
+                        Detalles</button>
+                </div>
+                <!-- Foreigners Card -->
+                <div
+                    class="bg-white dark:bg-[#1a2233] p-8 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all border-t-4 border-t-primary">
+                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">public</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 dark:text-white">Extranjería (NIE/TIE)</h3>
+                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
+                            Pasaporte original completo</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
+                            Impreso solicitud (EX-17/18)</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
+                            Justificante abono tasa 790</li>
+                        <li class="flex gap-2 items-start"><span
+                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> 3
+                            Fotos de carné (TIE)</li>
+                    </ul>
+                    <button
+                        class="mt-8 w-full py-2 px-4 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors">Ver
+                        Detalles</button>
+                </div>
+            </div>
+        </section>
+        <!-- Office Directory Section -->
+        <section class="py-12 border-t border-gray-100 dark:border-gray-800" id="oficinas">
+            <div class="flex items-center justify-between mb-10">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+                    <h2 class="text-2xl font-bold text-[#111318] dark:text-white">Oficinas Principales</h2>
+                </div>
+                <a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">Ver todas las
+                    oficinas <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Office Card 1 -->
+                <div
+                    class="bg-white dark:bg-[#1a2233] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                    <div class="h-32 bg-gray-100 overflow-hidden relative">
+                        <div class="absolute top-3 right-3 z-10">
+                            <span
+                                class="bg-green-100 text-green-700 text-[10px] font-black uppercase px-2 py-1 rounded-full border border-green-200">Cita
+                                Disponible</span>
+                        </div>
+                        <img class="w-full h-full object-cover grayscale opacity-50"
+                            data-alt="Simplified map view of central Madrid" data-location="Madrid"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBone_Or2gRTIFQ3XqAexHO6pFJhxgnjtwjUJn-kcJsSZEtxOVectVtxFSOCqB1uNU9W5Eijur-5rDSVmbn-slyIF84cfNtm2ND4DI6vHxhPKB1EEY77bBDA0cByW-q9sJZxgqLa2CcxQxsgUoy7F_pdzW1gYCMLmZgpFUy6Se7ixlQsZOfoJu0tgoGSyM7jGy5pPjmeIuVNRZ0kKfi2exgx5SiGCE-pQuiU3pG-Itxg0Ur0x1liSTLXYTjRizXtDLy4Ztk7SsBOME" />
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-1 dark:text-white">Madrid - Santa Engracia</h4>
+                        <p class="text-sm text-gray-500 mb-4 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-base">pin_drop</span> Calle de Sta Engracia, 18,
+                            28010
+                        </p>
+                        <div class="space-y-2 mb-6 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Horario:</span>
+                                <span class="font-medium dark:text-gray-300">09:00 - 21:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Sábados:</span>
+                                <span class="font-medium dark:text-gray-300">09:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button
+                                class="py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold rounded-lg text-xs hover:bg-gray-200 transition-colors">Cómo
+                                llegar</button>
+                            <button
+                                class="py-2 bg-primary text-white font-bold rounded-lg text-xs hover:bg-blue-700 transition-colors">Pedir
+                                Cita</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Office Card 2 -->
+                <div
+                    class="bg-white dark:bg-[#1a2233] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                    <div class="h-32 bg-gray-100 overflow-hidden relative">
+                        <div class="absolute top-3 right-3 z-10">
+                            <span
+                                class="bg-red-100 text-red-700 text-[10px] font-black uppercase px-2 py-1 rounded-full border border-red-200">Sin
+                                Citas</span>
+                        </div>
+                        <img class="w-full h-full object-cover grayscale opacity-50"
+                            data-alt="Simplified map view of central Barcelona" data-location="Barcelona"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaGcAUKlSby2bzwScAH2LQUicnHFKvv_3f4oWnJt-fH6Ih2C9lo0GFENbQgF0X0ncxm7otklzOpuI_EsZVlkvqBc1xu_M9pKZg5qaJ-eo9F_FZyH0A7vKCCn2gmZ-6S2vjuZrqegxfwj0OcU278uqCtvZ3snz6s4efCe3hOYlQlOrrK-scjTBWLNI1ejbutntjHnu68sUZ7VucKQFA6PRHA7klAAkJ60Ia8LS9xUj4W4oBVP99n1_oFtwVyfp9UCD0ppvtATzRiLg" />
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-1 dark:text-white">Barcelona - Trafalgar</h4>
+                        <p class="text-sm text-gray-500 mb-4 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-base">pin_drop</span> Carrer de Trafalgar, 4,
+                            08010
+                        </p>
+                        <div class="space-y-2 mb-6 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Horario:</span>
+                                <span class="font-medium dark:text-gray-300">08:30 - 20:30</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Sábados:</span>
+                                <span class="font-medium dark:text-gray-300">Cerrado</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button
+                                class="py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold rounded-lg text-xs hover:bg-gray-200 transition-colors">Cómo
+                                llegar</button>
+                            <button
+                                class="py-2 bg-primary/10 text-primary font-bold rounded-lg text-xs cursor-not-allowed">Avisar
+                                Cita</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Office Card 3 -->
+                <div
+                    class="bg-white dark:bg-[#1a2233] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                    <div class="h-32 bg-gray-100 overflow-hidden relative">
+                        <div class="absolute top-3 right-3 z-10">
+                            <span
+                                class="bg-green-100 text-green-700 text-[10px] font-black uppercase px-2 py-1 rounded-full border border-green-200">Cita
+                                Disponible</span>
+                        </div>
+                        <img class="w-full h-full object-cover grayscale opacity-50"
+                            data-alt="Simplified map view of central Valencia" data-location="Valencia"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkH3rVpEk13X8rJ5sbxQ9YRBIzciRMCeIm39MX4EE3n4gJeq0ad3LSUp-PCgOqab2BpntcRvKwtYd9PpBNwSZl5ysARMGtHZHEyuTa7gcNUOUdo38bc8NnPs7jb9LJElkaH9TE33kz-OQLBLvy8xrgqcXY5GT8laf4g7jzdhyQCAz5I_Ktnnq2TqDARdpr0xcC8v9-s-qP2jNBYXrUbFmyxGAQ75eMCfR17rNC-SRBT9hhjd_UcyafMnP541tM0ECeorymxJw9kGY" />
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-1 dark:text-white">Valencia - Hospital</h4>
+                        <p class="text-sm text-gray-500 mb-4 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-base">pin_drop</span> Calle del Hospital, 32,
+                            46001
+                        </p>
+                        <div class="space-y-2 mb-6 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Horario:</span>
+                                <span class="font-medium dark:text-gray-300">09:00 - 14:30</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Tardes:</span>
+                                <span class="font-medium dark:text-gray-300">16:00 - 19:00</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button
+                                class="py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold rounded-lg text-xs hover:bg-gray-200 transition-colors">Cómo
+                                llegar</button>
+                            <button
+                                class="py-2 bg-primary text-white font-bold rounded-lg text-xs hover:bg-blue-700 transition-colors">Pedir
+                                Cita</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-[#1a2233] border-t border-gray-200 dark:border-gray-800 py-12">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-40">
+            <div class="grid md:grid-cols-4 gap-10 mb-10">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="text-primary size-6">
+                            <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-[#111318] dark:text-white text-base font-bold uppercase tracking-wider">Cuerpo
+                            Nacional de Policía</h2>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 max-w-sm leading-relaxed">
+                        Sistema oficial de tramitación de documentos de identidad y pasaportes del Ministerio del
+                        Interior. España.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4 dark:text-white text-sm">Enlaces de interés</h3>
+                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">Portal de Policía</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Sede Electrónica</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Tasas y Pagos</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Normativa</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4 dark:text-white text-sm">Asistencia</h3>
+                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">Teléfono 060</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Contactar</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Accesibilidad</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Protección de datos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-gray-400">© 2024 Dirección General de la Policía. Todos los derechos reservados.
+                </p>
+                <div class="flex gap-6">
+                    <span
+                        class="material-symbols-outlined text-gray-400 hover:text-primary cursor-pointer transition-colors">language</span>
+                    <span
+                        class="material-symbols-outlined text-gray-400 hover:text-primary cursor-pointer transition-colors">accessibility</span>
+                    <span
+                        class="material-symbols-outlined text-gray-400 hover:text-primary cursor-pointer transition-colors">share</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
