@@ -15,13 +15,13 @@ import com.daw.onepiece.servicio.interfaces.ITesoreriaService;
 @RequestMapping("/tesoreria")
 public class TesoreriaController {
 
-	@Autowired
-	private ITesoreriaService tesoreriaService;
+    @Autowired
+    private ITesoreriaService tesoreriaService;
 
-	@GetMapping("/listadoOperaciones")
-	public String listadoOperaciones(ModelMap model) {
-		ArrayList<TesoreriaDTO> listaOperaciones = tesoreriaService.listarTodasLasOperaciones();
-		model.addAttribute("lista", listaOperaciones);
-		return "tesoreria/listadoOperaciones";
-	}
+    @GetMapping("/listadoOperaciones")
+    public String listadoOperaciones(ModelMap model) {
+        ArrayList<TesoreriaDTO> listaOperaciones = tesoreriaService.listarTodasLasOperaciones();
+        model.addAttribute("lista", listaOperaciones);
+        return "tesoreria/listadoOperaciones";
+    }
 }

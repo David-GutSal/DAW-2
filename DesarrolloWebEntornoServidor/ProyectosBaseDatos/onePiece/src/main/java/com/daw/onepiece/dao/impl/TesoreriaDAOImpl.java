@@ -9,14 +9,15 @@ import com.daw.onepiece.dao.interfaces.ITesoreriaDAO;
 import com.daw.onepiece.dtos.TesoreriaDTO;
 import com.daw.onepiece.repositorios.TesoreriaRepository;
 
+
 @Repository
 public class TesoreriaDAOImpl implements ITesoreriaDAO {
 
-	@Autowired
-	private TesoreriaRepository tesoreriaRepository;
+    @Autowired
+    private TesoreriaRepository tesoreriaRepository;
 
-	@Override
-	public ArrayList<TesoreriaDTO> listarTodasLasOperaciones() {
-		return tesoreriaRepository.listarTodasLasOperaciones();
-	}
+    @Override
+    public ArrayList<TesoreriaDTO> listarTodasLasOperaciones() {
+        return tesoreriaRepository.listarTodasLasOperaciones();
+    }
 }
