@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.adrian.colegio.dtos.AlumnoDTO;
 import com.adrian.colegio.dtos.AsignaturaDTO;
-import com.adrian.colegio.dtos.DesplegableDTO;
 import com.adrian.colegio.servicio.interfaces.IAsignaturasService;
 
 @Controller

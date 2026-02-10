@@ -1,179 +1,457 @@
 <!DOCTYPE html>
-
-<html class="light" lang="es">
-
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Cita Previa DNI/Pasaporte - Información, FAQs y Oficinas</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#135bec",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101622",
-                    },
-                    fontFamily: {
-                        "display": ["Public Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
+        :root {
+            --primary: #135bec;
+            --primary-hover: #0d4fd8;
+            --background-light: #f6f6f8;
+            --background-dark: #101622;
+            --card-dark: #1a2233;
+            --text-dark: #111318;
+            --border-light: #f0f2f4;
+            --border-dark: #374151;
+        }
+        
         body {
             font-family: 'Public Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--background-light);
         }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        
+        .navbar-custom {
+            background-color: white;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 80px;
+            z-index: 1030;
+        }
+        
+        .navbar-custom-dark {
+            background-color: var(--card-dark);
+            border-bottom: 1px solid var(--border-dark);
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            transition: color 0.2s ease;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .navbar-nav .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            font-weight: 700;
+            box-shadow: 0 4px 6px rgba(19, 91, 236, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px rgba(19, 91, 236, 0.25);
+        }
+        
+        .text-primary {
+            color: var(--primary) !important;
+        }
+        
+        .bg-primary-light {
+            background-color: rgba(19, 91, 236, 0.1);
+        }
+        
+        .border-primary-light {
+            border-color: rgba(19, 91, 236, 0.3);
+        }
+        
+        .rounded-xl {
+            border-radius: 1rem;
+        }
+        
+        .shadow-soft {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+            z-index: 10;
+        }
+        
+        .search-input {
+            padding-left: 3rem;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            font-size: 1rem;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(19, 91, 236, 0.1);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        
+        .section-title {
+            font-weight: 900;
+            letter-spacing: -0.025em;
+        }
+        
+        .hero-title {
+            font-size: calc(1.5rem + 2.5vw);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+        
+        .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .faq-item summary {
+            padding: 1.5rem;
+            cursor: pointer;
+            list-style: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq-item summary::after {
+            content: '\f282';
+            font-family: 'bootstrap-icons';
+            color: var(--primary);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item[open] summary::after {
+            transform: rotate(180deg);
+        }
+        
+        .faq-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-top: 1px solid #f3f4f6;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+        
+        .card-service {
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            border-top: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .card-service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .office-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .office-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .office-image {
+            height: 8rem;
+            background-color: #f3f4f6;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .office-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+        
+        .status-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            font-size: 0.625rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            border: 1px solid;
+        }
+        
+        .status-available {
+            background-color: rgba(34, 197, 94, 0.1);
+            color: rgb(22, 101, 52);
+            border-color: rgba(34, 197, 94, 0.2);
+        }
+        
+        .status-unavailable {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: rgb(153, 27, 27);
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+        
+        .footer-link {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+        }
+        
+        .list-check {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .list-check li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+        
+        .list-check li::before {
+            content: '\f26e';
+            font-family: 'bootstrap-icons';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-size: 0.875rem;
+        }
+        
+        .icon-lg {
+            font-size: 1.875rem;
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary-light {
+            background-color: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            color: #374151;
+            font-weight: 700;
+        }
+        
+        .btn-secondary-light:hover {
+            background-color: #e5e7eb;
+        }
+        
+        .border-t-primary {
+            border-top: 4px solid var(--primary) !important;
+        }
+        
+        main {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .container-custom {
+            max-width: 1280px;
+            margin: 0 auto;
         }
     </style>
 </head>
 
-<body
-    class="bg-background-light dark:bg-background-dark text-[#111318] dark:text-gray-100 transition-colors duration-200">
+<body>
     <!-- Header Navigation -->
-    <header
-        class="sticky top-0 z-50 bg-white dark:bg-[#1a2233] border-b border-[#f0f2f4] dark:border-gray-800 px-6 lg:px-40 py-4 shadow-sm">
-        <div class="max-w-[1280px] mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-8">
-                <div class="flex items-center gap-3">
-                    <div class="text-primary size-8">
-                        <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
-                                fill-rule="evenodd"></path>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container-custom px-4 px-lg-5">
+            <!-- Logo Section -->
+            <a class="navbar-brand d-flex align-items-center me-4" href="#">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="text-primary" style="width: 2rem; height: 2rem;">
+                        <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <div class="flex flex-col">
-                        <h1 class="text-[#111318] dark:text-white text-lg font-bold leading-tight tracking-tight">Cita
-                            Previa</h1>
-                        <span class="text-xs font-medium text-gray-500 uppercase tracking-widest">DNI y Pasaporte</span>
+                    <div class="d-flex flex-column">
+                        <h1 class="text-dark mb-0" style="font-size: 1.125rem; font-weight: 700; line-height: 1.2;">Cita Previa</h1>
+                        <span class="text-uppercase" style="font-size: 0.75rem; font-weight: 500; color: #6b7280; letter-spacing: 0.05em;">DNI y Pasaporte</span>
                     </div>
                 </div>
-                <nav class="hidden md:flex items-center gap-8 ml-4">
-                    <a class="text-[#111318] dark:text-gray-200 text-sm font-semibold hover:text-primary transition-colors"
-                        href="#">Inicio</a>
-                    <a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Ayuda</a>
-                    <a class="text-[#111318] dark:text-gray-200 text-sm font-semibold hover:text-primary transition-colors"
-                        href="#oficinas">Oficinas</a>
-                    <a class="text-[#111318] dark:text-gray-200 text-sm font-semibold hover:text-primary transition-colors"
-                        href="#tramites">Trámites</a>
-                </nav>
-            </div>
-            <div class="flex items-center gap-4">
-                <button
-                    class="flex items-center justify-center rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-md shadow-primary/20">
-                    Solicitar Cita
-                </button>
+            </a>
+            
+            <!-- Mobile Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Navigation Links -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Ayuda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#oficinas">Oficinas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tramites">Trámites</a>
+                    </li>
+                </ul>
+                
+                <!-- CTA Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary px-4 py-2 rounded-lg">
+                        Solicitar Cita
+                    </button>
+                </div>
             </div>
         </div>
-    </header>
-    <main class="max-w-[1280px] mx-auto px-6 lg:px-40 pb-20">
+    </nav>
+
+    <!-- Main Content -->
+    <main class="px-4 px-lg-5 pb-5" style="padding-top: 100px;">
         <!-- Hero Section -->
-        <section class="py-12 md:py-16 text-center">
-            <h1 class="text-4xl md:text-5xl font-black text-[#111318] dark:text-white mb-4 tracking-tight">Información y
-                Ayuda</h1>
-            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
+        <section class="py-5 py-md-5 text-center">
+            <h1 class="hero-title mb-3">Información y Ayuda</h1>
+            <p class="text-lg text-secondary mb-5 mx-auto" style="max-width: 700px;">
                 Resuelve tus dudas sobre la obtención o renovación de tus documentos de identidad de forma rápida y
                 sencilla.
             </p>
-            <div class="relative max-w-2xl mx-auto group">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <span
-                        class="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">search</span>
-                </div>
-                <input
-                    class="block w-full pl-12 pr-4 py-4 bg-white dark:bg-[#1a2233] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-base"
-                    placeholder="Busca por trámite, oficina o requisitos..." type="text" />
-                <button
-                    class="absolute inset-y-2 right-2 px-6 bg-primary text-white rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors">Buscar</button>
+            <div class="search-container mx-auto" style="max-width: 700px;">
+                <i class="bi bi-search search-icon"></i>
+                <input type="text" class="form-control search-input py-3" placeholder="Busca por trámite, oficina o requisitos...">
+                <button class="btn btn-primary search-btn">Buscar</button>
             </div>
         </section>
+
         <!-- FAQ Section -->
-        <section class="py-12 border-t border-gray-100 dark:border-gray-800">
-            <div class="flex items-center gap-3 mb-10">
-                <span class="material-symbols-outlined text-primary text-3xl">quiz</span>
-                <h2 class="text-2xl font-bold text-[#111318] dark:text-white">Preguntas Frecuentes</h2>
+        <section class="py-5 border-top">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <i class="bi bi-question-circle-fill text-primary icon-lg"></i>
+                <h2 class="h2 fw-bold mb-0">Preguntas Frecuentes</h2>
             </div>
-            <div class="grid gap-4 max-w-4xl">
+            
+            <div class="faq-container" style="max-width: 900px;">
                 <!-- FAQ Item 1 -->
-                <details
-                    class="group bg-white dark:bg-[#1a2233] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300"
-                    open="">
-                    <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
-                        <span class="text-[#111318] dark:text-white font-semibold text-lg">¿Qué documentación necesito
-                            para renovar el DNI?</span>
-                        <span
-                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                <details class="faq-item mb-3" open>
+                    <summary class="d-flex justify-content-between align-items-center">
+                        <span class="fw-semibold">¿Qué documentación necesito para renovar el DNI?</span>
                     </summary>
-                    <div
-                        class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-4">
+                    <div class="faq-content">
                         Para la renovación general necesitarás: una fotografía reciente en color con fondo blanco, el
                         DNI anterior y, en caso de cambio de domicilio, el certificado de empadronamiento emitido en los
                         últimos 3 meses.
                     </div>
                 </details>
+                
                 <!-- FAQ Item 2 -->
-                <details
-                    class="group bg-white dark:bg-[#1a2233] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300">
-                    <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
-                        <span class="text-[#111318] dark:text-white font-semibold text-lg">¿Cómo puedo pagar la tasa de
-                            expedición?</span>
-                        <span
-                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                <details class="faq-item mb-3">
+                    <summary class="d-flex justify-content-between align-items-center">
+                        <span class="fw-semibold">¿Cómo puedo pagar la tasa de expedición?</span>
                     </summary>
-                    <div
-                        class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-4">
+                    <div class="faq-content">
                         Puedes realizar el pago telemáticamente al solicitar tu cita previa con certificado digital, o
                         en efectivo/tarjeta directamente en la oficina el día de tu cita. La tasa actual es de 12€ para
                         el DNI y 30€ para el Pasaporte.
                     </div>
                 </details>
+                
                 <!-- FAQ Item 3 -->
-                <details
-                    class="group bg-white dark:bg-[#1a2233] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300">
-                    <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
-                        <span class="text-[#111318] dark:text-white font-semibold text-lg">¿Qué hacer en caso de pérdida
-                            o robo?</span>
-                        <span
-                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                <details class="faq-item mb-3">
+                    <summary class="d-flex justify-content-between align-items-center">
+                        <span class="fw-semibold">¿Qué hacer en caso de pérdida o robo?</span>
                     </summary>
-                    <div
-                        class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-4">
+                    <div class="faq-content">
                         Debe interponer una denuncia en comisaría y solicitar una cita para un duplicado lo antes
                         posible. Si el documento estaba en vigor, se expedirá un duplicado con la misma validez.
                     </div>
                 </details>
+                
                 <!-- FAQ Item 4 -->
-                <details
-                    class="group bg-white dark:bg-[#1a2233] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300">
-                    <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
-                        <span class="text-[#111318] dark:text-white font-semibold text-lg">¿Requisitos para la
-                            fotografía oficial?</span>
-                        <span
-                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                <details class="faq-item mb-3">
+                    <summary class="d-flex justify-content-between align-items-center">
+                        <span class="fw-semibold">¿Requisitos para la fotografía oficial?</span>
                     </summary>
-                    <div
-                        class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800 pt-4">
+                    <div class="faq-content">
                         La foto debe ser reciente, en color, con fondo blanco y liso, tomada de frente con la cabeza
                         totalmente descubierta y sin gafas de cristales oscuros o cualquier otra prenda que pueda
                         impedir o dificultar la identificación.
@@ -181,275 +459,266 @@
                 </details>
             </div>
         </section>
+
         <!-- Documentation Checklist Section -->
-        <section class="py-12 border-t border-gray-100 dark:border-gray-800" id="tramites">
-            <div class="flex items-center gap-3 mb-10">
-                <span class="material-symbols-outlined text-primary text-3xl">description</span>
-                <h2 class="text-2xl font-bold text-[#111318] dark:text-white">Documentación por Trámite</h2>
+        <section class="py-5 border-top" id="tramites">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <i class="bi bi-file-text-fill text-primary icon-lg"></i>
+                <h2 class="h2 fw-bold mb-0">Documentación por Trámite</h2>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
+            
+            <div class="row g-4">
                 <!-- DNI Card -->
-                <div
-                    class="bg-white dark:bg-[#1a2233] p-8 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all border-t-4 border-t-primary">
-                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary">badge</span>
+                <div class="col-md-4">
+                    <div class="card-service h-100 p-4 bg-white">
+                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem;">
+                            <i class="bi bi-person-badge-fill text-primary fs-4"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Renovación DNI</h3>
+                        <ul class="list-check mb-4">
+                            <li class="text-secondary">1 Fotografía reciente</li>
+                            <li class="text-secondary">DNI Anterior (si no hay pérdida)</li>
+                            <li class="text-secondary">Certificado Empadronamiento*</li>
+                            <li class="text-secondary">Pago de tasa: 12,00 €</li>
+                        </ul>
+                        <button class="btn btn-outline-primary w-100 mt-auto">
+                            Ver Detalles
+                        </button>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 dark:text-white">Renovación DNI</h3>
-                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> 1
-                            Fotografía reciente</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> DNI
-                            Anterior (si no hay pérdida)</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
-                            Certificado Empadronamiento*</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Pago
-                            de tasa: 12,00 €</li>
-                    </ul>
-                    <button
-                        class="mt-8 w-full py-2 px-4 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors">Ver
-                        Detalles</button>
                 </div>
+                
                 <!-- Passport Card -->
-                <div
-                    class="bg-white dark:bg-[#1a2233] p-8 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all border-t-4 border-t-primary">
-                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary">menu_book</span>
+                <div class="col-md-4">
+                    <div class="card-service h-100 p-4 bg-white">
+                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem;">
+                            <i class="bi bi-passport-fill text-primary fs-4"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Pasaporte</h3>
+                        <ul class="list-check mb-4">
+                            <li class="text-secondary">DNI en vigor</li>
+                            <li class="text-secondary">1 Fotografía (si DNI no reciente)</li>
+                            <li class="text-secondary">Pasaporte anterior (renovación)</li>
+                            <li class="text-secondary">Pago de tasa: 30,00 €</li>
+                        </ul>
+                        <button class="btn btn-outline-primary w-100 mt-auto">
+                            Ver Detalles
+                        </button>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 dark:text-white">Pasaporte</h3>
-                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> DNI
-                            en vigor</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> 1
-                            Fotografía (si DNI no reciente)</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
-                            Pasaporte anterior (renovación)</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Pago
-                            de tasa: 30,00 €</li>
-                    </ul>
-                    <button
-                        class="mt-8 w-full py-2 px-4 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors">Ver
-                        Detalles</button>
                 </div>
+                
                 <!-- Foreigners Card -->
-                <div
-                    class="bg-white dark:bg-[#1a2233] p-8 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all border-t-4 border-t-primary">
-                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary">public</span>
+                <div class="col-md-4">
+                    <div class="card-service h-100 p-4 bg-white">
+                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem;">
+                            <i class="bi bi-globe-americas text-primary fs-4"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Extranjería (NIE/TIE)</h3>
+                        <ul class="list-check mb-4">
+                            <li class="text-secondary">Pasaporte original completo</li>
+                            <li class="text-secondary">Impreso solicitud (EX-17/18)</li>
+                            <li class="text-secondary">Justificante abono tasa 790</li>
+                            <li class="text-secondary">3 Fotos de carné (TIE)</li>
+                        </ul>
+                        <button class="btn btn-outline-primary w-100 mt-auto">
+                            Ver Detalles
+                        </button>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 dark:text-white">Extranjería (NIE/TIE)</h3>
-                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
-                            Pasaporte original completo</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
-                            Impreso solicitud (EX-17/18)</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span>
-                            Justificante abono tasa 790</li>
-                        <li class="flex gap-2 items-start"><span
-                                class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> 3
-                            Fotos de carné (TIE)</li>
-                    </ul>
-                    <button
-                        class="mt-8 w-full py-2 px-4 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors">Ver
-                        Detalles</button>
                 </div>
             </div>
         </section>
+
         <!-- Office Directory Section -->
-        <section class="py-12 border-t border-gray-100 dark:border-gray-800" id="oficinas">
-            <div class="flex items-center justify-between mb-10">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
-                    <h2 class="text-2xl font-bold text-[#111318] dark:text-white">Oficinas Principales</h2>
+        <section class="py-5 border-top" id="oficinas">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+                <div class="d-flex align-items-center gap-3 mb-3 mb-md-0">
+                    <i class="bi bi-geo-alt-fill text-primary icon-lg"></i>
+                    <h2 class="h2 fw-bold mb-0">Oficinas Principales</h2>
                 </div>
-                <a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">Ver todas las
-                    oficinas <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                <a href="#" class="text-decoration-none text-primary fw-bold d-flex align-items-center gap-1">
+                    Ver todas las oficinas
+                    <i class="bi bi-arrow-right"></i>
+                </a>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="row g-4">
                 <!-- Office Card 1 -->
-                <div
-                    class="bg-white dark:bg-[#1a2233] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-                    <div class="h-32 bg-gray-100 overflow-hidden relative">
-                        <div class="absolute top-3 right-3 z-10">
-                            <span
-                                class="bg-green-100 text-green-700 text-[10px] font-black uppercase px-2 py-1 rounded-full border border-green-200">Cita
-                                Disponible</span>
+                <div class="col-md-6 col-lg-4">
+                    <div class="office-card h-100 bg-white">
+                        <div class="office-image">
+                            <div class="status-badge status-available">Cita Disponible</div>
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBone_Or2gRTIFQ3XqAexHO6pFJhxgnjtwjUJn-kcJsSZEtxOVectVtxFSOCqB1uNU9W5Eijur-5rDSVmbn-slyIF84cfNtm2ND4DI6vHxhPKB1EEY77bBDA0cByW-q9sJZxgqLa2CcxQxsgUoy7F_pdzW1gYCMLmZgpFUy6Se7ixlQsZOfoJu0tgoGSyM7jGy5pPjmeIuVNRZ0kKfi2exgx5SiGCE-pQuiU3pG-Itxg0Ur0x1liSTLXYTjRizXtDLy4Ztk7SsBOME" alt="Simplified map view of central Madrid">
                         </div>
-                        <img class="w-full h-full object-cover grayscale opacity-50"
-                            data-alt="Simplified map view of central Madrid" data-location="Madrid"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBone_Or2gRTIFQ3XqAexHO6pFJhxgnjtwjUJn-kcJsSZEtxOVectVtxFSOCqB1uNU9W5Eijur-5rDSVmbn-slyIF84cfNtm2ND4DI6vHxhPKB1EEY77bBDA0cByW-q9sJZxgqLa2CcxQxsgUoy7F_pdzW1gYCMLmZgpFUy6Se7ixlQsZOfoJu0tgoGSyM7jGy5pPjmeIuVNRZ0kKfi2exgx5SiGCE-pQuiU3pG-Itxg0Ur0x1liSTLXYTjRizXtDLy4Ztk7SsBOME" />
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-1 dark:text-white">Madrid - Santa Engracia</h4>
-                        <p class="text-sm text-gray-500 mb-4 flex items-center gap-1">
-                            <span class="material-symbols-outlined text-base">pin_drop</span> Calle de Sta Engracia, 18,
-                            28010
-                        </p>
-                        <div class="space-y-2 mb-6 text-sm">
-                            <div class="flex justify-between">
-                                <span class="text-gray-500">Horario:</span>
-                                <span class="font-medium dark:text-gray-300">09:00 - 21:00</span>
+                        <div class="p-4">
+                            <h4 class="h5 fw-bold mb-1">Madrid - Santa Engracia</h4>
+                            <p class="text-secondary mb-3 d-flex align-items-center gap-1">
+                                <i class="bi bi-geo-alt"></i>
+                                Calle de Sta Engracia, 18, 28010
+                            </p>
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <p class="text-secondary small mb-1">Horario:</p>
+                                    <p class="fw-medium small">09:00 - 21:00</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-secondary small mb-1">Sábados:</p>
+                                    <p class="fw-medium small">09:00 - 14:00</p>
+                                </div>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-500">Sábados:</span>
-                                <span class="font-medium dark:text-gray-300">09:00 - 14:00</span>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button class="btn btn-secondary-light w-100 btn-sm">
+                                        Cómo llegar
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary w-100 btn-sm">
+                                        Pedir Cita
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button
-                                class="py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold rounded-lg text-xs hover:bg-gray-200 transition-colors">Cómo
-                                llegar</button>
-                            <button
-                                class="py-2 bg-primary text-white font-bold rounded-lg text-xs hover:bg-blue-700 transition-colors">Pedir
-                                Cita</button>
                         </div>
                     </div>
                 </div>
+                
                 <!-- Office Card 2 -->
-                <div
-                    class="bg-white dark:bg-[#1a2233] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-                    <div class="h-32 bg-gray-100 overflow-hidden relative">
-                        <div class="absolute top-3 right-3 z-10">
-                            <span
-                                class="bg-red-100 text-red-700 text-[10px] font-black uppercase px-2 py-1 rounded-full border border-red-200">Sin
-                                Citas</span>
+                <div class="col-md-6 col-lg-4">
+                    <div class="office-card h-100 bg-white">
+                        <div class="office-image">
+                            <div class="status-badge status-unavailable">Sin Citas</div>
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaGcAUKlSby2bzwScAH2LQUicnHFKvv_3f4oWnJt-fH6Ih2C9lo0GFENbQgF0X0ncxm7otklzOpuI_EsZVlkvqBc1xu_M9pKZg5qaJ-eo9F_FZyH0A7vKCCn2gmZ-6S2vjuZrqegxfwj0OcU278uqCtvZ3snz6s4efCe3hOYlQlOrrK-scjTBWLNI1ejbutntjHnu68sUZ7VucKQFA6PRHA7klAAkJ60Ia8LS9xUj4W4oBVP99n1_oFtwVyfp9UCD0ppvtATzRiLg" alt="Simplified map view of central Barcelona">
                         </div>
-                        <img class="w-full h-full object-cover grayscale opacity-50"
-                            data-alt="Simplified map view of central Barcelona" data-location="Barcelona"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaGcAUKlSby2bzwScAH2LQUicnHFKvv_3f4oWnJt-fH6Ih2C9lo0GFENbQgF0X0ncxm7otklzOpuI_EsZVlkvqBc1xu_M9pKZg5qaJ-eo9F_FZyH0A7vKCCn2gmZ-6S2vjuZrqegxfwj0OcU278uqCtvZ3snz6s4efCe3hOYlQlOrrK-scjTBWLNI1ejbutntjHnu68sUZ7VucKQFA6PRHA7klAAkJ60Ia8LS9xUj4W4oBVP99n1_oFtwVyfp9UCD0ppvtATzRiLg" />
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-1 dark:text-white">Barcelona - Trafalgar</h4>
-                        <p class="text-sm text-gray-500 mb-4 flex items-center gap-1">
-                            <span class="material-symbols-outlined text-base">pin_drop</span> Carrer de Trafalgar, 4,
-                            08010
-                        </p>
-                        <div class="space-y-2 mb-6 text-sm">
-                            <div class="flex justify-between">
-                                <span class="text-gray-500">Horario:</span>
-                                <span class="font-medium dark:text-gray-300">08:30 - 20:30</span>
+                        <div class="p-4">
+                            <h4 class="h5 fw-bold mb-1">Barcelona - Trafalgar</h4>
+                            <p class="text-secondary mb-3 d-flex align-items-center gap-1">
+                                <i class="bi bi-geo-alt"></i>
+                                Carrer de Trafalgar, 4, 08010
+                            </p>
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <p class="text-secondary small mb-1">Horario:</p>
+                                    <p class="fw-medium small">08:30 - 20:30</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-secondary small mb-1">Sábados:</p>
+                                    <p class="fw-medium small">Cerrado</p>
+                                </div>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-500">Sábados:</span>
-                                <span class="font-medium dark:text-gray-300">Cerrado</span>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button class="btn btn-secondary-light w-100 btn-sm">
+                                        Cómo llegar
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-primary w-100 btn-sm" disabled>
+                                        Avisar Cita
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button
-                                class="py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold rounded-lg text-xs hover:bg-gray-200 transition-colors">Cómo
-                                llegar</button>
-                            <button
-                                class="py-2 bg-primary/10 text-primary font-bold rounded-lg text-xs cursor-not-allowed">Avisar
-                                Cita</button>
                         </div>
                     </div>
                 </div>
+                
                 <!-- Office Card 3 -->
-                <div
-                    class="bg-white dark:bg-[#1a2233] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-                    <div class="h-32 bg-gray-100 overflow-hidden relative">
-                        <div class="absolute top-3 right-3 z-10">
-                            <span
-                                class="bg-green-100 text-green-700 text-[10px] font-black uppercase px-2 py-1 rounded-full border border-green-200">Cita
-                                Disponible</span>
+                <div class="col-md-6 col-lg-4">
+                    <div class="office-card h-100 bg-white">
+                        <div class="office-image">
+                            <div class="status-badge status-available">Cita Disponible</div>
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkH3rVpEk13X8rJ5sbxQ9YRBIzciRMCeIm39MX4EE3n4gJeq0ad3LSUp-PCgOqab2BpntcRvKwtYd9PpBNwSZl5ysARMGtHZHEyuTa7gcNUOUdo38bc8NnPs7jb9LJElkaH9TE33kz-OQLBLvy8xrgqcXY5GT8laf4g7jzdhyQCAz5I_Ktnnq2TqDARdpr0xcC8v9-s-qP2jNBYXrUbFmyxGAQ75eMCfR17rNC-SRBT9hhjd_UcyafMnP541tM0ECeorymxJw9kGY" alt="Simplified map view of central Valencia">
                         </div>
-                        <img class="w-full h-full object-cover grayscale opacity-50"
-                            data-alt="Simplified map view of central Valencia" data-location="Valencia"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkH3rVpEk13X8rJ5sbxQ9YRBIzciRMCeIm39MX4EE3n4gJeq0ad3LSUp-PCgOqab2BpntcRvKwtYd9PpBNwSZl5ysARMGtHZHEyuTa7gcNUOUdo38bc8NnPs7jb9LJElkaH9TE33kz-OQLBLvy8xrgqcXY5GT8laf4g7jzdhyQCAz5I_Ktnnq2TqDARdpr0xcC8v9-s-qP2jNBYXrUbFmyxGAQ75eMCfR17rNC-SRBT9hhjd_UcyafMnP541tM0ECeorymxJw9kGY" />
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-1 dark:text-white">Valencia - Hospital</h4>
-                        <p class="text-sm text-gray-500 mb-4 flex items-center gap-1">
-                            <span class="material-symbols-outlined text-base">pin_drop</span> Calle del Hospital, 32,
-                            46001
-                        </p>
-                        <div class="space-y-2 mb-6 text-sm">
-                            <div class="flex justify-between">
-                                <span class="text-gray-500">Horario:</span>
-                                <span class="font-medium dark:text-gray-300">09:00 - 14:30</span>
+                        <div class="p-4">
+                            <h4 class="h5 fw-bold mb-1">Valencia - Hospital</h4>
+                            <p class="text-secondary mb-3 d-flex align-items-center gap-1">
+                                <i class="bi bi-geo-alt"></i>
+                                Calle del Hospital, 32, 46001
+                            </p>
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <p class="text-secondary small mb-1">Horario:</p>
+                                    <p class="fw-medium small">09:00 - 14:30</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-secondary small mb-1">Tardes:</p>
+                                    <p class="fw-medium small">16:00 - 19:00</p>
+                                </div>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-500">Tardes:</span>
-                                <span class="font-medium dark:text-gray-300">16:00 - 19:00</span>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button class="btn btn-secondary-light w-100 btn-sm">
+                                        Cómo llegar
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary w-100 btn-sm">
+                                        Pedir Cita
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button
-                                class="py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold rounded-lg text-xs hover:bg-gray-200 transition-colors">Cómo
-                                llegar</button>
-                            <button
-                                class="py-2 bg-primary text-white font-bold rounded-lg text-xs hover:bg-blue-700 transition-colors">Pedir
-                                Cita</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
     <!-- Footer -->
-    <footer class="bg-white dark:bg-[#1a2233] border-t border-gray-200 dark:border-gray-800 py-12">
-        <div class="max-w-[1280px] mx-auto px-6 lg:px-40">
-            <div class="grid md:grid-cols-4 gap-10 mb-10">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="text-primary size-6">
-                            <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
-                                    fill-rule="evenodd"></path>
+    <footer class="bg-white border-top py-5">
+        <div class="container-custom px-4 px-lg-5">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="text-primary" style="width: 1.5rem; height: 1.5rem;">
+                            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <h2 class="text-[#111318] dark:text-white text-base font-bold uppercase tracking-wider">Cuerpo
-                            Nacional de Policía</h2>
+                        <h2 class="h5 fw-bold text-uppercase mb-0">Cuerpo Nacional de Policía</h2>
                     </div>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 max-w-sm leading-relaxed">
+                    <p class="text-secondary small mb-0" style="max-width: 400px; line-height: 1.7;">
                         Sistema oficial de tramitación de documentos de identidad y pasaportes del Ministerio del
                         Interior. España.
                     </p>
                 </div>
-                <div>
-                    <h3 class="font-bold mb-4 dark:text-white text-sm">Enlaces de interés</h3>
-                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                        <li><a class="hover:text-primary transition-colors" href="#">Portal de Policía</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Sede Electrónica</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Tasas y Pagos</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Normativa</a></li>
+                <div class="col-lg-3">
+                    <h3 class="h6 fw-bold mb-3">Enlaces de interés</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link small">Portal de Policía</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link small">Sede Electrónica</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link small">Tasas y Pagos</a></li>
+                        <li><a href="#" class="footer-link small">Normativa</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="font-bold mb-4 dark:text-white text-sm">Asistencia</h3>
-                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                        <li><a class="hover:text-primary transition-colors" href="#">Teléfono 060</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Contactar</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Accesibilidad</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Protección de datos</a></li>
+                <div class="col-lg-3">
+                    <h3 class="h6 fw-bold mb-3">Asistencia</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link small">Teléfono 060</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link small">Contactar</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link small">Accesibilidad</a></li>
+                        <li><a href="#" class="footer-link small">Protección de datos</a></li>
                     </ul>
                 </div>
             </div>
-            <div
-                class="pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-xs text-gray-400">© 2024 Dirección General de la Policía. Todos los derechos reservados.
+            
+            <div class="pt-4 border-top d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="text-secondary small mb-3 mb-md-0">
+                    © 2024 Dirección General de la Policía. Todos los derechos reservados.
                 </p>
-                <div class="flex gap-6">
-                    <span
-                        class="material-symbols-outlined text-gray-400 hover:text-primary cursor-pointer transition-colors">language</span>
-                    <span
-                        class="material-symbols-outlined text-gray-400 hover:text-primary cursor-pointer transition-colors">accessibility</span>
-                    <span
-                        class="material-symbols-outlined text-gray-400 hover:text-primary cursor-pointer transition-colors">share</span>
+                <div class="d-flex gap-3">
+                    <a href="#" class="footer-link">
+                        <i class="bi bi-globe fs-5"></i>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="bi bi-universal-access-circle fs-5"></i>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="bi bi-share fs-5"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
-</body>
 
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

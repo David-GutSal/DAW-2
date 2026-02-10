@@ -100,7 +100,7 @@ public class RecompensasController {
 		model.addAttribute("resultado",
 				recompensaService.actualizarRecompensa(id, idPirata, cantidad, estaVigente != null));
 
-		return "redirect:/recompensas/formularioActualizarRecompensas";
+		return "recompensas/formularioActualizarRecompensas";
 	}
 
 	@GetMapping("/formularioBorrarRecompensas")
@@ -123,6 +123,6 @@ public class RecompensasController {
 			@RequestParam Integer id, ModelMap model) {
 
 		model.addAttribute("resultado", recompensaService.borrarRecompensa(id));
-		return "redirect:/recompensas/formularioBorrarRecompensas";
+		return "recompensas/formularioBorrarRecompensas";
 	}
 }

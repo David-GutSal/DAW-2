@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adrian.colegio.dtos.AlumnoDTO;
-import com.adrian.colegio.entities.AlumnoEntity;
 import com.adrian.colegio.servicio.interfaces.IAlumnosService;
 
 @RestController
@@ -27,12 +26,12 @@ public class AlumnosRestControllerV2 {
 	private IAlumnosService alumnoService;
 
 	@PostMapping("/alumnos")
-	public ResponseEntity<String> insertarAlumno(@RequestBody AlumnoDTO alumno) {
+	public ResponseEntity<String> insertarAlumno(
+			@RequestBody AlumnoDTO alumno) {
 		alumnoService.insertarAlumno(alumno.getId(), alumno.getNombre(), alumno.getApellido(),
 				alumno.getIdMunicipio(), alumno.getFamiliaNumerosa(), alumno.getActivo());
 		return new ResponseEntity<>("Inserción correcta! ", HttpStatus.OK);
 	}
-	
 	
 	//Obtener todos los alumnos
 	@GetMapping("/alumnos")
@@ -42,13 +41,15 @@ public class AlumnosRestControllerV2 {
 	
 	//Obtener alumno por ID
 	@GetMapping("/alumnos/{id}")
-	public AlumnoDTO buscarAlumnoPorId(@PathVariable("id") Integer id){
+	public AlumnoDTO buscarAlumnoPorId(
+			@PathVariable("id") Integer id){
 	    return alumnoService.obtenerAlumnoPorId(id);
 	}
 	
 	// Obtener alumnos por id, nombre, apellido, famNumerosa, activo y municipios
 	@GetMapping(value = "/alumnos", params = { "id", "nombre", "apellidos", "famNumerosa", "activo" })
-	public List<AlumnoDTO> listarAlumnosPorIdNombre(@RequestParam(value = "id", required = false) Integer id,
+	public List<AlumnoDTO> listarAlumnosPorIdNombre(
+			@RequestParam(value = "id", required = false) Integer id,
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "apellidos", required = false) String apellidos,
 			@RequestParam(value = "famNumerosa", required = false) Integer famNumerosa,
@@ -59,7 +60,9 @@ public class AlumnosRestControllerV2 {
 	
 	// Actualizar alumnos
 	@PutMapping("/alumnos/{id}")
-	public ResponseEntity<?> actualizarAlumno(@PathVariable Integer id, @RequestBody AlumnoDTO alumno) {
+	public ResponseEntity<?> actualizarAlumno(
+			@PathVariable Integer id, 
+			@RequestBody AlumnoDTO alumno) {
 
 		if (!id.equals(alumno.getId())) {
 			return ResponseEntity.badRequest().body("El ID de la URL no coincide con el del alumno");
@@ -77,7 +80,8 @@ public class AlumnosRestControllerV2 {
 
 	// Borrar alumnos
 	@DeleteMapping("/alumnos/{id}")
-	public ResponseEntity<?> borrarAlumno(@PathVariable Integer id) {
+	public ResponseEntity<?> borrarAlumno(
+			@PathVariable Integer id) {
 
 		if (buscarAlumnoPorId(id) == null) {
 			return ResponseEntity.notFound().build(); // Devolvera un error 404
