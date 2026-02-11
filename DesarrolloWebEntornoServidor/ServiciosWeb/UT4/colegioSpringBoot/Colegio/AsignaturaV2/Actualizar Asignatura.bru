@@ -1,0 +1,26 @@
+meta {
+  name: Actualizar Asignatura
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8080/v2/asignaturas/101
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+  "id": 101,
+  "nombre": "Programación Web",
+  "curso": 3,
+  "tasa": 250.50,
+  "activo": 1
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

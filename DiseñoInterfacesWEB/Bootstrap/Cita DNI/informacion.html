@@ -15,129 +15,176 @@
             --primary: #135bec;
             --primary-hover: #0d4fd8;
             --background-light: #f6f6f8;
-            --background-dark: #101622;
-            --card-dark: #1a2233;
             --text-dark: #111318;
             --border-light: #f0f2f4;
-            --border-dark: #374151;
         }
         
         body {
             font-family: 'Public Sans', sans-serif;
             color: var(--text-dark);
             background-color: var(--background-light);
+            padding-top: 72px; /* Para compensar el header fijo */
         }
         
-        .navbar-custom {
-            background-color: white;
+        /* Header Styles - SOLUCIONADO */
+        .navbar-main {
+            background-color: white !important;
             border-bottom: 1px solid var(--border-light);
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            height: 80px;
-            z-index: 1030;
+            height: 72px;
+            padding: 0.5rem 0;
         }
         
-        .navbar-custom-dark {
-            background-color: var(--card-dark);
-            border-bottom: 1px solid var(--border-dark);
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
         }
         
-        .navbar-nav .nav-link {
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: var(--text-dark);
-            padding: 0.5rem 1rem;
-            transition: color 0.2s ease;
+        @media (min-width: 992px) {
+            .navbar-container {
+                padding: 0 2.5rem;
+            }
         }
         
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
             color: var(--primary);
         }
         
-        .navbar-nav .nav-link.active {
-            font-weight: 700;
-            border-bottom: 2px solid var(--primary);
+        .logo-text {
+            display: flex;
+            flex-direction: column;
         }
         
-        .btn-primary {
+        .logo-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin: 0;
+        }
+        
+        .logo-subtitle {
+            font-size: 12px;
+            font-weight: 500;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.2;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .nav-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark) !important;
+            text-decoration: none;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .nav-link.active {
+            color: var(--primary) !important;
+            font-weight: 700;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
             background-color: var(--primary);
-            border-color: var(--primary);
-            font-weight: 700;
-            box-shadow: 0 4px 6px rgba(19, 91, 236, 0.2);
         }
         
-        .btn-primary:hover {
+        .btn-cita {
+            background-color: var(--primary);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(19, 91, 236, 0.2);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-cita:hover {
             background-color: var(--primary-hover);
-            border-color: var(--primary-hover);
             transform: translateY(-1px);
             box-shadow: 0 6px 8px rgba(19, 91, 236, 0.25);
         }
         
-        .text-primary {
-            color: var(--primary) !important;
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
         }
         
-        .bg-primary-light {
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0;
+            margin: 0 0 16px 0;
+            list-style: none;
+        }
+        
+        .mobile-nav .nav-link {
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+        
+        .mobile-nav .nav-link:hover {
+            background-color: rgba(19, 91, 236, 0.05);
+        }
+        
+        .mobile-nav .nav-link.active {
             background-color: rgba(19, 91, 236, 0.1);
         }
         
-        .border-primary-light {
-            border-color: rgba(19, 91, 236, 0.3);
+        .mobile-nav .nav-link.active::after {
+            display: none;
         }
         
-        .rounded-xl {
-            border-radius: 1rem;
-        }
-        
-        .shadow-soft {
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-        
-        .transition-all {
-            transition: all 0.3s ease-in-out;
-        }
-        
-        .search-container {
-            position: relative;
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6b7280;
-            z-index: 10;
-        }
-        
-        .search-input {
-            padding-left: 3rem;
-            border-radius: 1rem;
-            border: 1px solid #e5e7eb;
-            font-size: 1rem;
-        }
-        
-        .search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(19, 91, 236, 0.1);
-        }
-        
-        .search-btn {
-            position: absolute;
-            right: 0.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 700;
-            font-size: 0.875rem;
-        }
-        
-        .section-title {
-            font-weight: 900;
-            letter-spacing: -0.025em;
-        }
-        
+        /* Resto de estilos */
         .hero-title {
             font-size: calc(1.5rem + 2.5vw);
             font-weight: 900;
@@ -163,6 +210,53 @@
             }
         }
         
+        .search-container {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+            z-index: 10;
+        }
+        
+        .search-input {
+            padding-left: 3rem;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            font-size: 1rem;
+            height: 56px;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(19, 91, 236, 0.1);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            height: 44px;
+            background-color: var(--primary);
+            border: none;
+            color: white;
+        }
+        
+        .search-btn:hover {
+            background-color: var(--primary-hover);
+        }
+        
         .faq-item {
             border: 1px solid #e5e7eb;
             border-radius: 1rem;
@@ -176,6 +270,9 @@
             list-style: none;
             font-weight: 600;
             font-size: 1.125rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .faq-item summary::-webkit-details-marker {
@@ -206,6 +303,7 @@
             border-radius: 1rem;
             border-top: 4px solid var(--primary);
             transition: all 0.3s ease;
+            height: 100%;
         }
         
         .card-service:hover {
@@ -218,59 +316,11 @@
             border-radius: 1rem;
             overflow: hidden;
             transition: all 0.3s ease;
+            height: 100%;
         }
         
         .office-card:hover {
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .office-image {
-            height: 8rem;
-            background-color: #f3f4f6;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .office-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            opacity: 0.5;
-        }
-        
-        .status-badge {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            font-size: 0.625rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 0.25rem 0.5rem;
-            border-radius: 9999px;
-            border: 1px solid;
-        }
-        
-        .status-available {
-            background-color: rgba(34, 197, 94, 0.1);
-            color: rgb(22, 101, 52);
-            border-color: rgba(34, 197, 94, 0.2);
-        }
-        
-        .status-unavailable {
-            background-color: rgba(239, 68, 68, 0.1);
-            color: rgb(153, 27, 27);
-            border-color: rgba(239, 68, 68, 0.2);
-        }
-        
-        .footer-link {
-            color: #6b7280;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        .footer-link:hover {
-            color: var(--primary);
         }
         
         .list-check {
@@ -282,6 +332,7 @@
             padding-left: 1.5rem;
             position: relative;
             margin-bottom: 0.75rem;
+            color: #6b7280;
         }
         
         .list-check li::before {
@@ -293,120 +344,123 @@
             font-size: 0.875rem;
         }
         
-        .icon-lg {
-            font-size: 1.875rem;
-        }
-        
-        .btn-outline-primary {
+        .btn-outline-primary-custom {
             border: 2px solid var(--primary);
             color: var(--primary);
             font-weight: 700;
+            transition: all 0.2s ease;
         }
         
-        .btn-outline-primary:hover {
+        .btn-outline-primary-custom:hover {
             background-color: var(--primary);
             color: white;
-        }
-        
-        .btn-secondary-light {
-            background-color: #f3f4f6;
-            border: 1px solid #e5e7eb;
-            color: #374151;
-            font-weight: 700;
-        }
-        
-        .btn-secondary-light:hover {
-            background-color: #e5e7eb;
-        }
-        
-        .border-t-primary {
-            border-top: 4px solid var(--primary) !important;
-        }
-        
-        main {
-            max-width: 1280px;
-            margin: 0 auto;
         }
         
         .container-custom {
             max-width: 1280px;
             margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        @media (min-width: 992px) {
+            .container-custom {
+                padding: 0 2.5rem;
+            }
+        }
+        
+        /* Media Queries para el header */
+        @media (max-width: 991.98px) {
+            .desktop-nav {
+                display: none !important;
+            }
+            
+            .desktop-btn {
+                display: none !important;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .mobile-nav-container {
+                display: none !important;
+            }
+            
+            .navbar-toggler {
+                display: none !important;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <div class="container-custom px-4 px-lg-5">
-            <!-- Logo Section -->
-            <a class="navbar-brand d-flex align-items-center me-4" href="#">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="text-primary" style="width: 2rem; height: 2rem;">
-                        <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <h1 class="text-dark mb-0" style="font-size: 1.125rem; font-weight: 700; line-height: 1.2;">Cita Previa</h1>
-                        <span class="text-uppercase" style="font-size: 0.75rem; font-weight: 500; color: #6b7280; letter-spacing: 0.05em;">DNI y Pasaporte</span>
-                    </div>
+    <!-- Header Fijo - ESTRUCTURA CORRECTA -->
+    <header class="navbar-main fixed-top">
+        <div class="navbar-container d-flex align-items-center justify-content-between">
+            <!-- Logo -->
+            <a href="#" class="navbar-logo">
+                <svg class="logo-icon" fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill-rule="evenodd"></path>
+                </svg>
+                <div class="logo-text">
+                    <div class="logo-title">Cita Previa</div>
+                    <div class="logo-subtitle">DNI y Pasaporte</div>
                 </div>
             </a>
             
-            <!-- Mobile Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <!-- Navegación Desktop -->
+            <nav class="desktop-nav d-none d-lg-flex align-items-center">
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">Inicio</a></li>
+                    <li><a href="#" class="nav-link active">Ayuda</a></li>
+                    <li><a href="#oficinas" class="nav-link">Oficinas</a></li>
+                    <li><a href="#tramites" class="nav-link">Trámites</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Botón CTA Desktop -->
+            <div class="desktop-btn d-none d-lg-block">
+                <button class="btn-cita">Solicitar Cita</button>
+            </div>
+            
+            <!-- Toggler Mobile -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-            <!-- Navbar Content -->
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <!-- Navigation Links -->
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Ayuda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#oficinas">Oficinas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tramites">Trámites</a>
-                    </li>
+        </div>
+        
+        <!-- Menú Mobile (Collapse) -->
+        <div class="collapse mobile-nav-container" id="mobileMenu">
+            <div class="mobile-menu">
+                <ul class="mobile-nav">
+                    <li><a href="#" class="nav-link">Inicio</a></li>
+                    <li><a href="#" class="nav-link active">Ayuda</a></li>
+                    <li><a href="#oficinas" class="nav-link">Oficinas</a></li>
+                    <li><a href="#tramites" class="nav-link">Trámites</a></li>
                 </ul>
-                
-                <!-- CTA Button -->
-                <div class="d-flex">
-                    <button class="btn btn-primary px-4 py-2 rounded-lg">
-                        Solicitar Cita
-                    </button>
-                </div>
+                <button class="btn-cita w-100">Solicitar Cita</button>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <main class="px-4 px-lg-5 pb-5" style="padding-top: 100px;">
+    <main class="container-custom py-5">
         <!-- Hero Section -->
-        <section class="py-5 py-md-5 text-center">
+        <section class="text-center py-5">
             <h1 class="hero-title mb-3">Información y Ayuda</h1>
             <p class="text-lg text-secondary mb-5 mx-auto" style="max-width: 700px;">
                 Resuelve tus dudas sobre la obtención o renovación de tus documentos de identidad de forma rápida y
                 sencilla.
             </p>
-            <div class="search-container mx-auto" style="max-width: 700px;">
+            <div class="search-container">
                 <i class="bi bi-search search-icon"></i>
-                <input type="text" class="form-control search-input py-3" placeholder="Busca por trámite, oficina o requisitos...">
-                <button class="btn btn-primary search-btn">Buscar</button>
+                <input type="text" class="form-control search-input" placeholder="Busca por trámite, oficina o requisitos...">
+                <button class="search-btn">Buscar</button>
             </div>
         </section>
 
         <!-- FAQ Section -->
         <section class="py-5 border-top">
             <div class="d-flex align-items-center gap-3 mb-4">
-                <i class="bi bi-question-circle-fill text-primary icon-lg"></i>
+                <i class="bi bi-question-circle-fill text-primary" style="font-size: 1.875rem;"></i>
                 <h2 class="h2 fw-bold mb-0">Preguntas Frecuentes</h2>
             </div>
             
@@ -463,25 +517,25 @@
         <!-- Documentation Checklist Section -->
         <section class="py-5 border-top" id="tramites">
             <div class="d-flex align-items-center gap-3 mb-4">
-                <i class="bi bi-file-text-fill text-primary icon-lg"></i>
+                <i class="bi bi-file-text-fill text-primary" style="font-size: 1.875rem;"></i>
                 <h2 class="h2 fw-bold mb-0">Documentación por Trámite</h2>
             </div>
             
             <div class="row g-4">
                 <!-- DNI Card -->
                 <div class="col-md-4">
-                    <div class="card-service h-100 p-4 bg-white">
-                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem;">
+                    <div class="card-service p-4 bg-white">
+                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem; background-color: rgba(19, 91, 236, 0.1);">
                             <i class="bi bi-person-badge-fill text-primary fs-4"></i>
                         </div>
                         <h3 class="h4 fw-bold mb-3">Renovación DNI</h3>
                         <ul class="list-check mb-4">
-                            <li class="text-secondary">1 Fotografía reciente</li>
-                            <li class="text-secondary">DNI Anterior (si no hay pérdida)</li>
-                            <li class="text-secondary">Certificado Empadronamiento*</li>
-                            <li class="text-secondary">Pago de tasa: 12,00 €</li>
+                            <li>1 Fotografía reciente</li>
+                            <li>DNI Anterior (si no hay pérdida)</li>
+                            <li>Certificado Empadronamiento*</li>
+                            <li>Pago de tasa: 12,00 €</li>
                         </ul>
-                        <button class="btn btn-outline-primary w-100 mt-auto">
+                        <button class="btn btn-outline-primary-custom w-100">
                             Ver Detalles
                         </button>
                     </div>
@@ -489,18 +543,18 @@
                 
                 <!-- Passport Card -->
                 <div class="col-md-4">
-                    <div class="card-service h-100 p-4 bg-white">
-                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem;">
+                    <div class="card-service p-4 bg-white">
+                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem; background-color: rgba(19, 91, 236, 0.1);">
                             <i class="bi bi-passport-fill text-primary fs-4"></i>
                         </div>
                         <h3 class="h4 fw-bold mb-3">Pasaporte</h3>
                         <ul class="list-check mb-4">
-                            <li class="text-secondary">DNI en vigor</li>
-                            <li class="text-secondary">1 Fotografía (si DNI no reciente)</li>
-                            <li class="text-secondary">Pasaporte anterior (renovación)</li>
-                            <li class="text-secondary">Pago de tasa: 30,00 €</li>
+                            <li>DNI en vigor</li>
+                            <li>1 Fotografía (si DNI no reciente)</li>
+                            <li>Pasaporte anterior (renovación)</li>
+                            <li>Pago de tasa: 30,00 €</li>
                         </ul>
-                        <button class="btn btn-outline-primary w-100 mt-auto">
+                        <button class="btn btn-outline-primary-custom w-100">
                             Ver Detalles
                         </button>
                     </div>
@@ -508,18 +562,18 @@
                 
                 <!-- Foreigners Card -->
                 <div class="col-md-4">
-                    <div class="card-service h-100 p-4 bg-white">
-                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem;">
+                    <div class="card-service p-4 bg-white">
+                        <div class="bg-primary-light w-3 h-3 rounded-lg d-flex align-items-center justify-content-center mb-4" style="width: 3rem; height: 3rem; background-color: rgba(19, 91, 236, 0.1);">
                             <i class="bi bi-globe-americas text-primary fs-4"></i>
                         </div>
                         <h3 class="h4 fw-bold mb-3">Extranjería (NIE/TIE)</h3>
                         <ul class="list-check mb-4">
-                            <li class="text-secondary">Pasaporte original completo</li>
-                            <li class="text-secondary">Impreso solicitud (EX-17/18)</li>
-                            <li class="text-secondary">Justificante abono tasa 790</li>
-                            <li class="text-secondary">3 Fotos de carné (TIE)</li>
+                            <li>Pasaporte original completo</li>
+                            <li>Impreso solicitud (EX-17/18)</li>
+                            <li>Justificante abono tasa 790</li>
+                            <li>3 Fotos de carné (TIE)</li>
                         </ul>
-                        <button class="btn btn-outline-primary w-100 mt-auto">
+                        <button class="btn btn-outline-primary-custom w-100">
                             Ver Detalles
                         </button>
                     </div>
@@ -531,7 +585,7 @@
         <section class="py-5 border-top" id="oficinas">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
                 <div class="d-flex align-items-center gap-3 mb-3 mb-md-0">
-                    <i class="bi bi-geo-alt-fill text-primary icon-lg"></i>
+                    <i class="bi bi-geo-alt-fill text-primary" style="font-size: 1.875rem;"></i>
                     <h2 class="h2 fw-bold mb-0">Oficinas Principales</h2>
                 </div>
                 <a href="#" class="text-decoration-none text-primary fw-bold d-flex align-items-center gap-1">
@@ -543,10 +597,12 @@
             <div class="row g-4">
                 <!-- Office Card 1 -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="office-card h-100 bg-white">
-                        <div class="office-image">
-                            <div class="status-badge status-available">Cita Disponible</div>
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBone_Or2gRTIFQ3XqAexHO6pFJhxgnjtwjUJn-kcJsSZEtxOVectVtxFSOCqB1uNU9W5Eijur-5rDSVmbn-slyIF84cfNtm2ND4DI6vHxhPKB1EEY77bBDA0cByW-q9sJZxgqLa2CcxQxsgUoy7F_pdzW1gYCMLmZgpFUy6Se7ixlQsZOfoJu0tgoGSyM7jGy5pPjmeIuVNRZ0kKfi2exgx5SiGCE-pQuiU3pG-Itxg0Ur0x1liSTLXYTjRizXtDLy4Ztk7SsBOME" alt="Simplified map view of central Madrid">
+                    <div class="office-card bg-white">
+                        <div class="position-relative" style="height: 8rem; background-color: #f3f4f6; overflow: hidden;">
+                            <div class="position-absolute top-0 end-0 m-3" style="font-size: 0.625rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.5rem; border-radius: 9999px; background-color: rgba(34, 197, 94, 0.1); color: rgb(22, 101, 52); border: 1px solid rgba(34, 197, 94, 0.2);">
+                                Cita Disponible
+                            </div>
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBone_Or2gRTIFQ3XqAexHO6pFJhxgnjtwjUJn-kcJsSZEtxOVectVtxFSOCqB1uNU9W5Eijur-5rDSVmbn-slyIF84cfNtm2ND4DI6vHxhPKB1EEY77bBDA0cByW-q9sJZxgqLa2CcxQxsgUoy7F_pdzW1gYCMLmZgpFUy6Se7ixlQsZOfoJu0tgoGSyM7jGy5pPjmeIuVNRZ0kKfi2exgx5SiGCE-pQuiU3pG-Itxg0Ur0x1liSTLXYTjRizXtDLy4Ztk7SsBOME" alt="Simplified map view of central Madrid" class="w-100 h-100 object-fit-cover" style="filter: grayscale(100%); opacity: 0.5;">
                         </div>
                         <div class="p-4">
                             <h4 class="h5 fw-bold mb-1">Madrid - Santa Engracia</h4>
@@ -566,12 +622,12 @@
                             </div>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <button class="btn btn-secondary-light w-100 btn-sm">
+                                    <button class="btn btn-secondary w-100 btn-sm" style="background-color: #f3f4f6; border: 1px solid #e5e7eb; color: #374151; font-weight: 700;">
                                         Cómo llegar
                                     </button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-primary w-100 btn-sm">
+                                    <button class="btn btn-cita w-100 btn-sm">
                                         Pedir Cita
                                     </button>
                                 </div>
@@ -582,10 +638,12 @@
                 
                 <!-- Office Card 2 -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="office-card h-100 bg-white">
-                        <div class="office-image">
-                            <div class="status-badge status-unavailable">Sin Citas</div>
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaGcAUKlSby2bzwScAH2LQUicnHFKvv_3f4oWnJt-fH6Ih2C9lo0GFENbQgF0X0ncxm7otklzOpuI_EsZVlkvqBc1xu_M9pKZg5qaJ-eo9F_FZyH0A7vKCCn2gmZ-6S2vjuZrqegxfwj0OcU278uqCtvZ3snz6s4efCe3hOYlQlOrrK-scjTBWLNI1ejbutntjHnu68sUZ7VucKQFA6PRHA7klAAkJ60Ia8LS9xUj4W4oBVP99n1_oFtwVyfp9UCD0ppvtATzRiLg" alt="Simplified map view of central Barcelona">
+                    <div class="office-card bg-white">
+                        <div class="position-relative" style="height: 8rem; background-color: #f3f4f6; overflow: hidden;">
+                            <div class="position-absolute top-0 end-0 m-3" style="font-size: 0.625rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.5rem; border-radius: 9999px; background-color: rgba(239, 68, 68, 0.1); color: rgb(153, 27, 27); border: 1px solid rgba(239, 68, 68, 0.2);">
+                                Sin Citas
+                            </div>
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaGcAUKlSby2bzwScAH2LQUicnHFKvv_3f4oWnJt-fH6Ih2C9lo0GFENbQgF0X0ncxm7otklzOpuI_EsZVlkvqBc1xu_M9pKZg5qaJ-eo9F_FZyH0A7vKCCn2gmZ-6S2vjuZrqegxfwj0OcU278uqCtvZ3snz6s4efCe3hOYlQlOrrK-scjTBWLNI1ejbutntjHnu68sUZ7VucKQFA6PRHA7klAAkJ60Ia8LS9xUj4W4oBVP99n1_oFtwVyfp9UCD0ppvtATzRiLg" alt="Simplified map view of central Barcelona" class="w-100 h-100 object-fit-cover" style="filter: grayscale(100%); opacity: 0.5;">
                         </div>
                         <div class="p-4">
                             <h4 class="h5 fw-bold mb-1">Barcelona - Trafalgar</h4>
@@ -605,12 +663,12 @@
                             </div>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <button class="btn btn-secondary-light w-100 btn-sm">
+                                    <button class="btn btn-secondary w-100 btn-sm" style="background-color: #f3f4f6; border: 1px solid #e5e7eb; color: #374151; font-weight: 700;">
                                         Cómo llegar
                                     </button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-outline-primary w-100 btn-sm" disabled>
+                                    <button class="btn btn-outline-primary-custom w-100 btn-sm" disabled>
                                         Avisar Cita
                                     </button>
                                 </div>
@@ -621,10 +679,12 @@
                 
                 <!-- Office Card 3 -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="office-card h-100 bg-white">
-                        <div class="office-image">
-                            <div class="status-badge status-available">Cita Disponible</div>
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkH3rVpEk13X8rJ5sbxQ9YRBIzciRMCeIm39MX4EE3n4gJeq0ad3LSUp-PCgOqab2BpntcRvKwtYd9PpBNwSZl5ysARMGtHZHEyuTa7gcNUOUdo38bc8NnPs7jb9LJElkaH9TE33kz-OQLBLvy8xrgqcXY5GT8laf4g7jzdhyQCAz5I_Ktnnq2TqDARdpr0xcC8v9-s-qP2jNBYXrUbFmyxGAQ75eMCfR17rNC-SRBT9hhjd_UcyafMnP541tM0ECeorymxJw9kGY" alt="Simplified map view of central Valencia">
+                    <div class="office-card bg-white">
+                        <div class="position-relative" style="height: 8rem; background-color: #f3f4f6; overflow: hidden;">
+                            <div class="position-absolute top-0 end-0 m-3" style="font-size: 0.625rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.5rem; border-radius: 9999px; background-color: rgba(34, 197, 94, 0.1); color: rgb(22, 101, 52); border: 1px solid rgba(34, 197, 94, 0.2);">
+                                Cita Disponible
+                            </div>
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkH3rVpEk13X8rJ5sbxQ9YRBIzciRMCeIm39MX4EE3n4gJeq0ad3LSUp-PCgOqab2BpntcRvKwtYd9PpBNwSZl5ysARMGtHZHEyuTa7gcNUOUdo38bc8NnPs7jb9LJElkaH9TE33kz-OQLBLvy8xrgqcXY5GT8laf4g7jzdhyQCAz5I_Ktnnq2TqDARdpr0xcC8v9-s-qP2jNBYXrUbFmyxGAQ75eMCfR17rNC-SRBT9hhjd_UcyafMnP541tM0ECeorymxJw9kGY" alt="Simplified map view of central Valencia" class="w-100 h-100 object-fit-cover" style="filter: grayscale(100%); opacity: 0.5;">
                         </div>
                         <div class="p-4">
                             <h4 class="h5 fw-bold mb-1">Valencia - Hospital</h4>
@@ -644,12 +704,12 @@
                             </div>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <button class="btn btn-secondary-light w-100 btn-sm">
+                                    <button class="btn btn-secondary w-100 btn-sm" style="background-color: #f3f4f6; border: 1px solid #e5e7eb; color: #374151; font-weight: 700;">
                                         Cómo llegar
                                     </button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-primary w-100 btn-sm">
+                                    <button class="btn btn-cita w-100 btn-sm">
                                         Pedir Cita
                                     </button>
                                 </div>
@@ -663,7 +723,7 @@
 
     <!-- Footer -->
     <footer class="bg-white border-top py-5">
-        <div class="container-custom px-4 px-lg-5">
+        <div class="container-custom">
             <div class="row g-4 mb-5">
                 <div class="col-lg-6">
                     <div class="d-flex align-items-center gap-3 mb-4">
@@ -682,19 +742,19 @@
                 <div class="col-lg-3">
                     <h3 class="h6 fw-bold mb-3">Enlaces de interés</h3>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="footer-link small">Portal de Policía</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Sede Electrónica</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Tasas y Pagos</a></li>
-                        <li><a href="#" class="footer-link small">Normativa</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary small text-decoration-none" style="transition: color 0.2s ease;">Portal de Policía</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary small text-decoration-none" style="transition: color 0.2s ease;">Sede Electrónica</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary small text-decoration-none" style="transition: color 0.2s ease;">Tasas y Pagos</a></li>
+                        <li><a href="#" class="text-secondary small text-decoration-none" style="transition: color 0.2s ease;">Normativa</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h3 class="h6 fw-bold mb-3">Asistencia</h3>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="footer-link small">Teléfono 060</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Contactar</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Accesibilidad</a></li>
-                        <li><a href="#" class="footer-link small">Protección de datos</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary small text-decoration-none" style="transition: color 0.2s ease;">Teléfono 060</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary small text-decoration-none" style="transition: color 0.2s ease;">Contactar</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary small text-decoration-none" style="transition: color 0.2s ease;">Accesibilidad</a></li>
+                        <li><a href="#" class="text-secondary small text-decoration-none" style="transition: color 0.2s ease;">Protección de datos</a></li>
                     </ul>
                 </div>
             </div>
@@ -704,13 +764,13 @@
                     © 2024 Dirección General de la Policía. Todos los derechos reservados.
                 </p>
                 <div class="d-flex gap-3">
-                    <a href="#" class="footer-link">
+                    <a href="#" class="text-secondary" style="transition: color 0.2s ease;">
                         <i class="bi bi-globe fs-5"></i>
                     </a>
-                    <a href="#" class="footer-link">
+                    <a href="#" class="text-secondary" style="transition: color 0.2s ease;">
                         <i class="bi bi-universal-access-circle fs-5"></i>
                     </a>
-                    <a href="#" class="footer-link">
+                    <a href="#" class="text-secondary" style="transition: color 0.2s ease;">
                         <i class="bi bi-share fs-5"></i>
                     </a>
                 </div>

@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jdk
+FROM amazoncorretto:latest
 
 WORKDIR /var/www/java
 

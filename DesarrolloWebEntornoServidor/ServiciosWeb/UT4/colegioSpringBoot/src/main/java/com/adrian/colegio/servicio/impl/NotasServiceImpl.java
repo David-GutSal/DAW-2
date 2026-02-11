@@ -1,12 +1,14 @@
 package com.adrian.colegio.servicio.impl;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adrian.colegio.dao.interfaces.INotasDAO;
 import com.adrian.colegio.dtos.NotaDTO;
+import com.adrian.colegio.entities.NotaEntity;
 import com.adrian.colegio.servicio.interfaces.INotasService;
 
 @Service
@@ -35,4 +37,9 @@ public class NotasServiceImpl implements INotasService {
     public int borrarNota(Integer id) {
         return notasDAO.borrarNota(id);
     }
+
+	@Override
+	public Optional<NotaEntity> obtenerNotaPorId(Integer id) {
+		return notasDAO.obtenerNotaPorId(id);
+	}
 }

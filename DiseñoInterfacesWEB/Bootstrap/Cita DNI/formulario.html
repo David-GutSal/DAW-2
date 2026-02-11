@@ -1,341 +1,936 @@
 <!DOCTYPE html>
-
-<html class="light" lang="es">
-
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Cita Previa - Cuerpo Nacional de Policía</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#135bec",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101622",
-                    },
-                    fontFamily: {
-                        "display": ["Public Sans"]
-                    },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-                },
-            },
-        }
-    </script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
+        :root {
+            --primary: #135bec;
+            --primary-hover: #0d4fd8;
+            --background-light: #f6f6f8;
+            --background-dark: #101622;
+            --text-dark: #111318;
+        }
+        
         body {
-            font-family: "Public Sans", sans-serif;
+            font-family: 'Public Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            padding-top: 76px; /* Para compensar el header fijo */
         }
-
+        
+        /* Header Styles */
+        .navbar-main {
+            background-color: white !important;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 76px;
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+        
+        @media (min-width: 992px) {
+            .navbar-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--primary);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin: 0;
+        }
+        
+        .logo-subtitle {
+            font-size: 10px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.2;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark) !important;
+            text-decoration: none;
+            padding: 8px 0;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .btn-ayuda {
+            background-color: var(--primary);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-ayuda:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            max-width: 960px;
+            margin: 0 auto 2.5rem auto;
+        }
+        
+        .progress {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary);
+            transition: width 0.5s ease;
+        }
+        
+        .step-labels {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
         .step-active {
-            @apply border-primary text-primary border-b-2;
+            color: var(--primary);
+            font-weight: 700;
         }
-
-        .custom-shadow {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        
+        /* Form Container */
+        .form-container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .form-header {
+            padding: 2rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .form-body {
+            padding: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .form-header, .form-body {
+                padding: 2.5rem;
+            }
+        }
+        
+        /* Radio Button Groups */
+        .radio-group {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .radio-option {
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        .radio-input {
+            display: none;
+        }
+        
+        .radio-label {
+            display: block;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid #f3f4f6;
+            border-radius: 0.75rem;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .radio-input:checked + .radio-label {
+            border-color: var(--primary);
+            background-color: rgba(19, 91, 236, 0.05);
+            color: var(--primary);
+        }
+        
+        /* Form Controls */
+        .form-control, .form-select {
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(19, 91, 236, 0.1);
+        }
+        
+        .form-control.uppercase {
+            text-transform: uppercase;
+        }
+        
+        /* CALENDARIO ARREGLADO */
+        .calendar-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            background-color: #f9fafb;
+            height: 100%;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .calendar-month {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .calendar-nav-btn {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease;
+        }
+        
+        .calendar-nav-btn:hover {
+            background-color: #e5e7eb;
+            color: var(--text-dark);
+        }
+        
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .calendar-weekday {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #6b7280;
+            padding: 0.5rem 0;
+            text-transform: uppercase;
+        }
+        
+        .calendar-days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            background: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+        
+        .calendar-day:hover:not(.calendar-day-disabled):not(.calendar-day-selected) {
+            background-color: #e5e7eb;
+            border-color: #e5e7eb;
+        }
+        
+        .calendar-day-selected {
+            background-color: var(--primary) !important;
+            color: white !important;
+            font-weight: 700;
+            border-color: var(--primary);
+        }
+        
+        .calendar-day-disabled {
+            color: #d1d5db !important;
+            cursor: not-allowed;
+            background-color: transparent !important;
+        }
+        
+        .calendar-day-other-month {
+            color: #9ca3af !important;
+        }
+        
+        /* Time Slots */
+        .time-slots-container {
+            padding: 1rem;
+        }
+        
+        .time-slots-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        @media (min-width: 576px) {
+            .time-slots {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .time-slots {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .time-slot {
+            padding: 0.75rem 0.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+        
+        .time-slot:hover:not(.time-slot-selected) {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+        
+        .time-slot-selected {
+            border: 2px solid var(--primary);
+            background-color: rgba(19, 91, 236, 0.05);
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* Action Buttons */
+        .btn-prev {
+            padding: 12px 32px;
+            color: #6b7280;
+            font-weight: 700;
+            border-radius: 0.75rem;
+            border: none;
+            background-color: transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-prev:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .btn-submit {
+            padding: 12px 48px;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 700;
+            border-radius: 0.75rem;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(19, 91, 236, 0.2);
+            transition: all 0.2s ease;
+        }
+        
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px rgba(19, 91, 236, 0.25);
+        }
+        
+        /* Info Cards */
+        .info-card {
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            border: 1px solid;
+            height: 100%;
+        }
+        
+        .info-card-primary {
+            background-color: rgba(59, 130, 246, 0.05);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+        
+        .info-card-secondary {
+            background-color: #f9fafb;
+            border-color: #e5e7eb;
+        }
+        
+        .info-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-logo {
+            height: 40px;
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .footer-link {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+        }
+        
+        /* Helper Classes */
+        .section-divider {
+            border-top: 1px solid #f3f4f6;
+            margin: 2rem 0;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0;
+            margin: 0 0 1rem 0;
+            list-style: none;
+        }
+        
+        .mobile-nav .nav-link {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .mobile-nav .nav-link:hover {
+            background-color: rgba(19, 91, 236, 0.05);
+        }
+        
+        /* Media Queries */
+        @media (max-width: 991.98px) {
+            .desktop-nav {
+                display: none !important;
+            }
+            
+            .desktop-btn {
+                display: none !important;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .mobile-nav-container {
+                display: none !important;
+            }
+            
+            .navbar-toggler {
+                display: none !important;
+            }
         }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-[#111318] dark:text-gray-100 min-h-screen">
-    <!-- Header Navigation -->
-    <header class="bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-3">
-                    <div class="text-primary size-8">
-                        <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z">
-                            </path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 class="text-lg font-bold leading-tight tracking-tight">Policía Nacional</h1>
-                        <p class="text-[10px] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold">
-                            Ministerio del Interior</p>
-                    </div>
+<body>
+    <!-- Header Fijo -->
+    <header class="navbar-main fixed-top">
+        <div class="navbar-container d-flex align-items-center justify-content-between">
+            <!-- Logo -->
+            <a href="#" class="navbar-logo">
+                <svg class="logo-icon" fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+                </svg>
+                <div class="logo-text">
+                    <div class="logo-title">Policía Nacional</div>
+                    <div class="logo-subtitle">Ministerio del Interior</div>
                 </div>
-                <nav class="hidden md:flex items-center gap-6">
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">DNI</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Pasaporte</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Extranjería</a>
-                    <button
-                        class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
-                        <span class="material-symbols-outlined text-sm">help</span>
-                        Ayuda
-                    </button>
-                </nav>
+            </a>
+            
+            <!-- Navegación Desktop -->
+            <nav class="desktop-nav d-none d-lg-flex align-items-center">
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">DNI</a></li>
+                    <li><a href="#" class="nav-link">Pasaporte</a></li>
+                    <li><a href="#" class="nav-link">Extranjería</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Botón Ayuda Desktop -->
+            <div class="desktop-btn d-none d-lg-flex align-items-center">
+                <button class="btn-ayuda">
+                    <i class="bi bi-question-circle"></i>
+                    Ayuda
+                </button>
+            </div>
+            
+            <!-- Toggler Mobile -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        
+        <!-- Menú Mobile (Collapse) -->
+        <div class="collapse mobile-nav-container" id="mobileMenu">
+            <div class="mobile-menu">
+                <ul class="mobile-nav">
+                    <li><a href="#" class="nav-link">DNI</a></li>
+                    <li><a href="#" class="nav-link">Pasaporte</a></li>
+                    <li><a href="#" class="nav-link">Extranjería</a></li>
+                </ul>
+                <button class="btn-ayuda w-100">
+                    <i class="bi bi-question-circle"></i>
+                    Ayuda
+                </button>
             </div>
         </div>
     </header>
-    <main class="max-w-[960px] mx-auto px-4 py-8">
+
+    <!-- Main Content -->
+    <main class="container-fluid px-4 py-5">
         <!-- Progress Stepper -->
-        <div class="mb-10">
-            <div class="flex items-center justify-between mb-4">
-                <span class="text-sm font-semibold text-primary">Paso 2 de 3: Datos de la Cita</span>
-                <span class="text-sm font-medium text-gray-500">66% completado</span>
+        <div class="progress-container">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-sm fw-semibold text-primary">Paso 2 de 3: Datos de la Cita</span>
+                <span class="text-sm fw-medium text-secondary">66% completado</span>
             </div>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
-                <div class="bg-primary h-full w-2/3 transition-all duration-500"></div>
+            <div class="progress mb-2">
+                <div class="progress-bar w-66"></div>
             </div>
-            <div class="flex justify-between mt-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
+            <div class="d-flex justify-content-between step-labels">
                 <span>Selección</span>
-                <span class="text-primary font-bold">Datos Personales</span>
+                <span class="step-active">Datos Personales</span>
                 <span>Confirmación</span>
             </div>
         </div>
+
         <!-- Form Container -->
-        <div
-            class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
-            <div class="p-6 md:p-8 border-b border-gray-100 dark:border-gray-800">
-                <h2 class="text-2xl font-bold mb-2">Solicitud de Cita Previa</h2>
-                <p class="text-gray-500 dark:text-gray-400">Por favor, rellene los campos a continuación para reservar
-                    su turno en la oficina seleccionada.</p>
+        <div class="form-container">
+            <div class="form-header">
+                <h2 class="h2 fw-bold mb-2">Solicitud de Cita Previa</h2>
+                <p class="text-secondary mb-0">Por favor, rellene los campos a continuación para reservar su turno en la oficina seleccionada.</p>
             </div>
-            <form class="p-6 md:p-8 space-y-8">
+            
+            <form class="form-body">
                 <!-- Section 1: Document & Location -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-sm font-bold text-gray-700 dark:text-gray-300">Tipo de Documento</label>
-                        <div class="flex gap-2">
-                            <label class="flex-1 cursor-pointer group">
-                                <input checked="" class="peer sr-only" name="docType" type="radio" />
-                                <div
-                                    class="p-3 text-center border-2 border-gray-100 dark:border-gray-800 rounded-lg peer-checked:border-primary peer-checked:bg-primary/5 transition-all">
-                                    <span class="text-sm font-semibold peer-checked:text-primary">DNI</span>
-                                </div>
-                            </label>
-                            <label class="flex-1 cursor-pointer group">
-                                <input class="peer sr-only" name="docType" type="radio" />
-                                <div
-                                    class="p-3 text-center border-2 border-gray-100 dark:border-gray-800 rounded-lg peer-checked:border-primary peer-checked:bg-primary/5 transition-all">
-                                    <span class="text-sm font-semibold peer-checked:text-primary">Pasaporte</span>
-                                </div>
-                            </label>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Tipo de Documento</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input class="radio-input" type="radio" name="docType" id="dni" checked>
+                                <label for="dni" class="radio-label">DNI</label>
+                            </div>
+                            <div class="radio-option">
+                                <input class="radio-input" type="radio" name="docType" id="pasaporte">
+                                <label for="pasaporte" class="radio-label">Pasaporte</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="space-y-2">
-                        <label class="text-sm font-bold text-gray-700 dark:text-gray-300"
-                            for="province">Provincia</label>
-                        <select
-                            class="w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-primary focus:border-primary"
-                            id="province">
+                    <div class="col-md-6">
+                        <label for="province" class="form-label fw-bold">Provincia</label>
+                        <select class="form-select" id="province">
                             <option>Madrid</option>
                             <option>Barcelona</option>
                             <option>Valencia</option>
                             <option>Sevilla</option>
                         </select>
                     </div>
-                    <div class="md:col-span-2 space-y-2">
-                        <label class="text-sm font-bold text-gray-700 dark:text-gray-300" for="office">Oficina de
-                            Expedición</label>
-                        <select
-                            class="w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-primary focus:border-primary"
-                            id="office">
+                    <div class="col-12">
+                        <label for="office" class="form-label fw-bold">Oficina de Expedición</label>
+                        <select class="form-select" id="office">
                             <option>Madrid - Calle de Santa Engracia, 18</option>
                             <option>Madrid - Calle de los Madrazo, 9</option>
                             <option>Madrid - Avenida de los Poblados, s/n</option>
                         </select>
                     </div>
                 </div>
-                <hr class="border-gray-100 dark:border-gray-800" />
+                
+                <hr class="section-divider">
+                
                 <!-- Section 2: Personal Data -->
-                <div class="space-y-6">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold">Datos del Titular</h3>
-                        <button class="text-primary text-sm font-semibold flex items-center gap-1 hover:underline"
-                            type="button">
-                            <span class="material-symbols-outlined text-lg">info</span>
+                <div class="mb-5">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+                        <h3 class="h4 fw-bold mb-3 mb-md-0">Datos del Titular</h3>
+                        <button type="button" class="text-primary fw-semibold text-decoration-none d-flex align-items-center gap-1">
+                            <i class="bi bi-info-circle"></i>
                             ¿Dónde encontrar mis datos?
                         </button>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-gray-700 dark:text-gray-300">Número de
-                                Documento</label>
-                            <input
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-primary focus:border-primary uppercase"
-                                placeholder="12345678A" type="text" />
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Número de Documento</label>
+                            <input type="text" class="form-control uppercase" placeholder="12345678A">
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-gray-700 dark:text-gray-300">Equipo de Expedición
-                                (Lote)</label>
-                            <input
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-primary focus:border-primary uppercase"
-                                placeholder="ABC123456" type="text" />
-                            <p class="text-[10px] text-gray-400">Situado en el reverso del DNI</p>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Equipo de Expedición (Lote)</label>
+                            <input type="text" class="form-control uppercase" placeholder="ABC123456">
+                            <div class="form-text">Situado en el reverso del DNI</div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-gray-700 dark:text-gray-300">Fecha de Validez</label>
-                            <input
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-primary focus:border-primary"
-                                type="date" />
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Fecha de Validez</label>
+                            <input type="date" class="form-control">
                         </div>
                     </div>
                 </div>
-                <hr class="border-gray-100 dark:border-gray-800" />
-                <!-- Section 3: Date and Time -->
-                <div class="space-y-4">
-                    <h3 class="text-lg font-bold">Selección de Horario</h3>
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Date Picker Mock -->
-                        <div
-                            class="lg:col-span-1 border border-gray-200 dark:border-gray-800 rounded-lg p-4 bg-gray-50 dark:bg-gray-800/50">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold">Octubre 2023</span>
-                                <div class="flex gap-2">
-                                    <button class="material-symbols-outlined text-gray-400"
-                                        type="button">chevron_left</button>
-                                    <button class="material-symbols-outlined text-gray-400"
-                                        type="button">chevron_right</button>
+                
+                <hr class="section-divider">
+                
+                <!-- Section 3: Date and Time - CALENDARIO ARREGLADO -->
+                <div>
+                    <h3 class="h4 fw-bold mb-4">Selección de Horario</h3>
+                    
+                    <div class="row g-4">
+                        <!-- Calendario Arreglado -->
+                        <div class="col-lg-4">
+                            <div class="calendar-container">
+                                <div class="calendar-header">
+                                    <span class="calendar-month">Octubre 2023</span>
+                                    <div class="calendar-nav">
+                                        <button type="button" class="calendar-nav-btn">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </button>
+                                        <button type="button" class="calendar-nav-btn">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="calendar-weekdays">
+                                    <div class="calendar-weekday">Lun</div>
+                                    <div class="calendar-weekday">Mar</div>
+                                    <div class="calendar-weekday">Mié</div>
+                                    <div class="calendar-weekday">Jue</div>
+                                    <div class="calendar-weekday">Vie</div>
+                                    <div class="calendar-weekday">Sáb</div>
+                                    <div class="calendar-weekday">Dom</div>
+                                </div>
+                                
+                                <div class="calendar-days-grid" id="calendarDays">
+                                    <!-- Días del mes anterior (vacíos) -->
+                                    <button type="button" class="calendar-day calendar-day-other-month calendar-day-disabled">30</button>
+                                    <button type="button" class="calendar-day calendar-day-other-month calendar-day-disabled">31</button>
+                                    
+                                    <!-- Días del mes actual -->
+                                    <button type="button" class="calendar-day">1</button>
+                                    <button type="button" class="calendar-day">2</button>
+                                    <button type="button" class="calendar-day">3</button>
+                                    <button type="button" class="calendar-day">4</button>
+                                    <button type="button" class="calendar-day">5</button>
+                                    <button type="button" class="calendar-day">6</button>
+                                    <button type="button" class="calendar-day">7</button>
+                                    <button type="button" class="calendar-day">8</button>
+                                    <button type="button" class="calendar-day">9</button>
+                                    <button type="button" class="calendar-day">10</button>
+                                    <button type="button" class="calendar-day">11</button>
+                                    <button type="button" class="calendar-day">12</button>
+                                    <button type="button" class="calendar-day">13</button>
+                                    <button type="button" class="calendar-day">14</button>
+                                    <button type="button" class="calendar-day">15</button>
+                                    <button type="button" class="calendar-day">16</button>
+                                    <button type="button" class="calendar-day">17</button>
+                                    <button type="button" class="calendar-day">18</button>
+                                    <button type="button" class="calendar-day">19</button>
+                                    <button type="button" class="calendar-day">20</button>
+                                    <button type="button" class="calendar-day">21</button>
+                                    <button type="button" class="calendar-day">22</button>
+                                    <button type="button" class="calendar-day">23</button>
+                                    <button type="button" class="calendar-day calendar-day-selected" data-day="24">24</button>
+                                    <button type="button" class="calendar-day">25</button>
+                                    <button type="button" class="calendar-day">26</button>
+                                    <button type="button" class="calendar-day">27</button>
+                                    <button type="button" class="calendar-day calendar-day-disabled">28</button>
+                                    <button type="button" class="calendar-day calendar-day-disabled">29</button>
+                                    <button type="button" class="calendar-day calendar-day-disabled">30</button>
+                                    <button type="button" class="calendar-day calendar-day-disabled">31</button>
+                                    
+                                    <!-- Días del mes siguiente (vacíos) -->
+                                    <button type="button" class="calendar-day calendar-day-other-month calendar-day-disabled">1</button>
+                                    <button type="button" class="calendar-day calendar-day-other-month calendar-day-disabled">2</button>
+                                    <button type="button" class="calendar-day calendar-day-other-month calendar-day-disabled">3</button>
+                                    <button type="button" class="calendar-day calendar-day-other-month calendar-day-disabled">4</button>
                                 </div>
                             </div>
-                            <div class="grid grid-cols-7 gap-1 text-center text-xs mb-2">
-                                <span class="text-gray-400">LU</span><span class="text-gray-400">MA</span><span
-                                    class="text-gray-400">MI</span><span class="text-gray-400">JU</span><span
-                                    class="text-gray-400">VI</span><span class="text-gray-400">SA</span><span
-                                    class="text-gray-400">DO</span>
-                            </div>
-                            <div class="grid grid-cols-7 gap-1 text-center">
-                                <button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-sm"
-                                    type="button">23</button>
-                                <button
-                                    class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-bold bg-primary text-white"
-                                    type="button">24</button>
-                                <button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-sm"
-                                    type="button">25</button>
-                                <button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-sm"
-                                    type="button">26</button>
-                                <button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-sm"
-                                    type="button">27</button>
-                                <button class="p-2 text-gray-300 cursor-not-allowed text-sm" type="button">28</button>
-                                <button class="p-2 text-gray-300 cursor-not-allowed text-sm" type="button">29</button>
-                            </div>
                         </div>
-                        <!-- Time Slots Mock -->
-                        <div class="lg:col-span-2 space-y-4">
-                            <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">Horas disponibles para el
-                                24 de Octubre:</p>
-                            <div class="grid grid-cols-3 sm:grid-cols-4 gap-2">
-                                <button
-                                    class="py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm hover:border-primary hover:text-primary transition-all"
-                                    type="button">09:15</button>
-                                <button
-                                    class="py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm hover:border-primary hover:text-primary transition-all"
-                                    type="button">09:30</button>
-                                <button
-                                    class="py-2 border-2 border-primary bg-primary/5 text-primary rounded-lg text-sm font-bold"
-                                    type="button">09:45</button>
-                                <button
-                                    class="py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm hover:border-primary hover:text-primary transition-all"
-                                    type="button">10:00</button>
-                                <button
-                                    class="py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm hover:border-primary hover:text-primary transition-all"
-                                    type="button">10:15</button>
-                                <button
-                                    class="py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm hover:border-primary hover:text-primary transition-all"
-                                    type="button">10:30</button>
-                                <button
-                                    class="py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm hover:border-primary hover:text-primary transition-all"
-                                    type="button">11:00</button>
-                                <button
-                                    class="py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm hover:border-primary hover:text-primary transition-all"
-                                    type="button">11:15</button>
+                        
+                        <!-- Time Slots -->
+                        <div class="col-lg-8">
+                            <div class="time-slots-container">
+                                <p class="time-slots-title">Horas disponibles para el 24 de Octubre:</p>
+                                <div class="time-slots">
+                                    <button type="button" class="time-slot">09:15</button>
+                                    <button type="button" class="time-slot">09:30</button>
+                                    <button type="button" class="time-slot time-slot-selected">09:45</button>
+                                    <button type="button" class="time-slot">10:00</button>
+                                    <button type="button" class="time-slot">10:15</button>
+                                    <button type="button" class="time-slot">10:30</button>
+                                    <button type="button" class="time-slot">11:00</button>
+                                    <button type="button" class="time-slot">11:15</button>
+                                    <button type="button" class="time-slot">11:30</button>
+                                    <button type="button" class="time-slot">11:45</button>
+                                    <button type="button" class="time-slot">12:00</button>
+                                    <button type="button" class="time-slot">12:15</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
-                    <button
-                        class="w-full sm:w-auto px-8 py-3 text-sm font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                        type="button">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 pt-5 mt-5">
+                    <button type="button" class="btn-prev">
                         Anterior
                     </button>
-                    <button
-                        class="w-full sm:w-auto px-12 py-3 bg-primary text-white text-sm font-bold rounded-lg shadow-lg shadow-primary/20 hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
-                        type="submit">
+                    <button type="submit" class="btn-submit">
                         Finalizar Cita
-                        <span class="material-symbols-outlined text-lg">check_circle</span>
+                        <i class="bi bi-check-circle"></i>
                     </button>
                 </div>
             </form>
         </div>
+        
         <!-- Support Info Section -->
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div
-                class="bg-blue-50 dark:bg-primary/10 p-6 rounded-xl flex gap-4 border border-blue-100 dark:border-primary/20">
-                <span class="material-symbols-outlined text-primary text-3xl shrink-0">location_on</span>
-                <div>
-                    <h4 class="font-bold text-blue-900 dark:text-blue-300">Oficina seleccionada</h4>
-                    <p class="text-sm text-blue-800/80 dark:text-blue-400/80 mt-1">C/ Santa Engracia 18, 28010 Madrid
-                    </p>
-                    <a class="text-xs font-bold text-primary mt-2 inline-block uppercase tracking-wider" href="#">Ver en
-                        mapa</a>
+        <div class="row g-4 mt-5">
+            <div class="col-md-6">
+                <div class="info-card info-card-primary">
+                    <i class="bi bi-geo-alt-fill text-primary info-icon"></i>
+                    <div>
+                        <h4 class="fw-bold text-primary">Oficina seleccionada</h4>
+                        <p class="text-primary mb-2">C/ Santa Engracia 18, 28010 Madrid</p>
+                        <a href="#" class="text-primary fw-bold text-decoration-none text-uppercase small">Ver en mapa</a>
+                    </div>
                 </div>
             </div>
-            <div
-                class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl flex gap-4 border border-gray-200 dark:border-gray-700">
-                <span class="material-symbols-outlined text-gray-500 text-3xl shrink-0">contact_support</span>
-                <div>
-                    <h4 class="font-bold">¿Necesitas ayuda?</h4>
-                    <p class="text-sm text-gray-500 mt-1">Llama al 060 para atención telefónica o consulta nuestra guía
-                        de usuario.</p>
-                    <a class="text-xs font-bold text-gray-400 mt-2 inline-block uppercase tracking-wider" href="#">Ver
-                        guía</a>
+            <div class="col-md-6">
+                <div class="info-card info-card-secondary">
+                    <i class="bi bi-question-circle-fill text-secondary info-icon"></i>
+                    <div>
+                        <h4 class="fw-bold">¿Necesitas ayuda?</h4>
+                        <p class="text-secondary mb-2">Llama al 060 para atención telefónica o consulta nuestra guía de usuario.</p>
+                        <a href="#" class="text-secondary fw-bold text-decoration-none text-uppercase small">Ver guía</a>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+
     <!-- Footer -->
-    <footer class="bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 mt-16 py-12">
-        <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
-            <div class="flex justify-center gap-6 mb-6 grayscale opacity-50">
-                <img class="h-10 w-auto" data-alt="Official logo of the Ministry of Interior Spain"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVoAEccn4b5bed4p1x2m2hlOI82M1N3806VSEoUXRo71n_wr_6SmCCbHWJrAmatiRP_G3VSiJQFeXqJUSXE7lJ676oOwfi1YIhG0Vamudp3XK0YJHBxrqOknZ9_Z_x7xJQjVVO7n5SQluI3E19tPA2uT-3C6RixSBQZ9B5aX7o8CQ2Pz7m5bP6s_3wxFnl9ZyH6cVuZ9AFsjicS7bpM2jnLEAxrZVdwz1cqNyhu0sEfzB1c7u7dFIivrLxGQrtlwvgVKdIhFOHzvA" />
+    <footer class="footer">
+        <div class="container text-center">
+            <div class="mb-4">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVoAEccn4b5bed4p1x2m2hlOI82M1N3806VSEoUXRo71n_wr_6SmCCbHWJrAmatiRP_G3VSiJQFeXqJUSXE7lJ676oOwfi1YIhG0Vamudp3XK0YJHBxrqOknZ9_Z_x7xJQjVVO7n5SQluI3E19tPA2uT-3C6RixSBQZ9B5aX7o8CQ2Pz7m5bP6s_3wxFnl9ZyH6cVuZ9AFsjicS7bpM2jnLEAxrZVdwz1cqNyhu0sEfzB1c7u7dFIivrLxGQrtlwvgVKdIhFOHzvA" alt="Official logo of the Ministry of Interior Spain" class="footer-logo">
             </div>
-            <p class="text-xs font-medium text-gray-400 uppercase tracking-widest">Cuerpo Nacional de Policía -
-                Dirección General de la Policía</p>
-            <div class="flex flex-wrap justify-center gap-x-8 gap-y-2">
-                <a class="text-sm text-gray-500 hover:text-primary" href="#">Aviso Legal</a>
-                <a class="text-sm text-gray-500 hover:text-primary" href="#">Protección de Datos</a>
-                <a class="text-sm text-gray-500 hover:text-primary" href="#">Accesibilidad</a>
-                <a class="text-sm text-gray-500 hover:text-primary" href="#">Sede Electrónica</a>
+            
+            <p class="text-uppercase small fw-medium text-secondary mb-4">
+                Cuerpo Nacional de Policía - Dirección General de la Policía
+            </p>
+            
+            <div class="footer-links mb-4">
+                <a href="#" class="footer-link">Aviso Legal</a>
+                <a href="#" class="footer-link">Protección de Datos</a>
+                <a href="#" class="footer-link">Accesibilidad</a>
+                <a href="#" class="footer-link">Sede Electrónica</a>
             </div>
-            <p class="text-xs text-gray-400 pt-4">© 2023 Gobierno de España. Todos los derechos reservados.</p>
+            
+            <p class="small text-secondary mb-0">
+                © 2023 Gobierno de España. Todos los derechos reservados.
+            </p>
         </div>
     </footer>
-    <!-- Help Modal Overlay (Hidden by default, used for "Where is my data" button) -->
-    <div class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
-        id="helpModal">
-        <div class="bg-white dark:bg-gray-900 rounded-xl max-w-2xl w-full p-6 md:p-8 relative">
-            <button
-                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 material-symbols-outlined">close</button>
-            <h3 class="text-xl font-bold mb-4">Ubicación de los datos</h3>
-            <div class="space-y-6">
-                <div>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">El **Número de Soporte** o equipo de
-                        expedición aparece en el reverso de su DNI 3.0/4.0 (esquina superior derecha) o en el anverso en
-                        modelos anteriores.</p>
-                    <div class="bg-gray-100 dark:bg-gray-800 h-48 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 italic">Visual guide showing DNI support number location</span>
-                    </div>
-                </div>
-                <button class="w-full bg-primary text-white py-3 rounded-lg font-bold">Entendido</button>
-            </div>
-        </div>
-    </div>
-</body>
 
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // CALENDARIO FUNCIONAL
+        document.addEventListener('DOMContentLoaded', function() {
+            // Datos del calendario
+            const currentMonth = "Octubre 2023";
+            const selectedDay = 24;
+            
+            // Obtener elementos del DOM
+            const calendarDaysGrid = document.getElementById('calendarDays');
+            const monthDisplay = document.querySelector('.calendar-month');
+            const timeSlotsTitle = document.querySelector('.time-slots-title');
+            
+            // Funcionalidad para seleccionar día del calendario
+            calendarDaysGrid.addEventListener('click', function(e) {
+                if (e.target.classList.contains('calendar-day') && 
+                    !e.target.classList.contains('calendar-day-disabled') &&
+                    !e.target.classList.contains('calendar-day-other-month')) {
+                    
+                    // Remover selección anterior
+                    const previouslySelected = calendarDaysGrid.querySelector('.calendar-day-selected');
+                    if (previouslySelected) {
+                        previouslySelected.classList.remove('calendar-day-selected');
+                    }
+                    
+                    // Agregar selección actual
+                    e.target.classList.add('calendar-day-selected');
+                    
+                    // Actualizar título de horas disponibles
+                    const day = e.target.getAttribute('data-day') || e.target.textContent;
+                    const month = monthDisplay.textContent.split(' ')[0];
+                    timeSlotsTitle.textContent = `Horas disponibles para el ${day} de ${month}:`;
+                }
+            });
+            
+            // Funcionalidad para botones de navegación del calendario
+            const navButtons = document.querySelectorAll('.calendar-nav-btn');
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const isPrev = this.querySelector('.bi-chevron-left');
+                    const isNext = this.querySelector('.bi-chevron-right');
+                    
+                    if (isPrev) {
+                        // Navegar al mes anterior
+                        console.log('Navegar al mes anterior');
+                        // Aquí iría la lógica para cambiar el mes
+                    } else if (isNext) {
+                        // Navegar al mes siguiente
+                        console.log('Navegar al mes siguiente');
+                        // Aquí iría la lógica para cambiar el mes
+                    }
+                });
+            });
+            
+            // Seleccionar hora
+            const timeSlots = document.querySelectorAll('.time-slot');
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', function() {
+                    // Remover selección anterior
+                    timeSlots.forEach(s => s.classList.remove('time-slot-selected'));
+                    // Agregar selección actual
+                    this.classList.add('time-slot-selected');
+                });
+            });
+            
+            // Radio buttons personalizados
+            const radioInputs = document.querySelectorAll('.radio-input');
+            radioInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    // No necesitamos hacer nada aquí porque CSS maneja el estado :checked
+                });
+            });
+            
+            // Botón "¿Dónde encontrar mis datos?"
+            const helpButton = document.querySelector('button[type="button"].text-primary');
+            if (helpButton) {
+                helpButton.addEventListener('click', function() {
+                    alert('El número de equipo de expedición (lote) se encuentra en el reverso del DNI, en la esquina superior derecha. Para modelos antiguos, puede estar en el anverso.');
+                });
+            }
+        });
+    </script>
+</body>
 </html>

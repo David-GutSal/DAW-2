@@ -1,6 +1,7 @@
 package com.adrian.colegio.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -83,4 +84,10 @@ public class NotaDAOImpl implements INotasDAO {
             return 0; // Error al borrar
         }
     }
+
+	@Override
+	public Optional<NotaEntity> obtenerNotaPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return notaRepository.findById(id);
+	}
 }

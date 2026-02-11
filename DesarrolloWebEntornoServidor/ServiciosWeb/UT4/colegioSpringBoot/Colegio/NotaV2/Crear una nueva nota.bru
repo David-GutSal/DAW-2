@@ -1,0 +1,26 @@
+meta {
+  name: Crear una nueva nota
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/v2/notas
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+  "idAlumno": 1,
+  "idAsignatura": 101,
+  "nota": "8.5",
+  "fecha": "2026-01-25"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
