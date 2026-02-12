@@ -123,11 +123,14 @@ export default createStore({
     },
     mutations: {
         guardarNuevoTema(state, nuevoTema) {
-            state.custionario.temas.push(nuevoTema);
+            const copia = {...nuevoTema};
+            state.custionario.temas.push(copia);
             console.log(state.custionario.temas);
         },
         guardarPregunta(state, nuevaPregunta) {
-            state.custionario.preguntas.push(nuevaPregunta);
+            const copia = {...nuevaPregunta};
+            state.custionario.preguntas.push(copia);
+            console.log(state.custionario.preguntas);
         }
     },
     actions: {
