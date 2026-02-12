@@ -4,279 +4,18 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Cita Previa DNI y Pasaporte - Cuerpo Nacional de Policía</title>
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --background-light: #f8fafc;
-            --background-dark: #111318;
-            --text-dark: #111318;
-            --border-light: #dbdfe6;
-            --border-dark: #374151;
-        }
-        
-        body {
-            font-family: 'Public Sans', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--background-light);
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            font-weight: 700;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            border-color: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-        }
-        
-        .navbar-custom {
-            background-color: white;
-            border-bottom: 1px solid var(--border-light);
-            height: 80px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            z-index: 1030;
-        }
-        
-        .navbar-nav .nav-link {
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: var(--text-dark) !important;
-            padding: 0.5rem 1rem;
-            transition: color 0.2s ease;
-        }
-        
-        .navbar-nav .nav-link:hover {
-            color: var(--primary) !important;
-        }
-        
-        .text-primary {
-            color: var(--primary) !important;
-        }
-        
-        .bg-primary-light {
-            background-color: rgba(37, 99, 235, 0.1);
-        }
-        
-        .border-primary-light {
-            border-color: rgba(37, 99, 235, 0.3);
-        }
-        
-        .rounded-xl {
-            border-radius: 1rem;
-        }
-        
-        .rounded-2xl {
-            border-radius: 1.5rem;
-        }
-        
-        .rounded-3xl {
-            border-radius: 2rem;
-        }
-        
-        .shadow-primary {
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05);
-        }
-        
-        .transition-all {
-            transition: all 0.2s ease-in-out;
-        }
-        
-        .section-title {
-            font-weight: 900;
-            letter-spacing: -0.025em;
-        }
-        
-        .hero-title {
-            font-size: calc(1.5rem + 3vw);
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -0.025em;
-        }
-        
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
-        }
-        
-        @media (min-width: 992px) {
-            .hero-title {
-                font-size: 4rem;
-            }
-            .navbar-expand-lg .navbar-nav .nav-link {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-            }
-        }
-        
-        @media (min-width: 1200px) {
-            .hero-title {
-                font-size: 4.5rem;
-            }
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(37, 99, 235, 0.5);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .avatar-group {
-            display: flex;
-        }
-        
-        .avatar {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            border: 2px solid white;
-            object-fit: cover;
-        }
-        
-        .avatar:not(:first-child) {
-            margin-left: -0.5rem;
-        }
-        
-        .hero-image-container {
-            position: relative;
-        }
-        
-        .hero-image-container::before {
-            content: '';
-            position: absolute;
-            top: -1rem;
-            left: -1rem;
-            right: -1rem;
-            bottom: -1rem;
-            background-color: rgba(37, 99, 235, 0.05);
-            border-radius: 2.5rem;
-            z-index: -1;
-            filter: blur(20px);
-        }
-        
-        .footer-link:hover {
-            color: var(--primary) !important;
-        }
-        
-        .stats-section {
-            background-color: rgba(37, 99, 235, 0.05);
-        }
-        
-        .alert-custom {
-            border-left: 4px solid var(--primary);
-            border-radius: 1rem;
-        }
-        
-        .icon-container {
-            width: 3.5rem;
-            height: 3.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.75rem;
-            background-color: var(--primary);
-            color: white;
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
-        }
-        
-        .nav-divider {
-            width: 1px;
-            height: 24px;
-            background-color: #e5e7eb;
-            margin: 0 0.75rem;
-        }
-        
-        .btn-cita {
-            padding: 0.625rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 700;
-            font-size: 0.875rem;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-        }
-        
-        .logo-text {
-            font-size: 0.625rem;
-            font-weight: 700;
-            color: #6b7280;
-            line-height: 1.2;
-            text-transform: uppercase;
-        }
-        
-        .logo-title {
-            font-size: 0.875rem;
-            font-weight: 800;
-            line-height: 1.2;
-            color: var(--text-dark);
-        }
-        
-        .btn-language {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: var(--text-dark);
-            padding: 0.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-language:hover {
-            color: var(--primary);
-        }
-        
-        .navbar-toggler {
-            border: none;
-            padding: 0.25rem;
-        }
-        
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-        
-        .navbar-collapse {
-            background-color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-top: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        @media (min-width: 992px) {
-            .navbar-collapse {
-                background-color: transparent;
-                padding: 0;
-                border-radius: 0;
-                margin-top: 0;
-                box-shadow: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <!-- Header / Navbar FIXED -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
         <div class="container-xxl">
-            <!-- Logo Section -->
             <a class="navbar-brand d-flex align-items-center me-4" href="#">
                 <div class="d-flex align-items-center gap-2">
-                    <div class="h-10">
-                        <svg class="h-100 w-auto text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
-                        </svg>
+                    <div class="brand-icon">
+                        <img src="img/logo.png" alt="Logo Policía Nacional" style="height: 40px; width: auto;">
                     </div>
                     <div class="d-none d-md-block">
                         <p class="logo-text mb-0">Ministerio del Interior</p>
@@ -285,21 +24,17 @@
                 </div>
             </a>
             
-            <!-- Mobile Toggler Button -->
-            <button class="navbar-toggler order-lg-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler order-lg-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- CTA Button for Mobile -->
             <div class="d-lg-none order-lg-3 ms-auto me-3">
                 <button class="btn btn-primary btn-cita">
                     Pedir Cita
                 </button>
             </div>
             
-            <!-- Navbar Content -->
             <div class="collapse navbar-collapse order-lg-1" id="navbarContent">
-                <!-- Navigation Links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Inicio</a>
@@ -315,9 +50,7 @@
                     </li>
                 </ul>
                 
-                <!-- Language and CTA for Mobile -->
                 <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-3 mt-3 mt-lg-0">
-                    <!-- Divider and Language for Desktop -->
                     <div class="d-none d-lg-flex align-items-center">
                         <div class="nav-divider"></div>
                         <button class="btn-language">
@@ -326,14 +59,12 @@
                         </button>
                     </div>
                     
-                    <!-- CTA Button for Desktop -->
                     <div class="d-none d-lg-block">
                         <button class="btn btn-primary btn-cita">
                             Pedir Cita
                         </button>
                     </div>
                     
-                    <!-- Language for Mobile -->
                     <div class="d-lg-none">
                         <button class="btn-language">
                             <i class="bi bi-globe"></i>
@@ -345,28 +76,26 @@
         </div>
     </nav>
 
-    <!-- Main Content with padding for fixed navbar -->
-    <main class="container-xxl px-3 px-md-4 px-lg-5 py-5" style="padding-top: 100px !important;">
-        <!-- Hero Section -->
-        <section class="row align-items-center py-5">
+    <main class="container-xxl px-3 px-md-4 px-lg-5 main-content">
+        <section class="row align-items-center hero-section">
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <div class="d-flex flex-column gap-4">
-                    <div class="badge bg-primary-light text-primary px-3 py-2 rounded-pill fw-bold text-uppercase" style="font-size: 0.75rem; letter-spacing: 0.05em;">
+                    <div class="badge-custom">
                         Portal Oficial de Tramitación
                     </div>
                     <h1 class="hero-title mb-0">
                         Cita Previa DNI <br /><span class="text-primary">y Pasaporte</span>
                     </h1>
-                    <p class="fs-5 text-secondary mb-0" style="max-width: 90%; line-height: 1.7;">
+                    <p class="hero-description mb-0">
                         Solicite o renueve sus documentos de identidad de forma ágil y segura. Acceda al sistema oficial de
                         gestión de citas de la Policía Nacional para trámites en toda España.
                     </p>
                     <div class="d-flex flex-wrap gap-3 mt-2">
-                        <button class="btn btn-primary px-5 py-3 rounded-xl fw-bold shadow-primary d-flex align-items-center gap-2">
+                        <button class="btn btn-primary btn-hero d-flex align-items-center gap-2">
                             <span>Iniciar Solicitud</span>
                             <i class="bi bi-arrow-right"></i>
                         </button>
-                        <button class="btn btn-outline-secondary px-5 py-3 rounded-xl fw-bold border">
+                        <button class="btn btn-outline-secondary btn-hero border">
                             Consultar Cita
                         </button>
                     </div>
@@ -376,7 +105,7 @@
                             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2u5QVzMw4d5JfVlB4NZGVuR0GBJgRkH3EZVyTEWkqVhIoxHlBxOSADeKfOHoHQFZFT6NlptD8_VzgMtsS1LJAa6Rbaz58E1SZE5-0P4BAZFhHuKdRhnJKrV23a-mq9U98vkZfEIHzSZhkuNT1S-z_HqODm_Qx-_p-ZUCeL5I1W3maKyJmAvLet43zJmdoz9sByItGdJm8PHFGsrwmyPpxeTZD3iERiNI7OsOhEuDJStYQ3dy_9GOojBeTlbcFdQLhRgSACYKd5Q8" alt="Perfil de usuario para testimonio 2" class="avatar">
                             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQBiBxgPOzz64CHFsRG0S6uGE1P267M_v1wuEk7q0vGpZ6JVBTfIz2_p1Lnzp4YoUPHP6oHJu8milvrXz_yUYQBwyW3l2HceGZG0YXrh4Pbd0UR9UGIkUkK6xKfnEL_O5MKvCcdFXBdhZf5jhX5Dke0cJ2wla-CAG5IBJwM14AiiHDn3YcLD2uvgGhsHR-dOhCnddryISe2Wye9QQxRXAR2OIn0CwM8FHm5NLT3U1POnncLvohyETY2mlWV6r-8ICESH1QrgjVRyY" alt="Perfil de usuario para testimonio 3" class="avatar">
                         </div>
-                        <p class="text-secondary mb-0">
+                        <p class="text-secondary mb-0 avatar-text">
                             <span class="fw-bold text-dark">+2M de ciudadanos</span> atendidos este año
                         </p>
                     </div>
@@ -384,25 +113,34 @@
             </div>
             <div class="col-lg-6">
                 <div class="hero-image-container">
-                    <div class="ratio ratio-4x3 rounded-3xl overflow-hidden shadow-lg border">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuCRHfYe0A1wHu8W21XR5NTFvo-O6LVnvsauQIGPUebOlYigT0jrzNFoAk0dGLBbQ0A6UYzZsgIvBkpQG2zM7rHi4gcb9DzdAoh_Rk2lM7fHPSPA3z0Sh28vS0WrK36d1mipQzP84DxmfjgsiSpA4WvG6jjTNzART32mgvksFjYkVftH81pGanbTBFbnZWgclWY10m6e99TN5PxOeM-zvsGQ1uVEJ1wUrj45zTlb66lqDHiUVWegK3xFhDeWzyWg2jlzZWjRFc2Vs" alt="Oficina moderna de expedición del DNI" class="object-fit-cover w-100 h-100">
+                    <div id="heroCarousel" class="carousel slide rounded-4 overflow-hidden shadow-lg border" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/img1.jpg" alt="Oficina de expedición del DNI" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/img2.jpeg" alt="Servicios de tramitación" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/img3.jpeg" alt="Centro de expedición" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Alert Notification -->
         <div class="mt-5">
-            <div class="alert-custom bg-white p-4 p-md-5 shadow-sm">
+            <div class="alert-custom">
                 <div class="row align-items-center">
                     <div class="col-md-10">
                         <div class="d-flex align-items-start gap-3">
-                            <div class="p-2 bg-primary-light rounded-xl text-primary">
-                                <i class="bi bi-bell-fill fs-5"></i>
+                            <div class="alert-icon">
+                                <i class="bi bi-bell-fill"></i>
                             </div>
                             <div>
-                                <p class="fs-5 fw-bold mb-1">Aviso sobre Tasas y Pagos</p>
-                                <p class="text-secondary mb-0">
+                                <p class="alert-title mb-1">Aviso sobre Tasas y Pagos</p>
+                                <p class="alert-text mb-0">
                                     Para agilizar el trámite en oficina, se recomienda realizar el pago de tasas de forma
                                     telemática durante el proceso de solicitud de cita.
                                 </p>
@@ -410,7 +148,7 @@
                         </div>
                     </div>
                     <div class="col-md-2 mt-3 mt-md-0 text-md-end">
-                        <a href="#" class="text-decoration-none text-primary fw-bold d-inline-flex align-items-center gap-1">
+                        <a href="#" class="alert-link">
                             Ver tasas vigentes
                             <i class="bi bi-box-arrow-up-right"></i>
                         </a>
@@ -419,68 +157,64 @@
             </div>
         </div>
 
-        <!-- Services Section -->
-        <section class="mt-5 pt-5">
+        <section class="mt-5 pt-5 services-section">
             <div class="text-center mb-5">
                 <h2 class="section-title mb-3">Nuestros Servicios</h2>
-                <p class="text-secondary mx-auto" style="max-width: 700px;">
+                <p class="section-subtitle mx-auto">
                     Seleccione el tipo de trámite que desea realizar. Disponemos de servicios específicos para la
                     renovación, primera inscripción o gestión de certificados electrónicos.
                 </p>
             </div>
             <div class="row g-4">
-                <!-- Service Card 1 -->
                 <div class="col-md-4">
-                    <div class="service-card h-100 border rounded-2xl p-4 p-xl-5 bg-white transition-all">
-                        <div class="icon-container mb-4">
-                            <i class="bi bi-person-badge fs-3"></i>
+                    <div class="service-card h-100 border rounded-4 p-4 p-xl-5 bg-white">
+                        <div class="service-icon mb-4">
+                            <i class="bi bi-person-badge"></i>
                         </div>
                         <div class="mb-4">
-                            <h3 class="h4 fw-bold mb-3">DNI Electrónico</h3>
-                            <p class="text-secondary mb-0" style="line-height: 1.7;">
+                            <h3 class="service-title mb-3">DNI Electrónico</h3>
+                            <p class="service-text mb-0">
                                 Renovación por caducidad, pérdida o robo, cambio de datos y primera inscripción para
                                 ciudadanos españoles residentes en España.
                             </p>
                         </div>
-                        <a href="#" class="text-decoration-none text-primary fw-bold d-inline-flex align-items-center gap-1 mt-auto">
+                        <a href="#" class="service-link mt-auto">
                             Saber más
                             <i class="bi bi-chevron-right"></i>
                         </a>
                     </div>
                 </div>
-                <!-- Service Card 2 -->
                 <div class="col-md-4">
-                    <div class="service-card h-100 border rounded-2xl p-4 p-xl-5 bg-white transition-all">
-                        <div class="icon-container mb-4">
-                            <i class="bi bi-globe fs-3"></i>
+                    <div class="service-card h-100 border rounded-4 p-4 p-xl-5 bg-white">
+                        <div class="service-icon mb-4">
+                            <i class="bi bi-globe"></i>
                         </div>
                         <div class="mb-4">
-                            <h3 class="h4 fw-bold mb-3">Pasaporte Español</h3>
-                            <p class="text-secondary mb-0" style="line-height: 1.7;">
+                            <h3 class="service-title mb-3">Pasaporte Español</h3>
+                            <p class="service-text mb-0">
                                 Obtención y renovación del documento de viaje necesario para traslados fuera de la Unión
                                 Europea y el espacio Schengen.
                             </p>
                         </div>
-                        <a href="#" class="text-decoration-none text-primary fw-bold d-inline-flex align-items-center gap-1 mt-auto">
+                        <a href="#" class="service-link mt-auto">
                             Saber más
                             <i class="bi bi-chevron-right"></i>
                         </a>
                     </div>
                 </div>
-                <!-- Service Card 3 -->
                 <div class="col-md-4">
-                    <div class="service-card h-100 border rounded-2xl p-4 p-xl-5 bg-white transition-all">
-                        <div class="icon-container mb-4">
-                            <i class="bi bi-fingerprint fs-3"></i>
+                    <div class="service-card h-100 border rounded-4 p-4 p-xl-5 bg-white">
+                        <div class="service-icon mb-4">
+                            <i class="bi bi-fingerprint"></i>
                         </div>
                         <div class="mb-4">
-                            <h3 class="h4 fw-bold mb-3">Certificados Digitales</h3>
-                            <p class="text-secondary mb-0" style="line-height: 1.7;">
+                            <h3 class="service-title mb-3">Certificados Digitales</h3>
+                            <p class="service-text mb-0">
                                 Activación de los certificados de firma y autenticación integrados en el chip del DNIe 3.0 y
                                 4.0 para trámites online.
                             </p>
                         </div>
-                        <a href="#" class="text-decoration-none text-primary fw-bold d-inline-flex align-items-center gap-1 mt-auto">
+                        <a href="#" class="service-link mt-auto">
                             Saber más
                             <i class="bi bi-chevron-right"></i>
                         </a>
@@ -489,32 +223,31 @@
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <section class="mt-5 pt-5">
-            <div class="stats-section rounded-3xl p-4 p-lg-5">
+        <section class="mt-5 pt-5 stats-section">
+            <div class="stats-container rounded-4 p-4 p-lg-5">
                 <div class="row g-4 text-center">
                     <div class="col-6 col-md-3">
                         <div class="d-flex flex-column">
-                            <p class="display-6 fw-bold text-primary mb-1">2.400+</p>
-                            <p class="text-uppercase fw-bold text-secondary" style="font-size: 0.875rem;">Oficinas</p>
+                            <p class="stat-number mb-1">2.400+</p>
+                            <p class="stat-label">Oficinas</p>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="d-flex flex-column">
-                            <p class="display-6 fw-bold text-primary mb-1">15min</p>
-                            <p class="text-uppercase fw-bold text-secondary" style="font-size: 0.875rem;">Tiempo medio</p>
+                            <p class="stat-number mb-1">15min</p>
+                            <p class="stat-label">Tiempo medio</p>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="d-flex flex-column">
-                            <p class="display-6 fw-bold text-primary mb-1">24/7</p>
-                            <p class="text-uppercase fw-bold text-secondary" style="font-size: 0.875rem;">Cita Online</p>
+                            <p class="stat-number mb-1">24/7</p>
+                            <p class="stat-label">Cita Online</p>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="d-flex flex-column">
-                            <p class="display-6 fw-bold text-primary mb-1">98%</p>
-                            <p class="text-uppercase fw-bold text-secondary" style="font-size: 0.875rem;">Satisfacción</p>
+                            <p class="stat-number mb-1">98%</p>
+                            <p class="stat-label">Satisfacción</p>
                         </div>
                     </div>
                 </div>
@@ -522,83 +255,79 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="mt-5 pt-5 bg-white border-top">
         <div class="container-xxl px-3 px-md-4 px-lg-5 py-5">
             <div class="row g-4 g-lg-5 mb-5">
                 <div class="col-lg-3">
                     <div class="d-flex flex-column gap-4">
                         <div class="d-flex align-items-center gap-3">
-                            <div class="h-8 text-primary">
-                                <svg class="h-100 w-auto" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                    <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
-                                </svg>
+                            <div class="footer-brand-icon text-primary">
+                                <img src="img/logo.png" alt="Logo Policía Nacional" style="height: 50px; width: auto;">
                             </div>
-                            <h2 class="h5 fw-bold mb-0">Policía Nacional</h2>
+                            <h2 class="footer-brand-title mb-0">Policía Nacional</h2>
                         </div>
-                        <p class="text-secondary" style="line-height: 1.7; font-size: 0.875rem;">
+                        <p class="footer-description">
                             Sistema oficial de Cita Previa para la expedición de documentos de identidad y viaje. Ministerio
                             del Interior, Gobierno de España.
                         </p>
                         <div class="d-flex gap-3">
-                            <a href="#" class="text-secondary footer-link">
-                                <i class="bi bi-twitter fs-5"></i>
+                            <a href="#" class="social-link">
+                                <i class="bi bi-twitter"></i>
                             </a>
-                            <a href="#" class="text-secondary footer-link">
-                                <i class="bi bi-instagram fs-5"></i>
+                            <a href="#" class="social-link">
+                                <i class="bi bi-instagram"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="d-flex flex-column gap-4">
-                        <h3 class="text-uppercase fw-bold text-secondary" style="font-size: 0.875rem; letter-spacing: 0.1em;">Tramitación</h3>
-                        <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.875rem;">
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Solicitar Cita</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Consultar o Anular Cita</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Documentación necesaria</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Pago de tasas</a></li>
+                        <h3 class="footer-title">Tramitación</h3>
+                        <ul class="list-unstyled d-flex flex-column gap-2">
+                            <li><a href="#" class="footer-link">Solicitar Cita</a></li>
+                            <li><a href="#" class="footer-link">Consultar o Anular Cita</a></li>
+                            <li><a href="#" class="footer-link">Documentación necesaria</a></li>
+                            <li><a href="#" class="footer-link">Pago de tasas</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="d-flex flex-column gap-4">
-                        <h3 class="text-uppercase fw-bold text-secondary" style="font-size: 0.875rem; letter-spacing: 0.1em;">Información</h3>
-                        <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.875rem;">
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Preguntas frecuentes (FAQ)</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Oficinas de expedición</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Requisitos por edad</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Portal de transparencia</a></li>
+                        <h3 class="footer-title">Información</h3>
+                        <ul class="list-unstyled d-flex flex-column gap-2">
+                            <li><a href="#" class="footer-link">Preguntas frecuentes (FAQ)</a></li>
+                            <li><a href="#" class="footer-link">Oficinas de expedición</a></li>
+                            <li><a href="#" class="footer-link">Requisitos por edad</a></li>
+                            <li><a href="#" class="footer-link">Portal de transparencia</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="d-flex flex-column gap-4">
-                        <h3 class="text-uppercase fw-bold text-secondary" style="font-size: 0.875rem; letter-spacing: 0.1em;">Enlaces Institucionales</h3>
-                        <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.875rem;">
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Ministerio del Interior</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Policía Nacional (Web Oficial)</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Sede Electrónica</a></li>
-                            <li><a href="#" class="text-decoration-none text-dark footer-link">Portal de Accesibilidad</a></li>
+                        <h3 class="footer-title">Enlaces Institucionales</h3>
+                        <ul class="list-unstyled d-flex flex-column gap-2">
+                            <li><a href="#" class="footer-link">Ministerio del Interior</a></li>
+                            <li><a href="#" class="footer-link">Policía Nacional (Web Oficial)</a></li>
+                            <li><a href="#" class="footer-link">Sede Electrónica</a></li>
+                            <li><a href="#" class="footer-link">Portal de Accesibilidad</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="pt-4 border-top d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-                <p class="text-secondary mb-0" style="font-size: 0.75rem;">
+                <p class="copyright-text mb-0">
                     © 2024 Dirección General de la Policía. Todos los derechos reservados.
                 </p>
-                <div class="d-flex flex-wrap justify-content-center gap-4" style="font-size: 0.75rem;">
-                    <a href="#" class="text-decoration-none text-secondary footer-link">Aviso Legal</a>
-                    <a href="#" class="text-decoration-none text-secondary footer-link">Política de Privacidad</a>
-                    <a href="#" class="text-decoration-none text-secondary footer-link">Cookies</a>
-                    <a href="#" class="text-decoration-none text-secondary footer-link">Accesibilidad</a>
+                <div class="legal-links">
+                    <a href="#" class="legal-link">Aviso Legal</a>
+                    <a href="#" class="legal-link">Política de Privacidad</a>
+                    <a href="#" class="legal-link">Cookies</a>
+                    <a href="#" class="legal-link">Accesibilidad</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
