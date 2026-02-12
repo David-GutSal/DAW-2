@@ -41,9 +41,13 @@ const nuevaPregunta = ref({
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 63878ec ([UPDATE DIW] Finalizado proyecto entregabe cita dni)
+=======
+
+>>>>>>> main
 const guardarPregunta = () => {
     nuevaPregunta.value.id = (store.state.custionario.preguntas).length+1;
     store.commit('guardarPregunta', nuevaPregunta.value);
