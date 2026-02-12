@@ -53,7 +53,9 @@ public class NotasRestControllerV2 {
 			@RequestParam(value = "nota", required = false) Double nota,
 			@RequestParam(value = "fecha", required = false) String fecha,
 			@RequestParam(value = "activo", required = false) Integer activo) {
-
+			if(fecha == "")
+				fecha = "01-01-0001";
+			
 		return notaService.obtenerNotasPorFiltros(idAlumno, nombreAlumno, nombreAsignatura, nota, fecha, activo);
 	}
 	
@@ -66,12 +68,13 @@ public class NotasRestControllerV2 {
 			return ResponseEntity.badRequest().body("El ID de la URL no coincide con el del nota");
 		}
 
-		if (buscarNotaPorId(nota.getId()) == null) {
+		if (notaService.obtenerNotaPorId(nota.getId()) == null) {
 			return ResponseEntity.notFound().build(); 
 		}
 
 		notaService.actualizarNota(nota.getId(), nota.getIdAlumno(), nota.getIdAsignatura(), Double.parseDouble(nota.getNota()), nota.getFecha());
-		return ResponseEntity.ok(buscarNotaPorId(nota.getId()));
+		Optional<NotaEntity> actualizada = notaService.obtenerNotaPorId(nota.getId());
+		return ResponseEntity.ok(actualizada);
 	}
 	
 

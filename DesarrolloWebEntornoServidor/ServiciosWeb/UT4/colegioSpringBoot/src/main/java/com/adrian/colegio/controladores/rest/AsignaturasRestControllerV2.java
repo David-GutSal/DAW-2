@@ -66,7 +66,10 @@ public class AsignaturasRestControllerV2 {
     // MODIFICAR ASIGNATURA
     // -------------------------
     @PutMapping("/asignaturas/{id}")
-    public ResponseEntity<?> modificarAsignaturas(@PathVariable Integer id, @RequestBody AsignaturaDTO asignatura) {
+    public ResponseEntity<?> modificarAsignaturas(
+    		@PathVariable Integer id, 
+    		@RequestBody AsignaturaDTO asignatura) {
+    	
         if (!id.equals(asignatura.getId())) {
             return ResponseEntity.badRequest().body("El ID de la URL no coincide con el de la asignatura");
         }

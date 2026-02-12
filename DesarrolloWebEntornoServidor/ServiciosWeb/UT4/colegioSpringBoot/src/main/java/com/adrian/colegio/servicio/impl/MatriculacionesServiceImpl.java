@@ -1,12 +1,14 @@
 package com.adrian.colegio.servicio.impl;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adrian.colegio.dao.interfaces.IMatriculacionesDAO;
 import com.adrian.colegio.dtos.MatriculacionDTO;
+import com.adrian.colegio.entities.MatriculacionEntity;
 import com.adrian.colegio.servicio.interfaces.IMatriculacionesService;
 
 @Service
@@ -35,4 +37,10 @@ public class MatriculacionesServiceImpl implements IMatriculacionesService {
     public int borrarMatriculacion(Integer id) {
         return matriculacionesDAO.borrarMatriculacion(id);
     }
+
+	@Override
+	public Optional<MatriculacionEntity> obtenerMatriculacionPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return matriculacionesDAO.obtenerMatriculacionPorId(id);
+	}
 }

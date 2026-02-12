@@ -5,13 +5,18 @@ meta {
 }
 
 get {
-  url: http://localhost:8080/v2/notas/?idAlumno=80
-  body: json
+  url: http://localhost:8080/v2/notas?idAlumno=4&nombreAlumno&nombreAsignatura&nota&fecha&activo
+  body: none
   auth: inherit
 }
 
 params:query {
-  idAlumno: 80
+  idAlumno: 4
+  nombreAlumno: 
+  nombreAsignatura: 
+  nota: 
+  fecha: 
+  activo: 
 }
 
 settings {

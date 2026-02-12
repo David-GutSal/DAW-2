@@ -1,0 +1,26 @@
+meta {
+  name: Crear una nueva matriculación
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/v2/matriculaciones
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+  "idAlumno": 1,
+  "idAsignatura": 101,
+  "fecha": "2026-01-25",
+  "tasa": 150.50,
+  "activo": 1
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
