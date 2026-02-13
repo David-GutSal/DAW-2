@@ -1,10 +1,8 @@
 package com.adrian.colegio.dao.interfaces;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import com.adrian.colegio.dtos.MatriculacionDTO;
-import com.adrian.colegio.entities.MatriculacionEntity;
 
 public interface IMatriculacionesDAO {
     ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltros(String nombreAsignatura, String nombreAlumno,
@@ -16,5 +14,5 @@ public interface IMatriculacionesDAO {
 
     int borrarMatriculacion(Integer id);
 
-	Optional<MatriculacionEntity> obtenerMatriculacionPorId(Integer id);
+	MatriculacionDTO obtenerMatriculacionPorId(Integer id);
 }

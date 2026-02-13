@@ -1,0 +1,236 @@
+{
+  "name": "AsignaturaV2",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Actualizar Asignatura",
+      "filename": "Actualizar Asignatura.bru",
+      "seq": 3,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/asignaturas/101",
+        "method": "PUT",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n\"id\": 101,\n\"nombre\": \"Programación Web\",\n\"curso\": 3,\n\"tasa\": 250.50,\n\"activo\": 1\n}",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Borrar Asignatura",
+      "filename": "Borrar Asignatura.bru",
+      "seq": 4,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/asignaturas/12",
+        "method": "DELETE",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Insertar Asignatura",
+      "filename": "Insertar Asignatura.bru",
+      "seq": 1,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/asignaturas",
+        "method": "POST",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n\"id\": 101,\n\"nombre\": \"Programación Web\",\n\"curso\": 2,\n\"tasa\": 150.50,\n\"activo\": 1\n}",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Obtener Asignatura Por ID",
+      "filename": "Obtener Asignatura Por ID.bru",
+      "seq": 1,
+      "settings": {},
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/asignaturas/1",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Obtener Todas Las Asignaturas Por Filtros",
+      "filename": "Obtener Todas Las Asignaturas Por Filtros.bru",
+      "seq": 1,
+      "settings": {},
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/asignaturas?id&nombre&curso=2&tasa=600&activo",
+        "method": "GET",
+        "headers": [],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "nombre",
+            "value": "",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "curso",
+            "value": "2",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "tasa",
+            "value": "600",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "activo",
+            "value": "",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Obtener Todas Las Asignaturas",
+      "filename": "Obtener Todas Las Asignaturas.bru",
+      "seq": 1,
+      "settings": {},
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/asignaturas",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "AsignaturaV2",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0012941360473632812,
+    "filesCount": 6
+  },
+  "exportedAt": "2026-02-13T09:16:56.354Z",
+  "exportedUsing": "Bruno/3.0.2"
+}

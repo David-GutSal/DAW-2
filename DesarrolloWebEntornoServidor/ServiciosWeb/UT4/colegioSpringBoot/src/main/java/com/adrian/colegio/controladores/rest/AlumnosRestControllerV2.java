@@ -28,8 +28,7 @@ public class AlumnosRestControllerV2 {
 	@PostMapping("/alumnos")
 	public ResponseEntity<String> insertarAlumno(
 			@RequestBody AlumnoDTO alumno) {
-		alumnoService.insertarAlumno(alumno.getId(), alumno.getNombre(), alumno.getApellido(),
-				alumno.getIdMunicipio(), alumno.getFamiliaNumerosa(), alumno.getActivo());
+		alumnoService.insertarAlumno(alumno.getId(), alumno.getNombre(), alumno.getApellido(),alumno.getIdMunicipio(), alumno.getFamiliaNumerosa(), alumno.getActivo());
 		return new ResponseEntity<>("Inserción correcta! ", HttpStatus.OK);
 	}
 	

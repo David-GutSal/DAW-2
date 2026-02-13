@@ -1,10 +1,8 @@
 package com.adrian.colegio.servicio.interfaces;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import com.adrian.colegio.dtos.MatriculacionDTO;
-import com.adrian.colegio.entities.MatriculacionEntity;
 
 public interface IMatriculacionesService {
     ArrayList<MatriculacionDTO> obtenerMatriculacionesPorFiltros(String nombreAsignatura, String nombreAlumno,
@@ -16,5 +14,5 @@ public interface IMatriculacionesService {
 
     int borrarMatriculacion(Integer id);
 
-	Optional<MatriculacionEntity> obtenerMatriculacionPorId(Integer id);
+	MatriculacionDTO obtenerMatriculacionPorId(Integer id);
 }

@@ -1,7 +1,6 @@
 package com.adrian.colegio.controladores.rest;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adrian.colegio.dtos.MatriculacionDTO;
-import com.adrian.colegio.entities.MatriculacionEntity;
 import com.adrian.colegio.servicio.interfaces.IMatriculacionesService;
 
 @RestController
@@ -40,7 +38,7 @@ public class MatriculacionesRestControllerV2 {
 	}
 	
 	@GetMapping("/matriculaciones/{id}")
-	public Optional<MatriculacionEntity> buscarMatriculacionPorId(
+	public MatriculacionDTO buscarMatriculacionPorId(
 			@PathVariable("id") Integer id){
 	    return matriculacionService.obtenerMatriculacionPorId(id);
 	}
@@ -72,7 +70,7 @@ public class MatriculacionesRestControllerV2 {
 		}
 
 		matriculacionService.actualizarMatriculacion(matriculacion.getId(), matriculacion.getIdAlumno(), matriculacion.getIdAsignatura(), matriculacion.getFecha(), matriculacion.getTasa());
-		Optional<MatriculacionEntity> actualizada = matriculacionService.obtenerMatriculacionPorId(matriculacion.getId());
+		MatriculacionDTO actualizada = matriculacionService.obtenerMatriculacionPorId(matriculacion.getId());
 		return ResponseEntity.ok(actualizada);
 	}
 	

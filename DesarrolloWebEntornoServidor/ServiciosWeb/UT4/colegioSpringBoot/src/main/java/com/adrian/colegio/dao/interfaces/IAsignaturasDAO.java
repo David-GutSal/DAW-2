@@ -1,10 +1,8 @@
 package com.adrian.colegio.dao.interfaces;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import com.adrian.colegio.dtos.AsignaturaDTO;
-import com.adrian.colegio.entities.AsignaturaEntity;
 
 public interface IAsignaturasDAO {
 
@@ -19,6 +17,6 @@ public interface IAsignaturasDAO {
 
     int borrarAsignatura(Integer id);
 
-    Optional<AsignaturaEntity> obtenerAsignaturaPorId(Integer id);
+    AsignaturaDTO obtenerAsignaturaPorId(Integer id);
 }
     

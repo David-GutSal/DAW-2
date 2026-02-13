@@ -1,10 +1,8 @@
 package com.adrian.colegio.servicio.interfaces;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import com.adrian.colegio.dtos.NotaDTO;
-import com.adrian.colegio.entities.NotaEntity;
 
 public interface INotasService {
     ArrayList<NotaDTO> obtenerNotasPorFiltros(Integer idAlumno, String nombreAlumno, String nombreAsignatura,
@@ -16,5 +14,5 @@ public interface INotasService {
 
     int borrarNota(Integer id);
 
-    Optional<NotaEntity> obtenerNotaPorId(Integer id);
+    NotaDTO obtenerNotaPorId(Integer id);
 }

@@ -1,7 +1,6 @@
 package com.adrian.colegio.dao.impl;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -46,9 +45,9 @@ public class AsignaturaDAOImpl implements IAsignaturasDAO {
 	}
 
 	@Override
-	public Optional<AsignaturaEntity> obtenerAsignaturaPorId(Integer id) {
+	public AsignaturaDTO obtenerAsignaturaPorId(Integer id) {
 		// TODO Auto-generated method stub
-		return asignaturaRepository.findById(id);
+		return asignaturaRepository.obtenerAsignaturaPorId(id);
 	}
 
 }

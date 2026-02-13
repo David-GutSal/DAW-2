@@ -1,7 +1,6 @@
 package com.adrian.colegio.dao.impl;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -112,8 +111,8 @@ public class MatriculacionDAOImpl implements IMatriculacionesDAO {
     }
 
 	@Override
-	public Optional<MatriculacionEntity> obtenerMatriculacionPorId(Integer id) {
+	public MatriculacionDTO obtenerMatriculacionPorId(Integer id) {
 		
-		return matriculacionRepository.findById(id);
+		return matriculacionRepository.obtenerMatriculacionPorId(id);
 	}
 }

@@ -1,0 +1,21 @@
+.nav {
+  background-color: royalblue;
+}
+
+.banner h1 {
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.footer h3 {
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+body {
+  background-color: rgb(28, 78, 28);
+}
+
+/*# sourceMappingURL=main.css.map */

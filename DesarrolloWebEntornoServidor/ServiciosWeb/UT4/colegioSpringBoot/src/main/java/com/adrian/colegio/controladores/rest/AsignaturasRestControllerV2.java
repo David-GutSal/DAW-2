@@ -1,7 +1,6 @@
 package com.adrian.colegio.controladores.rest;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adrian.colegio.dtos.AsignaturaDTO;
-import com.adrian.colegio.entities.AsignaturaEntity;
 import com.adrian.colegio.servicio.interfaces.IAsignaturasService;
 
 @RestController
@@ -44,8 +42,8 @@ public class AsignaturasRestControllerV2 {
     }
 
     @GetMapping("/asignaturas/{id}")
-    public ResponseEntity<Optional<AsignaturaEntity>> buscarAsignaturaPorId(@PathVariable("id") Integer id) {
-    	Optional<AsignaturaEntity> asignatura = asignaturasService.obtenerAsignaturaPorId(id); 
+    public ResponseEntity<AsignaturaDTO> buscarAsignaturaPorId(@PathVariable("id") Integer id) {
+    	AsignaturaDTO asignatura = asignaturasService.obtenerAsignaturaPorId(id); 
         if (asignatura == null) {
             return ResponseEntity.notFound().build();
         }
@@ -80,7 +78,7 @@ public class AsignaturasRestControllerV2 {
 
         asignaturasService.actualizarAsignatura(asignatura.getId(), asignatura.getNombre(), asignatura.getCurso(), asignatura.getTasa(), asignatura.getActivo());
         
-        Optional<AsignaturaEntity> actualizada = asignaturasService.obtenerAsignaturaPorId(asignatura.getId());
+        AsignaturaDTO actualizada = asignaturasService.obtenerAsignaturaPorId(asignatura.getId());
         return ResponseEntity.ok(actualizada);
     }
 

@@ -1,0 +1,23 @@
+$color-primario: royalblue;
+$color-secundario: rgb(255, 255, 255);
+$color-terciario: dodgerblue;
+$font-grande: 40px;
+$font-medio: 30px;
+$font-pequena: 20px;
+
+.nav {
+background-color: $color-primario;
+}
+.banner h1 {
+font-size: $font-grande;
+color: $color-secundario;
+text-align: center;
+}
+.footer h3 {
+font-size: $font-pequena;
+color: $color-secundario;
+text-align: center;
+}
+body{
+    background-color: rgb(28, 78, 28);
+}

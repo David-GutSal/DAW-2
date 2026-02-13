@@ -1,14 +1,12 @@
 package com.adrian.colegio.servicio.impl;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adrian.colegio.dao.interfaces.IAsignaturasDAO;
 import com.adrian.colegio.dtos.AsignaturaDTO;
-import com.adrian.colegio.entities.AsignaturaEntity;
 import com.adrian.colegio.servicio.interfaces.IAsignaturasService;
 
 @Service
@@ -41,7 +39,7 @@ public class AsignaturasServiceImpl implements IAsignaturasService {
 	}
 
 	@Override
-	public Optional<AsignaturaEntity> obtenerAsignaturaPorId(Integer id) {
+	public AsignaturaDTO obtenerAsignaturaPorId(Integer id) {
 		// TODO Auto-generated method stub
 		return asignaturasDAO.obtenerAsignaturaPorId(id);
 	}

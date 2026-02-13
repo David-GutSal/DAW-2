@@ -1,7 +1,6 @@
 package com.adrian.colegio.controladores.rest;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adrian.colegio.dtos.NotaDTO;
-import com.adrian.colegio.entities.NotaEntity;
 import com.adrian.colegio.servicio.interfaces.INotasService;
 
 @RestController
@@ -40,7 +38,7 @@ public class NotasRestControllerV2 {
 	}
 	
 	@GetMapping("/notas/{id}")
-	public Optional<NotaEntity> buscarNotaPorId(
+	public NotaDTO buscarNotaPorId(
 			@PathVariable("id") Integer id){
 	    return notaService.obtenerNotaPorId(id);
 	}
@@ -73,7 +71,7 @@ public class NotasRestControllerV2 {
 		}
 
 		notaService.actualizarNota(nota.getId(), nota.getIdAlumno(), nota.getIdAsignatura(), Double.parseDouble(nota.getNota()), nota.getFecha());
-		Optional<NotaEntity> actualizada = notaService.obtenerNotaPorId(nota.getId());
+		NotaDTO actualizada = notaService.obtenerNotaPorId(nota.getId());
 		return ResponseEntity.ok(actualizada);
 	}
 	

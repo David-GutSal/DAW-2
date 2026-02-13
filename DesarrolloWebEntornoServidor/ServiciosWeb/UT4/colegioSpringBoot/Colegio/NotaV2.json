@@ -1,0 +1,251 @@
+{
+  "name": "NotaV2",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Actualizar una nota existente",
+      "filename": "Actualizar una nota existente.bru",
+      "seq": 5,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/notas/7",
+        "method": "PUT",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"id\": 7,\n  \"idAlumno\": 80,\n  \"idAsignatura\": 6,\n  \"nota\": 7.0,\n  \"fecha\": \"2021-02-01\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Buscar notas con filtros",
+      "filename": "Buscar notas con filtros.bru",
+      "seq": 3,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/notas?idAlumno=4&nombreAlumno&nombreAsignatura&nota&fecha&activo",
+        "method": "GET",
+        "headers": [],
+        "params": [
+          {
+            "name": "idAlumno",
+            "value": "4",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "nombreAlumno",
+            "value": "",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "nombreAsignatura",
+            "value": "",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "nota",
+            "value": "",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "fecha",
+            "value": "",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "activo",
+            "value": "",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Crear una nueva nota",
+      "filename": "Crear una nueva nota.bru",
+      "seq": 4,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/notas",
+        "method": "POST",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n\"idAlumno\": 1,\n\"idAsignatura\": 101,\n\"nota\": \"8.5\",\n\"fecha\": \"2026-01-25\"\n}\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Eliminar una nota",
+      "filename": "Eliminar una nota.bru",
+      "seq": 6,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/notas/7",
+        "method": "DELETE",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Listar todas las notas",
+      "filename": "Listar todas las notas.bru",
+      "seq": 1,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/notas",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Obtener una nota específica",
+      "filename": "Obtener una nota específica.bru",
+      "seq": 2,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/v2/notas/5",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "NotaV2",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0014219284057617188,
+    "filesCount": 6
+  },
+  "exportedAt": "2026-02-13T09:17:26.421Z",
+  "exportedUsing": "Bruno/3.0.2"
+}
